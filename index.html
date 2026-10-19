@@ -16,8 +16,8 @@
   --pink: #ec4899;
   --text: #f3e8ff; 
   --muted: #a78bfa;
-  --line: rgba(192, 132, 252, 0.25); 
-  --card: rgba(18, 8, 32, 0.82);
+  --line: rgba(192, 132, 252, 0.35); 
+  --card: rgba(11, 6, 20, 0.78);
   --mono: 'Share Tech Mono', ui-monospace, monospace; 
   --fancy: 'Cinzel', serif;
 }
@@ -40,7 +40,7 @@ body::before {
   position: fixed;
   inset: 0;
   z-index: -3;
-  background: linear-gradient(rgba(7, 3, 13, 0.6), rgba(7, 3, 13, 0.88)), url('yapecito.jpg') no-repeat center center;
+  background: linear-gradient(rgba(7, 3, 13, 0.7), rgba(7, 3, 13, 0.9)), url('yapecito.jpg') no-repeat center center;
   background-size: cover;
 }
 
@@ -52,10 +52,10 @@ body::after {
   mix-blend-mode: multiply; 
 }
 
-/* ===== PANTALLA DE CARGA 100% SÓLIDA Y CORREGIDA ===== */
+/* ===== PANTALLA DE CARGA SÓLIDA ===== */
 #loader { 
   position: fixed; inset: 0; z-index: 99999; 
-  background: #07030d; /* Fondo totalmente opaco para que no se filtre la web de atrás */
+  background: #07030d; 
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   transition: opacity 0.8s ease, visibility 0.8s ease; 
 }
@@ -78,18 +78,16 @@ body::after {
   background: #07030d;
 }
 
-/* ===== VIDEO DE FONDO (CARITAMUJER.MP4) BIEN ENQUADRADO PARA LA CARA ===== */
 .load-bg-video {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 25%; /* Ajustado verticalmente para que encuadre perfectamente la cara de la chica */
+  object-position: center 25%;
   z-index: 1;
 }
 
-/* Velo oscuro para contraste perfecto de las letras */
 .load-box::before {
   content: "";
   position: absolute;
@@ -121,7 +119,7 @@ body::after {
 .load-details { display: flex; justify-content: space-between; font-size: 0.75rem; letter-spacing: 0.15em; color: var(--muted); }
 #pct { color: #ffffff; font-weight: bold; }
 
-/* ===== HEADER 100% TRANSPARENTE EN TODO MOMENTO ===== */
+/* ===== HEADER 100% TRANSPARENTE ===== */
 header { 
   position: fixed; top: 0; left: 0; right: 0; z-index: 50; 
   display: flex; justify-content: space-between; align-items: center;
@@ -152,7 +150,7 @@ nav a::before { content: "> "; opacity: 0; color: var(--purple); transition: opa
 nav a:hover { color: var(--purple); text-shadow: 0 0 12px var(--purple); }
 nav a:hover::before { opacity: 1; }
 
-/* ===== SECCIONES OPTIMIZADAS ===== */
+/* ===== SECCIONES ===== */
 section { min-height: 100svh; padding: 7rem 1.5rem 5rem; display: flex; flex-direction: column; justify-content: center; align-items: center; max-width: 1200px; margin: auto; }
 .tag { color: var(--purple); font-size: .85rem; letter-spacing: .35em; margin-bottom: .8rem; text-shadow: 0 0 10px rgba(192, 132, 252, 0.5); font-weight: bold; }
 h2 { font-family: var(--fancy); font-weight: 700; font-size: clamp(2.2rem, 5vw, 3.8rem); color: var(--text); margin-bottom: 2.5rem; text-align: center; letter-spacing: 0.05em; }
@@ -179,31 +177,96 @@ h2 { font-family: var(--fancy); font-weight: 700; font-size: clamp(2.2rem, 5vw, 
 }
 .btn:hover { background: var(--purple); color: #07030d; box-shadow: 0 0 35px var(--purple); transform: translateY(-3px); }
 
-/* TARJETAS */
+/* ===== TARJETAS CON EL VIDEO CARITAMUJER.MP4 DE FONDO ===== */
 .grid { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); width: 100%; }
 .card { 
-  position: relative; padding: 2.2rem 1.8rem; background: var(--card); 
+  position: relative; padding: 2.2rem 1.8rem; 
   border: 1px solid var(--line); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
-  overflow: hidden; backdrop-filter: blur(12px); border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  overflow: hidden; border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  background: transparent;
 }
-.card::before { content: ""; position: absolute; left: 0; top: -100%; width: 100%; height: 3px; background: linear-gradient(90deg, var(--purple), var(--pink)); box-shadow: 0 0 20px var(--purple); transition: top .6s; }
+/* Video de fondo dentro de cada tarjeta */
+.card-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+/* Velo oscuro semitransparente sobre el video para máxima legibilidad */
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(11, 6, 20, 0.82);
+  z-index: 2;
+  transition: background 0.3s;
+}
+.card > * {
+  position: relative;
+  z-index: 3;
+}
+.card::before { content: ""; position: absolute; left: 0; top: -100%; width: 100%; height: 3px; background: linear-gradient(90deg, var(--purple), var(--pink)); box-shadow: 0 0 20px var(--purple); transition: top .6s; z-index: 4; }
 .card:hover { border-color: var(--purple); transform: translateY(-8px); box-shadow: 0 15px 45px rgba(192, 132, 252, 0.25); }
+.card:hover::after { background: rgba(11, 6, 20, 0.72); }
 .card:hover::before { top: 100%; }
 .card .n { color: var(--purple); font-size: .85rem; letter-spacing: .25em; font-weight: bold; }
 .card h3 { margin: .8rem 0; font-size: 1.25rem; letter-spacing: .08em; color: var(--text); font-family: var(--fancy); }
 .card p { color: var(--muted); font-size: .95rem; line-height: 1.7; }
 
-/* TERMINALES */
-.term { width: 100%; max-width: 780px; border: 1px solid var(--line); background: rgba(9, 4, 17, 0.92); box-shadow: 0 15px 40px rgba(192, 132, 252, 0.15); backdrop-filter: blur(12px); border-radius: 8px; overflow: hidden; }
-.term-bar { padding: .7rem 1.2rem; border-bottom: 1px solid var(--line); color: var(--muted); font-size: .8rem; display: flex; gap: .5rem; align-items: center; background: rgba(192, 132, 252, 0.03); }
+/* ===== TERMINALES CON EL VIDEO CARITAMUJER.MP4 DE FONDO ===== */
+.term { 
+  position: relative; width: 100%; max-width: 780px; 
+  border: 1px solid var(--line); 
+  box-shadow: 0 15px 40px rgba(192, 132, 252, 0.15); 
+  border-radius: 8px; overflow: hidden; 
+  background: transparent;
+}
+.term-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+.term::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(9, 4, 17, 0.88);
+  z-index: 2;
+}
+.term > * {
+  position: relative;
+  z-index: 3;
+}
+.term-bar { padding: .7rem 1.2rem; border-bottom: 1px solid var(--line); color: var(--muted); font-size: .8rem; display: flex; gap: .5rem; align-items: center; background: rgba(192, 132, 252, 0.05); }
 .term-bar i { width: 10px; height: 10px; border-radius: 50%; background: var(--purple); box-shadow: 0 0 8px var(--purple); }
 .term-bar i:nth-child(2) { opacity: .6; } .term-bar i:nth-child(3) { opacity: .3; }
 .term-body { padding: 1.8rem; font-size: 1rem; line-height: 2; color: #e9d5ff; }
 .term-body b { color: var(--purple); font-weight: 500; text-shadow: 0 0 8px rgba(192, 132, 252, 0.6); }
 
 .stats { display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; margin-top: 3rem; width: 100%; }
-.stats div { text-align: center; background: var(--card); padding: 1.5rem 2rem; border: 1px solid var(--line); border-radius: 8px; backdrop-filter: blur(10px); box-shadow: 0 8px 25px rgba(0,0,0,0.4); flex: 1; min-width: 160px; } 
+.stats div { 
+  position: relative; text-align: center; padding: 1.5rem 2rem; 
+  border: 1px solid var(--line); border-radius: 8px; 
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4); flex: 1; min-width: 160px; 
+  overflow: hidden; background: transparent;
+}
+.stats div::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(11, 6, 20, 0.82);
+  z-index: 1;
+}
+.stats div > * {
+  position: relative;
+  z-index: 2;
+}
 .stats strong { display: block; font-size: 2.3rem; color: var(--purple); text-shadow: 0 0 18px rgba(192, 132, 252, 0.8); font-family: var(--fancy); }
 .stats span { font-size: .75rem; color: var(--muted); letter-spacing: .25em; margin-top: 0.3rem; display: block; }
 
@@ -216,7 +279,7 @@ footer { text-align: center; padding: 2.5rem 1rem; color: var(--muted); font-siz
 </head>
 <body class="lock">
 
-<!-- ===== PANTALLA DE CARGA SÓLIDA CON VIDEO ENCUADRADO ===== -->
+<!-- ===== PANTALLA DE CARGA ===== -->
 <div id="loader">
   <div class="load-container">
     <div class="load-box">
@@ -262,12 +325,30 @@ footer { text-align: center; padding: 2.5rem 1rem; color: var(--muted); font-siz
     <div class="tag reveal">// 01</div>
     <h2 class="reveal">SERVICIOS</h2>
     <div class="grid">
-      <div class="card reveal"><span class="n">[01]</span><h3>SERVICIO UNO</h3><p>Describe aquí lo que ofreces, con precisión y en pocas líneas.</p></div>
-      <div class="card reveal"><span class="n">[02]</span><h3>SERVICIO DOS</h3><p>Describe aquí lo que ofreces, con precisión y en pocas líneas.</p></div>
-      <div class="card reveal"><span class="n">[03]</span><h3>SERVICIO TRES</h3><p>Describe aquí lo que ofreces, con precisión y en pocas líneas.</p></div>
-      <div class="card reveal"><span class="n">[04]</span><h3>SERVICIO CUATRO</h3><p>Describe aquí lo que ofreces, con precisión y en pocas líneas.</p></div>
-      <div class="card reveal"><span class="n">[05]</span><h3>SERVICIO CINCO</h3><p>Describe aquí lo que ofreces, con precisión y en pocas líneas.</p></div>
-      <div class="card reveal"><span class="n">[06]</span><h3>SERVICIO SEIS</h3><p>Describe aquí lo que ofreces, con precisión y en pocas líneas.</p></div>
+      <div class="card reveal">
+        <video autoplay muted loop playsinline class="card-bg-video"><source src="caritamujer.mp4" type="video/mp4"></video>
+        <span class="n">[01]</span><h3>SERVICIO UNO</h3><p>Describe aquí lo que ofreces, con precisión y en pocas líneas.</p>
+      </div>
+      <div class="card reveal">
+        <video autoplay muted loop playsinline class="card-bg-video"><source src="caritamujer.mp4" type="video/mp4"></video>
+        <span class="n">[02]</span><h3>SERVICIO DOS</h3><p>Describe aquí lo que ofreces, con precisión y en pocas líneas.</p>
+      </div>
+      <div class="card reveal">
+        <video autoplay muted loop playsinline class="card-bg-video"><source src="caritamujer.mp4" type="video/mp4"></video>
+        <span class="n">[03]</span><h3>SERVICIO TRES</h3><p>Describe aquí lo que ofreces, con precisión y en pocas líneas.</p>
+      </div>
+      <div class="card reveal">
+        <video autoplay muted loop playsinline class="card-bg-video"><source src="caritamujer.mp4" type="video/mp4"></video>
+        <span class="n">[04]</span><h3>SERVICIO CUATRO</h3><p>Describe aquí lo que ofreces, con precisión y en pocas líneas.</p>
+      </div>
+      <div class="card reveal">
+        <video autoplay muted loop playsinline class="card-bg-video"><source src="caritamujer.mp4" type="video/mp4"></video>
+        <span class="n">[05]</span><h3>SERVICIO CINCO</h3><p>Describe aquí lo que ofreces, con precisión y en pocas líneas.</p>
+      </div>
+      <div class="card reveal">
+        <video autoplay muted loop playsinline class="card-bg-video"><source src="caritamujer.mp4" type="video/mp4"></video>
+        <span class="n">[06]</span><h3>SERVICIO SEIS</h3><p>Describe aquí lo que ofreces, con precisión y en pocas líneas.</p>
+      </div>
     </div>
   </section>
 
@@ -275,17 +356,27 @@ footer { text-align: center; padding: 2.5rem 1rem; color: var(--muted); font-siz
     <div class="tag reveal">// 02</div>
     <h2 class="reveal">NOSOTROS</h2>
     <div class="term reveal">
+      <video autoplay muted loop playsinline class="term-bg-video"><source src="caritamujer.mp4" type="video/mp4"></video>
       <div class="term-bar"><i></i><i></i><i></i>&nbsp; nocthrax@peru:~$</div>
       <div class="term-body">
         <b>$</b> whoami<br>NOCTHRAX | PERÚ<br>
         <b>$</b> cat lema.txt<br>Silencio. Precisión. Resultados.<br>
-        <b>$</b> cat sobre.txt<br>Escribe hier quiénes son, qué los diferencia y por qué confiar en ustedes.
+        <b>$</b> cat sobre.txt<br>Escribe aquí quiénes son, qué los diferencia y por qué confiar en ustedes.
       </div>
     </div>
     <div class="stats reveal">
-      <div><strong>69+</strong><span>SEGUIDORES</span></div>
-      <div><strong>100%</strong><span>COMPROMISO</span></div>
-      <div><strong>24/7</strong><span>ACTIVOS</span></div>
+      <div>
+        <video autoplay muted loop playsinline class="card-bg-video"><source src="caritamujer.mp4" type="video/mp4"></video>
+        <strong>69+</strong><span>SEGUIDORES</span>
+      </div>
+      <div>
+        <video autoplay muted loop playsinline class="card-bg-video"><source src="caritamujer.mp4" type="video/mp4"></video>
+        <strong>100%</strong><span>COMPROMISO</span>
+      </div>
+      <div>
+        <video autoplay muted loop playsinline class="card-bg-video"><source src="caritamujer.mp4" type="video/mp4"></video>
+        <strong>24/7</strong><span>ACTIVOS</span>
+      </div>
     </div>
   </section>
 
@@ -293,6 +384,7 @@ footer { text-align: center; padding: 2.5rem 1rem; color: var(--muted); font-siz
     <div class="tag reveal">// 03</div>
     <h2 class="reveal">CONTACTO</h2>
     <div class="term reveal">
+      <video autoplay muted loop playsinline class="term-bg-video"><source src="caritamujer.mp4" type="video/mp4"></video>
       <div class="term-bar"><i></i><i></i><i></i>&nbsp; conexión segura</div>
       <div class="term-body">
         <b>&gt;</b> Canal de WhatsApp: <a href="#" style="color:var(--purple)">pega aquí tu enlace</a><br>
