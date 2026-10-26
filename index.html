@@ -44,13 +44,13 @@ h2{font-size:clamp(32px,5vw,52px);margin-bottom:12px;color:#fff}
 .ring{position:absolute;left:50%;top:50%;width:0;height:0;transform-style:preserve-3d}
 .card{position:absolute;width:var(--cw);height:300px;left:calc(var(--cw)/-2);top:-150px;border:1px solid var(--line);border-radius:12px;padding:22px;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(160deg,rgba(30, 41, 59, 0.9),rgba(15, 23, 42, 0.95));backface-visibility:hidden;box-shadow:0 20px 50px rgba(0,0,0,.6)}
 .card::before{content:attr(data-i);position:absolute;top:14px;right:18px;font:700 64px/1 var(--serif);color:rgba(56,189,248,.15)}
-.card h3{font-size:26px;color:#fff}.card span{color:var(--gold);font-size:13px}
+.card h3{font-size:24px;color:#fff}.card span{color:var(--gold);font-size:13px}
 .ctrl{display:flex;gap:10px;justify-content:center;margin-top:14px}
 .ctrl button{padding:9px 20px;border-radius:8px;border:1px solid var(--line);background:rgba(15, 23, 42, 0.8);color:var(--cream);cursor:pointer;font:500 13px var(--sans)}
 .ctrl button:hover{border-color:var(--gold);color:var(--gold)}
 .detail{border:1px solid var(--line);background:var(--panel);padding:30px;border-radius:12px}
-.detail h3{font-size:36px;margin-bottom:8px;color:#fff}
-.detail ul{padding-left:18px;color:var(--mut);margin:14px 0 22px}.detail li{margin:6px 0}
+.detail h3{font-size:32px;margin-bottom:8px;color:#fff}
+.detail ul{padding-left:18px;color:var(--mut);margin:14px 0 22px;max-height:180px;overflow-y:auto}.detail li{margin:6px 0}
 .price{font:700 24px var(--serif);color:var(--gold);margin-bottom:6px}
 /* grids */
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
@@ -132,15 +132,15 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
 
 <section class="hero" id="inicio">
   <h1>NOCTHRAX</h1>
-  <em>Perú · Diseño web de alto rendimiento</em>
-  <p>Creamos tiendas Shopify, landing pages y sitios optimizados para negocios que buscan destacar y vender más. Diseño a tu medida, entrega rápida y atención directa por WhatsApp.</p>
-  <a class="btn solid" href="#cotizar">Cotizar mi web</a>&nbsp;<a class="btn" href="#servicios">Ver servicios</a>
+  <em>Perú · Bots y automatización para redes sociales</em>
+  <p>Potencia tu presencia digital con nuestros servicios automatizados para TikTok, Facebook, YouTube, Kick, Instagram, Telegram, Spotify, Tráfico Web, X y Google Forms. Crecimiento real, entrega rápida y atención directa por WhatsApp.</p>
+  <a class="btn solid" href="#cotizar">Cotizar mi servicio</a>&nbsp;<a class="btn" href="#servicios">Ver servicios</a>
 </section>
 
 <div class="marquee" aria-hidden="true">
   <div class="track">
-    <span>Tiendas Shopify</span><span>Dropshipping</span><span>Landing pages</span><span>Branding</span><span>Webs para negocios</span><span>Yape</span><span>Plin</span><span>BCP</span><span>Binance</span>
-    <span>Tiendas Shopify</span><span>Dropshipping</span><span>Landing pages</span><span>Branding</span><span>Webs para negocios</span><span>Yape</span><span>Plin</span><span>BCP</span><span>Binance</span>
+    <span>TikTok Bots</span><span>Facebook Growth</span><span>YouTube Boost</span><span>Kick Streams</span><span>Instagram Tools</span><span>Telegram Members</span><span>Spotify Plays</span><span>Tráfico Web AI</span><span>Google Forms</span>
+    <span>TikTok Bots</span><span>Facebook Growth</span><span>YouTube Boost</span><span>Kick Streams</span><span>Instagram Tools</span><span>Telegram Members</span><span>Spotify Plays</span><span>Tráfico Web AI</span><span>Google Forms</span>
   </div>
 </div>
 
@@ -158,20 +158,20 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
 
 <section>
   <div class="grid">
-    <div class="box stat"><b>7–15 días</b><p>Entrega típica de tu web</p></div>
-    <div class="box stat"><b>100%</b><p>Diseño a tu medida, sin plantillas repetidas</p></div>
-    <div class="box stat"><b>24 h</b><p>Respuesta a tu consulta</p></div>
-    <div class="box stat"><b>Perú</b><p>Atención local, pagos en soles</p></div>
+    <div class="box stat"><b>100%</b><p>Automatizado y seguro</p></div>
+    <div class="box stat"><b>Soporte</b><p>Atención directa y personalizada</p></div>
+    <div class="box stat"><b>24 h</b><p>Respuesta inmediata</p></div>
+    <div class="box stat"><b>Perú</b><p>Atención local y pagos en soles</p></div>
   </div>
 </section>
 
 <section id="cotizar">
   <h2>Cotizar mi web</h2>
-  <p class="lead">Cuéntanos qué necesitas. Al enviar, se abre tu WhatsApp con el mensaje listo para mandarnos.</p>
+  <p class="lead">Escoge tu servicio y cuéntanos qué necesitas. Al enviar, se abre tu WhatsApp con el mensaje listo para mandarnos.</p>
   <form id="quote">
     <label>Tu nombre<input id="qn" required autocomplete="name"></label>
     <label>Escoge tu servicio<select id="qs"></select></label>
-    <label>Tu negocio o idea<textarea id="qm" placeholder="Ej.: vendo ropa deportiva y quiero una tienda con pagos online"></textarea></label>
+    <label>Tu negocio o idea<textarea id="qm" placeholder="Ej.: necesito seguidores para TikTok y vistas para mis directos"></textarea></label>
     <button class="btn solid" type="submit">Enviar por WhatsApp</button>
   </form>
 </section>
@@ -180,20 +180,20 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
   <h2>Cómo trabajamos</h2>
   <p class="lead">Un proceso simple, en cuatro pasos.</p>
   <div class="grid">
-    <div class="box step"><b>1</b><h3>Conversamos</h3><p>Entendemos tu negocio, tu público y lo que quieres lograr.</p></div>
-    <div class="box step"><b>2</b><h3>Diseñamos</h3><p>Te mostramos una propuesta visual antes de programar.</p></div>
-    <div class="box step"><b>3</b><h3>Construimos</h3><p>Desarrollamos tu web y la probamos en celular y computadora.</p></div>
-    <div class="box step"><b>4</b><h3>Publicamos</h3><p>La lanzamos, te capacitamos y te acompañamos después.</p></div>
+    <div class="box step"><b>1</b><h3>Conversamos</h3><p>Entendemos qué red social o plataforma deseas impulsar.</p></div>
+    <div class="box step"><b>2</b><h3>Configuramos</h3><p>Establecemos los parámetros ideales para tu cuenta o enlace.</p></div>
+    <div class="box step"><b>3</b><h3>Activamos</h3><p>Ponemos en marcha el servicio con entrega rápida y controlada.</p></div>
+    <div class="box step"><b>4</b><h3>Monitoreamos</h3><p>Validamos los resultados y te acompañamos en todo el proceso.</p></div>
   </div>
 </section>
 
 <section id="porque">
   <h2>Por qué elegirnos</h2>
   <div class="grid" style="margin-top:28px">
-    <div class="box"><h3>Diseño distinto</h3><p>Cada web se crea desde cero con la identidad de tu marca.</p></div>
-    <div class="box"><h3>Pensado para vender</h3><p>Estructura clara, botones visibles y compra rápida.</p></div>
-    <div class="box"><h3>Pagos locales</h3><p>Aceptamos Yape, Plin, BCP y Binance. Tú también puedes cobrar así.</p></div>
-    <div class="box"><h3>Soporte directo</h3><p>Hablas con quien hace tu web, sin intermediarios.</p></div>
+    <div class="box"><h3>Variedad de plataformas</h3><p>Cubrimos TikTok, Instagram, YouTube, Telegram, Spotify y más.</p></div>
+    <div class="box"><h3>Resultados rápidos</h3><p>Sistemas optimizados para dar tracción inmediata a tus perfiles.</p></div>
+    <div class="box"><h3>Pagos locales</h3><p>Aceptamos Yape, Plin, BCP y Binance de forma segura.</p></div>
+    <div class="box"><h3>Soporte directo</h3><p>Hablas con nosotros sin intermediarios ni demoras.</p></div>
   </div>
 </section>
 
@@ -201,16 +201,16 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
   <h2>Métodos de pago</h2>
   <p class="lead">Elige el que te quede cómodo. Envía tu comprobante por WhatsApp o Telegram para confirmar.</p>
   <div class="grid pay" id="payGrid"></div>
-  <p class="note">Pagamos 50 % al iniciar y 50 % al entregar. Verifica siempre el titular antes de transferir.</p>
+  <p class="note">Verifica siempre el titular antes de transferir tu pago.</p>
 </section>
 
 <section id="faq">
   <h2>Preguntas frecuentes</h2>
-  <details><summary>¿Cuánto cuesta una página web?</summary><p>Depende del tipo de proyecto. Escríbenos o usa el cotizador y te respondemos con un precio claro en menos de 24 horas.</p></details>
-  <details><summary>¿Cuánto demora?</summary><p>Una landing page toma entre 3 y 7 días. Una tienda completa, entre 7 y 15 días, según el contenido que tengas listo.</p></details>
-  <details><summary>¿Puedo pagar con Yape o Plin?</summary><p>Sí. También aceptamos transferencia BCP y Binance (USDT).</p></details>
-  <details><summary>¿Podré editar mi web yo mismo?</summary><p>Sí. En Shopify te enseñamos a cambiar productos, precios y textos.</p></details>
-  <details><summary>¿Incluye dominio y hosting?</summary><p>Te ayudamos a elegir y configurar tu dominio. Shopify incluye el hosting en su plan.</p></details>
+  <details><summary>¿Cómo funcionan los bots para redes sociales?</summary><p>Escribenos al cotizador indicando la plataforma y cantidad que necesitas para darte el detalle exacto.</p></details>
+  <details><summary>¿Cuánto demora la entrega?</summary><p>Varía según el servicio seleccionado, pero la mayoría inicia de forma instantánea o progresiva en pocas horas.</p></details>
+  <details><summary>¿Puedo pagar con Yape o Plin?</summary><p>Sí, aceptamos Yape, Plin, transferencia BCP y Binance (USDT).</p></details>
+  <details><summary>¿Son seguros para mis cuentas?</label><summary><p>Trabajamos con métodos estables y seguros para resguardar tus perfiles.</p></details>
+  <details><summary>¿Ofrecen soporte personalizado?</summary><p>Sí, la comunicación es directa por WhatsApp para cualquier consulta o seguimiento.</p></details>
 </section>
 
 <section id="contacto">
@@ -238,12 +238,16 @@ const CFG={
   ]
 };
 const S=[
- {n:"Tienda Shopify",s:"Vende online",p:"Desde S/ 600",d:"Tu tienda lista para vender, con catálogo, pagos y envíos.",l:["Diseño personalizado","Carrito y checkout rápido","Pagos configurados","Capacitación incluida"]},
- {n:"Dropshipping Pro",s:"Escala rápido",p:"Desde S/ 800",d:"Optimizado para convertir desde el primer día.",l:["Checkout rápido","Arquitectura para anuncios","Secciones psicológicas de venta","Integración con proveedores"]},
- {n:"Landing page",s:"Una página, un objetivo",p:"Desde S/ 300",d:"Ideal para promocionar un producto, servicio o evento.",l:["Diseño que enfoca la acción","Botón directo a WhatsApp","Carga rápida en celular","Lista en pocos días"]},
- {n:"Web para negocios",s:"Barberías, clínicas, tiendas",p:"Desde S/ 500",d:"Presenta tu negocio con una web elegante y profesional.",l:["Servicios y galería","Mapa y horarios","Reservas por WhatsApp","Diseño a tu marca"]},
- {n:"Logo e identidad",s:"Tu marca",p:"Desde S/ 150",d:"Una imagen visual coherente para tu web y redes.",l:["Logo y paleta de colores","Tipografías","Versiones para redes","Archivos editables"]},
- {n:"Soporte y mejoras",s:"Mantente al día",p:"Desde S/ 80/mes",d:"Cuidamos tu web para que siga creciendo.",l:["Cambios de contenido","Mejoras de velocidad","Ajustes de diseño","Atención prioritaria"]}
+ {n:"TikTok Bots",s:"Crecimiento en TikTok",p:"Consultar",d:"Bots y automatización para impulsar tu cuenta de TikTok.",l:["Seguidores (43)[cite: 7]","Me gusta en comentarios (10)[cite: 7]","Me gusta en directos (5)[cite: 7]","Me gusta en publicaciones (28)[cite: 7]","Comentarios (31)[cite: 7]","Puntos de Batalla PK (4)[cite: 7]","Compartidos (3)[cite: 7]","Guardados (10)[cite: 7]","Espectadores en vivo (31)[cite: 7]","Vistas (26)[cite: 7]"]},
+ {n:"Facebook Bots",s:"Impulsa tu fanpage",p:"Consultar",d:"Servicios automatizados para páginas y perfiles de Facebook.",l:["Seguidores (12)[cite: 8]","Me gusta en publicaciones (2)[cite: 8]","Reacciones (19)[cite: 8]","Compartidos (1)[cite: 8]","Espectadores en vivo (12)[cite: 8]","Historias (4)[cite: 8]","Vistas (4)[cite: 8]","Otros servicios (1)[cite: 8]"]},
+ {n:"YouTube Bots",s:"Escala en YouTube",p:"Consultar",d:"Aumenta métricas clave en tus videos y transmisiones de YouTube.",l:["Suscriptores (3)[cite: 9]","Me gusta en comentarios (4)[cite: 9]","Me gusta en publicaciones (35)[cite: 9]","Comentarios (7)[cite: 9]","Tiempo de reproducción (WatchTime) (7)[cite: 9]","Espectadores en vivo (23)[cite: 9]","Vistas (13)[cite: 9]"]},
+ {n:"Kick Bots",s:"Directos en Kick",p:"Consultar",d:"Mejora la presencia en tus streams de la plataforma Kick.",l:["Seguidores (5)[cite: 10]","Espectadores en vivo (20)[cite: 10]"]},
+ {n:"X (Twitter) Bots",s:"Impacto en X",p:"Consultar",d:"Automatiza interacciones y alcance en Twitter (X).",l:["Seguidores (Máx. 5K / Instantáneos)[cite: 11]","Me gusta / Likes[cite: 11]","Visualizaciones[cite: 11]"]},
+ {n:"Instagram Bots",s:"crecimiento IG",p:"Consultar",d:"Impulsa tu cuenta y comunidad en Instagram.",l:["Seguidores (156)[cite: 12]","Me gusta en publicaciones (125)[cite: 12]","Comentarios (11)[cite: 12]","Compromiso (2)[cite: 12]","Seguidores para canal (Otros servicios)[cite: 12]"]},
+ {n:"Telegram Bots",s:"Miembros y canales",p:"Consultar",d:"Crece tus grupos y canales de Telegram de forma efectiva.",l:["Telegram Miembros (Calidad garantizada, recargas 7, 15, 30, 90 días)[cite: 13]","Telegram Impulso Canal[cite: 13]","Telegram Premium Miembros[cite: 13]"]},
+ {n:"Spotify Bots",s:"Reproducciones",p:"Consultar",d:"Aumenta el alcance de tus temas y playlists en Spotify.",l:["Spotify Premium (Playlist / Reproducciones de álbum)[cite: 14]","Reproducciones y transmisiones (23)[cite: 14]"]},
+ {n:"Tráfico Web",s:"Tráfico IA",p:"Consultar",d:"Lleva tráfico automatizado y de calidad a tu sitio web.",l:["Tráfico de Sitio web AI[cite: 15]","Location: Mundial[cite: 15]","Source: ChatGPT + Perplexity + Gemini + Claude + Grok[cite: 15]"]},
+ {n:"Google Forms",s:"Encuestas online",p:"Consultar",d:"Gestión y apoyo para completar encuestas mediante Google Forms.",l:["Respuestas y automatización para encuestas","Consultar disponibilidad y cantidad"]}
 ];
 const $=id=>document.getElementById(id);
 const wa=t=>`https://wa.me/${CFG.whatsapp}?text=${encodeURIComponent(t)}`;
@@ -252,7 +256,7 @@ let ang=0,cur=0,drag=null,auto=true,CW=220;
 S.forEach((x,i)=>{const c=document.createElement("div");c.className="card";c.dataset.i=String(i+1).padStart(2,"0");c.innerHTML=`<h3>${x.n}</h3><span>${x.s}</span>`;c.style.transform=`rotateY(${i*step}deg) translateZ(var(--r))`;ring.appendChild(c)});
 function size(){CW=scene.clientWidth<420?170:220;const r=Math.round(CW/2/Math.tan(Math.PI/N))+28;ring.style.setProperty("--r",r+"px");ring.style.setProperty("--cw",CW+"px");ring.querySelectorAll(".card").forEach(c=>c.style.setProperty("--cw",CW+"px"))}
 function render(){ring.style.transform=`translateZ(calc(var(--r) * -1)) rotateY(${ang}deg)`;const k=((Math.round(-ang/step)%N)+N)%N;if(k!==cur||!$("detail").innerHTML){cur=k;detail()}}
-function detail(){const x=S[cur];$("detail").innerHTML=`<div class="price">S/ ${x.p}</div><h3>${x.n}</h3><p style="color:var(--mut);margin:0">${x.d}</p><ul>${x.l.map(i=>`<li>${i}</li>`).join("")}</ul><a class="btn solid" target="_blank" rel="noopener" href="${wa("Hola NOCTHRAX, me interesa: "+x.n)}">Solicitar este servicio</a>`}
+function detail(){const x=S[cur];$("detail").innerHTML=`<div class="price">${x.p}</div><h3>${x.n}</h3><p style="color:var(--mut);margin:0">${x.d}</p><ul>${x.l.map(i=>`<li>${i}</li>`).join("")}</ul><a class="btn solid" target="_blank" rel="noopener" href="${wa("Hola NOCTHRAX, me interesa el servicio de: "+x.n)}">Solicitar este servicio</a>`}
 function go(d){ang+=d*-step;ring.style.transition="transform .6s ease";render()}
 $("prev").onclick=()=>{auto=false;go(-1)};$("next").onclick=()=>{auto=false;go(1)};
 scene.addEventListener("pointerdown",e=>{drag={x:e.clientX,a:ang};auto=false;ring.style.transition="none";scene.setPointerCapture(e.pointerId)});
@@ -263,9 +267,9 @@ if(!matchMedia("(prefers-reduced-motion:reduce)").matches){setInterval(()=>{if(a
 addEventListener("resize",size);size();render();
 /* cotizador */
 $("qs").innerHTML=S.map(x=>`<option>${x.n}</option>`).join("");
-$("quote").onsubmit=e=>{e.preventDefault();window.open(wa(`Hola NOCTHRAX, soy ${$("qn").value}. Quiero cotizar: ${$("qs").value}. ${$("qm").value}`),"_blank")};
+$("quote").onsubmit=e=>{e.preventDefault();window.open(wa(`Hola NOCTHRAX, soy ${$("qn").value}. Quiero cotizar el servicio: ${$("qs").value}. ${$("qm").value}`),"_blank")};
 /* contacto */
-$("cWa").href=wa("Hola NOCTHRAX, quiero información.");$("waTxt").textContent=CFG.whatsappShow;$("waF").href=wa("Hola NOCTHRAX, quiero información.");
+$("cWa").href=wa("Hola NOCTHRAX, quiero información de los servicios.");$("waTxt").textContent=CFG.whatsappShow;$("waF").href=wa("Hola NOCTHRAX, quiero información.");
 $("cTg").href="https://t.me/"+CFG.telegram;$("tgTxt").textContent="@"+CFG.telegram;
 /* pagos */
 $("payGrid").innerHTML=CFG.pagos.map((p,i)=>`<div class="box"><h3><span class="dot" style="background:${p.c}"></span>${p.n}</h3><div class="num">${p.v}</div><p>${p.t}</p><br><button class="copy" data-v="${p.v}">Copiar dato</button></div>`).join("");
