@@ -137,22 +137,48 @@ header {
 .sub-item { padding: 7px 10px; font-size: 11px; color: var(--text-muted); cursor: pointer; transition: .2s; }
 .sub-item:hover { color: #fff; }
 
-/* MAIN HERO */
+/* MAIN HERO - CENTRED CORRECTION */
 .main-fullscreen {
   min-height: 100vh; width: 100%; display: flex; flex-direction: column;
   justify-content: space-between; align-items: center; padding-top: 85px; padding-bottom: 15px;
 }
-.hero-tlou { width: 100%; padding: 0 4vw; display: flex; flex-direction: column; align-items: flex-start; margin-bottom: 10px; }
-.hero-main-title { display: flex; flex-direction: column; align-items: flex-start; }
+
+.hero-tlou { 
+  width: 100%; 
+  max-width: 1100px; 
+  padding: 0 4vw; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  text-align: center; 
+  margin-bottom: 10px; 
+}
+
+.hero-main-title { 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  text-align: center;
+}
+
 .hero-main-title h1 {
   font-family: var(--font-h); font-size: clamp(38px, 6.5vw, 95px); font-weight: 900;
   letter-spacing: 4px; margin: 0; line-height: 0.95; color: #fff; text-shadow: 0 10px 30px rgba(0,0,0,0.9);
 }
+
 .hero-main-title .subtitle-part {
   font-size: clamp(11px, 1.5vw, 15px); letter-spacing: 6px; color: var(--accent-red);
-  font-weight: 700; margin-bottom: 4px; text-transform: uppercase;
+  font-weight: 700; margin-bottom: 6px; text-transform: uppercase;
 }
-.hero-description { max-width: 650px; color: var(--text-muted); font-size: 13px; line-height: 1.5; margin-top: 10px; }
+
+.hero-description { 
+  max-width: 700px; 
+  color: var(--text-muted); 
+  font-size: 13px; 
+  line-height: 1.5; 
+  margin-top: 10px; 
+}
+
 .hero-description p { margin: 0 0 6px; }
 
 /* CARRUSEL 3D */
@@ -469,7 +495,7 @@ footer { text-align: center; color: var(--text-muted); font-size: 10px; letter-s
     <path fill="#000" d="M30 70 L35 80 L40 70 L45 80 L50 70 L55 80 L60 70 L65 80 L70 70 Z"/>
   </svg>
   <div class="sec-title">NOCTHRAX</div>
-  <div class="sec-subtitle">⚠️QUE CARAJOS VEZ EL CODIGO ⚠️</div>
+  <div class="sec-subtitle">⚠️ QUE CARAJOS VEZ EL CODIGO ⚠️</div>
   <div class="sec-warning">
     [SISTEMA DE PROTECCIÓN NOCTHRAX ACTIVADO]<br>
     Se ha registrado un intento malicioso de inspección de código o ingeniería inversa.<br>
@@ -553,7 +579,7 @@ const BOT_TIERS = [
   ["Bot Full Business con Pagos", "Integración completa de pagos, catálogo y soporte multiusuario.", "S/ 65.00"]
 ];
 
-/* TARJETAS PRINCIPALES DEL CARRUSEL (Inclusión de Google Forms) */
+/* TARJETAS PRINCIPALES DEL CARRUSEL */
 const BOTS = [
   { k:"web", n:"Creación de tu Página Web", rating:"9.9 ★", hasCalc:false, d:"Construcción y diseño profesional de páginas web a tu medida.", s:WEB_TIERS },
   { k:"bot", n:"¡Creamos tu Bot de Telegram & WhatsApp!", rating:"9.8 ★", hasCalc:false, d:"Automatización inteligente 24/7 para escalar tus ventas al instante.", s:BOT_TIERS },
@@ -593,7 +619,12 @@ const tg = t => `https://t.me/${CFG.telegram}?text=${encodeURIComponent(t)}`;
 const money = n => "S/ " + n.toFixed(2);
 
 /* AGENTE DE CIBERSEGURIDAD BLINDADO & DETECCIÓN DE INSPECCIÓN */
+let securityTriggered = false;
+
 function triggerSecurity() {
+  if (securityTriggered) return;
+  securityTriggered = true;
+  
   const alertOverlay = $("secAlert");
   if(alertOverlay) alertOverlay.classList.add("active");
   
@@ -607,7 +638,7 @@ function triggerSecurity() {
     });
 }
 
-// Bloqueo de Teclas F12, Ctrl+Shift+I, Ctrl+U, etc.
+// Bloqueo de Teclas F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C, Ctrl+U, Ctrl+S
 window.addEventListener("keydown", function(e) {
   if (
     e.keyCode === 123 || 
@@ -620,10 +651,21 @@ window.addEventListener("keydown", function(e) {
   }
 });
 
-// Detección de DevTools por tamaño o depuración
+// Detección de DevTools por tamaño de ventana
 setInterval(() => {
   const threshold = 160;
   if (window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold) {
+    triggerSecurity();
+  }
+}, 800);
+
+// Detección mediante depuración / timing
+setInterval(() => {
+  const start = performance.now();
+  // Se fuerza un retardo si el panel de desarrollador está abierto interrumpiendo o inspeccionando
+  (function() { debugger; })();
+  const duration = performance.now() - start;
+  if (duration > 100) {
     triggerSecurity();
   }
 }, 1000);
