@@ -71,7 +71,7 @@ header{
 }
 .menu-btn:hover{background:var(--pink);box-shadow:0 0 15px var(--pink)}
 
-/* Sidebar Lateral Derecho Estilo Cyberpunk */
+/* Sidebar Lateral Derecho */
 .sidebar{
   position:fixed;
   top:0;
@@ -101,7 +101,7 @@ header{
 .sub-item{padding:8px 12px;font-size:13px;color:var(--mut);border-radius:8px;margin-bottom:4px;cursor:pointer;transition:.2s}
 .sub-item:hover{background:rgba(255,255,255,.08);color:#fff}
 
-/* Hero Principal Limpio y Minimalista */
+/* Hero Principal */
 .hero{
   position:relative;
   min-height:75vh;
@@ -164,10 +164,11 @@ section{padding:60px 5vw;max-width:1200px;margin:auto}
 h2{font-size:clamp(28px,4vw,42px);text-align:center;margin-bottom:10px;color:#fff;text-shadow:0 0 15px rgba(255,255,255,.15)}
 .lead{text-align:center;color:var(--mut);max-width:60ch;margin:0 auto 34px}
 
-/* Pasarela Táctil para Móviles y PC */
-.rowwrap{position:relative;width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;padding:14px 0;scrollbar-width:none}
-.rowwrap::-webkit-scrollbar{display:none}
-.cards-container{display:flex;gap:20px;padding:10px;width:max-content}
+/* Pasarela con Movimiento Automático (Marquee) */
+.rowwrap{position:relative;width:100%;overflow:hidden;padding:14px 0;cursor:grab}
+.cards-container{display:flex;gap:20px;padding:10px;width:max-content;animation:marquee 40s linear infinite}
+.cards-container.paused{animation-play-state:paused}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
 .pc{
   flex:0 0 240px;
@@ -193,7 +194,7 @@ h2{font-size:clamp(28px,4vw,42px);text-align:center;margin-bottom:10px;color:#ff
 .bd{padding:16px}.bd h3{font-size:20px;margin-bottom:4px;color:#fff}.bd p{margin:0 0 10px;font-size:13px;color:var(--mut);min-height:38px}
 .tg{display:flex;flex-wrap:wrap;gap:5px}.tg i{font:600 11px var(--b);padding:3px 10px;border-radius:8px;background:rgba(255,255,255,.05);color:var(--cream);font-style:normal;border:1px solid var(--line)}
 
-/* Panel Dinámico / Calculadora Gamer Neón */
+/* Panel Dinámico / Calculadora */
 .calc-box{
   border:1px solid var(--line);
   background:linear-gradient(145deg,rgba(18,8,28,.95),rgba(10,4,18,.98));
@@ -237,13 +238,11 @@ footer{text-align:center;padding:50px 5vw;color:var(--mut);font-size:13px}
 </head>
 <body>
 
-<!-- Header Horizontal de Ancho Completo -->
 <header>
   <a class="logo" href="#inicio">NOCTHRAX<small>| Perú</small></a>
   <button class="menu-btn" id="menuBtn" aria-label="Abrir Menú">☰</button>
 </header>
 
-<!-- Sidebar Lateral Derecho -->
 <div class="sidebar" id="sidebar">
   <div class="sidebar-header">
     <h3>Servicios y Trámites</h3>
@@ -312,7 +311,6 @@ const CFG = {
   telegram: "ABRRLADOR"
 };
 
-/* TABLAS DE PRECIOS EXACTOS */
 const SEG = [3.00, 5.50, 8.00, 10.50, 12.00, 14.50, 17.00, 19.50, 22.00, 24.00];
 const LIK = [3.00, 5.00, 7.00, 9.00, 10.00, 12.00, 14.00, 16.00, 18.00, 20.00];
 const VIE = [3.00, 4.00, 5.00, 6.00, 7.00, 8.50, 10.00, 11.50, 13.00, 14.00];
@@ -322,7 +320,7 @@ const SUB = [3.00, 6.00, 9.00, 12.00, 14.00, 17.00, 20.00, 23.00, 26.00, 28.00];
 const HOR = [6.00, 11.00, 16.00, 21.00, 25.00, 30.00, 35.00, 40.00, 42.00, 45.00];
 const STO = [3.00, 5.00, 7.00, 9.00, 10.00, 12.00, 14.00, 16.00, 18.00, 20.00];
 
-/* LISTA COMPLETA DE PLATAFORMAS EN LA PASARELA */
+/* LISTA COMPLETA DE PLATAFORMAS RESTAURADA */
 const BOTS = [
   {
     k:"tiktok", n:"TikTok (Bots)", hasCalc:true, c:["#120822","#ff2a8d"], d:"Seguidores, likes, vistas y comentarios.",
@@ -550,6 +548,27 @@ $("cardsContainer").addEventListener("click", e=>{
   if(!c) return;
   pi = +c.dataset.i % BOTS.length; si = 0; buildCalc();
   $("calcBox").scrollIntoView({behavior:"smooth", block:"nearest"});
+});
+
+/* Control de Arrastre / Pausa de Marquee con Mouse */
+const dragRow = $("draggableRow");
+const cardsContainer = $("cardsContainer");
+let isDown = false, startX, scrollLeft;
+
+dragRow.addEventListener('mousedown', (e) => {
+  isDown = true;
+  cardsContainer.classList.add('paused');
+  startX = e.pageX - dragRow.offsetLeft;
+  scrollLeft = dragRow.scrollLeft;
+});
+dragRow.addEventListener('mouseleave', () => { isDown = false; cardsContainer.classList.remove('paused'); });
+dragRow.addEventListener('mouseup', () => { isDown = false; cardsContainer.classList.remove('paused'); });
+dragRow.addEventListener('mousemove', (e) => {
+  if(!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - dragRow.offsetLeft;
+  const walk = (x - startX) * 2;
+  dragRow.scrollLeft = scrollLeft - walk;
 });
 
 /* Sidebar */
