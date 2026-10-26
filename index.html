@@ -57,9 +57,12 @@ h2{font-size:clamp(30px,5vw,46px);text-align:center;margin-bottom:10px;text-shad
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
 .box{padding:24px}.box h3{font-size:22px;margin-bottom:6px}.box p{margin:0;color:var(--mut);font-size:15px}
 .step b{font:700 38px var(--h);color:var(--mint)}
-/* tarjetas */
-.rowwrap{position:relative}
-.cards{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:20px 8px 34px;scrollbar-width:none}.cards::-webkit-scrollbar{display:none}
+/* tarjetas con pasarela */
+.rowwrap{position:relative;overflow:hidden;padding:10px 0}
+.cards{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:20px 8px 34px;scrollbar-width:none;width:max-content;animation:marquee 35s linear infinite}
+.cards:hover{animation-play-state:paused}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%5)}}
+.cards::-webkit-scrollbar{display:none}
 .pc{flex:0 0 232px;scroll-snap-align:center;text-align:left;border:1px solid var(--line);border-bottom:4px solid #6a5cff;border-radius:20px;padding:0;overflow:hidden;background:var(--glass);backdrop-filter:blur(14px);color:inherit;cursor:pointer;font:inherit;transition:transform .3s,box-shadow .3s;box-shadow:0 14px 30px rgba(0,0,0,.35)}
 .pc:hover{transform:translateY(-6px)}
 .pc.on{transform:translateY(-10px) scale(1.04);border-bottom-color:var(--mint);box-shadow:0 0 0 2px var(--mint),0 18px 50px rgba(92,242,193,.3)}
@@ -103,7 +106,22 @@ footer{text-align:center;padding:40px 5vw 50px;color:var(--mut);font-size:13px}
 .wf{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:45;width:56px;height:56px;border-radius:50%;background:#1f9b57;display:grid;place-items:center;font:700 15px var(--h);box-shadow:0 8px 24px rgba(0,0,0,.5);animation:pu 2.4s infinite}
 @keyframes pu{70%{box-shadow:0 0 0 14px rgba(31,155,87,0),0 8px 24px rgba(0,0,0,.5)}}
 .rv{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s}.rv.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.fx,.beams,.moon,.wf{animation:none;display:none}.rv{opacity:1;transform:none}}
+/* Modal de Pago / QR */
+.modal-overlay{position:fixed;inset:0;background:rgba(2,16,14,.8);backdrop-filter:blur(8px);z-index:100;display:grid;place-items:center;padding:20px;opacity:0;pointer-events:none;transition:.3s}
+.modal-overlay.active{opacity:1;pointer-events:auto}
+.modal-box{background:rgba(6,36,32,.95);border:1px solid var(--line);border-radius:24px;padding:28px;width:min(440px,94vw);text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.6);transform:translateY(20px);transition:.3s}
+.modal-overlay.active .modal-box{transform:none}
+.modal-box h3{font-size:24px;margin-bottom:8px;color:var(--sun)}
+.modal-box p{color:var(--mut);font-size:14px;margin:0 0 16px}
+.qr-box{background:#fff;padding:14px;border-radius:16px;display:inline-block;margin:10px 0}
+.qr-box img{width:180px;height:180px;object-fit:contain;display:block}
+.channel-alert{background:rgba(58,184,255,.12);border:1px solid var(--sky);padding:10px 14px;border-radius:12px;font-size:13px;margin:14px 0;color:#e1f5fe}
+.channel-alert a{color:var(--sky);font-weight:700;text-decoration:underline}
+.modal-acts{display:flex;gap:10px;margin-top:16px}
+.modal-acts button{flex:1;padding:12px;border-radius:999px;border:0;font:600 14px var(--b);cursor:pointer}
+.btn-cancel{background:rgba(255,255,255,.1);color:#fff}
+.btn-confirm{background:linear-gradient(135deg,var(--mint),var(--sky));color:#032a22}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.fx,.beams,.moon,.wf,.cards{animation:none;display:none}.rv{opacity:1;transform:none}}
 </style>
 </head>
 <body>
@@ -120,7 +138,7 @@ footer{text-align:center;padding:40px 5vw 50px;color:var(--mut);font-size:13px}
   <p class="tag">Perú · Mejoramiento para redes sociales</p>
   <div class="hp">
     <div class="fund"><b>R1</b>Fundador: R1</div>
-    <p>Impulsa tu presencia en TikTok, Instagram, YouTube, Kick, Telegram, Spotify y más de 90 servicios. Entrega rápida y atención directa por WhatsApp.</p>
+    <p>Impulsa tu presencia en TikTok, Instagram, YouTube, Kick, Telegram, Spotify y más de 90 servicios. Entrega rápida y atención directa.</p>
     <a class="btn go" href="#servicios">Calcular mi precio</a>
   </div>
   <svg class="trees" id="trees" viewBox="0 0 1440 150" preserveAspectRatio="none" aria-hidden="true"></svg>
@@ -137,7 +155,7 @@ footer{text-align:center;padding:40px 5vw 50px;color:var(--mut);font-size:13px}
   <h2>Cómo trabajamos</h2><p class="lead">Un proceso simple, en cuatro pasos.</p>
   <div class="grid">
     <div class="box step"><b>1</b><h3>Eliges</h3><p>Seleccionas la red, el servicio y la cantidad.</p></div>
-    <div class="box step"><b>2</b><h3>Pagas</h3><p>Con Yape, Plin, BCP o Binance, y envías tu comprobante.</p></div>
+    <div class="box step"><b>2</b><h3>Pagas</h3><p>Escaneas el QR que se te muestra con tu monto y envías tu comprobante.</p></div>
     <div class="box step"><b>3</b><h3>Activamos</h3><p>Ponemos en marcha tu pedido con entrega rápida.</p></div>
     <div class="box step"><b>4</b><h3>Seguimiento</h3><p>Revisamos los resultados contigo por chat.</p></div>
   </div>
@@ -154,14 +172,14 @@ footer{text-align:center;padding:40px 5vw 50px;color:var(--mut);font-size:13px}
 </section>
  
 <section id="pagos">
-  <h2>Métodos de pago</h2><p class="lead">Elige el que prefieras y envía tu comprobante por WhatsApp o Telegram.</p>
+  <h2>Métodos de pago</h2><p class="lead">Escanea el QR o transfiere y envía tu comprobante por WhatsApp o Telegram.</p>
   <div class="grid" id="payGrid"></div>
   <p class="note" style="text-align:center">Verifica siempre el titular antes de transferir.</p>
 </section>
  
 <section id="faq">
   <h2>Preguntas frecuentes</h2>
-  <details><summary>¿Cómo hago mi pedido?</summary><p>Elige la red y el servicio, escribe la cantidad (mínimo 50) y toca WhatsApp o Telegram. Tu pedido sale escrito y listo para enviar.</p></details>
+  <details><summary>¿Cómo hago mi pedido?</summary><p>Elige la red y el servicio, escribe la cantidad (mínimo 50) y toca WhatsApp o Telegram. Verás el QR para pagar y tu pedido saldrá listo para enviar junto con tu comprobante.</p></details>
   <details><summary>¿Cuánto demora la entrega?</summary><p>Depende del servicio. Muchos comienzan en pocas horas, y te avisamos al confirmar tu pago.</p></details>
   <details><summary>¿Puedo pagar con Yape o Plin?</summary><p>Sí. También aceptamos transferencia BCP y Binance (USDT).</p></details>
   <details><summary>¿Es seguro para mi cuenta?</summary><p>Usamos métodos estables y nunca pedimos tu contraseña. Aun así, las plataformas pueden ajustar o retirar parte de lo recibido, y no podemos garantizar lo contrario.</p></details>
@@ -178,12 +196,40 @@ footer{text-align:center;padding:40px 5vw 50px;color:var(--mut);font-size:13px}
  
 <footer>© 2026 NOCTHRAX | Perú · Fundador: R1</footer>
 <a class="wf" id="waF" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">WA</a>
+
+<!-- Modal de pago con QR y Canal -->
+<div class="modal-overlay" id="payModal">
+  <div class="modal-box">
+    <h3>¡Casi listo para tu pedido!</h3>
+    <p id="modalSub">Escanea el QR para yapear/plinear el monto exacto y adjunta tu comprobante.</p>
+    <div class="qr-box">
+      <!-- QR basado en tu imagen de referencia con @ABRRLADOR -->
+      <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><rect width='200' height='200' fill='%23062a26'/><path d='M30 30h40v40H30zM130 30h40v40h-40zM30 130h40v40H30z' fill='%235cf2c1'/><circle cx='100' cy='100' r='25' fill='%23fff'/><text x='100' y='105' text-anchor='middle' font-size='12' fill='%23062a26' font-family='sans-serif'>QR</text></svg>" alt="Código QR de Pago" id="qrImg">
+    </div>
+    <div class="channel-alert">
+      🔔 Obligatorio unirte al canal de novedades: <br><a href="https://whatsapp.com/channel/0029Vb8U7H18PgsFezIoJu1m" target="_blank" rel="noopener">Únete aquí antes de enviar</a>
+    </div>
+    <div class="modal-acts">
+      <button class="btn-cancel" id="modalClose">Cancelar</button>
+      <button class="btn-confirm" id="modalGo">Ir al chat y enviar</button>
+    </div>
+  </div>
+</div>
  
 <script>
-/* ===== EDITA AQUÍ TUS DATOS REALES ===== */
-const CFG={whatsapp:"51900000000",whatsappShow:"+51 900 000 000",telegram:"nocthrax",
- pagos:[{n:"Yape",c:"#9b5cff",v:"900 000 000",t:"Titular: Tu nombre"},{n:"Plin",c:"#14b8c4",v:"900 000 000",t:"Titular: Tu nombre"},{n:"BCP",c:"#ff8a3d",v:"000-00000000-0-00",t:"Cuenta de ahorros · CCI: 002-000-000000000000-00"},{n:"Binance",c:"#f3ba2f",v:"Tu Binance Pay ID",t:"USDT · Binance Pay"}]};
-/* Precios por 100,200…1000 unidades (S/). Si la lista es más corta, ese es el máximo. */
+/* ===== DATOS CONFIGURADOS ===== */
+const CFG={
+  whatsapp:"573135022169",
+  whatsappShow:"+57 313 502 2169",
+  telegram:"ABRRLADOR",
+  pagos:[
+    {n:"Yape",c:"#9b5cff",v:"900 000 000",t:"Titular: Alvaro"},
+    {n:"Plin",c:"#14b8c4",v:"900 000 000",t:"Titular: Alvaro"},
+    {n:"BCP",c:"#ff8a3d",v:"000-00000000-0-00",t:"Cuenta de ahorros · CCI: 002-000-000000000000-00"},
+    {n:"Binance",c:"#f3ba2f",v:"Tu Binance Pay ID",t:"USDT · Binance Pay"}
+  ]
+};
+
 const SEG=[3,5.5,8,10.5,12,14.5,17,19.5,22,24],LK=[3,5,7,9,10,12,14,16,18,20],VW=[3,4,5,6,7,8.5,10,11.5,13,14],SV=[3,5,7,9,10,12,14,16,18,18],CM=[5,9,13,17,20,24,28,32,36,40],LV=[6,11,16,21,25];
 const P=[
 {k:"tiktok",n:"TikTok",c:["#1b1b2f","#fe2c55"],d:"Crece tu cuenta y tus directos.",s:[["Seguidores",SEG],["Me gusta",LK],["Vistas",VW],["Guardados",SV],["Comentarios",CM],["Espectadores en vivo (30 min)",LV]]},
@@ -217,10 +263,13 @@ const wa=t=>`https://wa.me/${CFG.whatsapp}?text=${encodeURIComponent(t)}`;
 const money=n=>"S/ "+n.toFixed(2);
 function calc(a,q){if(q>a.length*100)return null;if(q<100)return Math.max(3,+(a[0]*q/100).toFixed(2));const i=Math.floor(q/100)-1,r=q%100;return r?+(a[i]+(a[i+1]-a[i])*r/100).toFixed(2):a[i]}
 let pi=0,si=0,q=100;
-/* tarjetas */
-$("cards").innerHTML=P.map((p,i)=>`<button class="pc" data-i="${i}" style="--a:${p.c[0]};--b:${p.c[1]}"><div class="art">${ico(p.k)}</div><div class="bd"><h3>${p.n}</h3><p>${p.d}</p><div class="tg">${p.s.slice(0,3).map(s=>`<i>${s[0].split(" (")[0]}</i>`).join("")}</div></div></button>`).join("");
+
+/* Generar carrusel duplicado para efecto pasarela continuo fluido */
+const cardsHTML = P.map((p,i)=>`<button class="pc" data-i="${i}" style="--a:${p.c[0]};--b:${p.c[1]}"><div class="art">${ico(p.k)}</div><div class="bd"><h3>${p.n}</h3><p>${p.d}</p><div class="tg">${p.s.slice(0,3).map(s=>`<i>${s[0].split(" (")[0]}</i>`).join("")}</div></div></button>`).join("");
+$("cards").innerHTML = cardsHTML + cardsHTML;
+
 function build(){const p=P[pi],s=p.s[si],priced=!!s[1];
- document.querySelectorAll(".pc").forEach((c,i)=>c.classList.toggle("on",i==pi));
+ document.querySelectorAll(".pc").forEach((c)=>{if(+c.dataset.i===pi)c.classList.add("on");else c.classList.remove("on")});
  $("calc").style.cssText=`--a:${p.c[0]};--b:${p.c[1]}`;
  const left=`<div class="cl"><div class="big">${ico(p.k)}</div><h3>${p.n}</h3><p>${p.d}</p></div>`;
  const acts=`<div class="acts"><button class="btn go" data-act="wa">Pedir por WhatsApp</button><button class="btn tg" data-act="tg">Pedir por Telegram</button></div>`;
@@ -229,21 +278,38 @@ function build(){const p=P[pi],s=p.s[si],priced=!!s[1];
  <label>¿Cuántos deseas? <small id="lim"></small></label><div class="qty"><input id="q" type="number" min="50" value="${q}" inputmode="numeric"><button data-q="100">100</button><button data-q="500">500</button><button data-q="1000">1000</button></div>
  <div class="tot"><span id="tp"></span><em id="of" hidden>¡Oferta!</em></div><p class="warn" id="wn"></p>
  <label>Tu usuario o enlace<input id="tu" placeholder="@usuario o https://…"></label>${acts}
- <p class="note">Precio referencial: se confirma por chat antes del pago.</p></div>`;upd()}
+ <p class="note">Precio referencial: se confirma por chat con tu comprobante.</p></div>`;upd()}
 function upd(){const s=P[pi].s[si];if(!s[1])return;const mx=s[1].length*100;$("lim").textContent=`(mín. 50 · máx. ${mx})`;
  const p=q>=50&&q<=mx?calc(s[1],q):null;$("tp").textContent=p!=null?money(p):"—";$("of").hidden=!(p!=null&&q==500);
  $("wn").textContent=q<50?"El mínimo es 50 unidades.":q>mx?`Para más de ${mx}, escríbenos y cotizamos a medida.`:""}
+
 function msg(){const p=P[pi],s=p.s[si];let t=`Hola NOCTHRAX | Perú 👋\nQuiero: ${p.n} — ${s[0]}`;
- if(s[1]){const v=q>=50&&q<=s[1].length*100?calc(s[1],q):null;t+=`\nCantidad: ${q}`+(v!=null?`\nPrecio: ${money(v)}`:`\nPrecio: por cotizar`);const u=$("tu")&&$("tu").value.trim();if(u)t+=`\nUsuario/enlace: ${u}`}else t+="\nMe gustaría consultar precio y disponibilidad.";return t}
-$("calc").addEventListener("click",async e=>{const b=e.target.closest("button");if(!b)return;
+ if(s[1]){const v=q>=50&&q<=s[1].length*100?calc(s[1],q):null;t+=`\nCantidad: ${q}`+(v!=null?`\nPrecio: ${money(v)}`:`\nPrecio: por cotizar`);const u=$("tu")&&$("tu").value.trim();if(u)t+=`\nUsuario/enlace: ${u}`}else t+="\nMe gustaría consultar precio y disponibilidad.";
+ t+=`\n\n📌 Ya me uní al canal de novedades. Adjunto mi comprobante de pago QR.`;
+ return t}
+
+let pendingUrl = "";
+$("calc").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;
  if(b.dataset.j!=null){si=+b.dataset.j;const mx=(P[pi].s[si][1]||[]).length*100;if(q>mx)q=mx||100;build()}
  else if(b.dataset.q){q=Math.min(+b.dataset.q,(P[pi].s[si][1]||[]).length*100||1000);$("q").value=q;upd()}
- else if(b.dataset.act=="wa")window.open(wa(msg()),"_blank");
- else if(b.dataset.act=="tg"){try{await navigator.clipboard.writeText(msg());b.textContent="Pedido copiado: pégalo en el chat"}catch(_){}setTimeout(()=>{b.textContent="Pedir por Telegram"},2500);window.open("https://t.me/"+CFG.telegram,"_blank")}});
+ else if(b.dataset.act=="wa"){pendingUrl=wa(msg());openModal("WhatsApp")}
+ else if(b.dataset.act=="tg"){pendingUrl="https://t.me/"+CFG.telegram+"?text="+encodeURIComponent(msg());openModal("Telegram")}});
+
+function openModal(type){
+  $("modalSub").textContent=`Escanea el QR para pagar el monto exacto por ${type} y adjunta tu comprobante junto con tu pedido.`;
+  $("payModal").classList.add("active");
+}
+$("modalClose").onclick=()=>$("payModal").classList.remove("active");
+$("modalGo").onclick=()=>{
+  $("payModal").classList.remove("active");
+  window.open(pendingUrl,"_blank");
+};
+
 $("calc").addEventListener("input",e=>{if(e.target.id=="q"){q=Math.floor(+e.target.value)||0;upd()}});
-$("cards").addEventListener("click",e=>{const c=e.target.closest(".pc");if(!c)return;pi=+c.dataset.i;si=0;q=100;build();$("calc").scrollIntoView({behavior:"smooth",block:"nearest"})});
+$("cards").addEventListener("click",e=>{const c=e.target.closest(".pc");if(!c)return;pi=+c.dataset.i%P.length;si=0;q=100;build();$("calc").scrollIntoView({behavior:"smooth",block:"nearest"})});
 $("pl").onclick=()=>$("cards").scrollBy({left:-480,behavior:"smooth"});$("pr").onclick=()=>$("cards").scrollBy({left:480,behavior:"smooth"});
 build();
+
 /* contacto y pagos */
 $("cWa").href=wa("Hola NOCTHRAX | Perú, quiero información de los servicios.");$("waF").href=wa("Hola NOCTHRAX | Perú, quiero información.");$("waTxt").textContent=CFG.whatsappShow;
 $("cTg").href="https://t.me/"+CFG.telegram;$("tgTxt").textContent="@"+CFG.telegram;
@@ -262,4 +328,3 @@ if("IntersectionObserver" in window){const io=new IntersectionObserver(es=>es.fo
 </script>
 </body>
 </html>
- 
