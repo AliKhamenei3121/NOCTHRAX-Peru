@@ -11,11 +11,11 @@
 <style>
 :root{
   --bg:#0f0d0e;
-  --card-bg:rgba(22,18,20,.88);
+  --card-bg:rgba(18,14,16,.92);
   --cream:#f3ece1;
   --mut:#a69ca1;
   --gold:#d4af37;
-  --line:rgba(243,236,225,.15);
+  --line:rgba(243,236,225,.18);
   --h:"Playfair Display",serif;
   --b:"Montserrat",sans-serif;
   color-scheme:dark;
@@ -27,7 +27,7 @@ body{
   margin:0;
   color:var(--cream);
   font:400 15px/1.6 var(--b);
-  background: linear-gradient(rgba(15,13,14,0.85), rgba(15,13,14,0.92)), url('ojitos.jpg') no-repeat center center fixed;
+  background: linear-gradient(rgba(10,8,9,0.55), rgba(10,8,9,0.75)), url('ojitos.jpg') no-repeat center center fixed;
   background-size: cover;
   overflow-x:hidden;
 }
@@ -47,7 +47,7 @@ header{
   justify-content:space-between;
   padding:18px 5vw;
   border-bottom:1px solid var(--line);
-  background:rgba(15,13,14,.92);
+  background:rgba(15,13,14,.85);
   backdrop-filter:blur(20px);
 }
 .logo{
@@ -66,7 +66,7 @@ header{
   height:44px;
   border-radius:50%;
   border:1px solid var(--line);
-  background:transparent;
+  background:rgba(0,0,0,.4);
   color:var(--cream);
   font-size:20px;
   cursor:pointer;
@@ -124,80 +124,39 @@ header{
 .sub-item{padding:8px 12px;font-size:12px;color:var(--mut);margin-bottom:4px;cursor:pointer;transition:.2s}
 .sub-item:hover{color:#fff}
 
-/* Hero Section */
+/* Hero Section Limpio e Impactante */
 .hero{
   position:relative;
-  min-height:90vh;
+  min-height:92vh;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
   padding:140px 5vw 40px;
-  overflow:hidden;
 }
-
-.hero-bg-text{
-  position:absolute;
-  top:55%;
-  left:50%;
-  transform:translate(-50%, -55%);
-  font:800 clamp(60px, 18vw, 220px) var(--h);
-  color:rgba(243,236,225,.05);
-  letter-spacing:.05em;
-  white-space:nowrap;
-  z-index:1;
-  pointer-events:none;
-}
-
-.hero-model{
-  position:relative;
-  z-index:2;
-  max-width:340px;
-  width:80%;
-  height:auto;
-  border-radius:12px;
-  border:1px solid var(--line);
-  box-shadow:0 25px 50px rgba(0,0,0,.9);
-  margin-bottom:15px;
-}
-
-.fund{
-  position:relative;
-  z-index:3;
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  padding:6px 18px;
-  border-radius:999px;
-  border:1px solid var(--line);
-  background:rgba(15,13,14,.8);
-  font-size:11px;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  margin-bottom:15px;
-}
-.fund b{color:var(--gold)}
 
 .hero h1{
   position:relative;
   z-index:3;
-  font-size:clamp(40px, 9vw, 95px);
+  font-size:clamp(50px, 12vw, 130px);
   font-weight:800;
-  letter-spacing:.04em;
+  letter-spacing:.05em;
   color:var(--cream);
   text-transform:uppercase;
-  margin-bottom:20px;
+  text-shadow:0 10px 40px rgba(0,0,0,.9);
+  margin-bottom:24px;
 }
 
 .btn-hero{
   position:relative;
   z-index:3;
   display:inline-block;
-  padding:14px 38px;
+  padding:15px 40px;
   border-radius:4px;
   border:1px solid var(--cream);
-  background:transparent;
+  background:rgba(15,13,14,.6);
+  backdrop-filter:blur(10px);
   color:var(--cream);
   font:600 12px var(--b);
   letter-spacing:2px;
@@ -218,6 +177,10 @@ section{padding:80px 5vw;max-width:1200px;margin:auto}
   border-bottom:1px solid var(--line);
   padding-bottom:14px;
   margin-bottom:40px;
+  background:rgba(15,13,14,.6);
+  padding:15px 20px;
+  border-radius:8px;
+  backdrop-filter:blur(10px);
 }
 .section-title h2{font-size:clamp(22px,4vw,34px);font-weight:600;text-transform:uppercase;letter-spacing:1px}
 .section-title span{font-size:11px;letter-spacing:2px;color:var(--gold);text-transform:uppercase}
@@ -240,7 +203,7 @@ section{padding:80px 5vw;max-width:1200px;margin:auto}
   display:flex;
   flex-direction:column;
   justify-content:space-between;
-  backdrop-filter:blur(10px);
+  backdrop-filter:blur(15px);
 }
 .pc:hover, .pc.on{
   border-color:var(--gold);
@@ -264,7 +227,7 @@ section{padding:80px 5vw;max-width:1200px;margin:auto}
   grid-template-columns:1fr 1.2fr;
   gap:40px;
   align-items:center;
-  backdrop-filter:blur(15px);
+  backdrop-filter:blur(20px);
 }
 @media(max-width:860px){.calc-box{grid-template-columns:1fr;padding:24px}}
 .cl-info{padding-right:20px;border-right:1px solid var(--line)}
@@ -278,7 +241,7 @@ label{display:block;font:600 11px var(--b);color:var(--gold);letter-spacing:2px;
 .chips button.on{background:var(--cream);color:var(--bg);border-color:var(--cream)}
 
 .qty-wrap{display:flex;gap:8px;flex-wrap:wrap}
-input[type="number"], input[type="text"]{width:100%;padding:14px 16px;border:1px solid var(--line);background:rgba(0,0,0,.5);color:#fff;font:500 14px var(--b)}
+input[type="number"], input[type="text"]{width:100%;padding:14px 16px;border:1px solid var(--line);background:rgba(0,0,0,.6);color:#fff;font:500 14px var(--b)}
 input:focus{outline:none;border-color:var(--gold)}
 .qty-wrap input{flex:1 1 140px}
 .qty-wrap button{padding:0 14px;border:1px solid var(--line);background:transparent;color:var(--cream);font:500 12px var(--b);cursor:pointer}
@@ -291,7 +254,7 @@ input:focus{outline:none;border-color:var(--gold)}
 .btn-wa:hover{background:#25d366;color:#000;border-color:#25d366}
 .btn-tg:hover{background:#2aabee;color:#000;border-color:#2aabee}
 
-footer{text-align:center;padding:60px 5vw;color:var(--mut);font-size:11px;letter-spacing:2px;text-transform:uppercase;border-top:1px solid var(--line)}
+footer{text-align:center;padding:60px 5vw;color:var(--mut);font-size:11px;letter-spacing:2px;text-transform:uppercase;border-top:1px solid var(--line);background:rgba(15,13,14,.8);backdrop-filter:blur(10px)}
 .wf{position:fixed;right:24px;bottom:24px;z-index:90;width:48px;height:48px;border-radius:50%;background:#25d366;color:#000;display:grid;place-items:center;font:700 14px var(--b);box-shadow:0 10px 25px rgba(0,0,0,.8)}
 </style>
 </head>
@@ -344,11 +307,6 @@ footer{text-align:center;padding:60px 5vw;color:var(--mut);font-size:11px;letter
 </div>
 
 <section class="hero" id="inicio">
-  <div class="hero-bg-text">NOCTHRAX</div>
-  
-  <img class="hero-model" src="ojitos.jpg" alt="NOCTHRAX Model">
-
-  <div class="fund">Fundador: <b>R1</b></div>
   <h1>NOCTHRAX</h1>
   <a class="btn-hero" href="#bots">Explorar Catálogo</a>
 </section>
