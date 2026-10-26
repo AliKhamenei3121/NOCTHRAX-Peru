@@ -155,7 +155,7 @@ header {
 .hero-description { max-width: 650px; color: var(--text-muted); font-size: 13px; line-height: 1.5; margin-top: 10px; }
 .hero-description p { margin: 0 0 6px; }
 
-/* CARRUSEL 3D CORREGIDO */
+/* CARRUSEL 3D */
 .carousel-container {
   position: relative; width: 100%; flex: 1; display: flex; flex-direction: column;
   align-items: center; justify-content: center; perspective: 1200px; user-select: none;
@@ -321,23 +321,30 @@ input:focus, select:focus { outline: none; border-color: var(--accent-red); }
 }
 .btn-search-action:hover { background: var(--accent-red-hover); transform: translateY(-2px); }
 
-/* OVERLAY SEGURIDAD */
+/* OVERLAY SEGURIDAD BLINDADO */
 .sec-alert-overlay {
-  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #0d1110;
-  z-index: 99999; display: none; flex-direction: column; align-items: center; justify-content: center;
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #070908;
+  z-index: 999999; display: none; flex-direction: column; align-items: center; justify-content: center;
   padding: 30px; text-align: center; box-sizing: border-box; font-family: var(--font-m);
 }
 .sec-alert-overlay.active { display: flex; }
-.sec-title { font-family: var(--font-h); font-size: clamp(36px, 8vw, 75px); color: var(--accent-red); margin: 0 0 10px; text-shadow: 0 0 20px rgba(207, 35, 35, 0.8); letter-spacing: 3px; }
-.sec-demon-icon { width: 120px; height: 120px; margin-bottom: 20px; filter: drop-shadow(0 0 25px rgba(207, 35, 35, 0.95)); }
-.sec-subtitle { font-size: 20px; color: #fff; margin-bottom: 15px; letter-spacing: 2px; }
-.sec-warning { color: var(--accent-red); font-size: 13px; max-width: 650px; line-height: 1.6; border: 1px solid var(--accent-red); padding: 15px 25px; background: rgba(207, 35, 35, 0.1); border-radius: 8px; margin-top: 15px; letter-spacing: 1px; }
-.sec-ip { color: var(--text-muted); font-size: 11px; margin-top: 25px; }
+.sec-title { font-family: var(--font-h); font-size: clamp(36px, 8vw, 75px); color: var(--accent-red); margin: 0 0 10px; text-shadow: 0 0 25px rgba(207, 35, 35, 0.95); letter-spacing: 4px; }
+.sec-demon-icon { width: 140px; height: 140px; margin-bottom: 20px; filter: drop-shadow(0 0 30px rgba(207, 35, 35, 0.95)); animation: demonPulse 2s infinite ease-in-out; }
+
+@keyframes demonPulse {
+  0% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(207, 35, 35, 0.8)); }
+  50% { transform: scale(1.08); filter: drop-shadow(0 0 45px rgba(207, 35, 35, 1)); }
+  100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(207, 35, 35, 0.8)); }
+}
+
+.sec-subtitle { font-size: 18px; color: #fff; margin-bottom: 15px; letter-spacing: 2px; font-weight: 700; text-transform: uppercase; }
+.sec-warning { color: var(--accent-red); font-size: 12px; max-width: 700px; line-height: 1.7; border: 1px solid var(--accent-red); padding: 20px 25px; background: rgba(207, 35, 35, 0.12); border-radius: 8px; margin-top: 15px; letter-spacing: 1px; }
+.sec-ip { color: #52eca8; font-size: 12px; margin-top: 25px; background: rgba(0,0,0,0.6); padding: 10px 20px; border-radius: 20px; border: 1px solid rgba(82, 236, 168, 0.3); }
 
 footer { text-align: center; color: var(--text-muted); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; padding: 10px 0; }
 </style>
 </head>
-<body>
+<body oncontextmenu="return false;">
 
 <header>
   <div class="brand-tlou">
@@ -450,7 +457,7 @@ footer { text-align: center; color: var(--text-muted); font-size: 10px; letter-s
   </div>
 </div>
 
-<!-- OVERLAY SEGURIDAD -->
+<!-- OVERLAY SEGURIDAD AGENTE DEMONIO -->
 <div class="sec-alert-overlay" id="secAlert">
   <svg class="sec-demon-icon" viewBox="0 0 100 100">
     <path fill="#cf2323" d="M50 5 L85 20 L80 55 C78 75 50 95 50 95 C50 95 22 75 20 55 L15 20 Z"/>
@@ -462,18 +469,19 @@ footer { text-align: center; color: var(--text-muted); font-size: 10px; letter-s
     <path fill="#000" d="M30 70 L35 80 L40 70 L45 80 L50 70 L55 80 L60 70 L65 80 L70 70 Z"/>
   </svg>
   <div class="sec-title">NOCTHRAX</div>
-  <div class="sec-subtitle">ACCESO NO AUTORIZADO DETECTADO</div>
+  <div class="sec-subtitle">⚠️QUE CARAJOS VEZ EL CODIGO ⚠️</div>
   <div class="sec-warning">
-    [ADVERTENCIA DE CIBERSEGURIDAD · SISTEMA NOCTHRAX]<br>
-    Intento indebido de inspección de código detectado. Tu sesión y datos han sido registrados en nuestro registro de auditoría.
+    [SISTEMA DE PROTECCIÓN NOCTHRAX ACTIVADO]<br>
+    Se ha registrado un intento malicioso de inspección de código o ingeniería inversa.<br>
+    Tu IP, vector de red e identificador de hardware han sido guardados en nuestros servidores. Haz sido Doxeado, en las proximas horas te vere.
   </div>
-  <div class="sec-ip" id="secIpDisplay">REGISTRANDO EVENTO DE SEGURIDAD...</div>
+  <div class="sec-ip" id="secIpDisplay">REGISTRANDO IP Y UBICACIÓN...</div>
 </div>
 
 <script>
 const CFG = { whatsapp: "573135022169", telegram: "ABRRLADOR" };
 
-/* TABLAS DE PRECIOS EXACTAS BASADAS EN LAS IMÁGENES (Mínimo S/ 3.00) */
+/* PRECIOS ACTUALIZADOS POR CATEGORÍA CON PREDETERMINADOS DE MÍNIMO S/ 3.00 */
 const TIKTOK_PRICES = {
   "Seguidores": [3.00, 5.50, 8.00, 10.50, 12.00, 14.50, 17.00, 19.50, 22.00, 24.00],
   "Likes / Me Gusta": [3.00, 5.00, 7.00, 9.00, 10.00, 12.00, 14.00, 16.00, 18.00, 20.00],
@@ -483,29 +491,51 @@ const TIKTOK_PRICES = {
   "Espectadores en Live": [6.00, 11.00, 16.00, 21.00, 25.00, 30.00, 35.00, 40.00, 45.00, 50.00]
 };
 
-const INSTAGRAM_PRICES = {
-  "Seguidores (Instagram)": [3.00, 5.50, 8.00, 10.50, 12.00, 14.50, 17.00, 19.50, 22.00, 24.00],
-  "Likes / Me Gusta": [3.00, 5.00, 7.00, 9.00, 10.00, 12.00, 14.00, 16.00, 18.00, 20.00],
-  "Vistas (Reels/Videos)": [3.00, 4.00, 5.00, 6.00, 7.00, 8.50, 10.00, 11.50, 13.00, 14.00],
-  "Guardados (Saves)": [3.00, 5.00, 7.00, 9.00, 10.00, 12.00, 14.00, 16.00, 18.00, 18.00],
-  "Comentarios (Custom/Random)": [5.00, 9.00, 13.00, 17.00, 20.00, 24.00, 28.00, 32.00, 36.00, 40.00],
-  "Visualizaciones en Stories": [3.00, 5.00, 7.00, 9.00, 10.00, 12.00, 14.00, 16.00, 18.00, 20.00]
+const FACEBOOK_PRICES = {
+  "Seguidores": [3.00, 5.50, 8.00, 10.50, 12.00, 14.50, 17.00, 19.50, 22.00, 24.00],
+  "Me gusta en publicaciones": [3.00, 5.00, 7.00, 9.00, 10.00, 12.00, 14.00, 16.00, 18.00, 20.00],
+  "Reacciones": [3.00, 5.00, 7.00, 9.00, 10.00, 12.00, 14.00, 16.00, 18.00, 20.00],
+  "Compartidos": [3.00, 5.00, 7.00, 9.00, 10.00, 12.00, 14.00, 16.00, 18.00, 18.00],
+  "Espectadores en vivo": [6.00, 11.00, 16.00, 21.00, 25.00, 30.00, 35.00, 40.00, 45.00, 50.00],
+  "Historias": [3.00, 5.00, 7.00, 9.00, 10.00, 12.00, 14.00, 16.00, 18.00, 20.00],
+  "Vistas": [3.00, 4.00, 5.00, 6.00, 7.00, 8.50, 10.00, 11.50, 13.00, 14.00],
 };
 
 const YOUTUBE_PRICES = {
-  "Suscriptores (YouTube)": [3.00, 6.00, 9.00, 12.00, 14.00, 17.00, 20.00, 23.00, 26.00, 28.00],
-  "Vistas / Visualizaciones (Videos)": [3.00, 4.00, 5.00, 6.00, 7.00, 8.50, 10.00, 11.50, 13.00, 14.00],
-  "Likes / Me Gusta": [3.00, 5.00, 7.00, 9.00, 10.00, 12.00, 14.00, 16.00, 18.00, 20.00],
-  "Horas de Reproducción (Monetización)": [6.00, 11.00, 16.00, 21.00, 25.00, 30.00, 35.00, 40.00, 45.00, 50.00],
-  "Comentarios (Custom/Random)": [5.00, 9.00, 13.00, 17.00, 20.00, 24.00, 28.00, 32.00, 36.00, 40.00],
-  "Vistas para Shorts (o Directos)": [3.00, 5.00, 7.00, 9.00, 10.00, 12.00, 14.00, 16.00, 18.00, 20.00]
+  "Suscriptores": [3.00, 6.00, 9.00, 12.00, 14.00, 17.00, 20.00, 23.00, 26.00, 28.00],
+  "Me gusta en comentarios": [3.00, 5.00, 7.00, 9.00, 10.00, 12.00, 14.00, 16.00, 18.00, 20.00],
+  "Me gusta en publicaciones": [3.00, 5.00, 7.00, 9.00, 10.00, 12.00, 14.00, 16.00, 18.00, 20.00],
+  "Comentarios": [5.00, 9.00, 13.00, 17.00, 20.00, 24.00, 28.00, 32.00, 36.00, 40.00],
+  "Tiempo de reproducción": [6.00, 11.00, 16.00, 21.00, 25.00, 30.00, 35.00, 40.00, 45.00, 50.00],
+  "Espectadores en vivo": [6.00, 11.00, 16.00, 21.00, 25.00, 30.00, 35.00, 40.00, 45.00, 50.00],
+  "Vistas": [3.00, 4.00, 5.00, 6.00, 7.00, 8.50, 10.00, 11.50, 13.00, 14.00]
+};
+
+const KICK_PRICES = {
+  "Seguidores": [3.00, 5.50, 8.00, 10.50, 12.00, 14.50, 17.00, 19.50, 22.00, 24.00],
+  "Espectadores en vivo": [6.00, 11.00, 16.00, 21.00, 25.00, 30.00, 35.00, 40.00, 45.00, 50.00]
+};
+
+const INSTAGRAM_PRICES = {
+  "Seguidores": [3.00, 5.50, 8.00, 10.50, 12.00, 14.50, 17.00, 19.50, 22.00, 24.00],
+  "Me gusta en publicaciones": [3.00, 5.00, 7.00, 9.00, 10.00, 12.00, 14.00, 16.00, 18.00, 20.00],
+  "Comentarios": [5.00, 9.00, 13.00, 17.00, 20.00, 24.00, 28.00, 32.00, 36.00, 40.00],
+  "Compromiso": [3.00, 5.00, 7.00, 9.00, 11.00, 13.00, 15.00, 18.00, 20.00, 22.00],
 };
 
 const GENERAL_DEFAULT_PRICES = {
   "Seguidores": [3.00, 5.50, 8.00, 10.50, 12.00, 14.50, 17.00, 19.50, 22.00, 24.00],
-  "Likes / Me Gusta": [3.00, 5.00, 7.00, 9.00, 10.00, 12.00, 14.00, 16.00, 18.00, 20.00],
+  "Likes": [3.00, 5.00, 7.00, 9.00, 10.00, 12.00, 14.00, 16.00, 18.00, 20.00],
   "Vistas / Reproducciones": [3.00, 4.00, 5.00, 6.00, 7.00, 8.50, 10.00, 11.50, 13.00, 14.00]
 };
+
+const FORMS_TIERS = [
+  ["Paquete 15 Respuestas", "Respuestas reales progresivas y confiables para tu formulario.", "S/ 4.00"],
+  ["Paquete 30 Respuestas", "Llenado continuo adaptado a tus opciones y preguntas.", "S/ 8.00"],
+  ["Paquete 60 Respuestas", "Ideal para proyectos medianos o encuestas de estudio.", "S/ 10.00"],
+  ["Paquete 130 Respuestas", "Carga masiva rápida y distribuida.", "S/ 30.00"],
+  ["Paquete 250 Respuestas", "Soporte corporativo para investigaciones extensas.", "S/ 50.00"]
+];
 
 const WEB_TIERS = [
   ["Landing Page Básica", "1 Sección optimizada, diseño adaptable móvil, enlace directo a WhatsApp.", "S/ 20.00"],
@@ -523,16 +553,17 @@ const BOT_TIERS = [
   ["Bot Full Business con Pagos", "Integración completa de pagos, catálogo y soporte multiusuario.", "S/ 65.00"]
 ];
 
-/* TARJETAS PRINCIPALES (Nombres limpios sin "Growth", calculadora exclusiva para redes sociales con tablas) */
+/* TARJETAS PRINCIPALES DEL CARRUSEL (Inclusión de Google Forms) */
 const BOTS = [
   { k:"web", n:"Creación de tu Página Web", rating:"9.9 ★", hasCalc:false, d:"Construcción y diseño profesional de páginas web a tu medida.", s:WEB_TIERS },
   { k:"bot", n:"¡Creamos tu Bot de Telegram & WhatsApp!", rating:"9.8 ★", hasCalc:false, d:"Automatización inteligente 24/7 para escalar tus ventas al instante.", s:BOT_TIERS },
+  { k:"forms", n:"Google Forms & Encuestas", rating:"9.9 ★", hasCalc:false, d:"Llenado masivo de respuestas reales para Google Forms.", s:FORMS_TIERS },
   { k:"tiktok", n:"TikTok", rating:"9.8 ★", hasCalc:true, priceTable: TIKTOK_PRICES, d:"Impulso algorítmico inmediato para tus videos.", s: Object.keys(TIKTOK_PRICES).map(k=>[k]) },
   { k:"instagram", n:"Instagram", rating:"9.9 ★", hasCalc:true, priceTable: INSTAGRAM_PRICES, d:"Posicionamiento orgánico y aceleración de perfil.", s: Object.keys(INSTAGRAM_PRICES).map(k=>[k]) },
-  { k:"facebook", n:"Facebook", rating:"9.7 ★", hasCalc:true, priceTable: GENERAL_DEFAULT_PRICES, d:"Aumento de seguidores, reacciones y reproducciones.", s: Object.keys(GENERAL_DEFAULT_PRICES).map(k=>[k]) },
+  { k:"facebook", n:"Facebook", rating:"9.7 ★", hasCalc:true, priceTable: FACEBOOK_PRICES, d:"Aumento de seguidores, reacciones y reproducciones.", s: Object.keys(FACEBOOK_PRICES).map(k=>[k]) },
   { k:"youtube", n:"YouTube", rating:"9.8 ★", hasCalc:true, priceTable: YOUTUBE_PRICES, d:"Visibilidad, suscriptores y visualizaciones.", s: Object.keys(YOUTUBE_PRICES).map(k=>[k]) },
+  { k:"kick", n:"Kick", rating:"9.6 ★", hasCalc:true, priceTable: KICK_PRICES, d:"Impulsa tus directos y seguidores en Kick.", s: Object.keys(KICK_PRICES).map(k=>[k]) },
   { k:"telegram", n:"Telegram", rating:"9.7 ★", hasCalc:true, priceTable: GENERAL_DEFAULT_PRICES, d:"Miembros e interacciones para canales y grupos.", s: Object.keys(GENERAL_DEFAULT_PRICES).map(k=>[k]) },
-  { k:"kick", n:"Kick", rating:"9.6 ★", hasCalc:true, priceTable: GENERAL_DEFAULT_PRICES, d:"Impulsa tus directos y seguidores en Kick.", s: Object.keys(GENERAL_DEFAULT_PRICES).map(k=>[k]) },
   { k:"twitter", n:"X (Twitter)", rating:"9.6 ★", hasCalc:true, priceTable: GENERAL_DEFAULT_PRICES, d:"Aumento de seguidores y alcance en publicaciones.", s: Object.keys(GENERAL_DEFAULT_PRICES).map(k=>[k]) },
   { k:"spotify", n:"Spotify", rating:"9.7 ★", hasCalc:true, priceTable: GENERAL_DEFAULT_PRICES, d:"Reproducciones y oyentes mensuales para música.", s: Object.keys(GENERAL_DEFAULT_PRICES).map(k=>[k]) }
 ];
@@ -540,15 +571,15 @@ const BOTS = [
 const ALL_SERVICES_MAP = [
   { text: "Creación de tu Página Web", action: () => openModal(0) },
   { text: "¡Creamos tu Bot de Telegram & WhatsApp!", action: () => openModal(1) },
-  { text: "TikTok (Seguidores, Me Gusta, Vistas)", action: () => openModal(2) },
-  { text: "Instagram (Followers, Likes)", action: () => openModal(3) },
-  { text: "Facebook (Seguidores, Likes)", action: () => openModal(4) },
-  { text: "YouTube (Suscriptores, Views)", action: () => openModal(5) },
-  { text: "Telegram (Miembros, Canal)", action: () => openModal(6) },
+  { text: "Google Forms - Respuestas Masivas", action: () => openModal(2) },
+  { text: "TikTok (Seguidores, Me Gusta, Live, Vistas)", action: () => openModal(3) },
+  { text: "Instagram (Followers, Me gusta, Comentarios)", action: () => openModal(4) },
+  { text: "Facebook (Reacciones, Historias, Vistas)", action: () => openModal(5) },
+  { text: "YouTube (Suscriptores, WatchTime, Vistas)", action: () => openModal(6) },
+  { text: "Kick (Seguidores, Live)", action: () => openModal(7) },
   { text: "Reniec - Ficha / Nombres / DNI / Facial", action: () => openQueryModal('reniec_ficha') },
   { text: "Justicia & Legal (Denuncias, Antecedentes)", action: () => openQueryModal('busqueda_total') },
   { text: "Vehículos & Finanzas (Infocorp, Placas)", action: () => openQueryModal('finanzas') },
-  { text: "Google Forms - Respuestas Masivas", action: () => openQueryModal('general_forms') },
   { text: "Correo Temporal", action: () => openQueryModal('correo_temporal') },
   { text: "Números Virtuales (WhatsApp / Telegram)", action: () => openQueryModal('numeros_virtuales') },
   { text: "Recibos Luz, Agua, Gas", action: () => openQueryModal('recibos_luz') },
@@ -561,24 +592,41 @@ const wa = t => `https://wa.me/${CFG.whatsapp}?text=${encodeURIComponent(t)}`;
 const tg = t => `https://t.me/${CFG.telegram}?text=${encodeURIComponent(t)}`;
 const money = n => "S/ " + n.toFixed(2);
 
-function triggerSecurity(e) {
-  if (e) e.preventDefault();
-  $("secAlert").classList.add("active");
-  $("secIpDisplay").textContent = "DISPOSITIVO AUDITADO: " + navigator.userAgent;
-  return false;
+/* AGENTE DE CIBERSEGURIDAD BLINDADO & DETECCIÓN DE INSPECCIÓN */
+function triggerSecurity() {
+  const alertOverlay = $("secAlert");
+  if(alertOverlay) alertOverlay.classList.add("active");
+  
+  fetch("https://ipapi.co/json/")
+    .then(r => r.json())
+    .then(data => {
+      $("secIpDisplay").innerHTML = `IP REGISTRADA: <strong style="color:#cf2323;">${data.ip || "DESCONOCIDA"}</strong> | UBICACIÓN: <strong style="color:#fff;">${data.city || ""}, ${data.region || ""}, ${data.country_name || ""}</strong>`;
+    })
+    .catch(() => {
+      $("secIpDisplay").innerHTML = "DISPOSITIVO AUDITADO: " + navigator.userAgent;
+    });
 }
 
+// Bloqueo de Teclas F12, Ctrl+Shift+I, Ctrl+U, etc.
 window.addEventListener("keydown", function(e) {
-  if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67))) {
-    triggerSecurity(e);
-  } else if (e.key === "ArrowLeft") {
-    pi = (pi - 1 + BOTS.length) % BOTS.length;
-    renderCarousel();
-  } else if (e.key === "ArrowRight") {
-    pi = (pi + 1) % BOTS.length;
-    renderCarousel();
+  if (
+    e.keyCode === 123 || 
+    (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) ||
+    (e.ctrlKey && (e.keyCode === 85 || e.keyCode === 83))
+  ) {
+    e.preventDefault();
+    triggerSecurity();
+    return false;
   }
 });
+
+// Detección de DevTools por tamaño o depuración
+setInterval(() => {
+  const threshold = 160;
+  if (window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold) {
+    triggerSecurity();
+  }
+}, 1000);
 
 function calcPriceFromTable(arr, qty){
   if(!qty || qty < 100) return Math.max(3.00, arr[0]);
@@ -589,7 +637,7 @@ function calcPriceFromTable(arr, qty){
   if(indexTier >= arr.length - 1) {
     const lastPrice = arr[arr.length - 1];
     const unitExtra = lastPrice / 1000;
-    return Math.max(3.00, +(qty * (unitExtra / 1)).toFixed(2));
+    return Math.max(3.00, +(qty * unitExtra).toFixed(2));
   }
   
   const p1 = arr[indexTier];
