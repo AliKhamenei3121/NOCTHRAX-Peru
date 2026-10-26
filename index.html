@@ -93,10 +93,10 @@ select option{background:#062a26;color:#fff}
 .warn{color:#ffb3b3;font-size:14px;min-height:20px;margin:0}
 .acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
 .note{font-size:12.5px;color:var(--mut);margin:14px 0 0}
-/* Estilo para subida de foto y cámara */
+/* Subida de foto y cámara */
 .upload-drop{border:2px dashed var(--line);border-radius:16px;padding:20px;text-align:center;background:rgba(0,0,0,.2);cursor:pointer;margin-bottom:10px}
 .upload-drop:hover{border-color:var(--mint)}
-/* pagos con los 4 cuadros exactos y logos de fondo */
+/* Métodos de pago (4 cuadros exactos) */
 .pay-box{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:160px;text-align:center}
 .pay-bg-logo{position:absolute;inset:0;display:grid;place-items:center;font-size:64px;opacity:0.12;pointer-events:none;font-weight:900;font-family:var(--h)}
 .pay-content{position:relative;z-index:2}
@@ -151,7 +151,7 @@ footer{text-align:center;padding:40px 5vw 50px;color:var(--mut);font-size:13px}
  
 <section id="servicios">
   <h2>Servicios</h2>
-  <p class="lead">Elige una categoría, escoge el servicio y completa tus datos. El precio se calcula al instante.</p>
+  <p class="lead">Elige una red social o servicio de consulta, escoge la opción y la cantidad o datos. El precio se calcula al instante.</p>
   <div class="rowwrap"><button class="arr l" id="pl" aria-label="Anterior">‹</button><div class="cards" id="cards"></div><button class="arr r" id="pr" aria-label="Siguiente">›</button></div>
   <div class="glass" id="calc" aria-live="polite"></div>
 </section>
@@ -159,7 +159,7 @@ footer{text-align:center;padding:40px 5vw 50px;color:var(--mut);font-size:13px}
 <section id="proceso">
   <h2>Cómo trabajamos</h2><p class="lead">Un proceso simple, en cuatro pasos.</p>
   <div class="grid">
-    <div class="box step"><b>1</b><h3>Eliges</h3><p>Seleccionas la categoría, el servicio y tus datos de consulta o cantidad.</p></div>
+    <div class="box step"><b>1</b><h3>Eliges</h3><p>Seleccionas la red o servicio, y tus datos o cantidad.</p></div>
     <div class="box step"><b>2</b><h3>Pagas</h3><p>Escaneas el código QR con el monto indicado y envías tu comprobante.</p></div>
     <div class="box step"><b>3</b><h3>Activamos</h3><p>Ponemos en marcha tu pedido con entrega rápida.</p></div>
     <div class="box step"><b>4</b><h3>Seguimiento</h3><p>Revisamos los resultados contigo por chat.</p></div>
@@ -287,7 +287,7 @@ const money=n=>"S/ "+n.toFixed(2);
 function calc(a,q){if(!a)return 3;if(q>a.length*100)return null;if(q<100)return Math.max(3,+(a[0]*q/100).toFixed(2));const i=Math.floor(q/100)-1,r=q%100;return r?+(a[i]+(a[i+1]-a[i])*r/100).toFixed(2):a[i]}
 let pi=0,si=0,q=100;
 
-/* Duplicar array para pasarela infinita fluida */
+/* Pasarela de tarjetas duplicada para animación continua fluida */
 const cardsHTML = P.map((p,i)=>`<button class="pc" data-i="${i}" style="--a:${p.c[0]};--b:${p.c[1]}"><div class="art">${ico(p.k)}</div><div class="bd"><h3>${p.n}</h3><p>${p.d}</p><div class="tg">${p.s.slice(0,3).map(s=>`<i>${s[0].split(" (")[0]}</i>`).join("")}</div></div></button>`).join("");
 $("cards").innerHTML = cardsHTML + cardsHTML;
 
@@ -318,30 +318,52 @@ function build(){const p=P[pi],s=p.s[si],priced=!!s[1];
      <select id="docType" style="flex:0 0 120px;"><option value="DNI">DNI</option><option value="RUC">RUC</option><option value="CE">CE</option></select>
      <input id="tu" placeholder="N° Documento…" style="flex:1;">
    </div>`;
+ } else if(priced){
+   inputHtml = `<label>¿Cuántos deseas? <small id="lim"></small></label><div class="qty"><input id="q" type="number" min="50" value="${q}" inputmode="numeric"><button data-q="100">100</button><button data-q="500">500</button><button data-q="1000">1000</button></div>
+   <label>Tu usuario o enlace<input id="tu" placeholder="@usuario o https://…"></label>`;
  } else {
-   inputHtml = `<label>Tu usuario, DNI, teléfono o enlace <small id="lim"></small></label><div class="qty"><input id="q" type="number" min="50" value="${q}" inputmode="numeric" style="display:none"><input id="tu" placeholder="@usuario, DNI o datos de consulta…"></div>`;
+   inputHtml = `<label>Tu usuario, DNI o datos de consulta<input id="tu" placeholder="Escribe aquí..."></label>`;
  }
 
- const priceVal = s[1] ? s[1][0] : 3;
+ let priceDisplay = "—";
+ if(priced && s[1]){
+   const mx = s[1].length*100;
+   const calculated = q>=50&&q<=mx ? calc(s[1], q) : null;
+   priceDisplay = calculated != null ? money(calculated) : money(s[1][0]);
+ } else if(s[1]) {
+   priceDisplay = money(s[1][0]);
+ }
 
  $("calc").innerHTML=left+`<div><label>Servicio</label><div class="chips">${p.s.map((x,j)=>`<button data-j="${j}" class="${j==si?"on":""}">${x[0]}</button>`).join("")}</div>
  ${inputHtml}
- <div class="tot"><span id="tp">${money(priceVal)}</span><em id="of" hidden>¡Oferta!</em></div><p class="warn" id="wn"></p>
+ <div class="tot"><span id="tp">${priceDisplay}</span><em id="of" hidden>¡Oferta!</em></div><p class="warn" id="wn"></p>
  ${acts}
- <p class="note">Precio fijo por consulta o servicio: se confirma por chat con tu comprobante.</p></div>`;
+ <p class="note">Precio referencial: se confirma por chat con tu comprobante.</p></div>`;
  upd();}
 
-function upd(){const s=P[pi].s[si];if(!s[1])return;const price=s[1][0]||3;$("tp").textContent=money(price);}
+function upd(){
+  const s = P[pi].s[si];
+  if(!s[1]) return;
+  const mx = s[1].length * 100;
+  if($("lim")) $("lim").textContent = `(mín. 50 · máx. ${mx})`;
+  const p = (q >= 50 && q <= mx) ? calc(s[1], q) : s[1][0];
+  if($("tp")) $("tp").textContent = p != null ? money(p) : "—";
+  if($("of")) $("of").hidden = !(p != null && q == 500);
+  if($("wn")) $("wn").textContent = q < 50 ? "El mínimo es 50 unidades." : q > mx ? `Para más de ${mx}, escríbenos y cotizamos a medida.` : "";
+}
 
 function msg(){const p=P[pi],s=p.s[si];let t=`NOCTHRAX | Perú 👋\nQuiero: ${p.n} — ${s[0]}`;
+ if(s[1] && s[1].length > 2 && q>=50){t+=`\nCantidad: ${q}`; const v=calc(s[1],q); if(v!=null) t+=`\nPrecio: ${money(v)}`;}
+ else if(s[1]){t+=`\nPrecio: ${money(s[1][0])}`;}
  const dt = $("docType") ? `[Doc: ${$("docType").value}] ` : "";
- const u=$("tu")&&$("tu").value.trim();if(u)t+=`\nDato/Consulta/Foto: ${dt}${u}`;
+ const u=$("tu")&&$("tu").value.trim();if(u)t+=`\nDato/Usuario/Enlace: ${dt}${u}`;
  t+=`\n\n📌 Ya me uní al canal de novedades. Adjunto mi comprobante de pago QR.`;
  return t}
 
 let pendingUrl = "";
 $("calc").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;
  if(b.dataset.j!=null){si=+b.dataset.j;q=100;build()}
+ else if(b.dataset.q){q=Math.min(+b.dataset.q,(P[pi].s[si][1]||[]).length*100||1000);if($("q"))$("q").value=q;upd()}
  else if(b.dataset.act=="wa"){pendingUrl=wa(msg());openModal("WhatsApp")}
  else if(b.dataset.act=="tg"){pendingUrl="https://t.me/"+CFG.telegram+"?text="+encodeURIComponent(msg());openModal("Telegram")}});
 
@@ -360,7 +382,7 @@ $("cards").addEventListener("click",e=>{const c=e.target.closest(".pc");if(!c)re
 $("pl").onclick=()=>$("cards").scrollBy({left:-300,behavior:"smooth"});$("pr").onclick=()=>$("cards").scrollBy({left:300,behavior:"smooth"});
 build();
 
-/* Métodos de pago con los 4 cuadros exactos */
+/* Métodos de pago (4 cuadros exactos) */
 $("cWa").href=wa("Hola NOCTHRAX | Perú, quiero información de los servicios.");$("waF").href=wa("Hola NOCTHRAX | Perú, quiero información.");$("waTxt").textContent=CFG.whatsappShow;
 $("cTg").href="https://t.me/"+CFG.telegram;$("tgTxt").textContent="@"+CFG.telegram;
 $("payGrid").innerHTML=CFG.pagos.map(p=>`<div class="box pay-box"><div class="pay-bg-logo" style="color:${p.c}">${p.bg}</div><div class="pay-content"><h3 style="color:${p.c}">${p.n}</h3></div></div>`).join("");
