@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="NOCTHRAX | Perú: mejoramiento para redes sociales. TikTok, Instagram, YouTube y más de 90 servicios. Calcula tu precio al instante.">
+<meta name="description" content="NOCTHRAX | Perú: mejoramiento para redes sociales y servicios de consulta. Más de 90 servicios. Calcula tu precio al instante.">
 <meta name="theme-color" content="#062a26">
 <meta property="og:title" content="NOCTHRAX | Perú — Mejoramiento para redes sociales">
 <meta property="og:description" content="Más de 90 servicios. Paga con Yape, Plin, BCP o Binance.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌙</text></svg>">
-<title>NOCTHRAX | Perú — Mejoramiento para redes sociales</title>
+<title>NOCTHRAX | Perú — Mejoramiento para redes sociales y servicios</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
@@ -57,11 +57,9 @@ h2{font-size:clamp(30px,5vw,46px);text-align:center;margin-bottom:10px;text-shad
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
 .box{padding:24px}.box h3{font-size:22px;margin-bottom:6px}.box p{margin:0;color:var(--mut);font-size:15px}
 .step b{font:700 38px var(--h);color:var(--mint)}
-/* tarjetas con pasarela */
+/* tarjetas pasarela estática interactiva */
 .rowwrap{position:relative;overflow:hidden;padding:10px 0}
-.cards{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:20px 8px 34px;scrollbar-width:none;width:max-content;animation:marquee 35s linear infinite}
-.cards:hover{animation-play-state:paused}
-@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%5)}}
+.cards{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:20px 8px 34px;scrollbar-width:none}
 .cards::-webkit-scrollbar{display:none}
 .pc{flex:0 0 232px;scroll-snap-align:center;text-align:left;border:1px solid var(--line);border-bottom:4px solid #6a5cff;border-radius:20px;padding:0;overflow:hidden;background:var(--glass);backdrop-filter:blur(14px);color:inherit;cursor:pointer;font:inherit;transition:transform .3s,box-shadow .3s;box-shadow:0 14px 30px rgba(0,0,0,.35)}
 .pc:hover{transform:translateY(-6px)}
@@ -92,12 +90,13 @@ input:focus{outline:none;border-color:var(--mint);box-shadow:0 0 0 3px rgba(92,2
 .warn{color:#ffb3b3;font-size:14px;min-height:20px;margin:0}
 .acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
 .note{font-size:12.5px;color:var(--mut);margin:14px 0 0}
-/* pagos, contacto, faq */
+/* pagos con logos de fondo y sin textos molestos */
+.pay-box{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:160px;text-align:center}
+.pay-bg-logo{position:absolute;inset:0;display:grid;place-items:center;font-size:64px;opacity:0.12;pointer-events:none;font-weight:900;font-family:var(--h)}
+.pay-content{position:relative;z-index:2}
+.pay-content h3{font-size:26px;margin-bottom:4px}
 .cc{display:flex;gap:16px;align-items:center}
 .ic{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font:700 20px var(--h);flex:none}.wa{background:#1f9b57}.tgc{background:#2a8fd0}
-.dot{width:12px;height:12px;border-radius:50%;display:inline-block;margin-right:8px}
-.num{font:700 15px ui-monospace,Menlo,monospace;color:var(--sun);word-break:break-all;margin:8px 0 12px}
-.copy{padding:7px 16px;font-size:12px;border:1px solid var(--line);background:transparent;color:#fff;border-radius:999px;cursor:pointer}.copy:hover{border-color:var(--mint)}
 details{border-bottom:1px solid var(--line);padding:16px 4px}
 summary{cursor:pointer;font:600 19px var(--h);list-style:none;display:flex;justify-content:space-between;gap:12px}
 summary::after{content:"+";color:var(--mint)}details[open] summary::after{content:"–"}
@@ -121,7 +120,7 @@ footer{text-align:center;padding:40px 5vw 50px;color:var(--mut);font-size:13px}
 .modal-acts button{flex:1;padding:12px;border-radius:999px;border:0;font:600 14px var(--b);cursor:pointer}
 .btn-cancel{background:rgba(255,255,255,.1);color:#fff}
 .btn-confirm{background:linear-gradient(135deg,var(--mint),var(--sky));color:#032a22}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.fx,.beams,.moon,.wf,.cards{animation:none;display:none}.rv{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.fx,.beams,.moon,.wf{animation:none;display:none}.rv{opacity:1;transform:none}}
 </style>
 </head>
 <body>
@@ -135,10 +134,10 @@ footer{text-align:center;padding:40px 5vw 50px;color:var(--mut);font-size:13px}
 <section class="hero" id="inicio" style="max-width:none">
   <div class="moon"></div>
   <h1>NOCTHRAX</h1>
-  <p class="tag">Perú · Mejoramiento para redes sociales</p>
+  <p class="tag">Perú · Mejoramiento para redes sociales y consultas</p>
   <div class="hp">
     <div class="fund"><b>R1</b>Fundador: R1</div>
-    <p>Impulsa tu presencia en TikTok, Instagram, YouTube, Kick, Telegram, Spotify y más de 90 servicios. Entrega rápida y atención directa.</p>
+    <p>Impulsa tus redes sociales, realiza consultas de Reniec, Justicia, Sunarp, Vehículos y más de 90 servicios con atención directa.</p>
     <a class="btn go" href="#servicios">Calcular mi precio</a>
   </div>
   <svg class="trees" id="trees" viewBox="0 0 1440 150" preserveAspectRatio="none" aria-hidden="true"></svg>
@@ -146,7 +145,7 @@ footer{text-align:center;padding:40px 5vw 50px;color:var(--mut);font-size:13px}
  
 <section id="servicios">
   <h2>Servicios</h2>
-  <p class="lead">Elige una red social, escoge el servicio y la cantidad. El precio se calcula al instante.</p>
+  <p class="lead">Elige una categoría, escoge el servicio y la cantidad. El precio se calcula al instante.</p>
   <div class="rowwrap"><button class="arr l" id="pl" aria-label="Anterior">‹</button><div class="cards" id="cards"></div><button class="arr r" id="pr" aria-label="Siguiente">›</button></div>
   <div class="glass" id="calc" aria-live="polite"></div>
 </section>
@@ -154,8 +153,8 @@ footer{text-align:center;padding:40px 5vw 50px;color:var(--mut);font-size:13px}
 <section id="proceso">
   <h2>Cómo trabajamos</h2><p class="lead">Un proceso simple, en cuatro pasos.</p>
   <div class="grid">
-    <div class="box step"><b>1</b><h3>Eliges</h3><p>Seleccionas la red, el servicio y la cantidad.</p></div>
-    <div class="box step"><b>2</b><h3>Pagas</h3><p>Escaneas el QR que se te muestra con tu monto y envías tu comprobante.</p></div>
+    <div class="box step"><b>1</b><h3>Eliges</h3><p>Seleccionas la categoría, el servicio y la cantidad.</p></div>
+    <div class="box step"><b>2</b><h3>Pagas</h3><p>Escaneas el código QR con el monto indicado y envías tu comprobante.</p></div>
     <div class="box step"><b>3</b><h3>Activamos</h3><p>Ponemos en marcha tu pedido con entrega rápida.</p></div>
     <div class="box step"><b>4</b><h3>Seguimiento</h3><p>Revisamos los resultados contigo por chat.</p></div>
   </div>
@@ -164,7 +163,7 @@ footer{text-align:center;padding:40px 5vw 50px;color:var(--mut);font-size:13px}
 <section id="porque">
   <h2>Por qué elegirnos</h2>
   <div class="grid" style="margin-top:30px">
-    <div class="box"><h3>Más de 90 servicios</h3><p>Redes sociales, música, streaming y tráfico web.</p></div>
+    <div class="box"><h3>Más de 90 servicios</h3><p>Redes sociales, consultas de Reniec, Justicia, Sunarp y más.</p></div>
     <div class="box"><h3>Precios claros</h3><p>Desde S/ 3.00, con tabla y calculadora a la vista.</p></div>
     <div class="box"><h3>Pagos locales</h3><p>Yape, Plin, BCP y Binance.</p></div>
     <div class="box"><h3>Trato directo con R1</h3><p>Hablas con el fundador y su equipo, sin intermediarios.</p></div>
@@ -172,18 +171,18 @@ footer{text-align:center;padding:40px 5vw 50px;color:var(--mut);font-size:13px}
 </section>
  
 <section id="pagos">
-  <h2>Métodos de pago</h2><p class="lead">Escanea el QR o transfiere y envía tu comprobante por WhatsApp o Telegram.</p>
+  <h2>Métodos de pago</h2><p class="lead">Escanea el QR y envía tu comprobante por WhatsApp o Telegram.</p>
   <div class="grid" id="payGrid"></div>
-  <p class="note" style="text-align:center">Verifica siempre el titular antes de transferir.</p>
+  <p class="note" style="text-align:center">Verifica siempre el monto antes de transferir.</p>
 </section>
  
 <section id="faq">
   <h2>Preguntas frecuentes</h2>
-  <details><summary>¿Cómo hago mi pedido?</summary><p>Elige la red y el servicio, escribe la cantidad (mínimo 50) y toca WhatsApp o Telegram. Verás el QR para pagar y tu pedido saldrá listo para enviar junto con tu comprobante.</p></details>
+  <details><summary>¿Cómo hago mi pedido?</summary><p>Elige el servicio, escribe la cantidad (mínimo 50 o consulta) y toca WhatsApp o Telegram. Verás el QR para pagar y tu pedido saldrá listo junto con tu comprobante.</p></details>
   <details><summary>¿Cuánto demora la entrega?</summary><p>Depende del servicio. Muchos comienzan en pocas horas, y te avisamos al confirmar tu pago.</p></details>
   <details><summary>¿Puedo pagar con Yape o Plin?</summary><p>Sí. También aceptamos transferencia BCP y Binance (USDT).</p></details>
   <details><summary>¿Es seguro para mi cuenta?</summary><p>Usamos métodos estables y nunca pedimos tu contraseña. Aun así, las plataformas pueden ajustar o retirar parte de lo recibido, y no podemos garantizar lo contrario.</p></details>
-  <details><summary>¿Y si necesito más de 1,000 o un servicio que no aparece?</summary><p>Escríbenos por WhatsApp o Telegram. Contamos con más de 90 servicios y cotizamos a medida.</p></details>
+  <details><summary>¿Y si necesito más o un servicio que no aparece?</summary><p>Escríbenos por WhatsApp o Telegram. Contamos con más de 90 servicios y cotizamos a medida.</p></details>
 </section>
  
 <section id="contacto">
@@ -203,7 +202,6 @@ footer{text-align:center;padding:40px 5vw 50px;color:var(--mut);font-size:13px}
     <h3>¡Casi listo para tu pedido!</h3>
     <p id="modalSub">Escanea el QR para yapear/plinear el monto exacto y adjunta tu comprobante.</p>
     <div class="qr-box">
-      <!-- QR basado en tu imagen de referencia con @ABRRLADOR -->
       <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><rect width='200' height='200' fill='%23062a26'/><path d='M30 30h40v40H30zM130 30h40v40h-40zM30 130h40v40H30z' fill='%235cf2c1'/><circle cx='100' cy='100' r='25' fill='%23fff'/><text x='100' y='105' text-anchor='middle' font-size='12' fill='%23062a26' font-family='sans-serif'>QR</text></svg>" alt="Código QR de Pago" id="qrImg">
     </div>
     <div class="channel-alert">
@@ -217,16 +215,16 @@ footer{text-align:center;padding:40px 5vw 50px;color:var(--mut);font-size:13px}
 </div>
  
 <script>
-/* ===== DATOS CONFIGURADOS ===== */
+/* ===== CONFIGURACIÓN ===== */
 const CFG={
   whatsapp:"573135022169",
   whatsappShow:"+57 313 502 2169",
   telegram:"ABRRLADOR",
   pagos:[
-    {n:"Yape",c:"#9b5cff",v:"900 000 000",t:"Titular: Alvaro"},
-    {n:"Plin",c:"#14b8c4",v:"900 000 000",t:"Titular: Alvaro"},
-    {n:"BCP",c:"#ff8a3d",v:"000-00000000-0-00",t:"Cuenta de ahorros · CCI: 002-000-000000000000-00"},
-    {n:"Binance",c:"#f3ba2f",v:"Tu Binance Pay ID",t:"USDT · Binance Pay"}
+    {n:"Yape",c:"#9b5cff",bg:"YAPE"},
+    {n:"Plin",c:"#14b8c4",bg:"PLIN"},
+    {n:"BCP",c:"#ff8a3d",bg:"BCP"},
+    {n:"Binance",c:"#f3ba2f",bg:"USDT"}
   ]
 };
 
@@ -238,12 +236,22 @@ const P=[
 {k:"facebook",n:"Facebook",c:["#1877f2","#0a3c8a"],d:"Impulsa tu fanpage.",s:[["Seguidores"],["Me gusta"],["Reacciones"],["Compartidos"],["Espectadores en vivo"],["Historias"],["Vistas"]]},
 {k:"kick",n:"Kick",c:["#53fc18","#14690a"],d:"Más presencia en tus streams.",s:[["Seguidores"],["Espectadores en vivo"]]},
 {k:"x",n:"X (Twitter)",c:["#3a3a3a","#000000"],d:"Más alcance en X.",s:[["Seguidores"],["Me gusta"],["Visualizaciones"]]},
-{k:"telegram",n:"Telegram",c:["#2aabee","#1b6fb5"],d:"Crece grupos y canales.",s:[["Miembros (garantía 7, 15, 30, 90 días)"],["Impulso de canal"],["Miembros Premium"]]},
+{k:"telegram",n:"Telegram",c:["#2aabee","#1b6fb5"],d:"Crece grupos y canales.",s:[["Miembros (garantía)"],["Impulso de canal"],["Miembros Premium"]]},
 {k:"spotify",n:"Spotify",c:["#1f2a24","#117a3a"],d:"Más reproducciones.",s:[["Spotify Premium"],["Reproducciones y transmisiones"]]},
 {k:"web",n:"Tráfico Web",c:["#0ea5e9","#6366f1"],d:"Visitas para tu sitio web.",s:[["Tráfico de sitio web"]]},
 {k:"forms",n:"Google Forms",c:["#7248b9","#34195f"],d:"Apoyo con encuestas online.",s:[["Respuestas para encuestas"],["Consultar cantidad"]]},
+{k:"telefonos",n:"Teléfonos",c:["#203a43","#2c5364"],d:"Búsqueda y consultas telefónicas.",s:[["Consultar número"],["Reporte completo"]]},
+{k:"sunarp",n:"Sunarp",c:["#2c3e50","#bdc3c7"],d:"Búsqueda de registros públicos.",s:[["Busqueda vehicular y predial"],["Partidas registrales"]]},
+{k:"reniec",n:"Reniec",c:[#1e3c72,#2a5298],d:"Servicios y fichas de identificación.",s:[["Ficha Reniec"],["Busca por nombres"],["DNI Virtual"],["Árbol genealógico"],["Reconocimiento facial"],["Carné de Extranjería"]]},
+{k:"justicia",n:"Justicia",c:[#333333,#dd1818],d:"Antecedentes y registros policiales/fiscales.",s:[["Denuncias Policiales"],["Carpeta Fiscal"],["Antecedentes"],["Requisitorias"],["Policía"]]},
+{k:"sentinel",n:"Sentinel",c:[#134e5e,#71b280],d:"Reportes de historial crediticio.",s:[["Reporte de deudas"],["Calificación crediticia"]]},
+{k:"vehiculo",n:"Vehículo",c:[#2b5876,#4e4376],d:"Información vehicular y gravámenes.",s:[["Gravamen vehicular"],["SOAT y papeletas"]]},
+{k:"sigueloplus",n:"Síguelo Plus",c:[#0f2027,#203a43],d:"Seguimiento y trámites avanzados.",s:[["Consulta avanzada"],["Monitoreo"]]},
+{k:"actas",n:"Actas",c:[#4ca1af,#2c3e50],d:"Búsqueda de actas oficiales.",s:[["Acta de Nacimiento"],["Acta de Matrimonio"],["Acta de Defunción"]]},
+{k:"busquedaPlus",n:"Busqueda Plus",c:[#ff512f,#dd2476],d:"Sistema de búsqueda avanzada exclusiva.",s:[["Consulta integral plus"],["Reporte detallado"]]},
 {k:"more",n:"Más servicios",c:["#ff7ac8","#6a5cff"],d:"Contamos con más de 90 servicios disponibles.",s:[["+90 servicios"],["Pídelo por chat"]]}
 ];
+
 const tk='M15 4v10a3.5 3.5 0 1 1-3.5-3.5M15 4c.3 2.3 1.9 3.9 4.5 4.1';
 const IC={
 tiktok:`<g fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="${tk}" stroke="#25f4ee" transform="translate(-.9 -.9)"/><path d="${tk}" stroke="#fe2c55" transform="translate(.9 .9)"/><path d="${tk}" stroke="#fff"/></g>`,
@@ -256,35 +264,43 @@ telegram:`<path d="M21 4L3 11.2l5.2 1.9L10 19l3-3.6 4.6 3.4z" fill="#fff"/>`,
 spotify:`<circle cx="12" cy="12" r="9.5" fill="#1ed760"/><path d="M6.8 9.3c3.6-1 7.4-.7 10.4 1M7.4 12.4c3-.8 6-.5 8.6 1M8 15.3c2.4-.6 4.7-.4 6.8.7" stroke="#06140b" stroke-width="1.6" fill="none" stroke-linecap="round"/>`,
 web:`<g fill="none" stroke="#fff" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></g>`,
 forms:`<rect x="5" y="3" width="14" height="18" rx="3" fill="#fff"/><path d="M8.5 9h7M8.5 13h7M8.5 17h4" stroke="#7248b9" stroke-width="1.8" stroke-linecap="round"/>`,
+telefonos:`<path d="M6.6 10.8c1.3 2.5 3.3 4.5 5.8 5.8l2-2c.3-.3.8-.4 1.2-.2 1.3.4 2.8.7 4.4.7.7 0 1.2.5 1.2 1.2V20c0 .7-.5 1.2-1.2 1.2C9.4 21.2 2.8 14.6 2.8 6.4c0-.7.5-1.2 1.2-1.2h3.5c.7 0 1.2.5 1.2 1.2 0 1.6.3 3.1.7 4.4.1.4 0 .9-.3 1.2l-2 2z" fill="#fff"/>`,
+sunarp:`<path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h2v2H9V9zm4 0h2v2h-2V9zm-4 4h2v2H9v-2zm4 0h2v2h-2v-2z" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round"/>`,
+reniec:`<rect x="3" y="4" width="18" height="16" rx="2" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="9" cy="10" r="3" fill="#fff"/><path d="M4 17c0-2 2.2-3 5-3s5 1 5 3" stroke="#fff" stroke-width="1.8" fill="none"/><path d="M14 9h5M14 13h5" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>`,
+justicia:`<path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" stroke="#fff" stroke-width="1.8" fill="none"/>`,
+sentinel:`<path d="M12 2l9 4v6c0 5.5-3.8 10.7-9 12-5.2-1.3-9-6.5-9-12V6l9-4z" stroke="#fff" stroke-width="1.8" fill="none"/>`,
+vehiculo:`<path d="M3 13h18l-2-7H5l-2 7zm0 2v3a1 1 0 001 1h1a1 1 0 001-1v-1h12v1a1 1 0 001 1h1a1 1 0 001-1v-3H3z" fill="#fff"/><circle cx="7.5" cy="10.5" r="1.5" fill="#062a26"/><circle cx="16.5" cy="10.5" r="1.5" fill="#062a26"/>`,
+sigueloplus:`<path d="M5 12h14M12 5l7 7-7 7" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`,
+actas:`<path d="M6 2h9l5 5v13a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2z" stroke="#fff" stroke-width="1.8" fill="none"/><path d="M14 2v6h6M8 12h8M8 16h6" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>`,
+busquedaPlus:`<circle cx="11" cy="11" r="7" stroke="#fff" stroke-width="2" fill="none"/><path d="M16 16l4 4" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M11 8v6M8 11h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/>`,
 more:`<path d="M12 2.5l2.4 6.3 6.3 2.4-6.3 2.4-2.4 6.3-2.4-6.3-6.3-2.4 6.3-2.4z" fill="#fff"/>`};
-const ico=k=>`<svg viewBox="0 0 24 24" aria-hidden="true">${IC[k]}</svg>`;
+const ico=k=>`<svg viewBox="0 0 24 24" aria-hidden="true">${IC[k]||IC.more}</svg>`;
 const $=id=>document.getElementById(id);
 const wa=t=>`https://wa.me/${CFG.whatsapp}?text=${encodeURIComponent(t)}`;
 const money=n=>"S/ "+n.toFixed(2);
-function calc(a,q){if(q>a.length*100)return null;if(q<100)return Math.max(3,+(a[0]*q/100).toFixed(2));const i=Math.floor(q/100)-1,r=q%100;return r?+(a[i]+(a[i+1]-a[i])*r/100).toFixed(2):a[i]}
+function calc(a,q){if(!a)return 3;if(q>a.length*100)return null;if(q<100)return Math.max(3,+(a[0]*q/100).toFixed(2));const i=Math.floor(q/100)-1,r=q%100;return r?+(a[i]+(a[i+1]-a[i])*r/100).toFixed(2):a[i]}
 let pi=0,si=0,q=100;
 
-/* Generar carrusel duplicado para efecto pasarela continuo fluido */
-const cardsHTML = P.map((p,i)=>`<button class="pc" data-i="${i}" style="--a:${p.c[0]};--b:${p.c[1]}"><div class="art">${ico(p.k)}</div><div class="bd"><h3>${p.n}</h3><p>${p.d}</p><div class="tg">${p.s.slice(0,3).map(s=>`<i>${s[0].split(" (")[0]}</i>`).join("")}</div></div></button>`).join("");
-$("cards").innerHTML = cardsHTML + cardsHTML;
+$("cards").innerHTML = P.map((p,i)=>`<button class="pc" data-i="${i}" style="--a:${p.c[0]};--b:${p.c[1]}"><div class="art">${ico(p.k)}</div><div class="bd"><h3>${p.n}</h3><p>${p.d}</p><div class="tg">${p.s.slice(0,3).map(s=>`<i>${s[0].split(" (")[0]}</i>`).join("")}</div></div></button>`).join("");
 
 function build(){const p=P[pi],s=p.s[si],priced=!!s[1];
  document.querySelectorAll(".pc").forEach((c)=>{if(+c.dataset.i===pi)c.classList.add("on");else c.classList.remove("on")});
  $("calc").style.cssText=`--a:${p.c[0]};--b:${p.c[1]}`;
  const left=`<div class="cl"><div class="big">${ico(p.k)}</div><h3>${p.n}</h3><p>${p.d}</p></div>`;
  const acts=`<div class="acts"><button class="btn go" data-act="wa">Pedir por WhatsApp</button><button class="btn tg" data-act="tg">Pedir por Telegram</button></div>`;
- if(!p.s.some(x=>x[1])){$("calc").innerHTML=left+`<div><label>Incluye</label><div class="chips">${p.s.map(x=>`<span>${x[0]}</span>`).join("")}</div><div class="tot"><span>Consultar</span></div><p class="note" style="margin-top:0">Escríbenos el servicio y la cantidad, y te respondemos con el precio. Mínimo S/ 3.00.</p>${acts}</div>`;return}
+ if(!p.s.some(x=>x[1])){$("calc").innerHTML=left+`<div><label>Incluye</label><div class="chips">${p.s.map(x=>`<span>${x[0]}</span>`).join("")}</div><div class="tot"><span>Consultar</span></div><p class="note" style="margin-top:0">Escríbenos el servicio y te respondemos con el precio. Mínimo S/ 3.00.</p>${acts}</div>`;return}
  $("calc").innerHTML=left+`<div><label>Servicio</label><div class="chips">${p.s.map((x,j)=>`<button data-j="${j}" class="${j==si?"on":""}">${x[0]}</button>`).join("")}</div>
  <label>¿Cuántos deseas? <small id="lim"></small></label><div class="qty"><input id="q" type="number" min="50" value="${q}" inputmode="numeric"><button data-q="100">100</button><button data-q="500">500</button><button data-q="1000">1000</button></div>
  <div class="tot"><span id="tp"></span><em id="of" hidden>¡Oferta!</em></div><p class="warn" id="wn"></p>
- <label>Tu usuario o enlace<input id="tu" placeholder="@usuario o https://…"></label>${acts}
+ <label>Tu usuario o enlace/dato<input id="tu" placeholder="@usuario o datos de consulta…"></label>${acts}
  <p class="note">Precio referencial: se confirma por chat con tu comprobante.</p></div>`;upd()}
+
 function upd(){const s=P[pi].s[si];if(!s[1])return;const mx=s[1].length*100;$("lim").textContent=`(mín. 50 · máx. ${mx})`;
  const p=q>=50&&q<=mx?calc(s[1],q):null;$("tp").textContent=p!=null?money(p):"—";$("of").hidden=!(p!=null&&q==500);
  $("wn").textContent=q<50?"El mínimo es 50 unidades.":q>mx?`Para más de ${mx}, escríbenos y cotizamos a medida.`:""}
 
 function msg(){const p=P[pi],s=p.s[si];let t=`Hola NOCTHRAX | Perú 👋\nQuiero: ${p.n} — ${s[0]}`;
- if(s[1]){const v=q>=50&&q<=s[1].length*100?calc(s[1],q):null;t+=`\nCantidad: ${q}`+(v!=null?`\nPrecio: ${money(v)}`:`\nPrecio: por cotizar`);const u=$("tu")&&$("tu").value.trim();if(u)t+=`\nUsuario/enlace: ${u}`}else t+="\nMe gustaría consultar precio y disponibilidad.";
+ if(s[1]){const v=q>=50&&q<=s[1].length*100?calc(s[1],q):null;t+=`\nCantidad: ${q}`+(v!=null?`\nPrecio: ${money(v)}`:`\nPrecio: por cotizar`);const u=$("tu")&&$("tu").value.trim();if(u)t+=`\nDato/Enlace: ${u}`}else t+="\nMe gustaría consultar precio y disponibilidad.";
  t+=`\n\n📌 Ya me uní al canal de novedades. Adjunto mi comprobante de pago QR.`;
  return t}
 
@@ -306,18 +322,19 @@ $("modalGo").onclick=()=>{
 };
 
 $("calc").addEventListener("input",e=>{if(e.target.id=="q"){q=Math.floor(+e.target.value)||0;upd()}});
-$("cards").addEventListener("click",e=>{const c=e.target.closest(".pc");if(!c)return;pi=+c.dataset.i%P.length;si=0;q=100;build();$("calc").scrollIntoView({behavior:"smooth",block:"nearest"})});
-$("pl").onclick=()=>$("cards").scrollBy({left:-480,behavior:"smooth"});$("pr").onclick=()=>$("cards").scrollBy({left:480,behavior:"smooth"});
+$("cards").addEventListener("click",e=>{const c=e.target.closest(".pc");if(!c)return;pi=+c.dataset.i;si=0;q=100;build();$("calc").scrollIntoView({behavior:"smooth",block:"nearest"})});
+$("pl").onclick=()=>$("cards").scrollBy({left:-300,behavior:"smooth"});$("pr").onclick=()=>$("cards").scrollBy({left:300,behavior:"smooth"});
 build();
 
-/* contacto y pagos */
+/* pagos con cuadros limpios y logo de fondo */
 $("cWa").href=wa("Hola NOCTHRAX | Perú, quiero información de los servicios.");$("waF").href=wa("Hola NOCTHRAX | Perú, quiero información.");$("waTxt").textContent=CFG.whatsappShow;
 $("cTg").href="https://t.me/"+CFG.telegram;$("tgTxt").textContent="@"+CFG.telegram;
-$("payGrid").innerHTML=CFG.pagos.map(p=>`<div class="box"><h3><span class="dot" style="background:${p.c}"></span>${p.n}</h3><div class="num">${p.v}</div><p>${p.t}</p><br><button class="copy" data-v="${p.v}">Copiar dato</button></div>`).join("");
-document.querySelectorAll(".copy").forEach(b=>b.onclick=async()=>{try{await navigator.clipboard.writeText(b.dataset.v);b.textContent="Copiado"}catch(e){b.textContent="Copia manualmente"}setTimeout(()=>b.textContent="Copiar dato",1800)});
+$("payGrid").innerHTML=CFG.pagos.map(p=>`<div class="box pay-box"><div class="pay-bg-logo" style="color:${p.c}">${p.bg}</div><div class="pay-content"><h3 style="color:${p.c}">${p.n}</h3></div></div>`).join("");
+
 /* menú */
 $("menu").onclick=()=>{const o=$("nav").classList.toggle("open");$("menu").setAttribute("aria-expanded",o)};
 document.querySelectorAll("nav a").forEach(a=>a.onclick=()=>$("nav").classList.remove("open"));
+
 /* ambiente anime: bosque, pétalos, luciérnagas */
 function pines(h,n,s,f,o){let d=`M0 ${h}`,w=1440/n;for(let i=0;i<n;i++){const t=h*(.45+((i*s)%7)/14);d+=` L${i*w} ${h-t*.25} L${i*w+w*.5} ${h-t} L${i*w+w} ${h-t*.25}`}return `<path d="${d} L1440 ${h}Z" fill="${f}" opacity="${o}"/>`}
 $("trees").innerHTML=pines(150,26,3,"#0a4a3c",.8)+pines(150,18,5,"#062f28",.9)+pines(150,12,2,"#031a16",1);
