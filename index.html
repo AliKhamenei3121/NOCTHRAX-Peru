@@ -17,6 +17,7 @@
   --text-muted:#8a9490;
   --accent-red:#cf2323;
   --accent-red-hover:#e62b2b;
+  --accent-glow:rgba(207, 35, 35, 0.5);
   --line-border:rgba(229, 231, 230, 0.12);
   --font-h:"Cinzel", serif;
   --font-b:"Montserrat", sans-serif;
@@ -262,7 +263,7 @@ header{
 }
 .hero-description p { margin: 0 0 6px; }
 
-/* CARRUSEL 3D AGRANDADO EN PC Y ADAPTADO EN MÓVIL */
+/* CARRUSEL 3D MEJORADO & FLOTANTE */
 .carousel-container {
   position: relative;
   width: 100%;
@@ -272,137 +273,191 @@ header{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  perspective: 1400px;
+  perspective: 1600px;
   user-select: none;
+  overflow: visible;
 }
 
 .stage-3d {
   position: relative;
   width: 100%;
-  height: 480px;
+  height: 520px;
   display: flex;
   align-items: center;
   justify-content: center;
   transform-style: preserve-3d;
 }
 
-.card-3d {
+/* EFECTO DE ANIMACIÓN FLOTANTE (FLOATING 3D) */
+@keyframes floatAnimation {
+  0% { transform: translateY(0px) rotateX(0deg); }
+  50% { transform: translateY(-12px) rotateX(2deg); }
+  100% { transform: translateY(0px) rotateX(0deg); }
+}
+
+/* TARJETAS 3D */
+.card-3d-wrapper {
   position: absolute;
-  width: 310px;
-  height: 420px;
+  width: 320px;
+  height: 440px;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease, filter 0.6s ease;
+}
+
+.card-3d {
+  width: 100%;
+  height: 100%;
   background: var(--card-bg);
   border: 1px solid var(--line-border);
-  border-radius: 20px;
+  border-radius: 24px;
   padding: 26px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 30px 60px rgba(0,0,0,.95);
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease, filter 0.6s ease;
-  cursor: pointer;
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(25px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.95);
+  position: relative;
   overflow: hidden;
+  transform-style: preserve-3d;
+  transition: box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+/* SOMBRA FLOTANTE BASE DE CADA TARJETA */
+.card-shadow-floor {
+  position: absolute;
+  bottom: -35px;
+  left: 10%;
+  width: 80%;
+  height: 30px;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 70%);
+  border-radius: 50%;
+  transform: rotateX(80deg);
+  pointer-events: none;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  z-index: -1;
+}
+
+/* POSICIONES Y ÁNGULOS EN 3D */
+.card-3d-wrapper.center {
+  transform: translateX(0) scale(1.08) translateZ(160px) rotateY(0deg);
+  opacity: 1; z-index: 10; filter: blur(0);
+}
+.card-3d-wrapper.center .card-3d {
+  border-color: rgba(207, 35, 35, 0.85);
+  box-shadow: 0 30px 70px rgba(207, 35, 35, 0.35), inset 0 0 20px rgba(207, 35, 35, 0.15);
+  animation: floatAnimation 4.5s ease-in-out infinite;
+}
+
+.card-3d-wrapper.left-1 {
+  transform: translateX(-68%) scale(0.82) translateZ(-120px) rotateY(26deg) rotateZ(-2deg);
+  opacity: 0.55; z-index: 5; filter: blur(2px);
+}
+
+.card-3d-wrapper.right-1 {
+  transform: translateX(68%) scale(0.82) translateZ(-120px) rotateY(-26deg) rotateZ(2deg);
+  opacity: 0.55; z-index: 5; filter: blur(2px);
+}
+
+.card-3d-wrapper.left-2 {
+  transform: translateX(-120%) scale(0.65) translateZ(-300px) rotateY(40deg) rotateZ(-4deg);
+  opacity: 0.25; z-index: 2; filter: blur(6px);
+}
+
+.card-3d-wrapper.right-2 {
+  transform: translateX(120%) scale(0.65) translateZ(-300px) rotateY(-40deg) rotateZ(4deg);
+  opacity: 0.25; z-index: 2; filter: blur(6px);
+}
+
+.card-3d-wrapper.hidden {
+  transform: translateX(0) scale(0.3) translateZ(-500px);
+  opacity: 0; z-index: 1; pointer-events: none;
 }
 
 @media(max-width: 768px) {
-  .card-3d { width: 240px; height: 340px; padding: 18px; }
-  .stage-3d { height: 370px; }
-}
-
-.card-3d.center {
-  transform: translateX(0) scale(1.1) translateZ(100px) rotateY(0deg);
-  opacity: 1; z-index: 10; filter: blur(0);
-  border-color: rgba(207, 35, 35, 0.7);
-  box-shadow: 0 25px 60px rgba(207, 35, 35, 0.3);
-}
-
-.card-3d.left-1 {
-  transform: translateX(-65%) scale(0.85) translateZ(-160px) rotateY(20deg);
-  opacity: 0.45; z-index: 5; filter: blur(3px);
-}
-
-.card-3d.right-1 {
-  transform: translateX(65%) scale(0.85) translateZ(-160px) rotateY(-20deg);
-  opacity: 0.45; z-index: 5; filter: blur(3px);
-}
-
-.card-3d.left-2 {
-  transform: translateX(-115%) scale(0.68) translateZ(-320px) rotateY(32deg);
-  opacity: 0.2; z-index: 2; filter: blur(5px);
-}
-
-.card-3d.right-2 {
-  transform: translateX(115%) scale(0.68) translateZ(-320px) rotateY(-32deg);
-  opacity: 0.2; z-index: 2; filter: blur(5px);
-}
-
-.card-3d.hidden {
-  transform: translateX(0) scale(0.4) translateZ(-450px);
-  opacity: 0; z-index: 1; pointer-events: none;
+  .card-3d-wrapper { width: 250px; height: 360px; }
+  .stage-3d { height: 400px; }
+  .card-3d-wrapper.left-1 { transform: translateX(-55%) scale(0.78) translateZ(-100px) rotateY(20deg); }
+  .card-3d-wrapper.right-1 { transform: translateX(55%) scale(0.78) translateZ(-100px) rotateY(-20deg); }
+  .card-3d-wrapper.left-2, .card-3d-wrapper.right-2 { opacity: 0; pointer-events: none; }
 }
 
 .c-badge {
   position: absolute; top: 18px; right: 18px;
   font-size: 11px; font-weight: 700; color: #fff;
-  background: rgba(0,0,0,0.6); padding: 3px 8px; border-radius: 12px;
+  background: rgba(0,0,0,0.6); padding: 4px 10px; border-radius: 12px;
   border: 1px solid var(--line-border);
+  backdrop-filter: blur(10px);
+  transform: translateZ(30px);
 }
 
 .c-play-icon {
-  width: 50px; height: 50px; border-radius: 50%;
-  background: rgba(255,255,255,0.9); color: #000;
+  width: 52px; height: 52px; border-radius: 50%;
+  background: rgba(255,255,255,0.95); color: #000;
   display: grid; place-items: center; margin: 0 auto;
   font-size: 18px; padding-left: 3px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-  transition: 0.3s;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s, color 0.3s;
+  transform: translateZ(40px);
 }
-.card-3d:hover .c-play-icon { transform: scale(1.1); background: var(--accent-red); color: #fff; }
+.card-3d:hover .c-play-icon {
+  transform: translateZ(50px) scale(1.15);
+  background: var(--accent-red);
+  color: #fff;
+  box-shadow: 0 0 25px var(--accent-red);
+}
 
-.c-body { text-align: center; }
-.c-body h3 { font-size: 22px; font-weight: 700; margin-bottom: 6px; color: #fff; }
+.c-body { text-align: center; transform: translateZ(25px); }
+.c-body h3 { font-size: 22px; font-weight: 700; margin-bottom: 6px; color: #fff; letter-spacing: 1px; }
 .c-body p { font-size: 12px; color: var(--text-muted); margin: 0 0 12px; line-height: 1.4; }
 
 .c-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; }
 .c-tags i {
-  font: 500 9px var(--font-b); padding: 3px 8px;
-  border-radius: 4px; background: rgba(255,255,255,0.04);
+  font: 500 9px var(--font-b); padding: 4px 9px;
+  border-radius: 6px; background: rgba(255,255,255,0.04);
   border: 1px solid var(--line-border); color: var(--text-main); font-style: normal;
+  transition: 0.2s;
 }
+.card-3d:hover .c-tags i { border-color: rgba(207,35,35,0.4); }
 
 .c-btn-solicitar {
   width: 100%;
-  padding: 12px;
+  padding: 13px;
   background: var(--accent-red);
   color: #fff;
   border: 0;
-  border-radius: 8px;
+  border-radius: 10px;
   font: 700 11px var(--font-b);
   letter-spacing: 1.5px;
   text-transform: uppercase;
   cursor: pointer;
-  transition: 0.3s;
-  box-shadow: 0 4px 15px rgba(207, 35, 35, 0.4);
+  transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 6px 20px rgba(207, 35, 35, 0.45);
+  transform: translateZ(35px);
 }
 .c-btn-solicitar:hover {
   background: var(--accent-red-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(207, 35, 35, 0.6);
+  transform: translateZ(45px) translateY(-2px);
+  box-shadow: 0 8px 25px rgba(207, 35, 35, 0.75);
 }
 
 .nav-arrow {
   position: absolute; top: 50%; transform: translateY(-50%);
-  width: 44px; height: 44px; border-radius: 50%;
-  border: 1px solid var(--line-border); background: rgba(13,17,16,0.8);
-  backdrop-filter: blur(10px); color: #fff; font-size: 20px;
-  display: grid; place-items: center; cursor: pointer; z-index: 20; transition: 0.3s;
+  width: 48px; height: 48px; border-radius: 50%;
+  border: 1px solid var(--line-border); background: rgba(13,17,16,0.85);
+  backdrop-filter: blur(12px); color: #fff; font-size: 22px;
+  display: grid; place-items: center; cursor: pointer; z-index: 30; transition: 0.3s;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
 }
-.nav-arrow:hover { background: var(--accent-red); border-color: var(--accent-red); }
+.nav-arrow:hover {
+  background: var(--accent-red); border-color: var(--accent-red);
+  transform: translateY(-50%) scale(1.1); box-shadow: 0 0 20px var(--accent-red);
+}
 .nav-arrow.prev { left: 20px; }
 .nav-arrow.next { right: 20px; }
 
-.dots-bar { display: flex; gap: 8px; margin-top: 10px; align-items: center; }
+.dots-bar { display: flex; gap: 8px; margin-top: 15px; align-items: center; z-index: 20; }
 .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.2); cursor: pointer; transition: 0.3s; }
-.dot.active { width: 22px; border-radius: 4px; background: var(--accent-red); }
+.dot.active { width: 26px; border-radius: 4px; background: var(--accent-red); box-shadow: 0 0 10px var(--accent-red); }
 
 /* MODAL COTIZADOR */
 .modal-overlay {
@@ -621,8 +676,8 @@ footer {
   </div>
 
   <div class="carousel-container" id="carouselWrapper">
-    <button class="nav-arrow prev" id="prevBtn">&#8249;</button>
-    <button class="nav-arrow next" id="nextBtn">&#8250;</button>
+    <button class="nav-arrow prev" id="prevBtn" aria-label="Anterior">&#8249;</button>
+    <button class="nav-arrow next" id="nextBtn" aria-label="Siguiente">&#8250;</button>
 
     <div class="stage-3d" id="cardsStage"></div>
 
@@ -760,15 +815,18 @@ function renderCarousel(){
     else if(diff === total - 2) posClass = "left-2";
 
     return `
-      <div class="card-3d ${posClass}" data-index="${i}">
-        <span class="c-badge">${p.rating}</span>
-        <div class="c-play-icon">▶</div>
-        <div class="c-body">
-          <h3>${p.n}</h3>
-          <p>${p.d}</p>
-          <div class="c-tags">${p.s.map(s=>`<i>${s[0]}</i>`).join("")}</div>
+      <div class="card-3d-wrapper ${posClass}" data-index="${i}">
+        <div class="card-3d">
+          <span class="c-badge">${p.rating}</span>
+          <div class="c-play-icon">▶</div>
+          <div class="c-body">
+            <h3>${p.n}</h3>
+            <p>${p.d}</p>
+            <div class="c-tags">${p.s.map(s=>`<i>${s[0]}</i>`).join("")}</div>
+          </div>
+          <button class="c-btn-solicitar" onclick="openModal(${i})">SOLICITAR</button>
         </div>
-        <button class="c-btn-solicitar" onclick="openModal(${i})">SOLICITAR</button>
+        <div class="card-shadow-floor"></div>
       </div>
     `;
   }).join("");
@@ -777,6 +835,30 @@ function renderCarousel(){
   dotsContainer.innerHTML = BOTS.map((_, i)=>`
     <div class="dot ${i === pi ? 'active' : ''}" data-index="${i}"></div>
   `).join("");
+
+  attachTiltEffect();
+}
+
+/* INTERACTIVIDAD 3D / INCLINACIÓN PARALLAX EN MOUSEMOVE */
+function attachTiltEffect() {
+  const activeWrapper = document.querySelector('.card-3d-wrapper.center');
+  if(!activeWrapper) return;
+  const card = activeWrapper.querySelector('.card-3d');
+
+  activeWrapper.addEventListener('mousemove', (e) => {
+    const rect = activeWrapper.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    
+    const rotateX = (-y / rect.height) * 18;
+    const rotateY = (x / rect.width) * 18;
+    
+    card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  });
+
+  activeWrapper.addEventListener('mouseleave', () => {
+    card.style.transform = `rotateX(0deg) rotateY(0deg)`;
+  });
 }
 
 function openModal(index){
@@ -874,7 +956,7 @@ function startAutoRotate(){
   autoRotateTimer = setInterval(() => {
     pi = (pi + 1) % BOTS.length;
     renderCarousel();
-  }, 2200);
+  }, 2800);
 }
 
 function stopAutoRotate(){
@@ -885,9 +967,9 @@ $("nextBtn").onclick = () => { pi = (pi + 1) % BOTS.length; renderCarousel(); };
 $("prevBtn").onclick = () => { pi = (pi - 1 + BOTS.length) % BOTS.length; renderCarousel(); };
 
 $("cardsStage").addEventListener("click", e => {
-  const card = e.target.closest(".card-3d");
-  if(!card || e.target.classList.contains("c-btn-solicitar")) return;
-  const idx = +card.dataset.index;
+  const wrapper = e.target.closest(".card-3d-wrapper");
+  if(!wrapper || e.target.classList.contains("c-btn-solicitar")) return;
+  const idx = +wrapper.dataset.index;
   if(idx === pi) openModal(idx);
   else { pi = idx; renderCarousel(); }
 });
