@@ -3,194 +3,245 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="NOCTHRAX | Perú — Redes Sociales y Consultas Avanzadas.">
+<meta name="description" content="NOCTHRAX | Perú — Bots para redes sociales y servicios de consulta avanzada.">
 <meta name="theme-color" content="#062a26">
-<title>NOCTHRAX | Perú — Servicios y Consultas</title>
+<title>NOCTHRAX | Perú — Servicios y Bots</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#04201d;--cream:#f4fff8;--mut:#b5d6c9;--mint:#5cf2c1;--sky:#3ab8ff;--sun:#ffe58a;--glass:rgba(8,32,30,.65);--line:rgba(255,255,255,.18);--h:"Fredoka",system-ui,sans-serif;--b:"Nunito",system-ui,sans-serif;color-scheme:dark;box-sizing:border-box}
+:root{--bg:#04201d;--cream:#f4fff8;--mut:#b5d6c9;--mint:#5cf2c1;--sky:#3ab8ff;--sun:#ffe58a;--glass:rgba(8,32,30,.75);--glass-card:rgba(12,42,38,.85);--line:rgba(255,255,255,.16);--h:"Fredoka",system-ui,sans-serif;--b:"Nunito",system-ui,sans-serif;color-scheme:dark;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:90px}
 *,*::before,*::after{box-sizing:inherit}
-body{margin:0;color:var(--cream);font:400 16px/1.6 var(--b);background:linear-gradient(180deg,#0b3a35 0,#07302b 35%,#04201d 70%,#031613 100%) fixed;overflow-x:hidden}
+body{margin:0;color:var(--cream);font:400 16px/1.6 var(--b);background:linear-gradient(180deg,#0b3a35 0,#07302b 35%,#04201d 70%,#031613 100%) fixed;overflow-x:hidden;user-select:none}
 a{color:inherit;text-decoration:none}
 h1,h2,h3{font-family:var(--h);margin:0;line-height:1.1}
 
-/* Header y Menú hamburguesa de 3 líneas */
-header{position:fixed;z-index:50;top:14px;left:50%;transform:translateX(-50%);width:min(980px,92vw);display:flex;align-items:center;justify-content:space-between;padding:10px 22px;border:1px solid var(--line);border-radius:999px;background:rgba(10,52,46,.7);backdrop-filter:blur(16px);box-shadow:0 8px 30px rgba(0,0,0,.3)}
-.logo{font:700 20px var(--h);letter-spacing:.03em}.logo small{font-size:12px;color:var(--mint);margin-left:6px}
-nav{display:flex;gap:4px}nav a{padding:8px 14px;border-radius:999px;font-size:14px;font-weight:600;color:var(--mut);transition:.2s}nav a:hover{background:rgba(255,255,255,.12);color:#fff}
-.menu-btn{display:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:transparent;color:#fff;font-size:20px;cursor:pointer;place-items:center}
-@media(max-width:860px){.menu-btn{display:grid}nav{display:none;position:absolute;top:calc(100% + 10px);left:0;right:0;flex-direction:column;padding:12px;border-radius:20px;background:rgba(6,36,32,.98);border:1px solid var(--line)}nav.open{display:flex}nav a{padding:12px}}
+/* Header Minimalista: Solo Nombre de Empresa + Botón 3 Líneas */
+header{position:fixed;z-index:100;top:16px;left:50%;transform:translateX(-50%);width:min(940px,92vw);display:flex;align-items:center;justify-content:space-between;padding:12px 24px;border:1px solid var(--line);border-radius:999px;background:rgba(8,36,32,.85);backdrop-filter:blur(20px);box-shadow:0 10px 35px rgba(0,0,0,.4)}
+.logo{font:700 22px var(--h);letter-spacing:.03em;display:flex;align-items:center;gap:6px}.logo small{font-size:12px;color:var(--mint);font-weight:600}
+
+/* Botón Hamburguesa de 3 Líneas */
+.menu-btn{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.08);color:#fff;font-size:22px;cursor:pointer;display:grid;place-items:center;transition:.2s}
+.menu-btn:hover{background:rgba(255,255,255,.18);border-color:var(--mint)}
+
+/* Menú Desplegable Completo (+20 Servicios) */
+nav.dropdown-nav{display:none;position:fixed;top:80px;left:50%;transform:translateX(-50%);width:min(940px,92vw);max-height:80vh;overflow-y:auto;z-index:99;padding:24px;border-radius:28px;background:rgba(5,26,23,.97);border:1px solid var(--line);backdrop-filter:blur(25px);box-shadow:0 20px 60px rgba(0,0,0,.7)}
+nav.dropdown-nav.open{display:block;animation:fadeInDown .3s ease-out}
+@keyframes fadeInDown{from{opacity:0;transform:translate(-50%,-10px)}to{opacity:1;transform:translate(-50%,0)}}
+
+.nav-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:14px}
+.nav-item{padding:12px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.04);display:flex;align-items:center;gap:10px;font-weight:600;font-size:14px;transition:.2s}
+.nav-item:hover{background:rgba(92,242,193,.12);border-color:var(--mint);color:var(--mint)}
 
 /* Hero Principal */
-.hero{position:relative;min-height:90vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 5vw 60px}
-.moon{position:absolute;top:15%;left:50%;width:min(40vw,360px);aspect-ratio:1;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle at 40% 38%,#fffbe6,#ffe58a 45%,rgba(255,229,138,0) 72%);filter:blur(2px);opacity:.75}
-.hero h1{position:relative;font-weight:700;font-size:clamp(50px,14vw,180px);color:rgba(255,255,255,.95);text-shadow:0 8px 40px rgba(0,60,50,.6)}
-.hero .tag{position:relative;font:600 clamp(16px,2.2vw,24px) var(--h);color:var(--sun);margin:6px 0 16px}
-.hero p{position:relative;max-width:540px;margin:0 auto 24px;color:#e6fff4;font-size:16px}
-.fund{display:inline-flex;align-items:center;gap:10px;padding:6px 16px 6px 6px;border-radius:999px;border:1px solid var(--line);background:rgba(0,0,0,.3);margin-bottom:14px;font-size:14px}
+.hero{position:relative;min-height:85vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 5vw 60px}
+.moon{position:absolute;top:12%;left:50%;width:min(42vw,380px);aspect-ratio:1;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle at 40% 38%,#fffbe6,#ffe58a 45%,rgba(255,229,138,0) 72%);filter:blur(2px);opacity:.7}
+.hero h1{position:relative;font-weight:700;font-size:clamp(52px,15vw,180px);color:rgba(255,255,255,.96);text-shadow:0 8px 40px rgba(0,60,50,.6)}
+.hero .tag{position:relative;font:600 clamp(16px,2.4vw,24px) var(--h);color:var(--sun);margin:6px 0 16px}
+.hero p{position:relative;max-width:560px;margin:0 auto 26px;color:#e6fff4;font-size:16px}
+.fund{display:inline-flex;align-items:center;gap:10px;padding:6px 18px 6px 6px;border-radius:999px;border:1px solid var(--line);background:rgba(0,0,0,.3);margin-bottom:14px;font-size:14px}
 .fund b{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--mint),var(--sky));color:#022;font:700 13px var(--h)}
-.btn{display:inline-block;padding:14px 30px;border-radius:999px;border:0;background:linear-gradient(135deg,var(--mint),var(--sky));color:#032a22;font:700 16px var(--b);cursor:pointer;box-shadow:0 8px 25px rgba(58,184,255,.3)}
+.btn-hero{display:inline-block;padding:15px 34px;border-radius:999px;border:0;background:linear-gradient(135deg,var(--mint),var(--sky));color:#032a22;font:700 16px var(--b);cursor:pointer;box-shadow:0 8px 30px rgba(58,184,255,.35);transition:.2s}
+.btn-hero:hover{transform:translateY(-2px)}
 
-/* Secciones y Contenedores */
-section{padding:80px 5vw;max-width:1200px;margin:auto}
-h2{font-size:clamp(28px,4vw,42px);text-align:center;margin-bottom:10px}
+/* Secciones */
+section{padding:70px 5vw;max-width:1200px;margin:auto}
+h2{font-size:clamp(28px,4vw,44px);text-align:center;margin-bottom:10px}
 .lead{text-align:center;color:var(--mut);max-width:60ch;margin:0 auto 34px}
-.glass{border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(14px);border-radius:24px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
-.box{border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(14px);border-radius:20px;padding:24px}
-.box h3{font-size:20px;margin-bottom:6px}.box p{margin:0;color:var(--mut);font-size:14px}
 
-/* Pasarela exclusiva de Bots de Redes Sociales */
-.rowwrap{position:relative;overflow:hidden;padding:10px 0}
-.cards{display:flex;gap:18px;padding:20px 8px;width:max-content;animation:marquee 30s linear infinite}
-.cards:hover{animation-play-state:paused}
+/* Pasarela con Movimiento Continuo + Deslizamiento Libre por Arrastre */
+.rowwrap{position:relative;overflow:hidden;padding:14px 0;cursor:grab}
+.rowwrap:active{cursor:grabbing}
+.cards-container{display:flex;gap:20px;padding:20px 10px;width:max-content;animation:marquee 35s linear infinite}
+.cards-container.paused{animation-play-state:paused}
 @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.pc{flex:0 0 230px;text-align:left;border:1px solid var(--line);border-bottom:4px solid #6a5cff;border-radius:18px;padding:0;overflow:hidden;background:var(--glass);color:inherit;cursor:pointer;transition:.3s}
-.pc.on{border-bottom-color:var(--mint);box-shadow:0 0 0 2px var(--mint),0 15px 40px rgba(92,242,193,.3)}
-.art{height:120px;display:grid;place-items:center;background:linear-gradient(145deg,var(--a),var(--b))}
-.art svg{width:56px;height:56px}
-.bd{padding:14px}.bd h3{font-size:18px}.bd p{margin:4px 0 8px;font-size:13px;color:var(--mut);min-height:36px}
-.tg{display:flex;flex-wrap:wrap;gap:4px}.tg i{font:600 10px var(--b);padding:2px 8px;border-radius:999px;background:rgba(255,255,255,.15);font-style:normal}
 
-/* Calculadora dinámica para Bots */
-#calc{display:grid;grid-template-columns:.9fr 1.3fr;gap:30px;padding:30px;margin-top:20px}
-@media(max-width:860px){#calc{grid-template-columns:1fr;padding:20px}}
-.cl{text-align:center}.cl .big{width:100px;height:100px;margin:0 auto 12px;border-radius:24px;display:grid;place-items:center;background:linear-gradient(145deg,var(--a),var(--b))}
-.cl .big svg{width:50px;height:50px}.cl h3{font-size:26px}.cl p{color:var(--mut);margin:6px 0 0;font-size:14px}
-label{display:block;font:600 14px var(--b);color:var(--mut);margin:14px 0 6px}
+/* Tarjetas de Bots */
+.pc{flex:0 0 240px;text-align:left;border:1px solid var(--line);border-bottom:4px solid #6a5cff;border-radius:22px;padding:0;overflow:hidden;background:var(--glass-card);color:inherit;cursor:pointer;transition:transform .3s, border-color .3s, box-shadow .3s;box-shadow:0 12px 30px rgba(0,0,0,.4)}
+.pc:hover{transform:translateY(-6px)}
+.pc.on{transform:translateY(-10px) scale(1.04);border-color:var(--mint);box-shadow:0 0 0 2px var(--mint),0 20px 45px rgba(92,242,193,.35)}
+.art{height:130px;display:grid;place-items:center;background:linear-gradient(145deg,var(--a),var(--b));position:relative}
+.art svg{width:62px;height:62px;filter:drop-shadow(0 6px 12px rgba(0,0,0,.4))}
+.bd{padding:16px}.bd h3{font-size:20px;margin-bottom:4px}.bd p{margin:0 0 10px;font-size:13px;color:var(--mut);min-height:38px}
+.tg{display:flex;flex-wrap:wrap;gap:5px}.tg i{font:600 11px var(--b);padding:3px 10px;border-radius:999px;background:rgba(255,255,255,.12);font-style:normal}
+
+/* Rediseño Estético Estilo Neón para la Calculadora de Bots */
+.calc-box{border:1px solid var(--line);background:linear-gradient(145deg,rgba(10,48,42,.9),rgba(5,28,24,.95));backdrop-filter:blur(20px);border-radius:28px;padding:34px;margin-top:24px;box-shadow:0 20px 60px rgba(0,0,0,.5);display:grid;grid-template-columns:1fr 1.3fr;gap:36px;align-items:center}
+@media(max-width:860px){.calc-box{grid-template-columns:1fr;padding:24px;gap:24px}}
+
+.cl-info{text-align:center;padding:20px;border-radius:20px;background:rgba(255,255,255,.03);border:1px solid var(--line)}
+.cl-info .big-icon{width:110px;height:110px;margin:0 auto 16px;border-radius:28px;display:grid;place-items:center;background:linear-gradient(145deg,var(--a),var(--b));box-shadow:0 12px 35px rgba(0,0,0,.5)}
+.cl-info .big-icon svg{width:58px;height:58px}
+.cl-info h3{font-size:28px;margin-bottom:6px}.cl-info p{color:var(--mut);font-size:14px;margin:0}
+
+label{display:block;font:600 14px var(--b);color:var(--mut);margin:16px 0 8px}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
-.chips button{padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.07);color:#fff;font:600 13px var(--b);cursor:pointer}
-.chips button.on{background:linear-gradient(135deg,var(--mint),var(--sky));color:#032a22;border-color:transparent}
-.qty{display:flex;gap:8px;flex-wrap:wrap}
-input,select{width:100%;padding:12px 16px;border-radius:12px;border:1px solid var(--line);background:rgba(0,0,0,.3);color:#fff;font:600 15px var(--b)}
-.tot{display:flex;align-items:baseline;gap:12px;margin:16px 0 4px}
-.tot span{font:700 42px var(--h);color:var(--sun)}
-.acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
-.btn-wa{background:#25d366;color:#fff;border:0;padding:12px 24px;border-radius:999px;font-weight:700;cursor:pointer}
-.btn-tg{background:#2aabee;color:#fff;border:0;padding:12px 24px;border-radius:999px;font-weight:700;cursor:pointer}
+.chips button{padding:9px 18px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:#fff;font:600 14px var(--b);cursor:pointer;transition:.2s}
+.chips button.on{background:linear-gradient(135deg,var(--mint),var(--sky));color:#032a22;border-color:transparent;box-shadow:0 4px 15px rgba(92,242,193,.3)}
 
-/* Secciones de Nuevos Servicios Independientes (Sin calculadora) */
-.service-box{border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(14px);border-radius:20px;padding:24px;margin-bottom:20px}
-.service-box h3{font-size:22px;margin-bottom:8px;color:var(--sun)}
-.service-form{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
-.service-form input, .service-form select{flex:1 1 220px}
-.service-form button{background:linear-gradient(135deg,var(--mint),var(--sky));color:#032a22;border:0;padding:12px 24px;border-radius:12px;font-weight:700;cursor:pointer}
+.qty-wrap{display:flex;gap:10px;flex-wrap:wrap}
+input[type="number"], input[type="text"]{width:100%;padding:14px 18px;border-radius:14px;border:1px solid var(--line);background:rgba(0,0,0,.4);color:#fff;font:600 16px var(--b);transition:.2s}
+input:focus{outline:none;border-color:var(--mint);box-shadow:0 0 0 3px rgba(92,242,193,.25)}
+.qty-wrap input{flex:1 1 140px}
+.qty-wrap button{padding:0 18px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.08);color:#fff;font:600 14px var(--b);cursor:pointer;transition:.2s}
+.qty-wrap button:hover{border-color:var(--mint);background:rgba(255,255,255,.15)}
 
-/* Métodos de pago (Solo visuales con fondo) */
-.pay-box{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:160px;text-align:center}
-.pay-bg-logo{position:absolute;inset:0;display:grid;place-items:center;font-size:64px;opacity:0.12;font-weight:900;font-family:var(--h);pointer-events:none}
-.pay-content{position:relative;z-index:2}
-.pay-content h3{font-size:26px;margin-bottom:4px}
+.price-display{display:flex;align-items:baseline;gap:12px;margin:20px 0 10px}
+.price-display span{font:700 48px var(--h);color:var(--sun);text-shadow:0 0 25px rgba(255,229,138,.3)}
 
-/* Footer y WhatsApp flotante */
-footer{text-align:center;padding:40px 5vw;color:var(--mut);font-size:13px}
-.wf{position:fixed;right:18px;bottom:18px;z-index:45;width:54px;height:54px;border-radius:50%;background:#25d366;display:grid;place-items:center;font:700 16px var(--h);box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.btn-group{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+.btn-wa{background:#25d366;color:#fff;border:0;padding:14px 28px;border-radius:999px;font:700 15px var(--b);cursor:pointer;box-shadow:0 6px 20px rgba(37,211,102,.3);transition:.2s}
+.btn-tg{background:#2aabee;color:#fff;border:0;padding:14px 28px;border-radius:999px;font:700 15px var(--b);cursor:pointer;box-shadow:0 6px 20px rgba(42,171,238,.3);transition:.2s}
+.btn-wa:hover,.btn-tg:hover{transform:translateY(-2px)}
+
+/* Cuadros de Servicios Adicionales (Sin Calculadora) */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:20px}
+.card-service{border:1px solid var(--line);background:var(--glass-card);backdrop-filter:blur(14px);border-radius:22px;padding:26px;display:flex;flex-direction:column;justify-content:space-between;transition:.2s}
+.card-service:hover{border-color:var(--mint);transform:translateY(-4px)}
+.card-service h3{font-size:22px;color:var(--sun);margin-bottom:8px}
+.card-service p{color:var(--mut);font-size:14px;margin:0 0 16px;line-height:1.5}
+.card-service input{margin-bottom:14px}
+.btn-consult{background:linear-gradient(135deg,var(--mint),var(--sky));color:#032a22;border:0;padding:12px 22px;border-radius:12px;font:700 14px var(--b);cursor:pointer;width:100%}
+
+/* Métodos de Pago Solo Visuales */
+.pay-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
+.pay-card{position:relative;overflow:hidden;border:1px solid var(--line);background:var(--glass-card);border-radius:22px;min-height:160px;display:grid;place-items:center;text-align:center}
+.pay-bg-text{position:absolute;inset:0;display:grid;place-items:center;font-size:68px;opacity:.12;font-weight:900;font-family:var(--h);pointer-events:none}
+.pay-title{position:relative;z-index:2;font-size:26px;font-family:var(--h)}
+
+footer{text-align:center;padding:50px 5vw;color:var(--mut);font-size:13px}
+.wf{position:fixed;right:20px;bottom:20px;z-index:90;width:56px;height:56px;border-radius:50%;background:#25d366;display:grid;place-items:center;font:700 16px var(--h);box-shadow:0 8px 25px rgba(0,0,0,.5)}
 </style>
 </head>
 <body>
 
+<!-- Header con Nombre y Menú de 3 Líneas -->
 <header>
   <a class="logo" href="#inicio">NOCTHRAX<small>| Perú</small></a>
-  <nav id="nav">
-    <a href="#bots">Bots Redes Sociales</a>
-    <a href="#consultas">Consultas y Trámites</a>
-    <a href="#proceso">Cómo trabajamos</a>
-    <a href="#pagos">Pagos</a>
-    <a href="#contacto">Contacto</a>
-  </nav>
-  <button class="menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+  <button class="menu-btn" id="menuBtn" aria-label="Abrir Menú">☰</button>
 </header>
+
+<!-- Menú Desplegable Completo (+20 Servicios) -->
+<nav class="dropdown-nav" id="dropdownNav">
+  <h3 style="color:var(--sun);font-size:20px;margin-bottom:12px;">Todos los Servicios Disponibles</h3>
+  <div class="nav-grid">
+    <a href="#bots" class="nav-item">🤖 TikTok Bots</a>
+    <a href="#bots" class="nav-item">📸 Instagram Bots</a>
+    <a href="#bots" class="nav-item">▶️ YouTube Bots</a>
+    <a href="#bots" class="nav-item">✈️ Telegram Miembros</a>
+    <a href="#consultas" class="nav-item">🔍 Infocorp / Reportes</a>
+    <a href="#consultas" class="nav-item">🆔 Reniec & Fichas</a>
+    <a href="#consultas" class="nav-item">🚗 Vehicular & Sunarp</a>
+    <a href="#consultas" class="nav-item">⚖️ Justicia & Denuncias</a>
+    <a href="#consultas" class="nav-item">📱 Teléfonos SBI / DNI</a>
+    <a href="#consultas" class="nav-item">📊 Sentinel V3 PDF</a>
+    <a href="#consultas" class="nav-item">📜 Actas & Certificados</a>
+    <a href="#consultas" class="nav-item">🔎 Búsqueda Plus</a>
+    <a href="#consultas" class="nav-item">📘 Facebook Fanpage</a>
+    <a href="#consultas" class="nav-item">🟢 Kick Streamers</a>
+    <a href="#consultas" class="nav-item">🐦 X (Twitter) Alcance</a>
+    <a href="#consultas" class="nav-item">🎧 Spotify Premium</a>
+    <a href="#consultas" class="nav-item">🌐 Tráfico Web</a>
+    <a href="#consultas" class="nav-item">📝 Google Forms</a>
+    <a href="#pagos" class="nav-item">💳 Métodos de Pago</a>
+    <a href="#contacto" class="nav-item">💬 Contacto Directo</a>
+  </div>
+</nav>
 
 <section class="hero" id="inicio">
   <div class="moon"></div>
   <div class="fund"><b>R1</b>Fundador: R1</div>
   <h1>NOCTHRAX</h1>
   <p class="tag">Perú · Redes Sociales y Consultas Avanzadas</p>
-  <p>Impulsa tus redes con nuestra pasarela de bots automatizados y realiza consultas confiables al instante.</p>
-  <a class="btn" href="#bots">Explorar Bots de Redes Sociales</a>
+  <p>Impulsa tus redes sociales con la pasarela de bots automatizados y realiza consultas confidenciales al instante.</p>
+  <a class="btn-hero" href="#bots">Explorar Bots de Redes Sociales</a>
 </section>
 
-<!-- PASARELA EXCLUSIVA DE BOTS DE REDES SOCIALES CON CALCULADORA -->
+<!-- SECCIÓN DE BOTS EXCLUSIVA CON MOVIMIENTO + DESLIZAMIENTO CON MOUSE Y CALCULADORA -->
 <section id="bots">
   <h2>Bots para Redes Sociales</h2>
-  <p class="lead">Selecciona una plataforma y calcula el precio exacto de tu servicio al instante.</p>
-  <div class="rowwrap"><div class="cards" id="cards"></div></div>
-  <div class="glass" id="calc"></div>
+  <p class="lead">Arrastra con el mouse para explorar los bots y calcula el precio exacto de tu pedido.</p>
+  
+  <div class="rowwrap" id="draggableRow">
+    <div class="cards-container" id="cardsContainer"></div>
+  </div>
+
+  <div class="calc-box" id="calcBox"></div>
 </section>
 
-<!-- NUEVOS SERVICIOS SEPARADOS (SIN CALCULADORA DE PRECIOS) -->
+<!-- SECCIÓN DE SERVICIOS ADICIONALES (SIN CALCULADORA) -->
 <section id="consultas">
   <h2>Consultas y Trámites Especiales</h2>
-  <p class="lead">Servicios avanzados de búsqueda, identidad, vehículos y registros oficiales.</p>
+  <p class="lead">Ingresa tus datos o documento para solicitar la información correspondiente.</p>
   
-  <div class="grid">
-    <div class="service-box">
-      <h3>🔍 Reporte Infocorp / Financiero</h3>
-      <p>Consulta tu perfil crediticio y de deudas por DNI, RUC o CE.</p>
-      <div class="service-form">
-        <select><option>DNI</option><option>RUC</option><option>CE</option></select>
-        <input placeholder="N° de Documento...">
-        <button onclick="window.open(wa('Hola NOCTHRAX, deseo consultar Infocorp.'), '_blank')">Consultar</button>
-      </div>
+  <div class="services-grid">
+    <div class="card-service">
+      <h3>🔍 Infocorp / Financiero</h3>
+      <p>Reportes de deudas, clasificación SBS y historial crediticio.</p>
+      <input type="text" id="inInfocorp" placeholder="Ingrese DNI, RUC o CE...">
+      <button class="btn-consult" onclick="sendConsult('Infocorp', $'inInfocorp'.value)">Consultar</button>
     </div>
 
-    <div class="service-box">
-      <h3>🚗 Vehicular / Sunarp</h3>
-      <p>Consulta gravámenes, SOAT, TIVE y asientos registrales.</p>
-      <div class="service-form">
-        <input placeholder="Número de Placa o VIN...">
-        <button onclick="window.open(wa('Hola NOCTHRAX, deseo consulta Vehicular Sunarp.'), '_blank')">Consultar</button>
-      </div>
+    <div class="card-service">
+      <h3>🚗 Vehicular & Sunarp</h3>
+      <p>Gravamen, SOAT, TIVE, asientos registrales y boletín informativo.</p>
+      <input type="text" id="inVehiculo" placeholder="Ingrese Número de Placa o VIN...">
+      <button class="btn-consult" onclick="sendConsult('Vehicular/Sunarp', $'inVehiculo'.value)">Consultar</button>
     </div>
 
-    <div class="service-box">
-      <h3>📂 Reniec & Identidad</h3>
-      <p>Fichas, búsqueda por nombres y DNI virtual.</p>
-      <div class="service-form">
-        <input placeholder="Nombres completos o DNI...">
-        <button onclick="window.open(wa('Hola NOCTHRAX, deseo consulta Reniec.'), '_blank')">Consultar</button>
-      </div>
+    <div class="card-service">
+      <h3>🆔 Reniec & Identidad</h3>
+      <p>Fichas JSON, búsqueda por nombres, árbol genealógico y DNI virtual.</p>
+      <input type="text" id="inReniec" placeholder="Ingrese Nombres Completos o DNI...">
+      <button class="btn-consult" onclick="sendConsult('Reniec', $'inReniec'.value)">Consultar</button>
     </div>
 
-    <div class="service-box">
+    <div class="card-service">
       <h3>⚖️ Justicia & Policía</h3>
       <p>Antecedentes penales, policiales, requisitorias y denuncias.</p>
-      <div class="service-form">
-        <input placeholder="DNI de la persona...">
-        <button onclick="window.open(wa('Hola NOCTHRAX, deseo consultar Antecedentes/Justicia.'), '_blank')">Consultar</button>
-      </div>
+      <input type="text" id="inJusticia" placeholder="Ingrese DNI de la persona...">
+      <button class="btn-consult" onclick="sendConsult('Justicia/Policía', $'inJusticia'.value)">Consultar</button>
+    </div>
+
+    <div class="card-service">
+      <h3>📱 Teléfonos SBI / DNI</h3>
+      <p>Consulta titularidad de líneas telefónicas por DNI o número.</p>
+      <input type="text" id="inTel" placeholder="Ingrese Teléfono o DNI...">
+      <button class="btn-consult" onclick="sendConsult('Teléfonos SBI', $'inTel'.value)">Consultar</button>
+    </div>
+
+    <div class="card-service">
+      <h3>📜 Actas & Certificados</h3>
+      <p>Actas de nacimiento, matrimonio, defunción y certificados laborales.</p>
+      <input type="text" id="inActas" placeholder="Ingrese los nombres completos...">
+      <button class="btn-consult" onclick="sendConsult('Actas', $'inActas'.value)">Consultar</button>
     </div>
   </div>
 </section>
 
-<section id="proceso">
-  <h2>Cómo trabajamos</h2>
-  <div class="grid">
-    <div class="box"><h3>1. Configuras</h3><p>Eliges tu bot de redes sociales o indicas tus datos para consultas.</p></div>
-    <div class="box"><h3>2. Transfieres</h3><p>Realiza tu pago en nuestros canales oficiales locales.</p></div>
-    <div class="box"><h3>3. Entrega</h3><p>Procesamos y entregamos tu pedido de manera rápida y segura.</p></div>
-  </div>
-</section>
-
-<!-- MÉTODOS DE PAGO (SOLO VISUALES CON LOGO DE FONDO) -->
+<!-- MÉTODOS DE PAGO SOLO VISUALES CON LOGOS -->
 <section id="pagos">
   <h2>Métodos de Pago</h2>
-  <p class="lead">Realiza tus transferencias de forma segura.</p>
-  <div class="grid">
-    <div class="box pay-box"><div class="pay-bg-logo" style="color:#9b5cff">YAPE</div><div class="pay-content"><h3 style="color:#9b5cff">Yape</h3><p>Disponible</p></div></div>
-    <div class="box pay-box"><div class="pay-bg-logo" style="color:#14b8c4">PLIN</div><div class="pay-content"><h3 style="color:#14b8c4">Plin</h3><p>Disponible</p></div></div>
-    <div class="box pay-box"><div class="pay-bg-logo" style="color:#ff8a3d">BCP</div><div class="pay-content"><h3 style="color:#ff8a3d">BCP</h3><p>Disponible</p></div></div>
-    <div class="box pay-box"><div class="pay-bg-logo" style="color:#f3ba2f">USDT</div><div class="pay-content"><h3 style="color:#f3ba2f">Binance</h3><p>Disponible</p></div></div>
+  <p class="lead">Transferencias directas a nuestras cuentas oficiales.</p>
+  <div class="pay-grid">
+    <div class="pay-card"><div class="pay-bg-text" style="color:#9b5cff">YAPE</div><div class="pay-title" style="color:#9b5cff">Yape</div></div>
+    <div class="pay-card"><div class="pay-bg-text" style="color:#14b8c4">PLIN</div><div class="pay-title" style="color:#14b8c4">Plin</div></div>
+    <div class="pay-card"><div class="pay-bg-text" style="color:#ff8a3d">BCP</div><div class="pay-title" style="color:#ff8a3d">BCP</div></div>
+    <div class="pay-card"><div class="pay-bg-text" style="color:#f3ba2f">USDT</div><div class="pay-title" style="color:#f3ba2f">Binance</div></div>
   </div>
 </section>
 
 <section id="contacto">
   <h2>Contacto Directo</h2>
-  <div class="grid">
-    <a class="box" id="cWa" target="_blank" rel="noopener"><h3>WhatsApp</h3><p id="waTxt"></p></a>
-    <a class="box" id="cTg" target="_blank" rel="noopener"><h3>Telegram</h3><p id="tgTxt"></p></a>
+  <div class="services-grid">
+    <a class="card-service" id="cWa" target="_blank" rel="noopener">
+      <h3>WhatsApp Oficial</h3>
+      <p id="waTxt"></p>
+    </a>
+    <a class="card-service" id="cTg" target="_blank" rel="noopener">
+      <h3>Telegram Oficial</h3>
+      <p id="tgTxt"></p>
+    </a>
   </div>
 </section>
 
@@ -205,10 +256,10 @@ const CFG = {
 };
 
 const SEG=[3,5.5,8,10.5,12,14.5,17,19.5,22,24], LK=[3,5,7,9,10,12,14,16,18,20], VW=[3,4,5,6,7,8.5,10,11.5,13,14], CM=[5,9,13,17,20,24,28,32,36,40];
-const P = [
-  {k:"tiktok", n:"TikTok (Bots)", c:["#1b1b2f","#fe2c55"], d:"Seguidores, likes y vistas estables.", s:[["Seguidores",SEG],["Me gusta",LK],["Vistas",VW],["Comentarios",CM]]},
-  {k:"instagram", n:"Instagram (Bots)", c:["#f58529","#8134af"], d:"Impulsa tu cuenta al instante.", s:[["Seguidores",SEG],["Me gusta",LK],["Vistas",VW],["Comentarios",CM]]},
-  {k:"youtube", n:"YouTube", c:["#ff2a2a","#7a0010"], d:"Suscriptores y reproducciones.", s:[["Suscriptores",[3,6,9,12,14,17,20,23,26,28]],["Vistas",VW],["Me gusta",LK]]},
+const BOTS = [
+  {k:"tiktok", n:"TikTok (Bots)", c:["#1b1b2f","#fe2c55"], d:"Seguidores, likes, vistas y comentarios.", s:[["Seguidores",SEG],["Me gusta",LK],["Vistas",VW],["Comentarios",CM]]},
+  {k:"instagram", n:"Instagram (Bots)", c:["#f58529","#8134af"], d:"Crecimiento rápido para tu perfil.", s:[["Seguidores",SEG],["Me gusta",LK],["Vistas",VW],["Comentarios",CM]]},
+  {k:"youtube", n:"YouTube", c:["#ff2a2a","#7a0010"], d:"Suscriptores, vistas y me gusta.", s:[["Suscriptores",[3,6,9,12,14,17,20,23,26,28]],["Vistas",VW],["Me gusta",LK]]},
   {k:"telegram", n:"Telegram", c:["#2aabee","#1b6fb5"], d:"Miembros para grupos y canales.", s:[["Miembros garantizados",[3,6,9,12,15]],["Miembros Premium",[5,10,15]]]}
 ];
 
@@ -224,84 +275,146 @@ const wa=t=>`https://wa.me/${CFG.whatsapp}?text=${encodeURIComponent(t)}`;
 const money=n=>"S/ "+n.toFixed(2);
 function calc(a,q){if(!a)return 3;if(q>a.length*100)return null;if(q<100)return Math.max(3,+(a[0]*q/100).toFixed(2));const i=Math.floor(q/100)-1,r=q%100;return r?+(a[i]+(a[i+1]-a[i])*r/100).toFixed(2):a[i]}
 
-let pi=0, si=0, q=100;
+let pi=0, si=0, q=500;
 
-const cardsHTML = P.map((p,i)=>`<button class="pc" data-i="${i}" style="--a:${p.c[0]};--b:${p.c[1]}"><div class="art">${IC[p.k]}</div><div class="bd"><h3>${p.n}</h3><p>${p.d}</p><div class="tg">${p.s.map(s=>`<i>${s[0]}</i>`).join("")}</div></div></button>`).join("");
-$("cards").innerHTML = cardsHTML + cardsHTML;
-
-function build(){
-  const p = P[pi], s = p.s[si];
-  document.querySelectorAll(".pc").forEach((c, idx)=>{
-    if((idx%P.length)===pi) c.classList.add("on"); else c.classList.remove("on");
-  });
-  $("calc").style.cssText = `--a:${p.c[0]};--b:${p.c[1]}`;
-  
-  const left = `<div class="cl"><div class="big">${IC[p.k]}</div><h3>${p.n}</h3><p>${p.d}</p></div>`;
-  
-  let priceDisplay = s[1] ? money(q>=50 ? calc(s[1], q) : s[1][0]) : "S/ 3.00";
-
-  $("calc").innerHTML = left + `<div>
-    <label>Opción / Servicio de Bot</label>
-    <div class="chips">${p.s.map((x,j)=>`<button data-j="${j}" class="${j==si?"on":""}">${x[0]}</button>`).join("")}</div>
-    <label>Cantidad <small>(mín. 50)</small></label>
-    <div class="qty"><input id="q" type="number" min="50" value="${q}" inputmode="numeric"><button data-q="100">100</button><button data-q="500">500</button><button data-q="1000">1000</button></div>
-    <label>Usuario o Enlace</label>
-    <input id="tu" placeholder="@usuario o https://…">
-    <div class="tot"><span id="tp">${priceDisplay}</span></div>
-    <div class="acts">
-      <button class="btn-wa" data-act="wa">Pedir por WhatsApp</button>
-      <button class="btn-tg" data-act="tg">Pedir por Telegram</button>
+/* Generar Tarjetas en Bucle */
+const cardsHTML = BOTS.map((p,i)=>`
+  <button class="pc" data-i="${i}" style="--a:${p.c[0]};--b:${p.c[1]}">
+    <div class="art">${IC[p.k]}</div>
+    <div class="bd">
+      <h3>${p.n}</h3>
+      <p>${p.d}</p>
+      <div class="tg">${p.s.map(s=>`<i>${s[0]}</i>`).join("")}</div>
     </div>
-  </div>`;
-  upd();
+  </button>
+`).join("");
+
+$("cardsContainer").innerHTML = cardsHTML + cardsHTML;
+
+/* Construir Calculadora Exclusiva de Bots */
+function buildCalc(){
+  const p = BOTS[pi], s = p.s[si];
+  document.querySelectorAll(".pc").forEach((c, idx)=>{
+    if((idx % BOTS.length) === pi) c.classList.add("on"); else c.classList.remove("on");
+  });
+  
+  $("calcBox").style.cssText = `--a:${p.c[0]};--b:${p.c[1]}`;
+  const priceDisplay = s[1] ? money(q>=50 ? calc(s[1], q) : s[1][0]) : "S/ 3.00";
+
+  $("calcBox").innerHTML = `
+    <div class="cl-info">
+      <div class="big-icon">${IC[p.k]}</div>
+      <h3>${p.n}</h3>
+      <p>${p.d}</p>
+    </div>
+    <div>
+      <label>Opción / Servicio de Bot</label>
+      <div class="chips">${p.s.map((x,j)=>`<button data-j="${j}" class="${j==si?"on":""}">${x[0]}</button>`).join("")}</div>
+      
+      <label>Cantidad (mín. 50)</label>
+      <div class="qty-wrap">
+        <input id="qInput" type="number" min="50" value="${q}" inputmode="numeric">
+        <button data-q="100">100</button>
+        <button data-q="500">500</button>
+        <button data-q="1000">1000</button>
+      </div>
+
+      <label>Usuario o Enlace</label>
+      <input id="uInput" type="text" placeholder="@usuario o https://…">
+
+      <div class="price-display"><span id="tpSpan">${priceDisplay}</span></div>
+
+      <div class="btn-group">
+        <button class="btn-wa" data-act="wa">Pedir por WhatsApp</button>
+        <button class="btn-tg" data-act="tg">Pedir por Telegram</button>
+      </div>
+    </div>
+  `;
 }
 
-function upd(){
-  const s = P[pi].s[si];
+function updPrice(){
+  const s = BOTS[pi].s[si];
   if(!s[1]) return;
   const mx = s[1].length * 100;
   const p = (q >= 50 && q <= mx) ? calc(s[1], q) : s[1][0];
-  if($("tp")) $("tp").textContent = p != null ? money(p) : "—";
+  if($("tpSpan")) $("tpSpan").textContent = p != null ? money(p) : "—";
 }
 
-function msg(){
-  const p=P[pi], s=p.s[si];
+function botMsg(){
+  const p=BOTS[pi], s=p.s[si];
   let t=`NOCTHRAX | Perú 👋\nQuiero Bot: ${p.n} — ${s[0]}`;
   if(s[1] && q>=50){t+=`\nCantidad: ${q}`; const v=calc(s[1],q); if(v!=null) t+=`\nPrecio: ${money(v)}`;}
-  const u=$("tu")&&$("tu").value.trim();
+  const u=$("uInput")&&$("uInput").value.trim();
   if(u) t+=`\nUsuario/Enlace: ${u}`;
   t+=`\n\n📌 Adjunto mi comprobante de pago.`;
   return t;
 }
 
-$("calc").addEventListener("click", e=>{
+$("calcBox").addEventListener("click", e=>{
   const b = e.target.closest("button");
   if(!b) return;
-  if(b.dataset.j!=null){ si=+b.dataset.j; q=100; build(); }
-  else if(b.dataset.q){ q=Math.min(+b.dataset.q, (P[pi].s[si][1]||[]).length*100||1000); if($("q")) $("q").value=q; upd(); }
-  else if(b.dataset.act=="wa"){ window.open(wa(msg()), "_blank"); }
-  else if(b.dataset.act=="tg"){ window.open("https://t.me/"+CFG.telegram+"?text="+encodeURIComponent(msg()), "_blank"); }
+  if(b.dataset.j!=null){ si=+b.dataset.j; q=500; buildCalc(); }
+  else if(b.dataset.q){ q=+b.dataset.q; if($("qInput")) $("qInput").value=q; updPrice(); }
+  else if(b.dataset.act=="wa"){ window.open(wa(botMsg()), "_blank"); }
+  else if(b.dataset.act=="tg"){ window.open("https://t.me/"+CFG.telegram+"?text="+encodeURIComponent(botMsg()), "_blank"); }
 });
 
-$("calc").addEventListener("input", e=>{ if(e.target.id=="q"){ q=Math.floor(+e.target.value)||0; upd(); } });
-$("cards").addEventListener("click", e=>{
+$("calcBox").addEventListener("input", e=>{ if(e.target.id=="qInput"){ q=Math.floor(+e.target.value)||0; updPrice(); } });
+
+$("cardsContainer").addEventListener("click", e=>{
   const c = e.target.closest(".pc");
   if(!c) return;
-  pi = +c.dataset.i % P.length; si = 0; q = 100; build();
-  $("calc").scrollIntoView({behavior:"smooth", block:"nearest"});
+  pi = +c.dataset.i % BOTS.length; si = 0; q = 500; buildCalc();
+  $("calcBox").scrollIntoView({behavior:"smooth", block:"nearest"});
 });
 
-/* Contacto y menú */
+/* Envío directo para Servicios Especiales */
+function sendConsult(service, value){
+  const val = value ? value.trim() : "";
+  const msg = `NOCTHRAX | Perú 👋\nQuiero servicio de Consulta: ${service}` + (val ? `\nDato enviado: ${val}` : "");
+  window.open(wa(msg), "_blank");
+}
+
+/* Arrastre con Mouse para la Pasarela */
+const dragRow = $("draggableRow");
+const cardsContainer = $("cardsContainer");
+let isDown = false, startX, scrollLeft;
+
+dragRow.addEventListener('mousedown', (e) => {
+  isDown = true;
+  cardsContainer.classList.add('paused');
+  startX = e.pageX - dragRow.offsetLeft;
+  scrollLeft = dragRow.scrollLeft;
+});
+dragRow.addEventListener('mouseleave', () => { isDown = false; cardsContainer.classList.remove('paused'); });
+dragRow.addEventListener('mouseup', () => { isDown = false; cardsContainer.classList.remove('paused'); });
+dragRow.addEventListener('mousemove', (e) => {
+  if(!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - dragRow.offsetLeft;
+  const walk = (x - startX) * 2;
+  dragRow.scrollLeft = scrollLeft - walk;
+});
+
+/* Menú Desplegable */
+$("menuBtn").onclick = (e) => {
+  e.stopPropagation();
+  $("dropdownNav").classList.toggle("open");
+};
+document.addEventListener("click", (e) => {
+  if(!e.target.closest("#dropdownNav") && !e.target.closest("#menuBtn")){
+    $("dropdownNav").classList.remove("open");
+  }
+});
+
+/* Datos de contacto */
 $("cWa").href = wa("Hola NOCTHRAX | Perú, quiero información.");
 $("waF").href = wa("Hola NOCTHRAX | Perú.");
 $("waTxt").textContent = CFG.whatsappShow;
 $("cTg").href = "https://t.me/" + CFG.telegram;
 $("tgTxt").textContent = "@" + CFG.telegram;
 
-$("menuBtn").onclick = ()=> $("nav").classList.toggle("open");
-document.querySelectorAll("nav a").forEach(a=> a.onclick = ()=> $("nav").classList.remove("open"));
-
-build();
+buildCalc();
 </script>
 </body>
 </html>
