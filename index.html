@@ -473,10 +473,39 @@ footer { text-align: center; color: var(--text-muted); font-size: 10px; letter-s
 <script>
 const CFG = { whatsapp: "573135022169", telegram: "ABRRLADOR" };
 
-const SEG = [3.00, 5.50, 8.00, 10.50, 12.00, 14.50, 17.00, 19.50, 22.00, 24.00];
-const LIK = [3.00, 5.00, 7.00, 9.00, 10.00, 12.00, 14.00, 16.00, 18.00, 20.00];
-const VIE = [3.00, 4.00, 5.00, 6.00, 7.00, 8.50, 10.00, 11.50, 13.00, 14.00];
-const SAV = [3.00, 5.00, 7.00, 9.00, 10.00, 12.00, 14.00, 16.00, 18.00, 18.00];
+/* TABLAS DE PRECIOS EXACTAS BASADAS EN LAS IMÁGENES (Mínimo S/ 3.00) */
+const TIKTOK_PRICES = {
+  "Seguidores": [3.00, 5.50, 8.00, 10.50, 12.00, 14.50, 17.00, 19.50, 22.00, 24.00],
+  "Likes / Me Gusta": [3.00, 5.00, 7.00, 9.00, 10.00, 12.00, 14.00, 16.00, 18.00, 20.00],
+  "Vistas (Views)": [3.00, 4.00, 5.00, 6.00, 7.00, 8.50, 10.00, 11.50, 13.00, 14.00],
+  "Guardados (Saves)": [3.00, 5.00, 7.00, 9.00, 10.00, 12.00, 14.00, 16.00, 18.00, 18.00],
+  "Comentarios (Custom/Random)": [5.00, 9.00, 13.00, 17.00, 20.00, 24.00, 28.00, 32.00, 36.00, 40.00],
+  "Espectadores en Live": [6.00, 11.00, 16.00, 21.00, 25.00, 30.00, 35.00, 40.00, 45.00, 50.00]
+};
+
+const INSTAGRAM_PRICES = {
+  "Seguidores (Instagram)": [3.00, 5.50, 8.00, 10.50, 12.00, 14.50, 17.00, 19.50, 22.00, 24.00],
+  "Likes / Me Gusta": [3.00, 5.00, 7.00, 9.00, 10.00, 12.00, 14.00, 16.00, 18.00, 20.00],
+  "Vistas (Reels/Videos)": [3.00, 4.00, 5.00, 6.00, 7.00, 8.50, 10.00, 11.50, 13.00, 14.00],
+  "Guardados (Saves)": [3.00, 5.00, 7.00, 9.00, 10.00, 12.00, 14.00, 16.00, 18.00, 18.00],
+  "Comentarios (Custom/Random)": [5.00, 9.00, 13.00, 17.00, 20.00, 24.00, 28.00, 32.00, 36.00, 40.00],
+  "Visualizaciones en Stories": [3.00, 5.00, 7.00, 9.00, 10.00, 12.00, 14.00, 16.00, 18.00, 20.00]
+};
+
+const YOUTUBE_PRICES = {
+  "Suscriptores (YouTube)": [3.00, 6.00, 9.00, 12.00, 14.00, 17.00, 20.00, 23.00, 26.00, 28.00],
+  "Vistas / Visualizaciones (Videos)": [3.00, 4.00, 5.00, 6.00, 7.00, 8.50, 10.00, 11.50, 13.00, 14.00],
+  "Likes / Me Gusta": [3.00, 5.00, 7.00, 9.00, 10.00, 12.00, 14.00, 16.00, 18.00, 20.00],
+  "Horas de Reproducción (Monetización)": [6.00, 11.00, 16.00, 21.00, 25.00, 30.00, 35.00, 40.00, 45.00, 50.00],
+  "Comentarios (Custom/Random)": [5.00, 9.00, 13.00, 17.00, 20.00, 24.00, 28.00, 32.00, 36.00, 40.00],
+  "Vistas para Shorts (o Directos)": [3.00, 5.00, 7.00, 9.00, 10.00, 12.00, 14.00, 16.00, 18.00, 20.00]
+};
+
+const GENERAL_DEFAULT_PRICES = {
+  "Seguidores": [3.00, 5.50, 8.00, 10.50, 12.00, 14.50, 17.00, 19.50, 22.00, 24.00],
+  "Likes / Me Gusta": [3.00, 5.00, 7.00, 9.00, 10.00, 12.00, 14.00, 16.00, 18.00, 20.00],
+  "Vistas / Reproducciones": [3.00, 4.00, 5.00, 6.00, 7.00, 8.50, 10.00, 11.50, 13.00, 14.00]
+};
 
 const WEB_TIERS = [
   ["Landing Page Básica", "1 Sección optimizada, diseño adaptable móvil, enlace directo a WhatsApp.", "S/ 20.00"],
@@ -494,29 +523,18 @@ const BOT_TIERS = [
   ["Bot Full Business con Pagos", "Integración completa de pagos, catálogo y soporte multiusuario.", "S/ 65.00"]
 ];
 
+/* TARJETAS PRINCIPALES (Nombres limpios sin "Growth", calculadora exclusiva para redes sociales con tablas) */
 const BOTS = [
   { k:"web", n:"Creación de tu Página Web", rating:"9.9 ★", hasCalc:false, d:"Construcción y diseño profesional de páginas web a tu medida.", s:WEB_TIERS },
   { k:"bot", n:"¡Creamos tu Bot de Telegram & WhatsApp!", rating:"9.8 ★", hasCalc:false, d:"Automatización inteligente 24/7 para escalar tus ventas al instante.", s:BOT_TIERS },
-  { k:"tiktok", n:"TikTok", rating:"9.8 ★", hasCalc:true, d:"Impulso algorítmico inmediato para tus videos.", s:[
-      ["Seguidores", SEG],
-      ["Me gusta en comentarios", LIK],
-      ["Me gusta en directos", LIK],
-      ["Me gusta en publicaciones", LIK],
-      ["Comentarios", LIK],
-      ["Puntos de Batalla PK", SEG],
-      ["Compartidos", SAV],
-      ["Guardados", SAV],
-      ["Espectadores en vivo", VIE],
-      ["Vistas", VIE]
-    ] 
-  },
-  { k:"instagram", n:"Instagram", rating:"9.9 ★", hasCalc:true, d:"Posicionamiento orgánico y aceleración de perfil.", s:[["Seguidores Latam", SEG],["Likes Alta Calidad", LIK],["Reels Views Viral", VIE],["Stories Views", SEG]] },
-  { k:"facebook", n:"Facebook", rating:"9.7 ★", hasCalc:true, d:"Aumento de seguidores, reacciones y reproducciones.", s:[["Seguidores Página", SEG],["Likes / Reacciones", LIK],["Reproducciones Video", VIE],["Compartidos", SAV]] },
-  { k:"youtube", n:"YouTube", rating:"9.8 ★", hasCalc:true, d:"Visibilidad, suscriptores y visualizaciones.", s:[["Suscriptores Reales", SEG],["Visualizaciones / Views", VIE],["Likes / Me gusta", LIK],["Horas de Reproducción", SAV]] },
-  { k:"telegram", n:"Telegram", rating:"9.7 ★", hasCalc:true, d:"Miembros e interacciones para canales y grupos.", s:[["Miembros Garantizados", SEG],["Vistas Publicación", VIE],["Miembros Premium", SEG]] },
-  { k:"kick", n:"Kick", rating:"9.6 ★", hasCalc:true, d:"Impulsa tus directos y seguidores en Kick.", s:[["Seguidores Activos", SEG],["Visualizaciones Directo", VIE]] },
-  { k:"twitter", n:"X (Twitter)", rating:"9.6 ★", hasCalc:true, d:"Aumento de seguidores y alcance en publicaciones.", s:[["Seguidores", SEG],["Likes / Retweets", LIK]] },
-  { k:"spotify", n:"Spotify", rating:"9.7 ★", hasCalc:true, d:"Reproducciones y oyentes mensuales para música.", s:[["Reproducciones Tracks", VIE],["Oyentes Mensuales", SEG]] }
+  { k:"tiktok", n:"TikTok", rating:"9.8 ★", hasCalc:true, priceTable: TIKTOK_PRICES, d:"Impulso algorítmico inmediato para tus videos.", s: Object.keys(TIKTOK_PRICES).map(k=>[k]) },
+  { k:"instagram", n:"Instagram", rating:"9.9 ★", hasCalc:true, priceTable: INSTAGRAM_PRICES, d:"Posicionamiento orgánico y aceleración de perfil.", s: Object.keys(INSTAGRAM_PRICES).map(k=>[k]) },
+  { k:"facebook", n:"Facebook", rating:"9.7 ★", hasCalc:true, priceTable: GENERAL_DEFAULT_PRICES, d:"Aumento de seguidores, reacciones y reproducciones.", s: Object.keys(GENERAL_DEFAULT_PRICES).map(k=>[k]) },
+  { k:"youtube", n:"YouTube", rating:"9.8 ★", hasCalc:true, priceTable: YOUTUBE_PRICES, d:"Visibilidad, suscriptores y visualizaciones.", s: Object.keys(YOUTUBE_PRICES).map(k=>[k]) },
+  { k:"telegram", n:"Telegram", rating:"9.7 ★", hasCalc:true, priceTable: GENERAL_DEFAULT_PRICES, d:"Miembros e interacciones para canales y grupos.", s: Object.keys(GENERAL_DEFAULT_PRICES).map(k=>[k]) },
+  { k:"kick", n:"Kick", rating:"9.6 ★", hasCalc:true, priceTable: GENERAL_DEFAULT_PRICES, d:"Impulsa tus directos y seguidores en Kick.", s: Object.keys(GENERAL_DEFAULT_PRICES).map(k=>[k]) },
+  { k:"twitter", n:"X (Twitter)", rating:"9.6 ★", hasCalc:true, priceTable: GENERAL_DEFAULT_PRICES, d:"Aumento de seguidores y alcance en publicaciones.", s: Object.keys(GENERAL_DEFAULT_PRICES).map(k=>[k]) },
+  { k:"spotify", n:"Spotify", rating:"9.7 ★", hasCalc:true, priceTable: GENERAL_DEFAULT_PRICES, d:"Reproducciones y oyentes mensuales para música.", s: Object.keys(GENERAL_DEFAULT_PRICES).map(k=>[k]) }
 ];
 
 const ALL_SERVICES_MAP = [
@@ -562,27 +580,23 @@ window.addEventListener("keydown", function(e) {
   }
 });
 
-function calcPrice(arr, qty){
-  if(!qty || qty < 20) return 3.00;
+function calcPriceFromTable(arr, qty){
+  if(!qty || qty < 100) return Math.max(3.00, arr[0]);
   if(!Array.isArray(arr)) return 3.00;
-  let total = 0;
-  if(qty <= 200){
-    const idx = Math.floor(qty / 20) - 1;
-    if(idx < 0) total = arr[0] * (qty / 20);
-    else {
-      const rem = qty % 20;
-      if(rem === 0) total = arr[Math.min(idx, arr.length - 1)];
-      else {
-        const p1 = arr[Math.min(idx, arr.length - 1)];
-        const p2 = arr[Math.min(idx + 1, arr.length - 1)];
-        total = p1 + (p2 - p1) * (rem / 20);
-      }
-    }
-  } else {
-    const pricePerUnit = arr[arr.length - 1] / 200;
-    total = qty * pricePerUnit;
+  
+  const indexTier = Math.floor(qty / 100) - 1;
+  if(indexTier < 0) return Math.max(3.00, arr[0]);
+  if(indexTier >= arr.length - 1) {
+    const lastPrice = arr[arr.length - 1];
+    const unitExtra = lastPrice / 1000;
+    return Math.max(3.00, +(qty * (unitExtra / 1)).toFixed(2));
   }
-  return Math.max(3.00, +total.toFixed(2));
+  
+  const p1 = arr[indexTier];
+  const p2 = arr[indexTier + 1];
+  const rem = qty % 100;
+  const interpolated = p1 + (p2 - p1) * (rem / 100);
+  return Math.max(3.00, +interpolated.toFixed(2));
 }
 
 let pi=0, si=0, q=500;
@@ -638,8 +652,9 @@ function updatePriceDisplay() {
   const p = BOTS[pi], s = p.s[si];
   if(p.hasCalc) {
     const qInput = $("qInput");
-    if(qInput) q = parseInt(qInput.value) || 0;
-    const calculated = calcPrice(s[1], q);
+    if(qInput) q = parseInt(qInput.value) || 500;
+    const arrayPrices = p.priceTable[s[0]];
+    const calculated = calcPriceFromTable(arrayPrices, q);
     if($("tpSpan")) $("tpSpan").textContent = money(calculated);
   }
 }
@@ -649,7 +664,8 @@ function buildCalc(){
   renderCarousel();
 
   if(p.hasCalc){
-    const calculated = calcPrice(s[1], q);
+    const arrayPrices = p.priceTable[s[0]];
+    const calculated = calcPriceFromTable(arrayPrices, q);
     $("calcBox").innerHTML = `
       <button class="close-modal" id="closeModal">✕</button>
       <div style="margin-bottom:12px;">
@@ -657,15 +673,15 @@ function buildCalc(){
         <p style="color:var(--text-muted);font-size:12px;margin:0;">${p.d}</p>
       </div>
       <div>
-        <label>Servicio</label>
+        <label>Tipo de Servicio</label>
         <div class="chips">${p.s.map((x,j)=>`<button data-j="${j}" class="${j==si?"on":""}">${x[0]}</button>`).join("")}</div>
         
         <label>Cantidad</label>
         <div class="qty-wrap">
-          <input id="qInput" type="number" min="50" value="${q}" inputmode="numeric" placeholder="Ej: 1000" oninput="updatePriceDisplay()">
+          <input id="qInput" type="number" min="100" step="100" value="${q}" inputmode="numeric" placeholder="Ej: 500" oninput="updatePriceDisplay()">
+          <button data-q="100">100</button>
           <button data-q="500">500</button>
           <button data-q="1000">1K</button>
-          <button data-q="5000">5K</button>
         </div>
 
         <label>Enlace / Detalles</label>
@@ -1007,7 +1023,10 @@ function sendQueryRequest(serviceName) {
 function botMsg(){
   const p=BOTS[pi], s=p.s[si];
   let t=`NOCTHRAX | PERÚ 👋\nServicio: ${p.n}\nOpción / Plan: ${s[0]}`;
-  if(p.hasCalc) t += `\nCantidad: ${q}\nTotal ESTIMADO: ${money(calcPrice(s[1], q))}`;
+  if(p.hasCalc) {
+    const arrayPrices = p.priceTable[s[0]];
+    t += `\nCantidad: ${q}\nTotal ESTIMADO: ${money(calcPriceFromTable(arrayPrices, q))}`;
+  }
   const u=$("uInput")&&$("uInput").value.trim();
   if(u) t+=`\nDetalles / Enlace: ${u}`;
   return t;
