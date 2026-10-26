@@ -522,6 +522,10 @@ label { display: block; font: 600 10px var(--font-b); color: var(--text-muted); 
   line-height: 1.4;
 }
 
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chips button { padding: 6px 12px; border: 1px solid var(--line-border); background: transparent; color: #fff; font: 500 11px var(--font-b); cursor: pointer; transition: .2s; border-radius: 6px; }
+.chips button.on { background: var(--accent-red); color: #fff; border-color: var(--accent-red); }
+
 .qty-wrap { display: flex; gap: 8px; flex-wrap: wrap; }
 input[type="number"], input[type="text"], select { width: 100%; padding: 11px 14px; border: 1px solid var(--line-border); background: rgba(0,0,0,.6); color: #fff; font: 500 13px var(--font-b); border-radius: 6px; }
 input:focus, select:focus { outline: none; border-color: var(--accent-red); }
@@ -663,7 +667,7 @@ footer {
 <!-- BARRA DE BÚSQUEDA INTERACTIVA -->
 <div class="search-overlay" id="searchOverlay">
   <div class="search-input-wrap">
-    <input type="text" id="searchInput" placeholder="Escribe para buscar un servicio (Ej: Reniec, Web, Bots, APK)..." oninput="filterServices()">
+    <input type="text" id="searchInput" placeholder="Escribe para buscar un servicio (Ej: Reniec, Web, Bots, Facebook, Forms)..." oninput="filterServices()">
   </div>
   <div class="search-results" id="searchResults"></div>
 </div>
@@ -814,7 +818,12 @@ const BOTS = [
   { k:"bot", n:"¡Creamos tu Bot de Telegram & WhatsApp!", rating:"9.8 ★", hasCalc:false, d:"Automatización inteligente 24/7 para escalar tus ventas al instante.", s:BOT_TIERS },
   { k:"tiktok", n:"TikTok Growth", rating:"9.8 ★", hasCalc:true, d:"Impulso algorítmico inmediato para tus videos.", s:[["Seguidores Activos", SEG],["Views Virales", VIE],["Likes / Me gusta", LIK],["Guardados & Shares", SAV]] },
   { k:"instagram", n:"Instagram Growth", rating:"9.9 ★", hasCalc:true, d:"Posicionamiento orgánico y aceleración de perfil.", s:[["Seguidores Latam", SEG],["Likes Alta Calidad", LIK],["Reels Views Viral", VIE],["Stories Views", SEG]] },
-  { k:"telegram", n:"Telegram Growth", rating:"9.7 ★", hasCalc:true, d:"Miembros e interacciones para canales y grupos.", s:[["Miembros Garantizados", SEG],["Vistas Publicación", VIE],["Miembros Premium", SEG]] }
+  { k:"facebook", n:"Facebook Growth", rating:"9.7 ★", hasCalc:true, d:"Aumento de seguidores, reacciones y reproducciones.", s:[["Seguidores Página", SEG],["Likes / Reacciones", LIK],["Reproducciones Video", VIE],["Compartidos", SAV]] },
+  { k:"youtube", n:"YouTube Growth", rating:"9.8 ★", hasCalc:true, d:"Visibilidad, suscriptores y visualizaciones.", s:[["Suscriptores Reales", SEG],["Visualizaciones / Views", VIE],["Likes / Me gusta", LIK],["Horas de Reproducción", SAV]] },
+  { k:"telegram", n:"Telegram Growth", rating:"9.7 ★", hasCalc:true, d:"Miembros e interacciones para canales y grupos.", s:[["Miembros Garantizados", SEG],["Vistas Publicación", VIE],["Miembros Premium", SEG]] },
+  { k:"kick", n:"Kick Growth", rating:"9.6 ★", hasCalc:true, d:"Impulsa tus directos y seguidores en Kick.", s:[["Seguidores Activos", SEG],["Visualizaciones Directo", VIE]] },
+  { k:"twitter", n:"X (Twitter) Growth", rating:"9.6 ★", hasCalc:true, d:"Aumento de seguidores y alcance en publicaciones.", s:[["Seguidores", SEG],["Likes / Retweets", LIK]] },
+  { k:"spotify", n:"Spotify Growth", rating:"9.7 ★", hasCalc:true, d:"Reproducciones y oyentes mensuales para música.", s:[["Reproducciones Tracks", VIE],["Oyentes Mensuales", SEG]] }
 ];
 
 const ALL_SERVICES_MAP = [
@@ -822,10 +831,15 @@ const ALL_SERVICES_MAP = [
   { text: "¡Creamos tu Bot de Telegram & WhatsApp! (S/ 25 - S/ 65)", action: () => openModal(1) },
   { text: "TikTok Growth & Vistas", action: () => openModal(2) },
   { text: "Instagram Followers & Likes", action: () => openModal(3) },
-  { text: "Telegram Miembros & Canal", action: () => openModal(4) },
+  { text: "Facebook Growth (Seguidores, Likes)", action: () => openModal(4) },
+  { text: "YouTube Growth (Suscriptores, Views)", action: () => openModal(5) },
+  { text: "Telegram Miembros & Canal", action: () => openModal(6) },
+  { text: "Kick Growth", action: () => openModal(7) },
+  { text: "X (Twitter) Growth", action: () => openModal(8) },
+  { text: "Spotify Oyentes & Reproducciones", action: () => openModal(9) },
+  { text: "Google Forms - Respuestas Masivas", action: () => openQueryModal('general_forms') },
   { text: "Correo Temporal (S/ 10)", action: () => openQueryModal('correo_temporal') },
   { text: "Números Virtuales (WhatsApp / Telegram)", action: () => openQueryModal('numeros_virtuales') },
-  { text: "Google Forms - Respuestas Masivas", action: () => openQueryModal('general_forms') },
   { text: "Recibos Luz, Agua, Gas", action: () => openQueryModal('recibos_luz') },
   { text: "Aplicaciones APK - Mercado VIP", action: () => openQueryModal('aplicaciones_apk') },
   { text: "Reniec - Ficha / DNI Virtual", action: () => openQueryModal('reniec_ficha') },
@@ -1319,7 +1333,7 @@ stage.onmouseenter = stopAutoRotate;
 stage.onmouseleave = startAutoRotate;
 
 $("calcBox").addEventListener("click", e=>{
-  const b = e.target.closest("[data-j], [data-q], [data-act]");
+  const b = e.target.closest(".plan-card-option, button");
   if(!b) return;
   if(b.dataset.j!=null){ si=+b.dataset.j; buildCalc(); }
   else if(b.dataset.q){ q=+b.dataset.q; if($("qInput")) $("qInput").value=q; updatePriceDisplay(); }
