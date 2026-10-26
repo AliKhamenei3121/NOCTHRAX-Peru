@@ -57,13 +57,12 @@ h2{font-size:clamp(30px,5vw,46px);text-align:center;margin-bottom:10px;text-shad
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
 .box{padding:24px}.box h3{font-size:22px;margin-bottom:6px}.box p{margin:0;color:var(--mut);font-size:15px}
 .step b{font:700 38px var(--h);color:var(--mint)}
-/* Pasarela con movimiento tipo carrusel continuo interactivo */
+/* Pasarela con movimiento continuo corregido */
 .rowwrap{position:relative;overflow:hidden;padding:10px 0}
-.cards{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:20px 8px 34px;scrollbar-width:none;width:max-content;animation:marquee 40s linear infinite}
+.cards{display:flex;gap:18px;padding:20px 8px 34px;width:max-content;animation:marquee 35s linear infinite}
 .cards:hover{animation-play-state:paused}
-@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%5)}}
-.cards::-webkit-scrollbar{display:none}
-.pc{flex:0 0 232px;scroll-snap-align:center;text-align:left;border:1px solid var(--line);border-bottom:4px solid #6a5cff;border-radius:20px;padding:0;overflow:hidden;background:var(--glass);backdrop-filter:blur(14px);color:inherit;cursor:pointer;font:inherit;transition:transform .3s,box-shadow .3s;box-shadow:0 14px 30px rgba(0,0,0,.35)}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.pc{flex:0 0 232px;text-align:left;border:1px solid var(--line);border-bottom:4px solid #6a5cff;border-radius:20px;padding:0;overflow:hidden;background:var(--glass);backdrop-filter:blur(14px);color:inherit;cursor:pointer;font:inherit;transition:transform .3s,box-shadow .3s;box-shadow:0 14px 30px rgba(0,0,0,.35)}
 .pc:hover{transform:translateY(-6px)}
 .pc.on{transform:translateY(-10px) scale(1.04);border-bottom-color:var(--mint);box-shadow:0 0 0 2px var(--mint),0 18px 50px rgba(92,242,193,.3)}
 .art{height:140px;display:grid;place-items:center;background:linear-gradient(145deg,var(--a),var(--b));position:relative}
@@ -71,7 +70,7 @@ h2{font-size:clamp(30px,5vw,46px);text-align:center;margin-bottom:10px;text-shad
 .art svg{width:68px;height:68px;position:relative;z-index:1;filter:drop-shadow(0 4px 10px rgba(0,0,0,.35))}
 .bd{padding:14px 16px 16px}.bd h3{font-size:19px}.bd p{margin:4px 0 10px;font-size:13px;color:var(--mut);line-height:1.4;min-height:36px}
 .tg{display:flex;flex-wrap:wrap;gap:5px}.tg i{font:600 11px var(--b);padding:3px 10px;border-radius:999px;background:rgba(255,255,255,.14);font-style:normal}
-.arr{position:absolute;top:42%;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(6,36,32,.85);color:#fff;font-size:18px;cursor:pointer;z-index:3}.arr:hover{border-color:var(--mint)}
+.arr{position:absolute;top:42%;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(6,36,32,.85);color:#fff;font-size:18px;cursor:pointer;z-index:3;display:grid;place-items:center}.arr:hover{border-color:var(--mint)}
 .arr.l{left:0px}.arr.r{right:0px}
 /* calculadora y controles dinámicos */
 #calc{display:grid;grid-template-columns:.8fr 1.3fr;gap:30px;padding:30px;margin-top:6px}
@@ -287,7 +286,7 @@ const money=n=>"S/ "+n.toFixed(2);
 function calc(a,q){if(!a)return 3;if(q>a.length*100)return null;if(q<100)return Math.max(3,+(a[0]*q/100).toFixed(2));const i=Math.floor(q/100)-1,r=q%100;return r?+(a[i]+(a[i+1]-a[i])*r/100).toFixed(2):a[i]}
 let pi=0,si=0,q=100;
 
-/* Pasarela de tarjetas duplicada para animación continua fluida */
+/* Generación duplicada para bucle continuo infinito perfecto */
 const cardsHTML = P.map((p,i)=>`<button class="pc" data-i="${i}" style="--a:${p.c[0]};--b:${p.c[1]}"><div class="art">${ico(p.k)}</div><div class="bd"><h3>${p.n}</h3><p>${p.d}</p><div class="tg">${p.s.slice(0,3).map(s=>`<i>${s[0].split(" (")[0]}</i>`).join("")}</div></div></button>`).join("");
 $("cards").innerHTML = cardsHTML + cardsHTML;
 
@@ -355,7 +354,7 @@ function upd(){
 function msg(){const p=P[pi],s=p.s[si];let t=`NOCTHRAX | Perú 👋\nQuiero: ${p.n} — ${s[0]}`;
  if(s[1] && s[1].length > 2 && q>=50){t+=`\nCantidad: ${q}`; const v=calc(s[1],q); if(v!=null) t+=`\nPrecio: ${money(v)}`;}
  else if(s[1]){t+=`\nPrecio: ${money(s[1][0])}`;}
- const dt = $("docType") ? `[Doc: ${$("docType").value}] ` : "";
+ const dt = $("docType") ? `[Doc: ${$("docType$.value"]||$("docType")?.value}] ` : "";
  const u=$("tu")&&$("tu").value.trim();if(u)t+=`\nDato/Usuario/Enlace: ${dt}${u}`;
  t+=`\n\n📌 Ya me uní al canal de novedades. Adjunto mi comprobante de pago QR.`;
  return t}
@@ -379,7 +378,8 @@ $("modalGo").onclick=()=>{
 
 $("calc").addEventListener("input",e=>{if(e.target.id=="q"){q=Math.floor(+e.target.value)||0;upd()}});
 $("cards").addEventListener("click",e=>{const c=e.target.closest(".pc");if(!c)return;pi=+c.dataset.i%P.length;si=0;q=100;build();$("calc").scrollIntoView({behavior:"smooth",block:"nearest"})});
-$("pl").onclick=()=>$("cards").scrollBy({left:-300,behavior:"smooth"});$("pr").onclick=()=>$("cards").scrollBy({left:300,behavior:"smooth"});
+$("pl").onclick=()=>$("cards").parentElement.scrollBy({left:-300,behavior:"smooth"});
+$("pr").onclick=()=>$("cards").parentElement.scrollBy({left:300,behavior:"smooth"});
 build();
 
 /* Métodos de pago (4 cuadros exactos) */
