@@ -3,32 +3,33 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="NOCTHRAX | Perú — Plataforma digital de servicios y bots para redes sociales.">
-<meta name="theme-color" content="#0a0412">
+<meta name="description" content="NOCTHRAX | Perú — Servicios Digitales & Social Growth.">
+<meta name="theme-color" content="#0f0d0e">
 <title>NOCTHRAX | Perú</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#08030f;
-  --card-bg:rgba(18,8,28,.85);
-  --cream:#fdfcff;
-  --mut:#a49bbd;
-  --pink:#ff2a8d;
-  --pink-glow:rgba(255,42,141,.35);
-  --line:rgba(255,42,141,.2);
-  --h:"Rajdhani",sans-serif;
-  --b:"Inter",system-ui,sans-serif;
+  --bg:#0f0d0e;
+  --card-bg:rgba(22,18,20,.85);
+  --cream:#f3ece1;
+  --mut:#a69ca1;
+  --wine:#4a1521;
+  --red-accent:#ff3b5c;
+  --gold:#d4af37;
+  --line:rgba(243,236,225,.12);
+  --h:"Playfair Display",serif;
+  --b:"Montserrat",sans-serif;
   color-scheme:dark;
   box-sizing:border-box;
 }
-html{scroll-behavior:smooth;scroll-padding-top:80px}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
 *,*::before,*::after{box-sizing:inherit}
-body{margin:0;color:var(--cream);font:400 16px/1.6 var(--b);background:linear-gradient(180deg,#120520 0,#0a0414 40%,#08030f 100%) fixed;overflow-x:hidden}
+body{margin:0;color:var(--cream);font:400 15px/1.6 var(--b);background:var(--bg);overflow-x:hidden}
 a{color:inherit;text-decoration:none}
-h1,h2,h3{font-family:var(--h);letter-spacing:.03em;margin:0;line-height:1.1}
+h1,h2,h3{font-family:var(--h);margin:0;line-height:1}
 
-/* Header de Ancho Completo (100% Width) */
+/* Header Editorial Flotante */
 header{
   position:fixed;
   z-index:100;
@@ -39,213 +40,262 @@ header{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:14px 4vw;
+  padding:18px 5vw;
   border-bottom:1px solid var(--line);
-  background:rgba(10,4,18,.95);
+  background:rgba(15,13,14,.92);
   backdrop-filter:blur(20px);
-  box-shadow:0 4px 20px rgba(0,0,0,.6);
 }
 .logo{
   font:700 24px var(--h);
-  letter-spacing:.05em;
-  color:#fff;
-  text-shadow:0 0 12px var(--pink);
+  letter-spacing:.08em;
+  color:var(--cream);
+  text-transform:uppercase;
   display:flex;
   align-items:center;
-  gap:6px;
+  gap:8px;
 }
-.logo small{font-size:12px;color:var(--pink);font-weight:600;opacity:.8}
+.logo small{font-size:11px;font-family:var(--b);color:var(--gold);letter-spacing:2px;font-weight:600}
 
 .menu-btn{
-  width:42px;
-  height:42px;
-  border-radius:12px;
+  width:44px;
+  height:44px;
+  border-radius:50%;
   border:1px solid var(--line);
-  background:rgba(255,42,141,.08);
-  color:#fff;
-  font-size:22px;
+  background:transparent;
+  color:var(--cream);
+  font-size:20px;
   cursor:pointer;
   display:grid;
   place-items:center;
-  transition:.2s;
+  transition:.3s ease;
 }
-.menu-btn:hover{background:var(--pink);box-shadow:0 0 15px var(--pink)}
+.menu-btn:hover{border-color:var(--gold);color:var(--gold)}
 
-/* Sidebar Lateral Derecho */
+/* Sidebar Lateral Derecho Editorial */
 .sidebar{
   position:fixed;
   top:0;
   right:-380px;
   width:360px;
   height:100vh;
-  background:rgba(10,4,18,.98);
+  background:rgba(15,13,14,.98);
   border-left:1px solid var(--line);
-  backdrop-filter:blur(25px);
+  backdrop-filter:blur(30px);
   z-index:1000;
-  box-shadow:-20px 0 50px rgba(0,0,0,.9);
-  transition:right .3s ease-in-out;
+  transition:right .4s cubic-bezier(.16, 1, .3, 1);
   display:flex;
   flex-direction:column;
-  padding:24px;
+  padding:32px 28px;
   overflow-y:auto;
 }
 .sidebar.open{right:0}
-.sidebar-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--line)}
-.sidebar-header h3{font-size:22px;color:var(--pink);text-shadow:0 0 10px var(--pink-glow)}
-.close-btn{background:transparent;border:0;color:#fff;font-size:24px;cursor:pointer}
+.sidebar-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.sidebar-header h3{font-size:18px;font-family:var(--b);letter-spacing:2px;color:var(--gold);text-transform:uppercase}
+.close-btn{background:transparent;border:0;color:var(--cream);font-size:22px;cursor:pointer}
 
-.side-item{padding:12px 16px;border-radius:12px;margin-bottom:6px;background:rgba(255,255,255,.03);border:1px solid var(--line);font-weight:600;font-size:14px;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:space-between}
-.side-item:hover{background:rgba(255,42,141,.15);border-color:var(--pink);color:var(--pink)}
-.sub-menu{display:none;padding-left:16px;margin-top:6px;border-left:2px solid var(--pink)}
+.side-item{
+  padding:14px 18px;
+  border-radius:8px;
+  margin-bottom:8px;
+  background:rgba(255,255,255,.02);
+  border:1px solid var(--line);
+  font-weight:500;
+  font-size:13px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:.3s;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.side-item:hover{
+  background:rgba(212,175,55,.08);
+  border-color:var(--gold);
+  color:var(--gold);
+}
+.sub-menu{display:none;padding-left:16px;margin-top:6px;border-left:1px solid var(--gold)}
 .sub-menu.open{display:block}
-.sub-item{padding:8px 12px;font-size:13px;color:var(--mut);border-radius:8px;margin-bottom:4px;cursor:pointer;transition:.2s}
-.sub-item:hover{background:rgba(255,255,255,.08);color:#fff}
+.sub-item{padding:8px 12px;font-size:12px;color:var(--mut);margin-bottom:4px;cursor:pointer;transition:.2s}
+.sub-item:hover{color:#fff}
 
-/* Hero Principal */
+/* Hero con Efecto "Personaje Sobre Texto" */
 .hero{
   position:relative;
-  min-height:75vh;
+  min-height:88vh;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
-  padding:120px 5vw 40px;
+  padding:130px 5vw 40px;
+  overflow:hidden;
 }
+
+/* Capa 1: Texto Gigante de Fondo */
+.hero-bg-text{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -55%);
+  font:800 clamp(70px, 20vw, 240px) var(--h);
+  color:rgba(243,236,225,.06);
+  letter-spacing:.05em;
+  white-space:nowrap;
+  z-index:1;
+  user-select:none;
+  pointer-events:none;
+}
+
+/* Capa 2: Personaje en el Centro (Recortado en PNG) */
+.hero-model{
+  position:relative;
+  z-index:2;
+  max-width:380px;
+  width:85%;
+  height:auto;
+  margin:-30px 0 10px;
+  filter:drop-shadow(0 20px 40px rgba(0,0,0,.9));
+}
+
 .hero h1{
   position:relative;
-  font-weight:700;
-  font-size:clamp(56px,16vw,170px);
-  color:#fff;
-  text-shadow:0 0 30px var(--pink), 0 0 60px rgba(255,42,141,.25);
-  margin-bottom:20px;
+  z-index:3;
+  font-size:clamp(48px, 10vw, 110px);
+  font-weight:800;
+  letter-spacing:.04em;
+  color:var(--cream);
+  text-transform:uppercase;
 }
+
 .fund{
+  position:relative;
+  z-index:3;
   display:inline-flex;
   align-items:center;
-  gap:10px;
-  padding:6px 18px 6px 6px;
+  gap:12px;
+  padding:6px 20px;
   border-radius:999px;
   border:1px solid var(--line);
-  background:rgba(255,42,141,.08);
-  margin-bottom:18px;
-  font-size:14px;
+  background:rgba(255,255,255,.03);
+  font-size:12px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-bottom:12px;
 }
-.fund b{
-  width:30px;
-  height:30px;
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  background:var(--pink);
-  color:#fff;
-  font:700 13px var(--h);
-  box-shadow:0 0 10px var(--pink);
-}
+.fund b{color:var(--gold)}
+
 .btn-hero{
+  position:relative;
+  z-index:3;
   display:inline-block;
-  padding:15px 36px;
-  border-radius:12px;
-  border:1px solid var(--pink);
-  background:rgba(255,42,141,.15);
-  color:#fff;
-  font:700 16px var(--b);
+  padding:14px 38px;
+  border-radius:4px;
+  border:1px solid var(--cream);
+  background:transparent;
+  color:var(--cream);
+  font:600 12px var(--b);
+  letter-spacing:2px;
+  text-transform:uppercase;
   cursor:pointer;
-  box-shadow:0 0 20px var(--pink-glow);
-  transition:.2s;
+  transition:.3s ease;
+  margin-top:15px;
 }
 .btn-hero:hover{
-  background:var(--pink);
-  box-shadow:0 0 30px var(--pink);
-  transform:translateY(-2px);
+  background:var(--cream);
+  color:var(--bg);
 }
 
-section{padding:60px 5vw;max-width:1200px;margin:auto}
-h2{font-size:clamp(28px,4vw,42px);text-align:center;margin-bottom:10px;color:#fff;text-shadow:0 0 15px rgba(255,255,255,.15)}
-.lead{text-align:center;color:var(--mut);max-width:60ch;margin:0 auto 34px}
+section{padding:80px 5vw;max-width:1200px;margin:auto}
+.section-title{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  border-bottom:1px solid var(--line);
+  padding-bottom:14px;
+  margin-bottom:40px;
+}
+.section-title h2{font-size:clamp(24px,4vw,38px);font-weight:600;text-transform:uppercase;letter-spacing:1px}
+.section-title span{font-size:12px;letter-spacing:2px;color:var(--gold);text-transform:uppercase}
 
-/* Pasarela con Movimiento Automático (Marquee) */
-.rowwrap{position:relative;width:100%;overflow:hidden;padding:14px 0;cursor:grab}
-.cards-container{display:flex;gap:20px;padding:10px;width:max-content;animation:marquee 40s linear infinite}
+/* Pasarela Editorial Marquee */
+.rowwrap{position:relative;width:100%;overflow:hidden;padding:10px 0;cursor:grab}
+.cards-container{display:flex;gap:24px;width:max-content;animation:marquee 45s linear infinite}
 .cards-container.paused{animation-play-state:paused}
 @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
 .pc{
-  flex:0 0 240px;
+  flex:0 0 260px;
   text-align:left;
   border:1px solid var(--line);
-  border-bottom:3px solid var(--pink);
-  border-radius:18px;
-  padding:0;
-  overflow:hidden;
   background:var(--card-bg);
+  padding:24px;
   color:inherit;
   cursor:pointer;
-  transition:transform .3s, border-color .3s;
-  box-shadow:0 10px 30px rgba(0,0,0,.6);
+  transition:.3s ease;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
 }
-.pc.on{
-  transform:translateY(-6px);
-  border-color:var(--pink);
-  box-shadow:0 0 25px var(--pink-glow);
+.pc:hover, .pc.on{
+  border-color:var(--gold);
+  transform:translateY(-4px);
+  background:rgba(28,22,25,.95);
 }
-.art{height:120px;display:grid;place-items:center;background:linear-gradient(145deg,var(--a),var(--b))}
-.art svg{width:58px;height:58px;filter:drop-shadow(0 0 10px rgba(0,0,0,.8))}
-.bd{padding:16px}.bd h3{font-size:20px;margin-bottom:4px;color:#fff}.bd p{margin:0 0 10px;font-size:13px;color:var(--mut);min-height:38px}
-.tg{display:flex;flex-wrap:wrap;gap:5px}.tg i{font:600 11px var(--b);padding:3px 10px;border-radius:8px;background:rgba(255,255,255,.05);color:var(--cream);font-style:normal;border:1px solid var(--line)}
+.art{height:80px;display:flex;align-items:center;justify-content:flex-start;margin-bottom:16px}
+.art svg{width:46px;height:46px;fill:var(--cream)}
+.bd h3{font-size:18px;margin-bottom:6px;font-family:var(--b);font-weight:600}.bd p{margin:0 0 16px;font-size:12px;color:var(--mut);line-height:1.5}
+.tg{display:flex;flex-wrap:wrap;gap:6px}.tg i{font:500 10px var(--b);padding:4px 10px;border:1px solid var(--line);color:var(--cream);font-style:normal;letter-spacing:1px}
 
-/* Panel Dinámico / Calculadora */
+/* Calculadora Editorial Dark */
 .calc-box{
   border:1px solid var(--line);
-  background:linear-gradient(145deg,rgba(18,8,28,.95),rgba(10,4,18,.98));
-  backdrop-filter:blur(20px);
-  border-radius:24px;
-  padding:34px;
-  margin-top:24px;
-  box-shadow:0 0 40px rgba(255,42,141,.12);
+  background:var(--card-bg);
+  padding:40px;
+  margin-top:30px;
   display:grid;
-  grid-template-columns:1fr 1.3fr;
-  gap:36px;
+  grid-template-columns:1fr 1.2fr;
+  gap:40px;
   align-items:center;
 }
 @media(max-width:860px){.calc-box{grid-template-columns:1fr;padding:24px}}
-.cl-info{text-align:center;padding:20px;border-radius:16px;background:rgba(255,255,255,.02);border:1px solid var(--line)}
-.cl-info .big-icon{width:100px;height:100px;margin:0 auto 16px;border-radius:22px;display:grid;place-items:center;background:linear-gradient(145deg,var(--a),var(--b));box-shadow:0 0 20px rgba(0,0,0,.8)}
-.cl-info .big-icon svg{width:52px;height:52px}
-.cl-info h3{font-size:26px;margin-bottom:6px;color:#fff}.cl-info p{color:var(--mut);font-size:14px;margin:0}
+.cl-info{padding-right:20px;border-right:1px solid var(--line)}
+@media(max-width:860px){.cl-info{border-right:0;border-bottom:1px solid var(--line);padding-right:0;padding-bottom:20px}}
+.cl-info h3{font-size:28px;margin-bottom:10px;color:var(--cream)}.cl-info p{color:var(--mut);font-size:13px}
 
-label{display:block;font:600 14px var(--b);color:var(--mut);margin:16px 0 8px}
+label{display:block;font:600 11px var(--b);color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin:20px 0 10px}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
-.chips button{padding:9px 18px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:#fff;font:600 14px var(--b);cursor:pointer;transition:.2s}
-.chips button.on{background:var(--pink);color:#fff;border-color:transparent;box-shadow:0 0 15px var(--pink)}
+.chips button{padding:8px 16px;border:1px solid var(--line);background:transparent;color:var(--cream);font:500 12px var(--b);cursor:pointer;transition:.2s}
+.chips button.on{background:var(--cream);color:var(--bg);border-color:var(--cream)}
 
 .qty-wrap{display:flex;gap:8px;flex-wrap:wrap}
-input[type="number"], input[type="text"]{width:100%;padding:14px 18px;border-radius:12px;border:1px solid var(--line);background:rgba(0,0,0,.6);color:#fff;font:600 16px var(--b)}
-input:focus{outline:none;border-color:var(--pink);box-shadow:0 0 15px var(--pink-glow)}
+input[type="number"], input[type="text"]{width:100%;padding:14px 16px;border:1px solid var(--line);background:rgba(0,0,0,.4);color:#fff;font:500 14px var(--b)}
+input:focus{outline:none;border-color:var(--gold)}
 .qty-wrap input{flex:1 1 140px}
-.qty-wrap button{padding:0 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:#fff;font:600 13px var(--b);cursor:pointer}
+.qty-wrap button{padding:0 14px;border:1px solid var(--line);background:transparent;color:var(--cream);font:500 12px var(--b);cursor:pointer}
 
-.price-display{display:flex;align-items:baseline;gap:12px;margin:20px 0 10px}
-.price-display span{font:700 48px var(--h);color:var(--pink);text-shadow:0 0 20px var(--pink-glow)}
+.price-display{display:flex;align-items:baseline;gap:12px;margin:24px 0 10px}
+.price-display span{font:700 44px var(--h);color:var(--cream)}
 
-.btn-group{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
-.btn-wa{background:#25d366;color:#fff;border:0;padding:14px 28px;border-radius:12px;font:700 15px var(--b);cursor:pointer;box-shadow:0 0 15px rgba(37,211,102,.25)}
-.btn-tg{background:#2aabee;color:#fff;border:0;padding:14px 28px;border-radius:12px;font:700 15px var(--b);cursor:pointer;box-shadow:0 0 15px rgba(42,171,238,.25)}
+.btn-group{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.btn-wa, .btn-tg{padding:14px 28px;border:1px solid var(--line);background:transparent;color:var(--cream);font:600 11px var(--b);letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:.3s}
+.btn-wa:hover{background:#25d366;color:#000;border-color:#25d366}
+.btn-tg:hover{background:#2aabee;color:#000;border-color:#2aabee}
 
-footer{text-align:center;padding:50px 5vw;color:var(--mut);font-size:13px}
-.wf{position:fixed;right:20px;bottom:20px;z-index:90;width:52px;height:52px;border-radius:14px;background:#25d366;display:grid;place-items:center;font:700 16px var(--h);box-shadow:0 0 20px rgba(37,211,102,.4)}
+footer{text-align:center;padding:60px 5vw;color:var(--mut);font-size:11px;letter-spacing:2px;text-transform:uppercase;border-top:1px solid var(--line)}
+.wf{position:fixed;right:24px;bottom:24px;z-index:90;width:48px;height:48px;border-radius:50%;background:#25d366;color:#000;display:grid;place-items:center;font:700 14px var(--b);box-shadow:0 10px 25px rgba(0,0,0,.8)}
 </style>
 </head>
 <body>
 
 <header>
-  <a class="logo" href="#inicio">NOCTHRAX<small>| Perú</small></a>
+  <a class="logo" href="#inicio">NOCTHRAX <small>PERÚ</small></a>
   <button class="menu-btn" id="menuBtn" aria-label="Abrir Menú">☰</button>
 </header>
 
 <div class="sidebar" id="sidebar">
   <div class="sidebar-header">
-    <h3>Servicios y Trámites</h3>
+    <h3>Servicios & Trámites</h3>
     <button class="close-btn" id="closeSidebar">✕</button>
   </div>
   
@@ -281,18 +331,25 @@ footer{text-align:center;padding:50px 5vw;color:var(--mut);font-size:13px}
   <div class="side-item">🚗 Vehículo</div>
   <div class="side-item">🧭 Síguelo Plus</div>
   <div class="side-item">📜 Actas</div>
-  <div class="side-item" style="color:var(--pink);border-color:var(--pink);">🌟 Búsqueda Total</div>
+  <div class="side-item" style="color:var(--gold);border-color:var(--gold);">🕵️‍♂️ Búsqueda Total</div>
 </div>
 
 <section class="hero" id="inicio">
-  <div class="fund"><b>R1</b>Fundador: R1</div>
+  <div class="hero-bg-text">NOCTHRAX</div>
+  
+  <!-- Imagen Recortada en PNG para el efecto Superpuesto -->
+  <img class="hero-model" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop" alt="NOCTHRAX Model">
+
+  <div class="fund">Fundador: <b>R1</b></div>
   <h1>NOCTHRAX</h1>
-  <a class="btn-hero" href="#bots">Explorar Bots</a>
+  <a class="btn-hero" href="#bots">Explorar Catálogo</a>
 </section>
 
 <section id="bots">
-  <h2>Servicios para Redes Sociales</h2>
-  <p class="lead">Selecciona una plataforma para calcular el precio o solicitar cotización directa.</p>
+  <div class="section-title">
+    <h2>Plataformas Disponibles</h2>
+    <span>01 / SOCIAL GROWTH</span>
+  </div>
   
   <div class="rowwrap" id="draggableRow">
     <div class="cards-container" id="cardsContainer"></div>
@@ -301,7 +358,7 @@ footer{text-align:center;padding:50px 5vw;color:var(--mut);font-size:13px}
   <div class="calc-box" id="calcBox"></div>
 </section>
 
-<footer>© 2026 NOCTHRAX | Perú · Fundador: R1</footer>
+<footer>© 2026 NOCTHRAX | PERÚ · DESIGNED BY R1</footer>
 <a class="wf" id="waF" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
 
 <script>
@@ -320,90 +377,38 @@ const SUB = [3.00, 6.00, 9.00, 12.00, 14.00, 17.00, 20.00, 23.00, 26.00, 28.00];
 const HOR = [6.00, 11.00, 16.00, 21.00, 25.00, 30.00, 35.00, 40.00, 42.00, 45.00];
 const STO = [3.00, 5.00, 7.00, 9.00, 10.00, 12.00, 14.00, 16.00, 18.00, 20.00];
 
-/* LISTA COMPLETA DE PLATAFORMAS RESTAURADA */
 const BOTS = [
   {
-    k:"tiktok", n:"TikTok (Bots)", hasCalc:true, c:["#120822","#ff2a8d"], d:"Seguidores, likes, vistas y comentarios.",
-    s:[
-      ["Seguidores", SEG],
-      ["Me gusta", LIK],
-      ["Vistas", VIE],
-      ["Guardados", SAV],
-      ["Comentarios", COM],
-      ["Espectadores Live (30m)", [6.00, 11.00, 16.00, 21.00, 25.00, 28.00, 32.00, 36.00, 40.00, 45.00]]
-    ]
+    k:"tiktok", n:"TikTok", hasCalc:true, d:"Seguidores, likes, vistas y comentarios.",
+    s:[["Seguidores", SEG],["Me gusta", LIK],["Vistas", VIE],["Guardados", SAV],["Comentarios", COM]]
   },
   {
-    k:"instagram", n:"Instagram (Bots)", hasCalc:true, c:["#220818","#ff2a8d"], d:"Crecimiento rápido para tu perfil.",
-    s:[
-      ["Seguidores", SEG],
-      ["Me gusta", LIK],
-      ["Vistas (Reels/Videos)", VIE],
-      ["Guardados", SAV],
-      ["Comentarios", COM],
-      ["Vistas Stories", STO]
-    ]
+    k:"instagram", n:"Instagram", hasCalc:true, d:"Crecimiento rápido para tu perfil.",
+    s:[["Seguidores", SEG],["Me gusta", LIK],["Vistas (Reels)", VIE],["Guardados", SAV],["Comentarios", COM],["Stories", STO]]
   },
   {
-    k:"youtube", n:"YouTube", hasCalc:true, c:["#220808","#ff2a8d"], d:"Suscriptores, vistas y me gusta.",
-    s:[
-      ["Suscriptores", SUB],
-      ["Vistas / Videos", VIE],
-      ["Me gusta", LIK],
-      ["Horas de Reproducción", HOR],
-      ["Comentarios", COM],
-      ["Vistas para Shorts", STO]
-    ]
+    k:"youtube", n:"YouTube", hasCalc:true, d:"Suscriptores, vistas y me gusta.",
+    s:[["Suscriptores", SUB],["Vistas / Videos", VIE],["Me gusta", LIK],["Horas Reproducción", HOR]]
   },
   {
-    k:"telegram", n:"Telegram", hasCalc:true, c:["#081a22","#ff2a8d"], d:"Miembros para grupos y canales.",
-    s:[
-      ["Miembros garantizados", [3.00, 6.00, 9.00, 12.00, 15.00, 18.00, 21.00, 24.00, 27.00, 30.00]],
-      ["Miembros Premium", [5.00, 10.00, 15.00, 20.00, 25.00, 30.00, 35.00, 40.00, 45.00, 50.00]]
-    ]
+    k:"telegram", n:"Telegram", hasCalc:true, d:"Miembros para grupos y canales.",
+    s:[["Miembros garantizados", [3.00, 6.00, 9.00, 12.00, 15.00, 18.00, 21.00, 24.00, 27.00, 30.00]],["Miembros Premium", [5.00, 10.00, 15.00, 20.00, 25.00]]]
   },
-  {
-    k:"facebook", n:"Facebook", hasCalc:false, c:["#081222","#ff2a8d"], d:"Impulsa tu fanpage e historias.",
-    s:[["Seguidores"],["Me gusta"],["Reacciones"],["Compartidos"],["Vistas"]]
-  },
-  {
-    k:"kick", n:"Kick", hasCalc:false, c:["#082210","#ff2a8d"], d:"Presencia en tus transmisiones.",
-    s:[["Seguidores"],["Espectadores Live"]]
-  },
-  {
-    k:"x", n:"X (Twitter)", hasCalc:false, c:["#121212","#ff2a8d"], d:"Mayor alcance e interacciones.",
-    s:[["Seguidores"],["Me gusta"],["Visualizaciones"]]
-  },
-  {
-    k:"spotify", n:"Spotify", hasCalc:false, c:["#082214","#ff2a8d"], d:"Reproducciones y streams.",
-    s:[["Spotify Premium"],["Reproducciones"]]
-  },
-  {
-    k:"web", n:"Tráfico Web", hasCalc:false, c:["#081c22","#ff2a8d"], d:"Visitas para tu sitio web.",
-    s:[["Visitas Web (País/Global)"]]
-  },
-  {
-    k:"forms", n:"Google Forms", hasCalc:false, c:["#180822","#ff2a8d"], d:"Respuestas para encuestas.",
-    s:[["Respuestas automáticas"]]
-  },
-  {
-    k:"more", n:"Más servicios", hasCalc:false, c:["#22081e","#ff2a8d"], d:"Más de 90 servicios adicionales.",
-    s:[["+90 servicios disponibles"]]
-  }
+  { k:"facebook", n:"Facebook", hasCalc:false, d:"Fanpage e interacciones.", s:[["Seguidores"],["Me gusta"],["Reacciones"]] },
+  { k:"kick", n:"Kick", hasCalc:false, d:"Transmisiones en directo.", s:[["Seguidores"],["Espectadores Live"]] },
+  { k:"x", n:"X (Twitter)", hasCalc:false, d:"Alcance e interacciones.", s:[["Seguidores"],["Me gusta"],["Views"]] },
+  { k:"spotify", n:"Spotify", hasCalc:false, d:"Streams y oyentes.", s:[["Streams"],["Oyentes Mensuales"]] }
 ];
 
 const IC={
-  tiktok:`<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M9 12a4 4 0 104 4V4a5 5 0 005 5"/></svg>`,
-  instagram:`<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg>`,
-  youtube:`<svg viewBox="0 0 24 24" fill="#ff2a8d"><rect x="2" y="5" width="20" height="14" rx="4" fill="#fff"/><path d="M10 9l5.5 3-5.5 3z"/></svg>`,
-  telegram:`<svg viewBox="0 0 24 24" fill="#fff"><path d="M21 4L3 11.2l5.2 1.9L10 19l3-3.6 4.6 3.4z"/></svg>`,
-  facebook:`<svg viewBox="0 0 24 24" fill="#fff"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>`,
-  kick:`<svg viewBox="0 0 24 24" fill="#fff"><path d="M4 3h4v7l5-7h5l-6 8 6 10h-5l-5-8v8H4z"/></svg>`,
-  x:`<svg viewBox="0 0 24 24" stroke="#fff" stroke-width="2"><path d="M4 4l16 16M20 4L4 20"/></svg>`,
-  spotify:`<svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2A10 10 0 1022 12 10 10 0 0012 2zm4.6 14.5a.6.6 0 01-.8.2c-2.3-1.4-5.2-1.7-8.6-.9a.6.6 0 11-.3-1.2c3.8-.9 7-.5 9.5 1a.6.6 0 01.2.9zm1.2-2.7a.8.8 0 01-1 .3c-2.6-1.6-6.6-2.1-9.7-1.1a.8.8 0 11-.5-1.5c3.6-1.1 8-.6 11 1.2a.8.8 0 01.2 1.1zm.1-2.8c-3.1-1.9-8.3-2-11.3-1.1a1 1 0 11-.6-1.9c3.5-1.1 9.2-.9 12.8 1.2a1 1 0 01-.9 1.8z"/></svg>`,
-  web:`<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 014 10 15 15 0 01-4 10 15 15 0 01-4-10 15 15 0 014-10z"/></svg>`,
-  forms:`<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h4"/></svg>`,
-  more:`<svg viewBox="0 0 24 24" fill="#fff"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>`
+  tiktok:`<svg viewBox="0 0 24 24"><path d="M9 12a4 4 0 104 4V4a5 5 0 005 5"/></svg>`,
+  instagram:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg>`,
+  youtube:`<svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5.5 3-5.5 3z" fill="#0f0d0e"/></svg>`,
+  telegram:`<svg viewBox="0 0 24 24"><path d="M21 4L3 11.2l5.2 1.9L10 19l3-3.6 4.6 3.4z"/></svg>`,
+  facebook:`<svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>`,
+  kick:`<svg viewBox="0 0 24 24"><path d="M4 3h4v7l5-7h5l-6 8 6 10h-5l-5-8v8H4z"/></svg>`,
+  x:`<svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 4l16 16M20 4L4 20"/></svg>`,
+  spotify:`<svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 1022 12 10 10 0 0012 2zm4.6 14.5a.6.6 0 01-.8.2c-2.3-1.4-5.2-1.7-8.6-.9a.6.6 0 11-.3-1.2c3.8-.9 7-.5 9.5 1a.6.6 0 01.2.9z"/></svg>`
 };
 
 const $=id=>document.getElementById(id);
@@ -413,7 +418,6 @@ const money=n=>"S/ "+n.toFixed(2);
 function calcPrice(arr, qty){
   if(!qty || qty < 50) return 3.00;
   if(!Array.isArray(arr)) return 3.00;
-  
   let total = 0;
   if(qty <= 1000){
     const idx = Math.floor(qty / 100) - 1;
@@ -437,8 +441,8 @@ function calcPrice(arr, qty){
 let pi=0, si=0, q=500;
 
 const cardsHTML = BOTS.map((p,i)=>`
-  <button class="pc" data-i="${i}" style="--a:${p.c[0]};--b:${p.c[1]}">
-    <div class="art">${IC[p.k]||IC.more}</div>
+  <button class="pc" data-i="${i}">
+    <div class="art">${IC[p.k]}</div>
     <div class="bd">
       <h3>${p.n}</h3>
       <p>${p.d}</p>
@@ -454,28 +458,24 @@ function buildCalc(){
   document.querySelectorAll(".pc").forEach((c, idx)=>{
     if((idx % BOTS.length) === pi) c.classList.add("on"); else c.classList.remove("on");
   });
-  
-  $("calcBox").style.cssText = `--a:${p.c[0]};--b:${p.c[1]}`;
 
   if(p.hasCalc){
     const calculated = calcPrice(s[1], q);
     $("calcBox").innerHTML = `
       <div class="cl-info">
-        <div class="big-icon">${IC[p.k]||IC.more}</div>
         <h3>${p.n}</h3>
         <p>${p.d}</p>
       </div>
       <div>
-        <label>Opción / Servicio de Bot</label>
+        <label>Servicio</label>
         <div class="chips">${p.s.map((x,j)=>`<button data-j="${j}" class="${j==si?"on":""}">${x[0]}</button>`).join("")}</div>
         
-        <label>Cantidad (mín. 50)</label>
+        <label>Cantidad</label>
         <div class="qty-wrap">
           <input id="qInput" type="number" min="50" value="${q}" inputmode="numeric" placeholder="Ej: 34000">
           <button data-q="500">500</button>
           <button data-q="1000">1K</button>
           <button data-q="5000">5K</button>
-          <button data-q="34000">34K</button>
         </div>
 
         <label>Usuario o Enlace</label>
@@ -484,30 +484,29 @@ function buildCalc(){
         <div class="price-display"><span id="tpSpan">${money(calculated)}</span></div>
 
         <div class="btn-group">
-          <button class="btn-wa" data-act="wa">Pedir por WhatsApp</button>
-          <button class="btn-tg" data-act="tg">Pedir por Telegram</button>
+          <button class="btn-wa" data-act="wa">Solicitar por WhatsApp</button>
+          <button class="btn-tg" data-act="tg">Solicitar por Telegram</button>
         </div>
       </div>
     `;
   } else {
     $("calcBox").innerHTML = `
       <div class="cl-info">
-        <div class="big-icon">${IC[p.k]||IC.more}</div>
         <h3>${p.n}</h3>
         <p>${p.d}</p>
       </div>
       <div>
-        <label>Opción Seleccionada</label>
+        <label>Servicio</label>
         <div class="chips">${p.s.map((x,j)=>`<button data-j="${j}" class="${j==si?"on":""}">${x[0]}</button>`).join("")}</div>
         
-        <label>Usuario, Enlace o Detalle del Pedido</label>
-        <input id="uInput" type="text" placeholder="Escribe tu enlace o consulta aquí...">
+        <label>Enlace o Detalle</label>
+        <input id="uInput" type="text" placeholder="Ingresa tu enlace o consulta...">
 
-        <div class="price-display"><span style="font-size:24px;color:var(--pink);">Consulta por Chat</span></div>
+        <div class="price-display"><span style="font-size:24px;color:var(--gold);">Cotización por Chat</span></div>
 
         <div class="btn-group">
-          <button class="btn-wa" data-act="wa">Cotizar por WhatsApp</button>
-          <button class="btn-tg" data-act="tg">Cotizar por Telegram</button>
+          <button class="btn-wa" data-act="wa">Consultar por WhatsApp</button>
+          <button class="btn-tg" data-act="tg">Consultar por Telegram</button>
         </div>
       </div>
     `;
@@ -524,11 +523,10 @@ function updPrice(){
 
 function botMsg(){
   const p=BOTS[pi], s=p.s[si];
-  let t=`NOCTHRAX | Perú 👋\nQuiero: ${p.n} — ${s[0]}`;
-  if(p.hasCalc && q>=50){t+=`\nCantidad: ${q}`; const v=calcPrice(s[1],q); t+=`\nPrecio total: ${money(v)}`;}
+  let t=`NOCTHRAX | PERÚ 👋\nServicio: ${p.n} — ${s[0]}`;
+  if(p.hasCalc && q>=50){t+=`\nCantidad: ${q}`; const v=calcPrice(s[1],q); t+=`\nTotal: ${money(v)}`;}
   const u=$("uInput")&&$("uInput").value.trim();
-  if(u) t+=`\nUsuario/Enlace/Detalle: ${u}`;
-  t+=`\n\n📌 Adjunto mi comprobante de pago o consulta.`;
+  if(u) t+=`\nEnlace: ${u}`;
   return t;
 }
 
@@ -550,33 +548,12 @@ $("cardsContainer").addEventListener("click", e=>{
   $("calcBox").scrollIntoView({behavior:"smooth", block:"nearest"});
 });
 
-/* Control de Arrastre / Pausa de Marquee con Mouse */
-const dragRow = $("draggableRow");
-const cardsContainer = $("cardsContainer");
-let isDown = false, startX, scrollLeft;
-
-dragRow.addEventListener('mousedown', (e) => {
-  isDown = true;
-  cardsContainer.classList.add('paused');
-  startX = e.pageX - dragRow.offsetLeft;
-  scrollLeft = dragRow.scrollLeft;
-});
-dragRow.addEventListener('mouseleave', () => { isDown = false; cardsContainer.classList.remove('paused'); });
-dragRow.addEventListener('mouseup', () => { isDown = false; cardsContainer.classList.remove('paused'); });
-dragRow.addEventListener('mousemove', (e) => {
-  if(!isDown) return;
-  e.preventDefault();
-  const x = e.pageX - dragRow.offsetLeft;
-  const walk = (x - startX) * 2;
-  dragRow.scrollLeft = scrollLeft - walk;
-});
-
 /* Sidebar */
 $("menuBtn").onclick = () => $("sidebar").classList.add("open");
 $("closeSidebar").onclick = () => $("sidebar").classList.remove("open");
 function toggleSub(id){ $(id).classList.toggle("open"); }
 
-$("waF").href = wa("Hola NOCTHRAX | Perú.");
+$("waF").href = wa("Hola NOCTHRAX.");
 buildCalc();
 </script>
 </body>
