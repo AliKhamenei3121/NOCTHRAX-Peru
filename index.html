@@ -518,6 +518,17 @@ input:focus, select:focus{outline:none;border-color:var(--accent-red)}
   color: var(--text-muted);
   margin-top: 4px;
 }
+.input-error {
+  border-color: var(--accent-red) !important;
+  box-shadow: 0 0 8px rgba(207, 35, 35, 0.4);
+}
+.error-msg {
+  color: var(--accent-red);
+  font-size: 10px;
+  margin-top: 4px;
+  display: block;
+}
+
 .btn-search-action {
   padding: 12px 24px;
   background: var(--accent-red);
@@ -653,7 +664,7 @@ footer {
   </div>
 
   <div class="header-right">
-    <div class="header-search" onclick="toggleSearch()">
+    <div class="header-search" onclick="toggleSearch()" role="button" aria-label="Abrir buscador">
       <span>Search</span> ⌕
     </div>
     <button class="btn-menu-icon" onclick="openSidebar()" aria-label="Catálogo Completo">☰</button>
@@ -672,7 +683,7 @@ footer {
 <div class="sidebar" id="sidebar">
   <div class="sidebar-header">
     <h3>Menú Completo</h3>
-    <button class="close-btn" id="closeSidebar">✕</button>
+    <button class="close-btn" id="closeSidebar" aria-label="Cerrar menú">✕</button>
   </div>
 
   <div class="social-section">
@@ -697,6 +708,12 @@ footer {
   <div class="side-item" onclick="openQueryModal('infocorp')">🔍 INFOCORP / REPORTES</div>
   <div class="side-item" onclick="openQueryModal('osiptel')">📞 TELÉFONOS SBI / DNI</div>
   <div class="side-item" onclick="openQueryModal('sunarp')">🏢 SUNARP & REGISTROS</div>
+  <div class="side-item" onclick="openQueryModal('sinpol')">🚨 REQUISITORIAS E-SINPOL</div>
+  <div class="side-item" onclick="openQueryModal('pnp')">🛡️ CONSULTA PNP / CIP</div>
+  <div class="side-item" onclick="openQueryModal('sentinel')">👁️ SENTINEL V2 / V3 / SBS</div>
+  <div class="side-item" onclick="openQueryModal('vehicular_tiv')">🚗 CONSULTA TIVE & SUNARP</div>
+  <div class="side-item" onclick="openQueryModal('vehicular_avanzado')">🚙 VEHICULAR AVANZADO (SÍGUELO PLUS)</div>
+  <div class="side-item" onclick="openQueryModal('actas')">📄 ACTAS Y CERTIFICADOS</div>
   
   <div>
     <div class="side-item" onclick="toggleSub('subReniec')">🆔 RENIEC <span>▼</span></div>
@@ -751,7 +768,7 @@ footer {
   <div class="side-item" onclick="openQueryModal('general')">📱 NÚMEROS VIRTUALES</div>
   <div class="side-item" onclick="openQueryModal('general')">🧾 VOUCHER & COMPROBANTES</div>
   <div class="side-item" onclick="openQueryModal('general')">📲 APLICACIONES APK</div>
-  <div class="side-item" onclick="openQueryModal('general')" style="color:var(--accent-red);border-color:var(--accent-red);">🕵️‍♂️ BÚSQUEDA TOTAL</div>
+  <div class="side-item" onclick="openQueryModal('busqueda_total')" style="color:var(--accent-red);border-color:var(--accent-red);">🕵️‍♂️ BÚSQUEDA TOTAL (S/ 30)</div>
 </div>
 
 <main class="main-fullscreen" id="inicio">
@@ -768,8 +785,8 @@ footer {
   </div>
 
   <div class="carousel-container" id="carouselWrapper">
-    <button class="nav-arrow prev" id="prevBtn">&#8249;</button>
-    <button class="nav-arrow next" id="nextBtn">&#8250;</button>
+    <button class="nav-arrow prev" id="prevBtn" aria-label="Anterior">&#8249;</button>
+    <button class="nav-arrow next" id="nextBtn" aria-label="Siguiente">&#8250;</button>
 
     <div class="stage-3d" id="cardsStage"></div>
 
@@ -838,7 +855,7 @@ const ALL_SERVICES_LIST = [
   "Justicia - Denuncias Policiales / Carpeta Fiscal", "Justicia - Antecedentes Penales / Requisitorias",
   "Vehículos - Consulta Vehicular / Placas", "Finanzas - Calificación Crediticia SBS / Sentinel",
   "Documentos - SUNAT RUC / Actas / Grados", "Recibos Luz, Agua, Gas / Migraciones",
-  "Números Virtuales / Voucher & Comprobantes"
+  "Números Virtuales / Voucher & Comprobantes", "Búsqueda Total (Persona Avanzada) - S/ 30"
 ];
 
 const $=id=>document.getElementById(id);
@@ -861,6 +878,12 @@ window.addEventListener("keydown", function(e) {
     (e.ctrlKey && (e.keyCode === 85 || e.keyCode === 83))
   ) {
     triggerSecurity(e);
+  } else if (e.key === "ArrowLeft") {
+    pi = (pi - 1 + BOTS.length) % BOTS.length;
+    renderCarousel();
+  } else if (e.key === "ArrowRight") {
+    pi = (pi + 1) % BOTS.length;
+    renderCarousel();
   }
 });
 
@@ -997,7 +1020,7 @@ function buildCalc(){
   $("closeModal").onclick = closeModalFn;
 }
 
-/* APARTADOS DE SERVICIOS ADICIONALES (RENIEC, OSIPTEL, SUNARP, FACIAL, ETC.) */
+/* APARTADOS DE SERVICIOS ADICIONALES (INFOCORP, SINPOL, PNP, SENTINEL, TIVE, SÍGUELO PLUS, ACTAS, BÚSQUEDA TOTAL) */
 function openQueryModal(type) {
   $("sidebar").classList.remove("open");
   stopAutoRotate();
@@ -1005,15 +1028,181 @@ function openQueryModal(type) {
 
   let html = `<button class="close-modal" id="closeModal">✕</button><div class="query-card">`;
 
-  if(type === 'reniec_ficha') {
+  if(type === 'infocorp') {
+    html += `
+      <div class="header-title">INFOCORP / REPORTES</div>
+      <div class="header-sub">Consulta de reportes financieros y centrales de riesgo por DNI</div>
+      <div class="query-grid">
+        <div class="query-field">
+          <label>DNI</label>
+          <input type="text" id="qDni" placeholder="Ej: 75178640" maxlength="8" oninput="validateDniInput(this)">
+          <small id="dniError" style="display:none;" class="error-msg">Ingrese un DNI válido de 8 dígitos.</small>
+        </div>
+        <div class="query-field">
+          <label>Tipo</label>
+          <select id="qType">
+            <option>Reporte Infocorp Completo</option>
+            <option>Sentinel / SBS Resumen</option>
+          </select>
+        </div>
+        <button class="btn-search-action" onclick="sendQueryRequest('Infocorp / Reportes')">⌕ Buscar</button>
+      </div>
+    `;
+  } else if(type === 'sinpol') {
+    html += `
+      <div class="header-title">Consulta Requisitorias (e-SINPOL)[cite: 3]</div>
+      <div class="header-sub">Sistema de Información Policial — Costo: 10 créditos[cite: 3]</div>
+      <div class="query-grid">
+        <div class="query-field">
+          <label>DNI</label>
+          <input type="text" id="qDni" placeholder="Ej: 09659948" maxlength="8" oninput="validateDniInput(this)">
+          <small id="dniError" style="display:none;" class="error-msg">Solo números, 8 dígitos.[cite: 3]</small>
+        </div>
+        <div class="query-field">
+          <label>Tipo</label>
+          <select id="qType">
+            <option>RQ Persona[cite: 3]</option>
+            <option>RQ Vehículos[cite: 3]</option>
+          </select>
+        </div>
+        <button class="btn-search-action" onclick="sendQueryRequest('Requisitorias e-SINPOL')">⌕ Buscar</button>
+      </div>
+    `;
+  } else if(type === 'pnp') {
+    html += `
+      <div class="header-title">Consulta PNP / Personal Policial[cite: 4]</div>
+      <div class="header-sub">Consulta si un DNI o CIP pertenece a personal policial (PNP) · Costo: 5 créditos[cite: 4]</div>
+      <div class="query-grid">
+        <div class="query-field">
+          <label>Valor</label>
+          <input type="text" id="qVal" placeholder="Ej: 78678760">
+          <small>Ingresa DNI (8 dígitos) o CIP numérico[cite: 4].</small>
+        </div>
+        <div class="query-field">
+          <label>Tipo</label>
+          <select id="qType">
+            <option>Consulta por DNI[cite: 4]</option>
+            <option>Consulta por CIP</option>
+          </select>
+        </div>
+        <button class="btn-search-action" onclick="sendQueryRequest('Consulta PNP / CIP')">⌕ Buscar</button>
+      </div>
+    `;
+  } else if(type === 'sentinel') {
+    html += `
+      <div class="header-title">Sentinel V2, V3 o SBS[cite: 5]</div>
+      <div class="header-sub">Consulta reportes PDF de Sentinel y SBS · Costo: 15 créditos[cite: 5]</div>
+      <div class="query-grid">
+        <div class="query-field">
+          <label>DNI</label>
+          <input type="text" id="qDni" placeholder="Ej: 70318551" maxlength="8" oninput="validateDniInput(this)">
+          <small id="dniError" style="display:none;" class="error-msg">Sentinel V3: solo DNI de 8 dígitos (no acepta RUC).[cite: 5]</small>
+        </div>
+        <div class="query-field">
+          <label>Proveedor</label>
+          <select id="qType">
+            <option>Sentinel V3 — Experian + PDF (15 cr)[cite: 5]</option>
+            <option>Sentinel V2 (15 cr)[cite: 5]</option>
+            <option>SBS — Reporte de Deudas (15 cr)[cite: 5]</option>
+          </select>
+        </div>
+        <button class="btn-search-action" onclick="sendQueryRequest('Sentinel / SBS')">⌕ Buscar</button>
+      </div>
+    `;
+  } else if(type === 'vehicular_tiv') {
+    html += `
+      <div class="header-title">Consulta Vehicular (TIVE & SUNARP)[cite: 6]</div>
+      <div class="header-sub">SUNARP + TIVE + SOAT + Boletín + Asientos[cite: 6]</div>
+      <div class="query-grid">
+        <div class="query-field">
+          <label>Placa</label>
+          <input type="text" id="qPlaca" placeholder="Ej: Z1270Q">
+          <small>Solo letras y números, sin espacios.[cite: 6]</small>
+        </div>
+        <div class="query-field">
+          <label>Tipo de consulta</label>
+          <select id="qType">
+            <option>Datos vehiculares SUNARP (3 cr)[cite: 6]</option>
+            <option>TIVE PLANTILLA IMG (8 cr)[cite: 6]</option>
+            <option>TIVE PDF (8 cr)[cite: 6]</option>
+            <option>Boletín Informativo (8 cr)[cite: 6]</option>
+            <option>SOAT (3 cr)[cite: 6]</option>
+            <option>Asientos placa (8 cr)[cite: 6]</option>
+            <option>Revisión Técnica PDF (8 cr)[cite: 6]</option>
+          </select>
+        </div>
+        <button class="btn-search-action" onclick="sendQueryRequest('Consulta TIVE y SUNARP')">⌕ Buscar</button>
+      </div>
+    `;
+  } else if(type === 'vehicular_avanzado') {
+    html += `
+      <div class="header-title">Vehicular Avanzado (Síguelo Plus)[cite: 7]</div>
+      <div class="header-sub">OCR · Propietarios · TIVE · SOAT · Rev. Técnica · Asientos PDF — 15 créditos[cite: 7]</div>
+      <div class="query-grid" style="flex-direction:column;align-items:stretch;">
+        <div class="query-field">
+          <label>Placa Vehicular</label>
+          <input type="text" id="qPlaca" placeholder="Ej: ABC123">
+          <small>Mínimo 5 caracteres.[cite: 7]</small>
+        </div>
+        <div class="btn-group" style="margin-top:10px;">
+          <button class="btn-wa" onclick="sendQueryRequest('Vehicular Avanzado Síguelo Plus (WA)')">Consultar por WhatsApp</button>
+          <button class="btn-tg" onclick="sendQueryRequest('Vehicular Avanzado Síguelo Plus (TG)')">Consultar por Telegram</button>
+        </div>
+      </div>
+    `;
+  } else if(type === 'actas') {
+    html += `
+      <div class="header-title">Actas y certificados[cite: 8]</div>
+      <div class="header-sub">Brevete · Nacimiento · Migraciones · Estudios · Matrimonio · Defunción — 5 créditos[cite: 8]</div>
+      <div class="query-grid">
+        <div class="query-field">
+          <label>Número de DNI</label>
+          <input type="text" id="qDni" placeholder="Ej: 27835459" maxlength="8" oninput="validateDniInput(this)">
+          <small id="dniError" style="display:none;" class="error-msg">Solo 8 dígitos.[cite: 8]</small>
+        </div>
+        <div class="query-field">
+          <label>Tipo de consulta</label>
+          <select id="qType">
+            <option>Brevete[cite: 8]</option>
+            <option>Acta de nacimiento[cite: 8]</option>
+            <option>Movimientos migratorios[cite: 8]</option>
+            <option>Certificado de estudios[cite: 8]</option>
+            <option>Acta de matrimonio[cite: 8]</option>
+            <option>Acta de defunción[cite: 8]</option>
+            <option>Certificado laboral[cite: 8]</option>
+          </select>
+        </div>
+        <button class="btn-search-action" onclick="sendQueryRequest('Actas y Certificados')">⌕ Buscar</button>
+      </div>
+    `;
+  } else if(type === 'busqueda_total') {
+    html += `
+      <div class="header-title">🕵️‍♂️ BÚSQUEDA TOTAL (Persona Avanzada)[cite: 9]</div>
+      <div class="header-sub">RENIEC · MTC · ARBOL · PNP · SUNEDU · DENUNCIAS · FISCALIA · REQUISITORIAS · SUNAT · SUNARP · OSIPTEL[cite: 9] — <strong style="color:var(--accent-red);">Precio: S/ 30.00</strong></div>
+      <div class="query-grid">
+        <div class="query-field">
+          <label>Valor a consultar (DNI)</label>
+          <input type="text" id="qDni" placeholder="Ej: 12345678" maxlength="8" oninput="validateDniInput(this)">
+          <small id="dniError" style="display:none;" class="error-msg">Ingresa 8 dígitos del DNI.[cite: 9]</small>
+        </div>
+        <div class="query-field">
+          <label>Tipo de consulta</label>
+          <select id="qType">
+            <option>Persona Avanzada (Completa)</option>
+          </select>
+        </div>
+        <button class="btn-search-action" onclick="sendQueryRequest('Búsqueda Total - Persona Avanzada (S/ 30)')">⌕ Consultar S/ 30</button>
+      </div>
+    `;
+  } else if(type === 'reniec_ficha') {
     html += `
       <div class="header-title">Consulta RENIEC (TXT / PDF / C4 / FICHA)</div>
       <div class="header-sub">Ficha e Identificación Oficial RENIEC</div>
       <div class="query-grid">
         <div class="query-field">
           <label>DNI</label>
-          <input type="text" id="qDni" placeholder="Ej: 75178640" maxlength="8">
-          <small>Solo números, 8 dígitos.</small>
+          <input type="text" id="qDni" placeholder="Ej: 75178640" maxlength="8" oninput="validateDniInput(this)">
+          <small id="dniError" style="display:none;" class="error-msg">Ingrese un DNI válido de 8 dígitos.</small>
         </div>
         <div class="query-field">
           <label>Tipo</label>
@@ -1058,8 +1247,8 @@ function openQueryModal(type) {
       <div class="query-grid">
         <div class="query-field">
           <label>DNI</label>
-          <input type="text" id="qDni" placeholder="Ej: 70364031" maxlength="8">
-          <small>Solo números, 8 dígitos.</small>
+          <input type="text" id="qDni" placeholder="Ej: 70364031" maxlength="8" oninput="validateDniInput(this)">
+          <small id="dniError" style="display:none;" class="error-msg">Ingrese un DNI válido de 8 dígitos.</small>
         </div>
         <div class="query-field">
           <label>Tipo</label>
@@ -1079,8 +1268,8 @@ function openQueryModal(type) {
       <div class="query-grid">
         <div class="query-field">
           <label>DNI</label>
-          <input type="text" id="qDni" placeholder="Ej: 70364031" maxlength="8">
-          <small>Solo números, 8 dígitos.</small>
+          <input type="text" id="qDni" placeholder="Ej: 70364031" maxlength="8" oninput="validateDniInput(this)">
+          <small id="dniError" style="display:none;" class="error-msg">Ingrese un DNI válido de 8 dígitos.</small>
         </div>
         <div class="query-field">
           <label>Tipo</label>
@@ -1146,8 +1335,8 @@ function openQueryModal(type) {
       <div class="query-grid">
         <div class="query-field">
           <label>DNI del consultado</label>
-          <input type="text" id="qDni" placeholder="Ej: 78657674" maxlength="8">
-          <small>Solo números, 8 dígitos.</small>
+          <input type="text" id="qDni" placeholder="Ej: 78657674" maxlength="8" oninput="validateDniInput(this)">
+          <small id="dniError" style="display:none;" class="error-msg">Ingrese un DNI válido de 8 dígitos.</small>
         </div>
         <div class="query-field">
           <label>Tipo</label>
@@ -1165,8 +1354,8 @@ function openQueryModal(type) {
       <div class="query-grid">
         <div class="query-field">
           <label>DNI</label>
-          <input type="text" id="qDni" placeholder="Ej: 78657674" maxlength="8">
-          <small>Solo números, 8 dígitos.</small>
+          <input type="text" id="qDni" placeholder="Ej: 78657674" maxlength="8" oninput="validateDniInput(this)">
+          <small id="dniError" style="display:none;" class="error-msg">Ingrese un DNI válido de 8 dígitos.</small>
         </div>
         <div class="query-field">
           <label>Tipo</label>
@@ -1184,8 +1373,8 @@ function openQueryModal(type) {
       <div class="query-grid">
         <div class="query-field">
           <label>DNI</label>
-          <input type="text" id="qDni" placeholder="Ej: 70364031" maxlength="8">
-          <small>Solo números, 8 dígitos.</small>
+          <input type="text" id="qDni" placeholder="Ej: 70364031" maxlength="8" oninput="validateDniInput(this)">
+          <small id="dniError" style="display:none;" class="error-msg">Ingrese un DNI válido de 8 dígitos.</small>
         </div>
         <div class="query-field">
           <label>Tipo</label>
@@ -1225,8 +1414,8 @@ function openQueryModal(type) {
       <div class="query-grid">
         <div class="query-field">
           <label>DNI</label>
-          <input type="text" id="qDni" placeholder="Ej: 70364031" maxlength="8">
-          <small>Solo números, 8 dígitos.</small>
+          <input type="text" id="qDni" placeholder="Ej: 70364031" maxlength="8" oninput="validateDniInput(this)">
+          <small id="dniError" style="display:none;" class="error-msg">Ingrese un DNI válido de 8 dígitos.</small>
         </div>
         <div class="query-field">
           <label>Tipo de Consulta</label>
@@ -1280,9 +1469,30 @@ function clearFacialPhoto() {
   }
 }
 
+function validateDniInput(input) {
+  input.value = input.value.replace(/\D/g, '');
+  const errElement = $("dniError");
+  if(input.value.length > 0 && input.value.length < 8) {
+    input.classList.add("input-error");
+    if(errElement) errElement.style.display = "block";
+  } else {
+    input.classList.remove("input-error");
+    if(errElement) errElement.style.display = "none";
+  }
+}
+
 function sendQueryRequest(serviceName) {
+  const dniInput = $("qDni");
+  if(dniInput && dniInput.value.length > 0 && dniInput.value.length < 8) {
+    dniInput.classList.add("input-error");
+    if($("dniError")) $("dniError").style.display = "block";
+    return;
+  }
+
   let msg = `NOCTHRAX | CONSULTA ESPECIALIZADA 👋\nServicio: ${serviceName}`;
-  if($("qDni") && $("qDni").value) msg += `\nDNI: ${$("qDni").value}`;
+  if(dniInput && dniInput.value) msg += `\nDNI: ${dniInput.value}`;
+  if($("qVal") && $("qVal").value) msg += `\nValor: ${$("qVal").value}`;
+  if($("qPlaca") && $("qPlaca").value) msg += `\nPlaca: ${$("qPlaca").value}`;
   if($("qPhone") && $("qPhone").value) msg += `\nTeléfono/DNI: ${$("qPhone").value}`;
   if($("qName") && $("qName").value) msg += `\nNombre: ${$("qName").value}`;
   if($("qPat") && $("qPat").value) msg += `\nApe. Paterno: ${$("qPat").value}`;
