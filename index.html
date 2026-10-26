@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
 <meta name="description" content="NOCTHRAX | Perú — Servicios Digitales & Social Growth.">
 <meta name="theme-color" content="#0f0d0e">
 <title>NOCTHRAX | Perú</title>
@@ -21,15 +21,17 @@
   color-scheme:dark;
   box-sizing:border-box;
 }
-html{scroll-behavior:smooth;scroll-padding-top:90px}
+html{scroll-behavior:smooth;scroll-padding-top:90px;width:100%;overflow-x:hidden}
 *,*::before,*::after{box-sizing:inherit}
 body{
   margin:0;
+  width:100%;
   color:var(--cream);
   font:400 15px/1.6 var(--b);
   background: linear-gradient(rgba(10,8,9,0.5), rgba(10,8,9,0.75)), url('ojitos.jpg') no-repeat center center fixed;
   background-size: cover;
   overflow-x:hidden;
+  position:relative;
 }
 @media (max-width: 768px) {
   body {
@@ -87,6 +89,7 @@ header{
   top:0;
   right:-380px;
   width:360px;
+  max-width:90vw;
   height:100vh;
   background:rgba(15,13,14,.98);
   border-left:1px solid var(--line);
@@ -219,7 +222,6 @@ section{padding:80px 5vw;max-width:1200px;margin:auto}
   }
 }
 
-/* Posiciones del Carrusel 3D */
 .yamaha-card.center {
   transform: translateX(0) scale(1) translateZ(0) rotateY(0deg);
   opacity: 1;
@@ -265,7 +267,6 @@ section{padding:80px 5vw;max-width:1200px;margin:auto}
 .yc-tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .yc-tags i { font: 500 10px var(--b); padding: 4px 10px; border: 1px solid var(--line); color: var(--cream); font-style: normal; letter-spacing: 1px; border-radius: 4px; }
 
-/* Controles (Flechas Glass) */
 .yamaha-arrow {
   position: absolute;
   top: 50%;
@@ -293,7 +294,6 @@ section{padding:80px 5vw;max-width:1200px;margin:auto}
   .yamaha-arrow.next { right: 2px; }
 }
 
-/* Texto inferior y Puntos (Dots) */
 .yamaha-subtext {
   margin-top: 15px;
   font-size: 11px;
@@ -377,7 +377,7 @@ footer{text-align:center;padding:60px 5vw;color:var(--mut);font-size:11px;letter
 
 <div class="sidebar" id="sidebar">
   <div class="sidebar-header">
-    <h3>Servicios & Trámites</h3>
+    <h3>Servicios</h3>
     <button class="close-btn" id="closeSidebar">✕</button>
   </div>
   
@@ -413,6 +413,30 @@ footer{text-align:center;padding:60px 5vw;color:var(--mut);font-size:11px;letter
   <div class="side-item">🚗 Vehículo</div>
   <div class="side-item">🧭 Síguelo Plus</div>
   <div class="side-item">📜 Actas</div>
+  <div class="side-item">🏢 RUC</div>
+  <div class="side-item">🏢 RENADESPPLE</div>
+  <div class="side-item">🚗 Placas y Tive</div>
+  <div class="side-item">🎓 Grados Académicos</div>
+  <div class="side-item">💳 Carnét Universitario</div>
+  <div class="side-item">📄 Certificados Estudios (Notas)</div>
+  <div class="side-item">💉 Covid-19 + Seguro + Carnet Vacunación</div>
+  <div class="side-item">⚡ Recibos Luz, Agua, Gas</div>
+  <div class="side-item">✈️ Migraciones</div>
+  <div class="side-item">🖼️ Arbol Visual / +Texto</div>
+  <div class="side-item">📋 Denuncias</div>
+  <div class="side-item">🛡️ Ficha policial - Ver Policia</div>
+  <div class="side-item">📜 Certificado de Adulto (CUL)</div>
+  <div class="side-item">🗳️ Multas electorales</div>
+  <div class="side-item">⚖️ Deudores pensión alimentarios (REDAM)</div>
+  <div class="side-item">🏛️ Deudores judiciales morosos (REDJUM)</div>
+  <div class="side-item">🏦 Sistema Financiero</div>
+  <div class="side-item">💳 Calificacion Crediticia SBS</div>
+  <div class="side-item">🚙 Consulta Vehicular</div>
+  <div class="side-item">📞 Teléfonos</div>
+  <div class="side-item">⚖️ Justicia</div>
+  <div class="side-item">🏛️ SUNAT RUC</div>
+  <div class="side-item">💊 Recetas</div>
+  <div class="side-item">🛌 Descansos médicos</div>
   <div class="side-item" style="color:var(--gold);border-color:var(--gold);">🕵️‍♂️ Búsqueda Total</div>
 </div>
 
@@ -426,7 +450,6 @@ footer{text-align:center;padding:60px 5vw;color:var(--mut);font-size:11px;letter
     <span>01 / SOCIAL GROWTH</span>
   </div>
   
-  <!-- Carrusel Estilo Yamaha 3D -->
   <div class="yamaha-carousel-wrapper" id="carouselWrapper">
     <div class="yamaha-stage" id="yamahaStage">
       <button class="yamaha-arrow prev" id="prevBtn">&#8249;</button>
@@ -522,7 +545,6 @@ function calcPrice(arr, qty){
 
 let pi=0, si=0, q=500;
 
-// Renderizar Tarjetas del Carrusel Yamaha
 function renderYamahaCarousel(){
   const track = $("cardsTrack");
   track.innerHTML = BOTS.map((p, i)=>{
@@ -546,7 +568,6 @@ function renderYamahaCarousel(){
     `;
   }).join("");
 
-  // Renderizar Puntos Dots
   const dotsContainer = $("dotsContainer");
   dotsContainer.innerHTML = BOTS.map((_, i)=>`
     <div class="yamaha-dot ${i === pi ? 'active' : ''}" data-index="${i}"></div>
@@ -628,7 +649,6 @@ function botMsg(){
   return t;
 }
 
-// Controles Carrusel
 $("nextBtn").onclick = () => { pi = (pi + 1) % BOTS.length; si = 0; buildCalc(); };
 $("prevBtn").onclick = () => { pi = (pi - 1 + BOTS.length) % BOTS.length; si = 0; buildCalc(); };
 
@@ -647,7 +667,6 @@ $("dotsContainer").addEventListener("click", e => {
   pi = +dot.dataset.index; si = 0; buildCalc();
 });
 
-// Soporte Swipe Táctil y Arrastre en Carrusel
 let touchStartX = 0;
 const stage = $("yamahaStage");
 stage.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; });
@@ -671,7 +690,6 @@ $("calcBox").addEventListener("click", e=>{
 
 $("calcBox").addEventListener("input", e=>{ if(e.target.id=="qInput"){ q=Math.floor(+e.target.value)||0; updPrice(); } });
 
-/* Sidebar */
 $("menuBtn").onclick = () => $("sidebar").classList.add("open");
 $("closeSidebar").onclick = () => $("sidebar").classList.remove("open");
 function toggleSub(id){ $(id).classList.toggle("open"); }
