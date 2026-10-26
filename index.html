@@ -25,7 +25,6 @@
   box-sizing:border-box;
 }
 
-/* Deshabilitar selección de texto */
 body, html {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -82,22 +81,10 @@ header{
   margin-top: 3px;
 }
 
-.nav-menu {
+.header-right {
   display: flex;
   align-items: center;
-  gap: 28px;
-}
-.nav-link {
-  font-size: 12px;
-  font-weight: 500;
-  color: rgba(229, 231, 230, 0.75);
-  letter-spacing: 1px;
-  transition: 0.3s;
-  cursor: pointer;
-}
-.nav-link:hover, .nav-link.active {
-  color: #fff;
-  text-shadow: 0 0 10px rgba(255,255,255,0.5);
+  gap: 12px;
 }
 
 .header-search {
@@ -108,7 +95,7 @@ header{
   font-size: 12px;
   color: rgba(229, 231, 230, 0.8);
   transition: 0.3s;
-  padding: 6px 12px;
+  padding: 8px 14px;
   border-radius: 20px;
   background: rgba(255,255,255,0.03);
   border: 1px solid var(--line-border);
@@ -119,8 +106,23 @@ header{
   background: rgba(255,255,255,0.08);
 }
 
-@media(max-width: 900px) {
-  .nav-menu { display: none; }
+.btn-menu-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--line-border);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.btn-menu-icon:hover {
+  border-color: var(--accent-red);
+  color: var(--accent-red);
+  background: rgba(207, 35, 35, 0.1);
 }
 
 /* BARRA DE BÚSQUEDA DESPLEGABLE */
@@ -208,14 +210,14 @@ header{
 .sub-item{padding:7px 10px;font-size:11px;color:var(--text-muted);cursor:pointer;transition:.2s;}
 .sub-item:hover{color:#fff;}
 
-/* SECCIÓN PRINCIPAL */
+/* SECCIÓN PRINCIPAL HERO */
 .main-fullscreen {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding-top: 90px;
+  padding-top: 80px;
   padding-bottom: 20px;
 }
 
@@ -224,13 +226,18 @@ header{
   max-width: 1300px;
   padding: 0 5vw;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 5px;
+}
+.hero-main-title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 .hero-main-title h1 {
   font-family: var(--font-h);
-  font-size: clamp(42px, 8vw, 95px);
+  font-size: clamp(40px, 7vw, 90px);
   font-weight: 900;
   letter-spacing: 4px;
   margin: 0;
@@ -239,54 +246,23 @@ header{
   text-shadow: 0 10px 30px rgba(0,0,0,0.9);
 }
 .hero-main-title .subtitle-part {
-  font-size: clamp(12px, 2vw, 16px);
+  font-size: clamp(11px, 1.8vw, 15px);
   letter-spacing: 6px;
   color: var(--accent-red);
   font-weight: 700;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
   text-transform: uppercase;
 }
-
-.metrics-box {
-  display: flex;
-  gap: 20px;
-  background: rgba(0,0,0,0.4);
-  padding: 15px 25px;
-  border-radius: 12px;
-  border: 1px solid var(--line-border);
+.hero-description {
+  max-width: 520px;
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.5;
+  margin-top: 10px;
 }
-.metric-item { text-align: center; }
-.metric-val { font-family: var(--font-m); font-size: 20px; font-weight: 700; color: #fff; }
-.metric-lbl { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+.hero-description p { margin: 0 0 6px; }
 
-.btn-red-action {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 12px 28px;
-  background: var(--accent-red);
-  color: #fff;
-  font-weight: 700;
-  font-size: 11px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  border-radius: 25px;
-  transition: 0.3s;
-  box-shadow: 0 5px 20px rgba(207, 35, 35, 0.4);
-  cursor: pointer;
-  border: 0;
-}
-.btn-red-action:hover {
-  background: var(--accent-red-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(207, 35, 35, 0.6);
-}
-
-@media(max-width: 768px) {
-  .hero-tlou { flex-direction: column; align-items: flex-start; gap: 15px; }
-  .metrics-box { width: 100%; justify-content: space-around; }
-}
-
-/* CARRUSEL 3D */
+/* CARRUSEL 3D AGRANDADO EN PC Y ADAPTADO EN MÓVIL */
 .carousel-container {
   position: relative;
   width: 100%;
@@ -296,14 +272,14 @@ header{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  perspective: 1200px;
+  perspective: 1400px;
   user-select: none;
 }
 
 .stage-3d {
   position: relative;
   width: 100%;
-  height: 420px;
+  height: 480px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -312,16 +288,16 @@ header{
 
 .card-3d {
   position: absolute;
-  width: 270px;
-  height: 370px;
+  width: 310px;
+  height: 420px;
   background: var(--card-bg);
   border: 1px solid var(--line-border);
   border-radius: 20px;
-  padding: 22px;
+  padding: 26px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 25px 50px rgba(0,0,0,.9);
+  box-shadow: 0 30px 60px rgba(0,0,0,.95);
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease, filter 0.6s ease;
   cursor: pointer;
   backdrop-filter: blur(20px);
@@ -329,39 +305,39 @@ header{
 }
 
 @media(max-width: 768px) {
-  .card-3d { width: 230px; height: 320px; padding: 18px; }
-  .stage-3d { height: 350px; }
+  .card-3d { width: 240px; height: 340px; padding: 18px; }
+  .stage-3d { height: 370px; }
 }
 
 .card-3d.center {
-  transform: translateX(0) scale(1.1) translateZ(80px) rotateY(0deg);
+  transform: translateX(0) scale(1.1) translateZ(100px) rotateY(0deg);
   opacity: 1; z-index: 10; filter: blur(0);
-  border-color: rgba(207, 35, 35, 0.6);
-  box-shadow: 0 20px 50px rgba(207, 35, 35, 0.25);
+  border-color: rgba(207, 35, 35, 0.7);
+  box-shadow: 0 25px 60px rgba(207, 35, 35, 0.3);
 }
 
 .card-3d.left-1 {
-  transform: translateX(-65%) scale(0.85) translateZ(-150px) rotateY(18deg);
+  transform: translateX(-65%) scale(0.85) translateZ(-160px) rotateY(20deg);
   opacity: 0.45; z-index: 5; filter: blur(3px);
 }
 
 .card-3d.right-1 {
-  transform: translateX(65%) scale(0.85) translateZ(-150px) rotateY(-18deg);
+  transform: translateX(65%) scale(0.85) translateZ(-160px) rotateY(-20deg);
   opacity: 0.45; z-index: 5; filter: blur(3px);
 }
 
 .card-3d.left-2 {
-  transform: translateX(-115%) scale(0.68) translateZ(-300px) rotateY(30deg);
+  transform: translateX(-115%) scale(0.68) translateZ(-320px) rotateY(32deg);
   opacity: 0.2; z-index: 2; filter: blur(5px);
 }
 
 .card-3d.right-2 {
-  transform: translateX(115%) scale(0.68) translateZ(-300px) rotateY(-30deg);
+  transform: translateX(115%) scale(0.68) translateZ(-320px) rotateY(-32deg);
   opacity: 0.2; z-index: 2; filter: blur(5px);
 }
 
 .card-3d.hidden {
-  transform: translateX(0) scale(0.4) translateZ(-400px);
+  transform: translateX(0) scale(0.4) translateZ(-450px);
   opacity: 0; z-index: 1; pointer-events: none;
 }
 
@@ -383,14 +359,34 @@ header{
 .card-3d:hover .c-play-icon { transform: scale(1.1); background: var(--accent-red); color: #fff; }
 
 .c-body { text-align: center; }
-.c-body h3 { font-size: 20px; font-weight: 700; margin-bottom: 6px; color: #fff; }
-.c-body p { font-size: 11px; color: var(--text-muted); margin: 0 0 12px; line-height: 1.4; }
+.c-body h3 { font-size: 22px; font-weight: 700; margin-bottom: 6px; color: #fff; }
+.c-body p { font-size: 12px; color: var(--text-muted); margin: 0 0 12px; line-height: 1.4; }
 
 .c-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; }
 .c-tags i {
   font: 500 9px var(--font-b); padding: 3px 8px;
   border-radius: 4px; background: rgba(255,255,255,0.04);
   border: 1px solid var(--line-border); color: var(--text-main); font-style: normal;
+}
+
+.c-btn-solicitar {
+  width: 100%;
+  padding: 12px;
+  background: var(--accent-red);
+  color: #fff;
+  border: 0;
+  border-radius: 8px;
+  font: 700 11px var(--font-b);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 4px 15px rgba(207, 35, 35, 0.4);
+}
+.c-btn-solicitar:hover {
+  background: var(--accent-red-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(207, 35, 35, 0.6);
 }
 
 .nav-arrow {
@@ -527,16 +523,11 @@ footer {
     <span class="sub">PERÚ · DIGITAL SERVICES</span>
   </div>
 
-  <nav class="nav-menu">
-    <a class="nav-link active" href="#inicio">Home</a>
-    <a class="nav-link" onclick="openSidebar()">Servicios</a>
-    <a class="nav-link" onclick="openModal(0)">Cotizador</a>
-    <a class="nav-link" onclick="openSidebar()">Garantía</a>
-    <a class="nav-link" href="#contacto">Contacto</a>
-  </nav>
-
-  <div class="header-search" onclick="toggleSearch()">
-    <span>Search</span> ⌕
+  <div class="header-right">
+    <div class="header-search" onclick="toggleSearch()">
+      <span>Search</span> ⌕
+    </div>
+    <button class="btn-menu-icon" onclick="openSidebar()" aria-label="Catálogo Completo">☰</button>
   </div>
 </header>
 
@@ -621,22 +612,11 @@ footer {
     <div class="hero-main-title">
       <div class="subtitle-part">PERÚ · PART II</div>
       <h1>NOCTHRAX</h1>
-      <button class="btn-red-action" onclick="openModal(pi)">SOLICITAR SERVICIO</button>
     </div>
 
-    <div class="metrics-box">
-      <div class="metric-item">
-        <div class="metric-val">24/7</div>
-        <div class="metric-lbl">ESTADO SISTEMA</div>
-      </div>
-      <div class="metric-item">
-        <div class="metric-val">&lt; 15 min</div>
-        <div class="metric-lbl">TIEMPO RESPUESTA</div>
-      </div>
-      <div class="metric-item">
-        <div class="metric-val">100%</div>
-        <div class="metric-lbl">CONFIDENCIAL</div>
-      </div>
+    <div class="hero-description">
+      <p>Servicios digitales avanzados, aceleración de redes sociales e inteligencia de datos. Máxima precisión y confidencialidad en cada proceso.</p>
+      <small style="color:var(--accent-red); letter-spacing: 2px; text-transform:uppercase; font-weight:700;">“SILENCIO. PRECISIÓN. RESULTADOS.”</small>
     </div>
   </div>
 
@@ -729,7 +709,6 @@ function triggerSecurity(e) {
   return false;
 }
 
-// Bloqueo de teclas especiales (F12, Ctrl+Shift+I, Ctrl+U, etc.)
 window.addEventListener("keydown", function(e) {
   if (
     e.keyCode === 123 || 
@@ -789,6 +768,7 @@ function renderCarousel(){
           <p>${p.d}</p>
           <div class="c-tags">${p.s.map(s=>`<i>${s[0]}</i>`).join("")}</div>
         </div>
+        <button class="c-btn-solicitar" onclick="openModal(${i})">SOLICITAR</button>
       </div>
     `;
   }).join("");
@@ -906,7 +886,7 @@ $("prevBtn").onclick = () => { pi = (pi - 1 + BOTS.length) % BOTS.length; render
 
 $("cardsStage").addEventListener("click", e => {
   const card = e.target.closest(".card-3d");
-  if(!card) return;
+  if(!card || e.target.classList.contains("c-btn-solicitar")) return;
   const idx = +card.dataset.index;
   if(idx === pi) openModal(idx);
   else { pi = idx; renderCarousel(); }
