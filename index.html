@@ -137,7 +137,7 @@ header {
 .sub-item { padding: 7px 10px; font-size: 11px; color: var(--text-muted); cursor: pointer; transition: .2s; }
 .sub-item:hover { color: #fff; }
 
-/* MAIN HERO - CENTRED CORRECTION */
+/* MAIN HERO */
 .main-fullscreen {
   min-height: 100vh; width: 100%; display: flex; flex-direction: column;
   justify-content: space-between; align-items: center; padding-top: 85px; padding-bottom: 15px;
@@ -197,13 +197,6 @@ header {
   cursor: pointer; backdrop-filter: blur(20px); overflow: hidden;
 }
 
-@media(max-width: 768px) {
-  .card-3d { width: 270px; height: 360px; padding: 20px; }
-  .stage-3d { height: 390px; }
-  .nav-arrow.prev { left: 10px; }
-  .nav-arrow.next { right: 10px; }
-}
-
 .card-3d.center {
   transform: translateX(0) scale(1.05) translateZ(100px);
   opacity: 1; z-index: 10; filter: blur(0);
@@ -215,6 +208,16 @@ header {
 .card-3d.left-2 { transform: translateX(-600px) scale(0.68) translateZ(-250px) rotateY(25deg); opacity: 0.25; z-index: 2; filter: blur(4px); }
 .card-3d.right-2 { transform: translateX(600px) scale(0.68) translateZ(-250px) rotateY(-25deg); opacity: 0.25; z-index: 2; filter: blur(4px); }
 .card-3d.hidden { transform: translateX(0) scale(0.4) translateZ(-450px); opacity: 0; z-index: 1; pointer-events: none; }
+
+@media(max-width: 768px) {
+  .card-3d { width: 280px; height: 380px; padding: 20px; }
+  .stage-3d { height: 400px; }
+  .card-3d.left-1 { transform: translateX(-180px) scale(0.8) translateZ(-100px); opacity: 0.3; }
+  .card-3d.right-1 { transform: translateX(180px) scale(0.8) translateZ(-100px); opacity: 0.3; }
+  .card-3d.left-2, .card-3d.right-2 { opacity: 0; pointer-events: none; }
+  .nav-arrow.prev { left: 8px; }
+  .nav-arrow.next { right: 8px; }
+}
 
 .c-badge {
   position: absolute; top: 18px; right: 18px; font-size: 11px; font-weight: 700; color: #fff;
@@ -370,7 +373,7 @@ input:focus, select:focus { outline: none; border-color: var(--accent-red); }
 footer { text-align: center; color: var(--text-muted); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; padding: 10px 0; }
 </style>
 </head>
-<body oncontextmenu="return false;">
+<body oncontextmenu="triggerSecurity(); return false;">
 
 <header>
   <div class="brand-tlou">
@@ -618,7 +621,7 @@ const wa = t => `https://wa.me/${CFG.whatsapp}?text=${encodeURIComponent(t)}`;
 const tg = t => `https://t.me/${CFG.telegram}?text=${encodeURIComponent(t)}`;
 const money = n => "S/ " + n.toFixed(2);
 
-/* AGENTE DE CIBERSEGURIDAD BLINDADO & DETECCIÓN DE INSPECCIÓN */
+/* AGENTE DE CIBERSEGURIDAD BLINDADO */
 let securityTriggered = false;
 
 function triggerSecurity() {
@@ -638,7 +641,7 @@ function triggerSecurity() {
     });
 }
 
-// Bloqueo de Teclas F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C, Ctrl+U, Ctrl+S
+// Bloqueo estricto únicamente de atajos de inspección explícitos
 window.addEventListener("keydown", function(e) {
   if (
     e.keyCode === 123 || 
@@ -650,25 +653,6 @@ window.addEventListener("keydown", function(e) {
     return false;
   }
 });
-
-// Detección de DevTools por tamaño de ventana
-setInterval(() => {
-  const threshold = 160;
-  if (window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold) {
-    triggerSecurity();
-  }
-}, 800);
-
-// Detección mediante depuración / timing
-setInterval(() => {
-  const start = performance.now();
-  // Se fuerza un retardo si el panel de desarrollador está abierto interrumpiendo o inspeccionando
-  (function() { debugger; })();
-  const duration = performance.now() - start;
-  if (duration > 100) {
-    triggerSecurity();
-  }
-}, 1000);
 
 function calcPriceFromTable(arr, qty){
   if(!qty || qty < 100) return Math.max(3.00, arr[0]);
