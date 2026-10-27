@@ -105,7 +105,7 @@ header {
 }
 .search-item:hover { background: rgba(207, 35, 35, 0.2); color: #fff; }
 
-/* MENÚ LATERAL (SIDEBAR) CON FONDO COMBINADO ELEGANTE */
+/* MENÚ LATERAL (SIDEBAR) MEJORADO Y MENOS AGLOMERADO */
 .sidebar {
   position: fixed; 
   top: 0; 
@@ -113,16 +113,16 @@ header {
   width: 380px; 
   max-width: 90vw; 
   height: 100vh;
-  background: linear-gradient(180deg, rgba(13, 17, 16, 0.82) 0%, rgba(13, 17, 16, 0.95) 100%), 
+  background: linear-gradient(180deg, rgba(13, 17, 16, 0.85) 0%, rgba(13, 17, 16, 0.96) 100%), 
               url('3.jpg') center/cover no-repeat #0d1110;
   border-left: 1px solid rgba(207, 35, 35, 0.5); 
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   z-index: 1000; 
   transition: right .4s cubic-bezier(.16, 1, .3, 1); 
   display: flex; 
   flex-direction: column;
-  padding: 30px 20px; 
+  padding: 24px 18px; 
   overflow-y: auto;
   box-shadow: -15px 0 45px rgba(0, 0, 0, 0.9);
 }
@@ -132,12 +132,12 @@ header {
   display: flex; 
   align-items: center; 
   justify-content: space-between; 
-  margin-bottom: 20px; 
-  padding-bottom: 12px; 
+  margin-bottom: 16px; 
+  padding-bottom: 10px; 
   border-bottom: 1px solid rgba(229, 231, 230, 0.2); 
 }
 .sidebar-header h3 { 
-  font-size: 14px; 
+  font-size: 13px; 
   letter-spacing: 2px; 
   color: #fff; 
   text-transform: uppercase; 
@@ -148,14 +148,13 @@ header {
   background: rgba(0,0,0,0.5); 
   border: 1px solid rgba(229, 231, 230, 0.25); 
   border-radius: 50%;
-  width: 34px; height: 34px;
+  width: 32px; height: 32px;
   color: #fff; 
-  font-size: 16px; 
+  font-size: 15px; 
   cursor: pointer; 
   display: grid;
   place-items: center;
   transition: 0.3s ease;
-  backdrop-filter: blur(5px);
 }
 .close-btn:hover {
   background: var(--accent-red);
@@ -163,26 +162,24 @@ header {
   transform: rotate(90deg);
 }
 
-.social-section { margin-bottom: 22px; padding-bottom: 15px; border-bottom: 1px solid rgba(229, 231, 230, 0.2); }
-.social-section-title { font-size: 11px; letter-spacing: 2px; color: var(--accent-red); font-weight: 800; text-transform: uppercase; margin-bottom: 10px; }
+.social-section { margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid rgba(229, 231, 230, 0.2); }
+.social-section-title { font-size: 10px; letter-spacing: 2px; color: var(--accent-red); font-weight: 800; text-transform: uppercase; margin-bottom: 8px; }
 .social-link {
-  display: flex; align-items: center; justify-content: space-between; padding: 11px 14px;
-  margin-bottom: 7px; background: rgba(13, 17, 16, 0.85); border: 1px solid rgba(229, 231, 230, 0.18);
+  display: flex; align-items: center; justify-content: space-between; padding: 10px 12px;
+  margin-bottom: 6px; background: rgba(13, 17, 16, 0.85); border: 1px solid rgba(229, 231, 230, 0.18);
   border-radius: 8px; font-weight: 600; font-size: 11px; transition: 0.3s;
-  backdrop-filter: blur(8px);
 }
-.social-link:hover { background: rgba(207, 35, 35, 0.3); border-color: var(--accent-red); color: #fff; transform: translateX(-4px); box-shadow: 0 4px 15px rgba(207, 35, 35, 0.3); }
+.social-link:hover { background: rgba(207, 35, 35, 0.3); border-color: var(--accent-red); color: #fff; transform: translateX(-4px); }
 
 .side-item {
-  padding: 12px 14px; border-radius: 8px; margin-bottom: 7px; background: rgba(13, 17, 16, 0.85);
+  padding: 11px 12px; border-radius: 8px; margin-bottom: 6px; background: rgba(13, 17, 16, 0.85);
   border: 1px solid rgba(229, 231, 230, 0.18); font-weight: 600; font-size: 11px; letter-spacing: 1px;
   text-transform: uppercase; cursor: pointer; transition: .3s; display: flex; align-items: center; justify-content: space-between;
-  backdrop-filter: blur(8px);
 }
-.side-item:hover { background: rgba(207, 35, 35, 0.28); border-color: var(--accent-red); color: #fff; transform: translateX(-4px); box-shadow: 0 4px 15px rgba(207, 35, 35, 0.25); }
-.sub-menu { display: none; padding-left: 12px; margin-top: 4px; margin-bottom: 8px; border-left: 2px solid var(--accent-red); }
+.side-item:hover { background: rgba(207, 35, 35, 0.28); border-color: var(--accent-red); color: #fff; transform: translateX(-4px); }
+.sub-menu { display: none; padding-left: 10px; margin-top: 4px; margin-bottom: 6px; border-left: 2px solid var(--accent-red); }
 .sub-menu.open { display: block; }
-.sub-item { padding: 8px 12px; font-size: 11px; color: var(--text-muted); cursor: pointer; transition: .2s; border-radius: 6px; margin-bottom: 2px; background: rgba(13, 17, 16, 0.8); backdrop-filter: blur(4px); }
+.sub-item { padding: 7px 10px; font-size: 11px; color: var(--text-muted); cursor: pointer; transition: .2s; border-radius: 6px; margin-bottom: 2px; background: rgba(13, 17, 16, 0.8); }
 .sub-item:hover { color: #fff; background: rgba(207, 35, 35, 0.25); }
 
 .main-fullscreen {
@@ -228,7 +225,7 @@ header {
 
 .hero-description p { margin: 0 0 6px; }
 
-/* CARRUSEL 3D CON LAS NUEVAS IMÁGENES COMBINADAS EN CADA CARTILLA */
+/* CARRUSEL 3D CON FONDOS COMBINADOS Y NUEVO BOTÓN MEJORADO */
 .carousel-container {
   position: relative; 
   width: 100%; 
@@ -302,7 +299,7 @@ header {
   .nav-arrow.next { right: 10px; width: 40px; height: 40px; font-size: 20px; }
   .c-body h3 { font-size: 18px; margin-bottom: 6px; }
   .c-body p { font-size: 11px; margin-bottom: 10px; }
-  .c-btn-solicitar { padding: 12px; font-size: 11px; }
+  .c-btn-solicitar { padding: 14px; font-size: 12px; }
 }
 
 .c-badge, .c-body, .c-btn-solicitar {
@@ -326,12 +323,28 @@ header {
 .c-body h3 { font-size: 22px; font-weight: 800; margin: 0; color: #fff; line-height: 1.2; text-shadow: 0 4px 14px rgba(0,0,0,0.95); }
 .c-body p { font-size: 12px; color: #e5e7e6; margin: 0; line-height: 1.4; text-shadow: 0 2px 8px rgba(0,0,0,0.9); }
 
+/* ESTÉTICA DEL BOTÓN SOLICITAR MEJORADA */
 .c-btn-solicitar {
-  width: 100%; padding: 14px; background: var(--accent-red); color: #fff; border: 0;
-  border-radius: 12px; font: 800 12px var(--font-b); letter-spacing: 2px; text-transform: uppercase;
-  cursor: pointer; transition: 0.3s; box-shadow: 0 6px 20px rgba(207, 35, 35, 0.45);
+  width: 100%; 
+  padding: 16px 20px; 
+  background: linear-gradient(135deg, #cf2323 0%, #a61b1b 100%); 
+  color: #fff; 
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 35px; 
+  font: 800 13px var(--font-b); 
+  letter-spacing: 2.5px; 
+  text-transform: uppercase;
+  cursor: pointer; 
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); 
+  box-shadow: 0 8px 25px rgba(207, 35, 35, 0.5);
+  text-align: center;
 }
-.c-btn-solicitar:hover { background: var(--accent-red-hover); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(207, 35, 35, 0.75); }
+.c-btn-solicitar:hover { 
+  background: linear-gradient(135deg, #e62b2b 0%, #cf2323 100%); 
+  transform: translateY(-3px) scale(1.02); 
+  box-shadow: 0 12px 32px rgba(207, 35, 35, 0.75); 
+  border-color: rgba(255, 255, 255, 0.4);
+}
 
 .nav-arrow {
   position: absolute; top: 50%; transform: translateY(-50%); width: 46px; height: 46px; border-radius: 50%;
@@ -552,7 +565,7 @@ header {
   color: #fff;
 }
 
-/* MODALES CON FONDO COMBINADO DE LAS NUEVAS IMÁGENES (7.jpg) */
+/* MODALES CON FONDOS COMBINADOS DE 7.jpg */
 .modal-overlay {
   position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(8,10,9,0.98);
   backdrop-filter: blur(30px); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 0;
@@ -578,7 +591,7 @@ header {
 
 label { display: block; font: 700 11px var(--font-b); color: var(--text-main); letter-spacing: 2px; text-transform: uppercase; margin: 16px 0 6px; text-align: left; }
 
-input[type="number"], input[type="text"], select {
+input[type="number"], input[type="text"], select, input[type="file"] {
   width: 100%; padding: 14px 18px; border: 1px solid var(--line-border); background: rgba(0,0,0,.85);
   color: #fff; font: 500 14px var(--font-b); border-radius: 10px; transition: 0.3s;
   font-size: 16px; text-align: left;
@@ -919,7 +932,7 @@ const NUMEROS_VIRTUALES_ITEMS = [
   { n: "🌐 Panel de Números (Acceso Total)", p: "S/ 15.00", d: "Acceso multi-país ilimitado con plantilla para colaboradores y revendedores.", badge: "Élite", img: "2.jpg" }
 ];
 
-/* CARRUSEL 3D CON LAS NUEVAS IMÁGENES (1.jpg, 2.jpg, 3.jpg, 4.jpg, 5.jpg, 7.jpg) DISTRIBUIDAS Y COMBINADAS */
+/* CARRUSEL 3D CON FONDOS COMBINADOS DE 1.jpg, 2.jpg, 3.jpg, 4.jpg, 5.jpg, 7.jpg */
 const BOTS = [
   { k:"metodos", n:"Métodos", img:"1.jpg", rating:"9.9 ★", hasCalc:false, d:"Guías y métodos exclusivos paso a paso.", s:METODOS_TIERS },
   { k:"web", n:"Creación de tu Página Web", img:"2.jpg", rating:"9.9 ★", hasCalc:false, d:"Construcción y diseño profesional de páginas web a tu medida.", s:WEB_TIERS },
@@ -946,6 +959,7 @@ const ALL_SERVICES_MAP = [
   { text: "YouTube (Suscriptores, WatchTime, Vistas)", action: () => openModal(7) },
   { text: "Kick (Seguidores, Live)", action: () => openModal(8) },
   { text: "Reniec - Ficha / Nombres / DNI / Facial", action: () => openQueryModal('reniec_ficha') },
+  { text: "Reconocimiento Facial (Foto / Imagen)", action: () => openQueryModal('reniec_facial') },
   { text: "Persona Avanzada (Consulta Integral)", action: () => openQueryModal('persona_avanzada') },
   { text: "Denuncias Policiales (SIDPOL)", action: () => openQueryModal('legal_denuncias') },
   { text: "Carpeta Fiscal (Ministerio Público)", action: () => openQueryModal('legal_fiscal') },
@@ -1148,7 +1162,6 @@ function buildCalc(){
   $("closeModal").onclick = closeModalFn;
 }
 
-// RENDERIZADOR TIPO LAUNCHER / STREAMING MODERNO (CON FONDOS COMBINADOS DE 1.jpg, 2.jpg, 3.jpg, 4.jpg, 5.jpg, 7.jpg)
 function renderStoreModal(title, subtitle, itemsList, isCollaborative = false) {
   $("sidebar").classList.remove("open");
   stopAutoRotate();
@@ -1252,48 +1265,15 @@ function openQueryModal(type) {
 
   if(type === 'busqueda_total') {
     html += `
-      <div style="margin-bottom:10px;">
-        <span style="font-size:32px;">🕵️‍♂️</span>
-      </div>
+      <div style="margin-bottom:10px;"><span style="font-size:32px;">🕵️‍♂️</span></div>
       <div class="header-title">BÚSQUEDA TOTAL</div>
       <div class="header-sub">Incluye todos los servicios oficiales a un precio único de <strong style="color:var(--accent-red);">S/ 35.00</strong></div>
       
       <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:12px; margin:20px 0;">
-        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--line-border); padding:14px; border-radius:12px; background-image:url('1.jpg'); background-size:cover; background-position:center; position:relative; overflow:hidden;">
-          <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(13,17,16,0.85);z-index:1;"></div>
-          <div style="position:relative;z-index:2;">
-            <div style="font-size:12px; font-weight:800; color:#fff;">🆔 RENIEC</div>
-            <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Fichas y datos completos</div>
-          </div>
-        </div>
-        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--line-border); padding:14px; border-radius:12px; background-image:url('2.jpg'); background-size:cover; background-position:center; position:relative; overflow:hidden;">
-          <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(13,17,16,0.85);z-index:1;"></div>
-          <div style="position:relative;z-index:2;">
-            <div style="font-size:12px; font-weight:800; color:#fff;">🚗 MTC</div>
-            <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Licencias y papeletas</div>
-          </div>
-        </div>
-        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--line-border); padding:14px; border-radius:12px; background-image:url('3.jpg'); background-size:cover; background-position:center; position:relative; overflow:hidden;">
-          <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(13,17,16,0.85);z-index:1;"></div>
-          <div style="position:relative;z-index:2;">
-            <div style="font-size:12px; font-weight:800; color:#fff;">🌳 ÁRBOL</div>
-            <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Vínculos familiares</div>
-          </div>
-        </div>
-        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--line-border); padding:14px; border-radius:12px; background-image:url('4.jpg'); background-size:cover; background-position:center; position:relative; overflow:hidden;">
-          <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(13,17,16,0.85);z-index:1;"></div>
-          <div style="position:relative;z-index:2;">
-            <div style="font-size:12px; font-weight:800; color:#fff;">🛡️ PNP</div>
-            <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Requisitorias e historial</div>
-          </div>
-        </div>
-        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--line-border); padding:14px; border-radius:12px; background-image:url('5.jpg'); background-size:cover; background-position:center; position:relative; overflow:hidden;">
-          <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(13,17,16,0.85);z-index:1;"></div>
-          <div style="position:relative;z-index:2;">
-            <div style="font-size:12px; font-weight:800; color:#fff;">⚖️ ANTECEDENTES</div>
-            <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Penales y judiciales</div>
-          </div>
-        </div>
+        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--line-border); padding:14px; border-radius:12px; background-image:url('1.jpg'); background-size:cover; background-position:center; position:relative; overflow:hidden;"><div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(13,17,16,0.85);z-index:1;"></div><div style="position:relative;z-index:2;"><div style="font-size:12px; font-weight:800; color:#fff;">🆔 RENIEC</div><div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Fichas y datos completos</div></div></div>
+        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--line-border); padding:14px; border-radius:12px; background-image:url('2.jpg'); background-size:cover; background-position:center; position:relative; overflow:hidden;"><div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(13,17,16,0.85);z-index:1;"></div><div style="position:relative;z-index:2;"><div style="font-size:12px; font-weight:800; color:#fff;">🚗 MTC</div><div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Licencias y papeletas</div></div></div>
+        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--line-border); padding:14px; border-radius:12px; background-image:url('3.jpg'); background-size:cover; background-position:center; position:relative; overflow:hidden;"><div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(13,17,16,0.85);z-index:1;"></div><div style="position:relative;z-index:2;"><div style="font-size:12px; font-weight:800; color:#fff;">🌳 ÁRBOL</div><div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Vínculos familiares</div></div></div>
+        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--line-border); padding:14px; border-radius:12px; background-image:url('4.jpg'); background-size:cover; background-position:center; position:relative; overflow:hidden;"><div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(13,17,16,0.85);z-index:1;"></div><div style="position:relative;z-index:2;"><div style="font-size:12px; font-weight:800; color:#fff;">🛡️ PNP</div><div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Requisitorias e historial</div></div></div>
       </div>
 
       <div class="query-grid" style="margin-top:15px;">
@@ -1328,6 +1308,47 @@ function openQueryModal(type) {
         <button class="btn-search-action" onclick="sendQueryRequest('Ficha / Consulta RENIEC')">⌕ Consultar</button>
       </div>
     `;
+  } else if(type === 'reniec_facial') {
+    html += `
+      <div class="header-title">📸 RECONOCIMIENTO FACIAL BIOMÉTRICO</div>
+      <div class="header-sub">Sube una fotografía, imagen o toma captura para realizar la coincidencia biométrica oficial</div>
+      <div class="query-grid" style="flex-direction:column;align-items:stretch;">
+        <div class="query-field">
+          <label>Adjuntar Foto / Imagen de Rostro</label>
+          <input type="file" id="qFile" accept="image/*" style="padding:10px;">
+        </div>
+        <div class="query-field">
+          <label>Notas o Referencia (Opcional)</label>
+          <input type="text" id="qGeneral" placeholder="Ej: Nombre o DNI referencial si lo tienes...">
+        </div>
+        <div class="btn-group" style="margin-top:12px;">
+          <button class="btn-wa" onclick="sendQueryRequest('Reconocimiento Facial (Con Foto/Imagen)')">Enviar Imagen por WhatsApp</button>
+          <button class="btn-tg" onclick="sendQueryRequest('Reconocimiento Facial (Con Foto/Imagen)')">Enviar Imagen por Telegram</button>
+        </div>
+      </div>
+    `;
+  } else if(type === 'recibos_luz') {
+    html += `
+      <div class="header-title">⚡ CONSULTA DE RECIBOS (LUZ, AGUA, GAS)</div>
+      <div class="header-sub">Selecciona la empresa de servicio y proporciona el número de suministro o DNI</div>
+      <div class="query-grid">
+        <div class="query-field">
+          <label>Empresa de Servicio</label>
+          <select id="qType">
+            <option value="Luz del Sur">Luz del Sur (Electricidad)</option>
+            <option value="Enel Distribución">Enel Distribución (Electricidad)</option>
+            <option value="Sedapal">Sedapal (Agua Potable)</option>
+            <option value="Calidda">Calidda (Gas Natural)</option>
+            <option value="Electro Sur Este / Norte">Electro Regional (Provincias)</option>
+          </select>
+        </div>
+        <div class="query-field">
+          <label>Número de Suministro / Nro. Cliente / DNI</label>
+          <input type="text" id="qDni" placeholder="Ej: 10492830 o DNI del titular">
+        </div>
+        <button class="btn-search-action" onclick="sendQueryRequest('Consulta de Recibos (Luz/Agua/Gas)')">⌕ Consultar Recibo</button>
+      </div>
+    `;
   } else if(type === 'persona_avanzada') {
     html += `
       <div class="header-title">👤 PERSONA AVANZADA</div>
@@ -1339,9 +1360,7 @@ function openQueryModal(type) {
         </div>
         <div class="query-field">
           <label>Tipo de consulta</label>
-          <select id="qType" disabled>
-            <option value="Persona Avanzada">Persona Avanzada 🔍</option>
-          </select>
+          <select id="qType" disabled><option value="Persona Avanzada">Persona Avanzada 🔍</option></select>
         </div>
         <button class="btn-search-action" onclick="sendQueryRequest('Persona Avanzada Integral')">⌕ Consultar</button>
       </div>
@@ -1357,9 +1376,7 @@ function openQueryModal(type) {
         </div>
         <div class="query-field">
           <label>Tipo</label>
-          <select id="qType">
-            <option value="Denuncias policiales">Denuncias policiales</option>
-          </select>
+          <select id="qType"><option value="Denuncias policiales">Denuncias policiales</option></select>
         </div>
         <button class="btn-search-action" onclick="sendQueryRequest('Denuncias Policiales SIDPOL')">⌕ Consultar</button>
       </div>
@@ -1375,9 +1392,7 @@ function openQueryModal(type) {
         </div>
         <div class="query-field">
           <label>Tipo</label>
-          <select id="qType">
-            <option value="Carpetas fiscales">Carpetas fiscales</option>
-          </select>
+          <select id="qType"><option value="Carpetas fiscales">Carpetas fiscales</option></select>
         </div>
         <button class="btn-search-action" onclick="sendQueryRequest('Carpeta Fiscal MP')">⌕ Consultar</button>
       </div>
@@ -1638,18 +1653,6 @@ function openQueryModal(type) {
           <button class="btn-wa" onclick="sendQueryRequest('Correo Temporal')">Solicitar por WhatsApp</button>
           <button class="btn-tg" onclick="sendQueryRequest('Correo Temporal')">Solicitar por Telegram</button>
         </div>
-      </div>
-    `;
-  } else if(type === 'recibos_luz') {
-    html += `
-      <div class="header-title">⚡ RECIBOS LUZ, AGUA & GAS</div>
-      <div class="header-sub">Consulta de recibos al instante</div>
-      <div class="query-grid">
-        <div class="query-field">
-          <label>DNI / Nro. Suministro</label>
-          <input type="text" id="qDni" placeholder="Ej: 70364031">
-        </div>
-        <button class="btn-search-action" onclick="sendQueryRequest('Recibos Luz/Agua/Gas')">⌕ Consultar</button>
       </div>
     `;
   } else {
