@@ -392,7 +392,7 @@ footer { text-align: center; color: var(--text-muted); font-size: 10px; letter-s
 <!-- BARRA DE BÚSQUEDA INTERACTIVA -->
 <div class="search-overlay" id="searchOverlay">
   <div class="search-input-wrap">
-    <input type="text" id="searchInput" placeholder="Escribe para buscar un servicio (Ej: Reniec, Web, Bots, Facebook, Forms)..." oninput="filterServices()">
+    <input type="text" id="searchInput" placeholder="Escribe para buscar un servicio (Ej: Reniec, Denuncias, Web, Bots, Facebook, Forms)..." oninput="filterServices()">
   </div>
   <div class="search-results" id="searchResults"></div>
 </div>
@@ -607,7 +607,11 @@ const ALL_SERVICES_MAP = [
   { text: "YouTube (Suscriptores, WatchTime, Vistas)", action: () => openModal(6) },
   { text: "Kick (Seguidores, Live)", action: () => openModal(7) },
   { text: "Reniec - Ficha / Nombres / DNI / Facial", action: () => openQueryModal('reniec_ficha') },
-  { text: "Justicia & Legal (Denuncias, Antecedentes)", action: () => openQueryModal('busqueda_total') },
+  { text: "Denuncias Policiales (SIDPOL)", action: () => openQueryModal('legal_denuncias') },
+  { text: "Carpeta Fiscal (Ministerio Público)", action: () => openQueryModal('legal_fiscal') },
+  { text: "Antecedentes Penales/Judiciales/Policiales", action: () => openQueryModal('legal_antecedentes') },
+  { text: "Requisitorias e-SINPOL (Persona/Vehículos)", action: () => openQueryModal('legal_requisitorias') },
+  { text: "Consulta PNP / CIP (Policía Nacional)", action: () => openQueryModal('pnp') },
   { text: "Vehículos & Finanzas (Infocorp, Placas)", action: () => openQueryModal('finanzas') },
   { text: "Correo Temporal", action: () => openQueryModal('correo_temporal') },
   { text: "Números Virtuales (WhatsApp / Telegram)", action: () => openQueryModal('numeros_virtuales') },
@@ -947,26 +951,105 @@ function openQueryModal(type) {
         <button class="btn-search-action" onclick="sendQueryRequest('Carné de Extranjería (CE)')">⌕ Consultar</button>
       </div>
     `;
-  } else if(type.startsWith('legal_') || type === 'pnp') {
+  } else if(type === 'legal_denuncias') {
     html += `
-      <div class="header-title">⚖️ JUSTICIA & ANTECEDENTES POLICIALES</div>
-      <div class="header-sub">Consultas en bases de datos oficiales (PNP, Fiscalía, Requisitorias)</div>
+      <div class="header-title">⚖️ DENUNCIAS POLICIALES (SIDPOL)</div>
+      <div class="header-sub">Búsqueda de denuncias registradas por número de DNI</div>
       <div class="query-grid">
         <div class="query-field">
-          <label>Número de DNI</label>
-          <input type="text" id="qDni" placeholder="Ej: 75178640" maxlength="8" oninput="validateDniInput(this)">
-          <small id="dniError" style="display:none;" class="error-msg">Ingrese 8 dígitos.</small>
+          <label>DNI del consultado</label>
+          <input type="text" id="qDni" placeholder="Ej: 78657674" maxlength="8" oninput="validateDniInput(this)">
+          <small id="dniError" style="display:none;" class="error-msg">Solo números, 8 dígitos.</small>
         </div>
         <div class="query-field">
-          <label>Tipo de Reporte Legal</label>
+          <label>Tipo</label>
           <select id="qType">
-            <option>Denuncias Policiales e-SINPOL</option>
-            <option>Carpeta Fiscal</option>
-            <option>Antecedentes Penales / Judiciales</option>
-            <option>Requisitorias Activas</option>
+            <option value="Denuncias policiales">Denuncias policiales</option>
+          </select>
+          <small style="color:var(--text-muted);display:block;margin-top:4px;">Por ahora solo está habilitado: Denuncias policiales.</small>
+        </div>
+        <button class="btn-search-action" onclick="sendQueryRequest('Denuncias Policiales SIDPOL')">⌕ Consultar</button>
+      </div>
+    `;
+  } else if(type === 'legal_fiscal') {
+    html += `
+      <div class="header-title">⚖️ CARPETA FISCAL — MINISTERIO PÚBLICO</div>
+      <div class="header-sub">Registros e investigación en el Ministerio Público por DNI</div>
+      <div class="query-grid">
+        <div class="query-field">
+          <label>DNI</label>
+          <input type="text" id="qDni" placeholder="Ej: 78657674" maxlength="8" oninput="validateDniInput(this)">
+          <small id="dniError" style="display:none;" class="error-msg">Solo números, 8 dígitos.</small>
+        </div>
+        <div class="query-field">
+          <label>Tipo</label>
+          <select id="qType">
+            <option value="Carpetas fiscales">Carpetas fiscales</option>
+          </select>
+          <small style="color:var(--text-muted);display:block;margin-top:4px;">Registros en el Ministerio Público por DNI.</small>
+        </div>
+        <button class="btn-search-action" onclick="sendQueryRequest('Carpeta Fiscal MP')">⌕ Consultar</button>
+      </div>
+    `;
+  } else if(type === 'legal_antecedentes') {
+    html += `
+      <div class="header-title">⚖️ CONSULTA ANTECEDENTES (INPE / PODER JUDICIAL)</div>
+      <div class="header-sub">Verificación de registros judiciales, penales y policiales</div>
+      <div class="query-grid">
+        <div class="query-field">
+          <label>DNI</label>
+          <input type="text" id="qDni" placeholder="Ej: 70364031" maxlength="8" oninput="validateDniInput(this)">
+          <small id="dniError" style="display:none;" class="error-msg">Solo números, 8 dígitos.</small>
+        </div>
+        <div class="query-field">
+          <label>Tipo</label>
+          <select id="qType">
+            <option value="Antecedentes penales">Antecedentes penales</option>
+            <option value="Antecedentes judiciales">Antecedentes judiciales</option>
+            <option value="Antecedentes policiales">Antecedentes policiales</option>
           </select>
         </div>
-        <button class="btn-search-action" onclick="sendQueryRequest('Consulta Legal y Policial')">⌕ Consultar</button>
+        <button class="btn-search-action" onclick="sendQueryRequest('Consulta Antecedentes')">⌕ Consultar</button>
+      </div>
+    `;
+  } else if(type === 'legal_requisitorias') {
+    html += `
+      <div class="header-title">⚖️ CONSULTA REQUISITORIAS (e-SINPOL)</div>
+      <div class="header-sub">Sistema de Información Policial — Búsqueda de órdenes de captura</div>
+      <div class="query-grid">
+        <div class="query-field">
+          <label>DNI / Placa</label>
+          <input type="text" id="qDni" placeholder="Ej: 09659948 u Órden">
+        </div>
+        <div class="query-field">
+          <label>Tipo</label>
+          <select id="qType">
+            <option value="RQ Persona">RQ Persona</option>
+            <option value="RQ Vehículos">RQ Vehículos</option>
+          </select>
+        </div>
+        <button class="btn-search-action" onclick="sendQueryRequest('Requisitorias e-SINPOL')">⌕ Buscar</button>
+      </div>
+    `;
+  } else if(type === 'pnp') {
+    html += `
+      <div class="header-title">⚖️ CONSULTA PERSONAL POLICIAL (PNP / CIP)</div>
+      <div class="header-sub">Consulta si un DNI o CIP pertenece a personal policial activo o retirado</div>
+      <div class="query-grid">
+        <div class="query-field">
+          <label>Valor (DNI o CIP)</label>
+          <input type="text" id="qDni" placeholder="Ej: 78678760">
+          <small style="color:var(--text-muted);display:block;margin-top:4px;">DNI = 8 dígitos · CIP = numérico</small>
+        </div>
+        <div class="query-field">
+          <label>Tipo</label>
+          <select id="qType">
+            <option value="Consulta por DNI">Consulta por DNI</option>
+            <option value="Consulta por CIP">Consulta por CIP</option>
+            <option value="DNI 2026 - Datos ampliados PNP/ESSALUD">DNI 2026 - Datos ampliados PNP/ESSALUD</option>
+          </select>
+        </div>
+        <button class="btn-search-action" onclick="sendQueryRequest('Consulta PNP / CIP')">⌕ Buscar</button>
       </div>
     `;
   } else if(type === 'numeros_virtuales') {
