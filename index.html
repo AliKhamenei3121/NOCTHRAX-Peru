@@ -348,13 +348,13 @@ header {
 .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.25); cursor: pointer; transition: 0.3s; }
 .dot.active { width: 24px; border-radius: 4px; background: var(--accent-red); box-shadow: 0 0 10px rgba(207,35,35,0.8); }
 
-/* DISEÑO TIPO LAUNCHER / TIENDA A PANTALLA COMPLETA TOTAL (ALINEADO A LA IZQUIERDA Y ORDENADO) */
+/* DISEÑO TIPO LAUNCHER / STREAMING MODERNO (INSPIRADO EN REFERENCIA) */
 .store-layout {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 25px;
   width: 100%;
-  max-width: 1280px;
+  max-width: 1300px;
   margin: 0 auto;
   text-align: left;
   padding: 20px 4vw;
@@ -363,7 +363,7 @@ header {
 .store-hero {
   position: relative;
   width: 100%;
-  height: 380px;
+  height: 400px;
   border-radius: 20px;
   background-size: cover;
   background-position: center;
@@ -374,13 +374,14 @@ header {
   padding: 40px;
   box-shadow: 0 25px 60px rgba(0,0,0,0.8);
   overflow: hidden;
+  transition: background-image 0.5s ease-in-out;
 }
 
 .store-hero::before {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(180deg, rgba(13,17,16,0.1) 0%, rgba(13,17,16,0.85) 60%, rgba(13,17,16,0.98) 100%);
+  background: linear-gradient(180deg, rgba(13,17,16,0.15) 0%, rgba(13,17,16,0.85) 60%, rgba(13,17,16,0.98) 100%);
   z-index: 1;
 }
 
@@ -390,7 +391,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 8px;
+  gap: 10px;
   text-align: left;
 }
 
@@ -402,13 +403,13 @@ header {
   text-transform: uppercase;
   color: #fff;
   background: var(--accent-red);
-  padding: 4px 10px;
+  padding: 5px 12px;
   border-radius: 6px;
 }
 
 .store-hero-title {
   font-family: var(--font-h);
-  font-size: 32px;
+  font-size: 36px;
   font-weight: 900;
   color: #fff;
   margin: 0;
@@ -418,7 +419,7 @@ header {
 .store-hero-desc {
   font-size: 13px;
   color: var(--text-muted);
-  max-width: 700px;
+  max-width: 750px;
   margin: 0;
 }
 
@@ -432,18 +433,18 @@ header {
 
 .store-hero-price {
   font-family: var(--font-h);
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 800;
   color: #fff;
   text-shadow: 0 0 10px rgba(207,35,35,0.7);
 }
 
 .btn-hero-action {
-  padding: 14px 30px;
+  padding: 14px 32px;
   background: var(--accent-red);
   color: #fff;
   border: 0;
-  border-radius: 10px;
+  border-radius: 12px;
   font-weight: 800;
   font-size: 12px;
   letter-spacing: 1.5px;
@@ -455,6 +456,7 @@ header {
 .btn-hero-action:hover {
   background: var(--accent-red-hover);
   transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(207,35,35,0.7);
 }
 
 .store-section-title {
@@ -463,38 +465,71 @@ header {
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: #fff;
-  margin: 10px 0 6px;
+  margin: 15px 0 8px;
   text-align: left;
 }
 
 .store-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 16px;
   max-height: 320px;
   overflow-y: auto;
   padding-right: 4px;
 }
 
+/* MINIATURAS ESTILO STREAMING (FOTO DE FONDO + TEXTURA) */
 .store-card {
-  background: rgba(255,255,255,0.03);
+  position: relative;
+  height: 150px;
+  border-radius: 16px;
+  background-size: cover;
+  background-position: center;
   border: 1px solid var(--line-border);
-  border-radius: 14px;
-  padding: 18px;
   cursor: pointer;
   transition: 0.3s ease;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 8px;
+  justify-content: flex-end;
+  padding: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+}
+
+.store-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(180deg, rgba(13,17,16,0.2) 0%, rgba(13,17,16,0.85) 60%, rgba(13,17,16,0.98) 100%);
+  z-index: 1;
+  transition: 0.3s;
+}
+
+.store-card:hover::before {
+  background: linear-gradient(180deg, rgba(13,17,16,0.1) 0%, rgba(13,17,16,0.6) 50%, rgba(13,17,16,0.9) 100%);
+}
+
+.store-card.active-card {
+  border-color: var(--accent-red);
+  box-shadow: 0 0 20px rgba(207, 35, 35, 0.5);
+  transform: translateY(-3px);
+}
+
+.store-card-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
   text-align: left;
 }
 
-.store-card:hover {
-  border-color: var(--accent-red);
-  background: rgba(207,35,35,0.12);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(207,35,35,0.25);
+.store-card-badge {
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent-red);
 }
 
 .store-card-title {
@@ -502,13 +537,21 @@ header {
   font-size: 13px;
   color: #fff;
   margin: 0;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.9);
+}
+
+.store-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
 }
 
 .store-card-price {
   font-family: var(--font-h);
   font-weight: 800;
-  font-size: 14px;
-  color: var(--accent-red);
+  font-size: 13px;
+  color: #fff;
 }
 
 /* MODAL A PANTALLA COMPLETA REAL Y FLUIDA */
@@ -525,7 +568,7 @@ header {
   padding: 40px 4vw; box-shadow: none; border-radius: 0;
   position: relative; display: flex; flex-direction: column; overflow: hidden;
 }
-.calc-content { position: relative; z-index: 2; width: 100%; max-width: 1300px; margin: auto; height: 100%; overflow-y: auto; display: flex; flex-direction: column; justify-content: center; text-align: left; }
+.calc-content { position: relative; z-index: 2; width: 100%; max-width: 1350px; margin: auto; height: 100%; overflow-y: auto; display: flex; flex-direction: column; justify-content: center; text-align: left; }
 
 .close-modal { 
   position: absolute; top: 25px; right: 35px; background: rgba(255,255,255,0.08); 
@@ -553,7 +596,7 @@ input:focus, select:focus { outline: none; border-color: var(--accent-red); box-
 .btn-wa:hover { background: #25d366; color: #000; border-color: #25d366; box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4); }
 .btn-tg:hover { background: #2aabee; color: #fff; border-color: #2aabee; box-shadow: 0 6px 20px rgba(42, 171, 238, 0.4); }
 
-.query-card { text-align: left; width: 100%; max-width: 1000px; margin: auto; }
+.query-card { text-align: left; width: 100%; max-width: 1050px; margin: auto; }
 .query-card .header-title { font-size: 32px; font-weight: 800; margin: 4px 0 6px; color: #fff; letter-spacing: 0.5px; text-shadow: 0 2px 10px rgba(0,0,0,0.8); text-align: left; }
 .query-card .header-sub { color: var(--text-muted); font-size: 13px; margin-bottom: 25px; line-height: 1.4; text-align: left; }
 .query-grid { display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-end; text-align: left; }
@@ -830,10 +873,10 @@ const GENERAL_DEFAULT_PRICES = {
 };
 
 const METODOS_TIERS = [
-  ["Método Básico Guías", "Acceso a manuales y métodos informativos esenciales.", "S/ 15.00"],
-  ["Método Pro Verificación", "Guías avanzadas de procesos y flujos digitales.", "S/ 30.00"],
-  ["Método Élite Full Access", "Acceso completo a todos los métodos y actualizaciones directas.", "S/ 50.00"],
-  ["Método Masterclass Colaborador", "Plantilla editable para nuevos colaboradores (Ingresa tu nombre y método).", "S/ 70.00"]
+  ["Método Básico Guías", "Acceso a manuales y métodos informativos esenciales.", "S/ 15.00", "potito.jpg"],
+  ["Método Pro Verificación", "Guías avanzadas de procesos y flujos digitales.", "S/ 30.00", "ojitos.jpg"],
+  ["Método Élite Full Access", "Acceso completo a todos los métodos y actualizaciones directas.", "S/ 50.00", "gatitaaaa.jpg"],
+  ["Método Masterclass Colaborador", "Plantilla editable para nuevos colaboradores (Ingresa tu nombre y método).", "S/ 70.00", "callamird.jpg"]
 ];
 
 const FORMS_TIERS = [
@@ -1127,7 +1170,7 @@ function buildCalc(){
   $("closeModal").onclick = closeModalFn;
 }
 
-// RENDERIZADOR TIPO LAUNCHER A PANTALLA COMPLETA
+// RENDERIZADOR TIPO LAUNCHER / STREAMING MODERNO
 function renderStoreModal(title, subtitle, itemsList, isCollaborative = false) {
   $("sidebar").classList.remove("open");
   stopAutoRotate();
@@ -1154,7 +1197,7 @@ function renderStoreModal(title, subtitle, itemsList, isCollaborative = false) {
         </div>
 
         ${isCollaborative ? `
-        <div style="background:rgba(207,35,35,0.1); border:1px solid var(--accent-red); padding:18px; border-radius:14px; margin-top:10px;">
+        <div style="background:rgba(207,35,35,0.1); border:1px solid var(--accent-red); padding:18px; border-radius:14px;">
           <label style="margin-top:0;">📝 ¿QUIERES UNIRTE COMO COLABORADOR?</label>
           <p style="font-size:12px; color:var(--text-muted); margin:4px 0 12px;">Ingresa tu nombre y tu propio producto/método para publicarlo en la red:</p>
           <div style="display:flex; gap:12px; flex-wrap:wrap;">
@@ -1168,14 +1211,14 @@ function renderStoreModal(title, subtitle, itemsList, isCollaborative = false) {
         <div class="store-section-title">${subtitle}</div>
         <div class="store-grid">
           ${itemsList.map((it, i) => `
-            <div class="store-card" onclick="updateStoreActive(${i})" style="border-color:${i===activeIndex?'var(--accent-red)':'var(--line-border)'}; background:${i===activeIndex?'rgba(207,35,35,0.15)':'rgba(255,255,255,0.03)'}">
-              <div>
-                <span style="font-size:9px; color:var(--accent-red); font-weight:800; text-transform:uppercase;">${it.badge || 'Item'}</span>
+            <div class="store-card ${i===activeIndex?'active-card':''}" onclick="updateStoreActive(${i})" style="background-image: url('${it.img || 'fondodefondo.jpg'}');">
+              <div class="store-card-content">
+                <span class="store-card-badge">${it.badge || 'Item'}</span>
                 <h4 class="store-card-title">${it.n}</h4>
-              </div>
-              <div style="display:flex; justify-content:space-between; align-items:center; margin-top:6px;">
-                <span class="store-card-price">${it.p}</span>
-                <span style="font-size:11px; color:var(--text-muted);">Ver ➔</span>
+                <div class="store-card-footer">
+                  <span class="store-card-price">${it.p}</span>
+                  <span style="font-size:11px; color:var(--text-muted);">Ver ➔</span>
+                </div>
               </div>
             </div>
           `).join("")}
@@ -1214,7 +1257,8 @@ function openQueryModal(type, bgImg = 'fondodefondo.jpg') {
     return;
   }
   if(type === 'metodos_menu') {
-    renderStoreModal("MÉTODOS Y GUÍAS EXCLUSIVAS", "Niveles y Plantillas de Acceso", METODOS_TIERS.map(t=>({n: t[0], p: t[2], d: t[1], badge: "Guía Pro"})), true);
+    const formattedMethods = METODOS_TIERS.map(t=>({n: t[0], p: t[2], d: t[1], img: t[3], badge: "Guía Pro"}));
+    renderStoreModal("MÉTODOS Y GUÍAS EXCLUSIVAS", "Niveles y Plantillas de Acceso", formattedMethods, true);
     return;
   }
 
@@ -1230,25 +1274,40 @@ function openQueryModal(type, bgImg = 'fondodefondo.jpg') {
       <div class="header-sub">Incluye todos los servicios oficiales a un precio único de <strong style="color:var(--accent-red);">S/ 35.00</strong></div>
       
       <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:12px; margin:20px 0;">
-        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--line-border); padding:12px; border-radius:10px;">
-          <div style="font-size:12px; font-weight:800; color:#fff;">🆔 RENIEC</div>
-          <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Fichas y datos completos</div>
+        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--line-border); padding:14px; border-radius:12px; background-image:url('potito.jpg'); background-size:cover; background-position:center; position:relative; overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(13,17,16,0.85);z-index:1;"></div>
+          <div style="position:relative;z-index:2;">
+            <div style="font-size:12px; font-weight:800; color:#fff;">🆔 RENIEC</div>
+            <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Fichas y datos completos</div>
+          </div>
         </div>
-        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--line-border); padding:12px; border-radius:10px;">
-          <div style="font-size:12px; font-weight:800; color:#fff;">🚗 MTC</div>
-          <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Licencias y papeletas</div>
+        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--line-border); padding:14px; border-radius:12px; background-image:url('ojitos.jpg'); background-size:cover; background-position:center; position:relative; overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(13,17,16,0.85);z-index:1;"></div>
+          <div style="position:relative;z-index:2;">
+            <div style="font-size:12px; font-weight:800; color:#fff;">🚗 MTC</div>
+            <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Licencias y papeletas</div>
+          </div>
         </div>
-        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--line-border); padding:12px; border-radius:10px;">
-          <div style="font-size:12px; font-weight:800; color:#fff;">🌳 ÁRBOL</div>
-          <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Vínculos familiares</div>
+        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--line-border); padding:14px; border-radius:12px; background-image:url('gatitaaaa.jpg'); background-size:cover; background-position:center; position:relative; overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(13,17,16,0.85);z-index:1;"></div>
+          <div style="position:relative;z-index:2;">
+            <div style="font-size:12px; font-weight:800; color:#fff;">🌳 ÁRBOL</div>
+            <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Vínculos familiares</div>
+          </div>
         </div>
-        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--line-border); padding:12px; border-radius:10px;">
-          <div style="font-size:12px; font-weight:800; color:#fff;">🛡️ PNP</div>
-          <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Requisitorias e historial</div>
+        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--line-border); padding:14px; border-radius:12px; background-image:url('callamird.jpg'); background-size:cover; background-position:center; position:relative; overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(13,17,16,0.85);z-index:1;"></div>
+          <div style="position:relative;z-index:2;">
+            <div style="font-size:12px; font-weight:800; color:#fff;">🛡️ PNP</div>
+            <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Requisitorias e historial</div>
+          </div>
         </div>
-        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--line-border); padding:12px; border-radius:10px;">
-          <div style="font-size:12px; font-weight:800; color:#fff;">⚖️ ANTECEDENTES</div>
-          <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Penales, judiciales y policiales</div>
+        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--line-border); padding:14px; border-radius:12px; background-image:url('potito.jpg'); background-size:cover; background-position:center; position:relative; overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(13,17,16,0.85);z-index:1;"></div>
+          <div style="position:relative;z-index:2;">
+            <div style="font-size:12px; font-weight:800; color:#fff;">⚖️ ANTECEDENTES</div>
+            <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Penales y judiciales</div>
+          </div>
         </div>
       </div>
 
