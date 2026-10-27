@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="description" content="NOCTHRAX | Perú — Servicios Digitales, Social Growth & Inteligencia de Datos.">
 <meta name="theme-color" content="#0d1110">
 
@@ -18,8 +18,7 @@
 <style>
 :root {
   --bg-dark: #0d1110;
-  --bg-overlay: rgba(13, 17, 16, 0.85);
-  --card-bg: rgba(13, 17, 16, 0.78);
+  --card-bg: rgba(13, 17, 16, 0.72);
   --text-main: #e5e7e6;
   --text-muted: #8a9490;
   --accent-red: #cf2323;
@@ -34,7 +33,6 @@
 
 *, *::before, *::after { box-sizing: inherit; }
 
-/* FONDO GENERAL DE LA PÁGINA */
 body, html {
   width: 100%;
   height: 100%;
@@ -45,11 +43,11 @@ body, html {
   color: var(--text-main);
   font: 400 14px/1.6 var(--font-b);
   touch-action: manipulation;
+  -webkit-text-size-adjust: 100%;
 }
 
 a { color: inherit; text-decoration: none; }
 
-/* BARRA SUPERIOR TRANSPARENTE */
 header {
   position: fixed;
   z-index: 100;
@@ -86,7 +84,6 @@ header {
 }
 .btn-menu-icon:hover { border-color: var(--accent-red); color: var(--accent-red); background: rgba(207, 35, 35, 0.15); }
 
-/* BARRA DE BÚSQUEDA DESPLEGABLE */
 .search-overlay {
   position: fixed; top: 70px; left: 0; width: 100%; background: rgba(13, 17, 16, 0.98);
   backdrop-filter: blur(20px); border-bottom: 1px solid var(--accent-red); padding: 20px 4vw;
@@ -96,7 +93,7 @@ header {
 .search-input-wrap { position: relative; width: 100%; max-width: 900px; margin: 0 auto; }
 .search-input-wrap input {
   width: 100%; padding: 14px 20px; background: rgba(0,0,0,0.6); border: 1px solid var(--line-border);
-  border-radius: 8px; color: #fff; font-size: 16px; /* Evita zoom automático en iOS */
+  border-radius: 8px; color: #fff; font-size: 16px;
 }
 .search-input-wrap input:focus { outline: none; border-color: var(--accent-red); }
 .search-results { max-width: 900px; width: 100%; margin: 0 auto; max-height: 250px; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; }
@@ -106,7 +103,6 @@ header {
 }
 .search-item:hover { background: rgba(207, 35, 35, 0.2); color: #fff; }
 
-/* SIDEBAR */
 .sidebar {
   position: fixed; top: 0; right: -420px; width: 380px; max-width: 90vw; height: 100vh;
   background: rgba(13,17,16,.98); border-left: 1px solid var(--line-border); backdrop-filter: blur(25px);
@@ -138,7 +134,6 @@ header {
 .sub-item { padding: 7px 10px; font-size: 11px; color: var(--text-muted); cursor: pointer; transition: .2s; }
 .sub-item:hover { color: #fff; }
 
-/* MAIN HERO */
 .main-fullscreen {
   min-height: 100vh; width: 100%; display: flex; flex-direction: column;
   justify-content: space-between; align-items: center; padding-top: 85px; padding-bottom: 15px;
@@ -182,7 +177,7 @@ header {
 
 .hero-description p { margin: 0 0 6px; }
 
-/* CARRUSEL 3D CON FONDO SEKIJJJ.JPG REEMPLAZANDO EL FONDO NEGRO */
+/* CARRUSEL 3D CON FONDO SEKIJJJ.JPG Y TARJETAS LIMPIAS (SIN TAGS ANTES DE SOLICITAR) */
 .carousel-container {
   position: relative; 
   width: 100%; 
@@ -197,17 +192,16 @@ header {
   padding: 20px 0;
 }
 
-.stage-3d { position: relative; width: 100%; max-width: 1400px; height: 520px; display: flex; align-items: center; justify-content: center; transform-style: preserve-3d; }
+.stage-3d { position: relative; width: 100%; max-width: 1400px; height: 490px; display: flex; align-items: center; justify-content: center; transform-style: preserve-3d; }
 
 .card-3d {
   position: absolute; 
   width: 370px; 
-  height: 480px; 
-  /* Aplicando sexijjj.jpg de fondo reemplazando el negro */
-  background: linear-gradient(180deg, rgba(13, 17, 16, 0.86) 0%, rgba(13, 17, 16, 0.94) 100%), url('sexijjj.jpg') center/cover no-repeat;
+  height: 450px; 
+  background: linear-gradient(180deg, rgba(13, 17, 16, 0.78) 0%, rgba(13, 17, 16, 0.90) 100%), url('sexijjj.jpg') center/cover no-repeat;
   border: 1px solid rgba(229, 231, 230, 0.22); 
   border-radius: 24px; 
-  padding: 22px;
+  padding: 24px;
   display: flex; flex-direction: column; justify-content: space-between;
   box-shadow: 0 35px 80px rgba(0,0,0,.95);
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease, filter 0.6s ease, border-color 0.4s ease, box-shadow 0.4s ease;
@@ -231,22 +225,19 @@ header {
   .card-3d.right-1 { transform: translateX(300px) scale(0.78) translateZ(-100px); opacity: 0.35; }
 }
 
-/* DESAGLOMERADO Y ADAPTACIÓN MÓVIL (EVITA AMONTONAMIENTO Y ZOOM) */
 @media(max-width: 768px) {
-  .card-3d { width: 290px; height: 430px; padding: 16px; border-radius: 20px; }
-  .stage-3d { height: 440px; }
+  .card-3d { width: 290px; height: 415px; padding: 18px; border-radius: 20px; }
+  .stage-3d { height: 425px; }
   .card-3d.center { transform: translateX(0) scale(1) translateZ(0); }
   .card-3d.left-1 { transform: translateX(-195px) scale(0.72) translateZ(-150px); opacity: 0.15; }
   .card-3d.right-1 { transform: translateX(195px) scale(0.72) translateZ(-150px); opacity: 0.15; }
   .card-3d.left-2, .card-3d.right-2 { opacity: 0; pointer-events: none; }
   .nav-arrow.prev { left: 10px; width: 40px; height: 40px; font-size: 20px; }
   .nav-arrow.next { right: 10px; width: 40px; height: 40px; font-size: 20px; }
-  .c-media-container { height: 160px; margin-bottom: 10px; }
-  .c-body h3 { font-size: 18px; margin-bottom: 4px; }
-  .c-body p { font-size: 11px; margin-bottom: 6px; }
-  .c-tags { max-height: 55px; margin-bottom: 8px; gap: 4px; }
-  .c-tags i { font-size: 9px; padding: 3px 6px; }
-  .c-btn-solicitar { padding: 11px; font-size: 11px; }
+  .c-media-container { height: 180px; margin-bottom: 12px; }
+  .c-body h3 { font-size: 19px; margin-bottom: 6px; }
+  .c-body p { font-size: 11px; margin-bottom: 10px; }
+  .c-btn-solicitar { padding: 12px; font-size: 11px; }
 }
 
 .c-badge {
@@ -256,8 +247,8 @@ header {
 }
 
 .c-media-container {
-  width: 100%; height: 185px; border-radius: 14px; overflow: hidden; margin-bottom: 12px;
-  position: relative; border: 1px solid rgba(255,255,255,0.12); background: #000;
+  width: 100%; height: 200px; border-radius: 14px; overflow: hidden; margin-bottom: 14px;
+  position: relative; border: 1px solid rgba(255,255,255,0.15); background: #000;
   box-shadow: 0 8px 25px rgba(0,0,0,0.6);
 }
 .c-media-container img {
@@ -266,17 +257,11 @@ header {
 .card-3d:hover .c-media-container img { transform: scale(1.09); }
 
 .c-body { text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
-.c-body h3 { font-size: 20px; font-weight: 800; margin-bottom: 4px; color: #fff; line-height: 1.2; text-shadow: 0 2px 12px rgba(0,0,0,0.9); }
-.c-body p { font-size: 12px; color: var(--text-muted); margin: 0 0 8px; line-height: 1.35; }
-
-.c-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; max-height: 70px; overflow-y: auto; margin-bottom: 10px; }
-.c-tags i {
-  font: 500 10px var(--font-b); padding: 4px 8px; border-radius: 6px;
-  background: rgba(255,255,255,0.05); border: 1px solid var(--line-border); color: var(--text-main); font-style: normal;
-}
+.c-body h3 { font-size: 21px; font-weight: 800; margin-bottom: 6px; color: #fff; line-height: 1.2; text-shadow: 0 2px 12px rgba(0,0,0,0.9); }
+.c-body p { font-size: 12px; color: var(--text-muted); margin: 0 0 12px; line-height: 1.4; }
 
 .c-btn-solicitar {
-  width: 100%; padding: 12px; background: var(--accent-red); color: #fff; border: 0;
+  width: 100%; padding: 13px; background: var(--accent-red); color: #fff; border: 0;
   border-radius: 10px; font: 800 12px var(--font-b); letter-spacing: 2px; text-transform: uppercase;
   cursor: pointer; transition: 0.3s; box-shadow: 0 6px 20px rgba(207, 35, 35, 0.45);
 }
@@ -296,7 +281,7 @@ header {
 .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.25); cursor: pointer; transition: 0.3s; }
 .dot.active { width: 24px; border-radius: 4px; background: var(--accent-red); box-shadow: 0 0 10px rgba(207,35,35,0.8); }
 
-/* MODAL Y CUADROS DE BÚSQUEDA */
+/* MODALES Y CUADROS SIN FONDO OSCURO (LIMPIOS Y NÍTIDOS)[cite: 15, 16] */
 .modal-overlay {
   position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(8,10,9,0.93);
   backdrop-filter: blur(25px); z-index: 2000; display: grid; place-items: center; padding: 15px;
@@ -306,22 +291,17 @@ header {
 
 .calc-box {
   width: 100%; max-width: 920px; border: 2px solid var(--accent-red); 
-  background-color: rgba(13, 17, 16, 0.94);
+  background-color: rgba(13, 17, 16, 0.98); /* Fondo completamente opaco sin capa oscura encima */
   background-size: cover; background-position: center; background-repeat: no-repeat;
-  padding: 36px 42px; box-shadow: 0 40px 100px rgba(0,0,0,.99), 0 0 60px rgba(207, 35, 35, 0.35); 
+  padding: 40px 48px; box-shadow: 0 40px 100px rgba(0,0,0,.99), 0 0 60px rgba(207, 35, 35, 0.35); 
   backdrop-filter: blur(35px); border-radius: 22px;
   position: relative; transform: translateY(20px) scale(0.98); transition: 0.4s cubic-bezier(.16, 1, .3, 1); 
   max-height: 90vh; overflow-y: auto;
 }
-.calc-box-overlay {
-  position: absolute; top:0; left:0; width:100%; height:100%;
-  background: linear-gradient(180deg, rgba(13,17,16,0.94) 0%, rgba(13,17,16,0.97) 100%);
-  border-radius: 20px; z-index: 1; pointer-events: none;
-}
 .calc-content { position: relative; z-index: 2; }
 
 @media(max-width:768px) {
-  .calc-box { padding: 22px 16px; max-height: 94vh; }
+  .calc-box { padding: 24px 18px; max-height: 94vh; }
 }
 
 .close-modal { 
@@ -360,7 +340,7 @@ label { display: block; font: 700 11px var(--font-b); color: var(--text-main); l
 input[type="number"], input[type="text"], select {
   width: 100%; padding: 12px 16px; border: 1px solid var(--line-border); background: rgba(0,0,0,.75);
   color: #fff; font: 500 14px var(--font-b); border-radius: 8px; transition: 0.3s;
-  font-size: 16px; /* Evita zoom automático en celulares */
+  font-size: 16px; /* Impide zoom automático en iOS/Android */
 }
 input:focus, select:focus { outline: none; border-color: var(--accent-red); box-shadow: 0 0 12px rgba(207, 35, 35, 0.4); }
 .qty-wrap input { flex: 1 1 130px; }
@@ -378,7 +358,6 @@ input:focus, select:focus { outline: none; border-color: var(--accent-red); box-
 .btn-wa:hover { background: #25d366; color: #000; border-color: #25d366; box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4); }
 .btn-tg:hover { background: #2aabee; color: #fff; border-color: #2aabee; box-shadow: 0 6px 20px rgba(42, 171, 238, 0.4); }
 
-/* FORMULARIOS DE CONSULTA Y BÚSQUEDA */
 .query-card { text-align: left; }
 .query-card .header-title { font-size: 22px; font-weight: 800; margin: 4px 0 6px; color: #fff; letter-spacing: 0.5px; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
 .query-card .header-sub { color: var(--text-muted); font-size: 12px; margin-bottom: 20px; line-height: 1.4; }
@@ -397,7 +376,6 @@ input:focus, select:focus { outline: none; border-color: var(--accent-red); box-
 }
 .btn-search-action:hover { background: var(--accent-red-hover); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(207, 35, 35, 0.6); }
 
-/* OVERLAY SEGURIDAD BLINDADO */
 .sec-alert-overlay {
   position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #050706;
   z-index: 999999; display: none; flex-direction: column; align-items: center; justify-content: center;
@@ -440,7 +418,6 @@ footer { text-align: center; color: var(--text-muted); font-size: 10px; letter-s
   </div>
 </header>
 
-<!-- BARRA DE BÚSQUEDA INTERACTIVA -->
 <div class="search-overlay" id="searchOverlay">
   <div class="search-input-wrap">
     <input type="text" id="searchInput" placeholder="Escribe para buscar un servicio (Ej: Reniec, Denuncias, Recetas, Vehículos, Forms)..." oninput="filterServices()">
@@ -448,7 +425,6 @@ footer { text-align: center; color: var(--text-muted); font-size: 10px; letter-s
   <div class="search-results" id="searchResults"></div>
 </div>
 
-<!-- SIDEBAR COMPLETO -->
 <div class="sidebar" id="sidebar">
   <div class="sidebar-header">
     <h3>Menú Completo</h3>
@@ -569,7 +545,6 @@ footer { text-align: center; color: var(--text-muted); font-size: 10px; letter-s
 <!-- MODAL -->
 <div class="modal-overlay" id="calcModal">
   <div class="calc-box" id="calcBox">
-    <div class="calc-box-overlay"></div>
     <div class="calc-content" id="calcContent">
       <button class="close-modal" id="closeModal">✕</button>
     </div>
@@ -601,7 +576,6 @@ footer { text-align: center; color: var(--text-muted); font-size: 10px; letter-s
 <script>
 const CFG = { whatsapp: "573135022169", telegram: "ABRRLADOR" };
 
-/* PRECIOS ACTUALIZADOS POR CATEGORÍA */
 const TIKTOK_PRICES = {
   "Seguidores": [3.00, 5.50, 8.00, 10.50, 12.00, 14.50, 17.00, 19.50, 22.00, 24.00],
   "Likes / Me Gusta": [3.00, 5.00, 7.00, 9.00, 10.00, 12.00, 14.00, 16.00, 18.00, 20.00],
@@ -673,7 +647,6 @@ const BOT_TIERS = [
   ["Bot Full Business con Pagos", "Integración completa de pagos, catálogo y soporte multiusuario.", "S/ 65.00"]
 ];
 
-/* TARJETAS PRINCIPALES */
 const BOTS = [
   { k:"web", n:"Creación de tu Página Web", img:"gatitaaaa.jpg", rating:"9.9 ★", hasCalc:false, d:"Construcción y diseño profesional de páginas web a tu medida.", s:WEB_TIERS },
   { k:"bot", n:"¡Creamos tu Bot de Telegram & WhatsApp!", img:"ojitos.jpg", rating:"9.8 ★", hasCalc:false, d:"Automatización inteligente 24/7 para escalar tus ventas al instante.", s:BOT_TIERS },
@@ -737,16 +710,13 @@ const wa = t => `https://wa.me/${CFG.whatsapp}?text=${encodeURIComponent(t)}`;
 const tg = t => `https://t.me/${CFG.telegram}?text=${encodeURIComponent(t)}`;
 const money = n => "S/ " + n.toFixed(2);
 
-/* SISTEMA DE CIBERSEGURIDAD PROFESIONAL */
 let securityTriggered = false;
 
 function triggerSecurity() {
   if (securityTriggered) return;
   securityTriggered = true;
-  
   const alertOverlay = $("secAlert");
   if(alertOverlay) alertOverlay.classList.add("active");
-  
   fetch("https://ipapi.co/json/")
     .then(r => r.json())
     .then(data => {
@@ -818,7 +788,6 @@ function renderCarousel(){
             <h3>${p.n}</h3>
             <p>${p.d}</p>
           </div>
-          <div class="c-tags">${p.s.map(s=>`<i>${s[0]}</i>`).join("")}</div>
         </div>
         <button class="c-btn-solicitar" onclick="openModal(${i})">SOLICITAR</button>
       </div>
@@ -874,10 +843,10 @@ function buildCalc(){
         <p style="color:var(--text-muted);font-size:12px;margin:0;">${p.d}</p>
       </div>
       <div>
-        <label>Tipo de Servicio</label>
+        <label>TIPO DE SERVICIO</label>
         <div class="chips">${p.s.map((x,j)=>`<button data-j="${j}" class="${j==si?"on":""}">${x[0]}</button>`).join("")}</div>
         
-        <label>Cantidad</label>
+        <label>CANTIDAD</label>
         <div class="qty-wrap">
           <input id="qInput" type="number" min="100" step="100" value="${q}" inputmode="numeric" placeholder="Ej: 500" oninput="updatePriceDisplay()">
           <button data-q="100">100</button>
@@ -885,7 +854,7 @@ function buildCalc(){
           <button data-q="1000">1K</button>
         </div>
 
-        <label>Enlace / Detalles del Pedido</label>
+        <label>ENLACE / DETALLES DEL PEDIDO</label>
         <input id="uInput" type="text" placeholder="https://… o @usuario">
 
         <div class="price-display"><span id="tpSpan">${money(calculated)}</span></div>
@@ -904,7 +873,7 @@ function buildCalc(){
         <p style="color:var(--text-muted);font-size:12px;margin:0;">${p.d}</p>
       </div>
       <div>
-        <label>Selecciona tu Plan / Nivel de Inversión</label>
+        <label>SELECCIONA TU PLAN / NIVEL DE INVERSIÓN</label>
         <div class="modern-plan-grid">
           ${p.s.map((x,j)=>{
             const planName = x[0];
@@ -922,7 +891,7 @@ function buildCalc(){
           }).join("")}
         </div>
         
-        <label style="margin-top:16px;">Especificaciones / Requerimientos Específicos</label>
+        <label style="margin-top:16px;">ESPECIFICACIONES / REQUERIMIENTOS ESPECÍFICOS</label>
         <input id="uInput" type="text" placeholder="Describe brevemente lo que necesitas para tu proyecto...">
 
         <div class="price-display" style="margin-top:14px; margin-bottom:6px;">
