@@ -339,7 +339,7 @@ label { display: block; font: 700 11px var(--font-b); color: var(--text-main); l
 input[type="number"], input[type="text"], select {
   width: 100%; padding: 12px 16px; border: 1px solid var(--line-border); background: rgba(0,0,0,.75);
   color: #fff; font: 500 14px var(--font-b); border-radius: 8px; transition: 0.3s;
-  font-size: 16px; /* Evita zoom automático en celulares */
+  font-size: 16px;
 }
 input:focus, select:focus { outline: none; border-color: var(--accent-red); box-shadow: 0 0 12px rgba(207, 35, 35, 0.4); }
 .qty-wrap input { flex: 1 1 130px; }
@@ -406,7 +406,7 @@ footer { text-align: center; color: var(--text-muted); font-size: 10px; letter-s
 <header>
   <div class="brand-tlou">
     <span class="title">NOCTHRAX</span>
-    <span class="sub">PERÚ · DIGITAL SERVICES (+57 313 5022169)</span>
+    <span class="sub">PERÚ · DIGITAL SERVICES</span>
   </div>
 
   <div class="header-right">
@@ -419,7 +419,7 @@ footer { text-align: center; color: var(--text-muted); font-size: 10px; letter-s
 
 <div class="search-overlay" id="searchOverlay">
   <div class="search-input-wrap">
-    <input type="text" id="searchInput" placeholder="Escribe para buscar un servicio (Ej: Métodos, Reniec, Denuncias, Recetas, Vehículos)..." oninput="filterServices()">
+    <input type="text" id="searchInput" placeholder="Escribe para buscar un servicio (Ej: Métodos, Bots, Reniec, Denuncias, Recetas)..." oninput="filterServices()">
   </div>
   <div class="search-results" id="searchResults"></div>
 </div>
@@ -433,13 +433,26 @@ footer { text-align: center; color: var(--text-muted); font-size: 10px; letter-s
   <div class="social-section">
     <div class="social-section-title">Canales & Redes Oficiales</div>
     <a href="https://t.me/ABRRLADOR" target="_blank" rel="noopener" class="social-link"><span>✈ Telegram Directo</span> <span>➔</span></a>
-    <a href="https://wa.me/573135022169" target="_blank" rel="noopener" class="social-link"><span>💬 WhatsApp: +57 313 5022169</span> <span>➔</span></a>
-    <a href="https://whatsapp.com/channel/0029Vb8U7H18PgsFezIoJu1m" target="_blank" rel="noopener" class="social-link"><span>📢 Canal Oficial WhatsApp</span> <span>➔</span></a>
+    <a href="https://whatsapp.com/channel/0029Vb8U7H18PgsFezIoJu1m" target="_blank" rel="noopener" class="social-link"><span>📢 Únete a nuestro canal</span> <span>➔</span></a>
     <a href="https://instagram.com/" target="_blank" rel="noopener" class="social-link"><span>📸 Instagram Oficial</span> <span>➔</span></a>
     <a href="https://tiktok.com/" target="_blank" rel="noopener" class="social-link"><span>🎵 TikTok Oficial</span> <span>➔</span></a>
   </div>
 
   <div class="side-item" onclick="openQueryModal('metodos_menu')">💡 MÉTODOS Y GUÍAS EXCLUSIVAS</div>
+
+  <div>
+    <div class="side-item" onclick="toggleSub('subBots')">🤖 BOTS PARA REDES SOCIALES <span>▼</span></div>
+    <div class="sub-menu" id="subBots">
+      <div class="sub-item" onclick="openModalById('tiktok')">TikTok Bot & Autómatas</div>
+      <div class="sub-item" onclick="openModalById('instagram')">Instagram Bot & Crecimiento</div>
+      <div class="sub-item" onclick="openModalById('facebook')">Facebook Bot Interacciones</div>
+      <div class="sub-item" onclick="openModalById('youtube')">YouTube Bot Vistas & Suscriptores</div>
+      <div class="sub-item" onclick="openModalById('kick')">Kick Bot Espectadores</div>
+      <div class="sub-item" onclick="openModalById('telegram')">Telegram Bot Miembros</div>
+      <div class="sub-item" onclick="openModalById('twitter')">X (Twitter) Bot Alcance</div>
+      <div class="sub-item" onclick="openModalById('spotify')">Spotify Bot Oyentes</div>
+    </div>
+  </div>
 
   <div>
     <div class="side-item" onclick="toggleSub('subReniec')">🆔 RENIEC <span>▼</span></div>
@@ -529,7 +542,7 @@ footer { text-align: center; color: var(--text-muted); font-size: 10px; letter-s
       <p>Servicios digitales avanzados, aceleración de redes sociales e inteligencia de datos. Máxima precisión y confidencialidad en cada proceso.</p>
       <small style="color:var(--accent-red); letter-spacing: 2px; text-transform:uppercase; font-weight:700;">“SILENCIO. PRECISIÓN. RESULTADOS.”</small>
       <div style="margin-top: 8px;">
-        <a href="https://whatsapp.com/channel/0029Vb8U7H18PgsFezIoJu1m" target="_blank" rel="noopener" style="color: #25d366; font-weight: 700; text-decoration: underline; font-size: 12px;">📢 Únete a nuestro Canal Oficial de WhatsApp</a>
+        <a href="https://whatsapp.com/channel/0029Vb8U7H18PgsFezIoJu1m" target="_blank" rel="noopener" style="color: #25d366; font-weight: 700; text-decoration: underline; font-size: 12px;">📢 Únete a nuestro canal</a>
       </div>
     </div>
   </div>
@@ -543,7 +556,7 @@ footer { text-align: center; color: var(--text-muted); font-size: 10px; letter-s
     <div class="dots-bar" id="dotsContainer"></div>
   </div>
 
-  <footer>© 2026 NOCTHRAX | PERÚ · SOPORTE: +57 313 5022169</footer>
+  <footer>© 2026 NOCTHRAX | PERÚ · DIGITAL SERVICES</footer>
 </main>
 
 <!-- MODAL -->
@@ -718,8 +731,8 @@ const ALL_SERVICES_MAP = [
 ];
 
 const $ = id => document.getElementById(id);
-const wa = t => `https://wa.me/${CFG.whatsapp}?text=${encodeURIComponent(t + "\n\nSoporte WhatsApp: +57 313 5022169\nCanal Oficial: " + CFG.channel)}`;
-const tg = t => `https://t.me/${CFG.telegram}?text=${encodeURIComponent(t + "\n\nSoporte WhatsApp: +57 313 5022169\nCanal Oficial: " + CFG.channel)}`;
+const wa = t => `https://wa.me/${CFG.whatsapp}?text=${encodeURIComponent(t + "\n\nSoporte WhatsApp: +57 313 5022169\nÚnete a nuestro canal: " + CFG.channel)}`;
+const tg = t => `https://t.me/${CFG.telegram}?text=${encodeURIComponent(t + "\n\nSoporte WhatsApp: +57 313 5022169\nÚnete a nuestro canal: " + CFG.channel)}`;
 const money = n => "S/ " + n.toFixed(2);
 
 let securityTriggered = false;
@@ -817,6 +830,11 @@ function openModal(index){
   renderCarousel();
   buildCalc();
   $("calcModal").classList.add("active");
+}
+
+function openModalById(key){
+  const foundIdx = BOTS.findIndex(b => b.k === key);
+  if(foundIdx !== -1) openModal(foundIdx);
 }
 
 function closeModalFn(){
