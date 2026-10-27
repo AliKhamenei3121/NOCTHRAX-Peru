@@ -18,8 +18,8 @@
 <style>
 :root {
   --bg-dark: #0d1110;
-  --bg-overlay: rgba(13, 17, 16, 0.88);
-  --card-bg: rgba(15, 20, 19, 0.95);
+  --bg-overlay: rgba(13, 17, 16, 0.85);
+  --card-bg: rgba(15, 20, 19, 0.94);
   --text-main: #e5e7e6;
   --text-muted: #8a9490;
   --accent-red: #cf2323;
@@ -34,21 +34,21 @@
 
 *, *::before, *::after { box-sizing: inherit; }
 
+/* FONDO COMPLETO DE LA PÁGINA CON FONDODEFONDO.JPG */
 body, html {
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  background: radial-gradient(circle at 50% 30%, rgba(30, 40, 35, 0.6) 0%, rgba(13, 17, 16, 0.98) 100%), #0d1110;
-  background-size: cover;
+  background: linear-gradient(180deg, rgba(13, 17, 16, 0.82) 0%, rgba(13, 17, 16, 0.92) 100%), url('fondodefondo.jpg') center/cover no-repeat fixed #0d1110;
   color: var(--text-main);
   font: 400 14px/1.6 var(--font-b);
 }
 
 a { color: inherit; text-decoration: none; }
 
-/* HEADER STYLE */
+/* BARRA SUPERIOR TOTALMENTE TRANSPARENTE */
 header {
   position: fixed;
   z-index: 100;
@@ -59,10 +59,10 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 0 4vw;
-  background: rgba(13, 17, 16, 0.88);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border-bottom: 1px solid var(--line-border);
+  background: rgba(13, 17, 16, 0.35);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(229, 231, 230, 0.1);
 }
 
 .brand-tlou { display: flex; flex-direction: column; }
@@ -74,16 +74,16 @@ header {
 .header-search {
   display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 12px;
   color: rgba(229, 231, 230, 0.85); transition: 0.3s; padding: 8px 16px;
-  border-radius: 20px; background: rgba(255,255,255,0.03); border: 1px solid var(--line-border);
+  border-radius: 20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15);
 }
-.header-search:hover { color: #fff; border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.08); }
+.header-search:hover { color: #fff; border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.12); }
 
 .btn-menu-icon {
-  width: 42px; height: 42px; border-radius: 10px; background: rgba(255,255,255,0.04);
-  border: 1px solid var(--line-border); color: #fff; display: grid; place-items: center;
+  width: 42px; height: 42px; border-radius: 10px; background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.15); color: #fff; display: grid; place-items: center;
   font-size: 18px; cursor: pointer; transition: 0.3s;
 }
-.btn-menu-icon:hover { border-color: var(--accent-red); color: var(--accent-red); background: rgba(207, 35, 35, 0.12); }
+.btn-menu-icon:hover { border-color: var(--accent-red); color: var(--accent-red); background: rgba(207, 35, 35, 0.15); }
 
 /* BARRA DE BÚSQUEDA DESPLEGABLE */
 .search-overlay {
@@ -181,7 +181,7 @@ header {
 
 .hero-description p { margin: 0 0 6px; }
 
-/* CARRUSEL 3D CON FONDO DE IMAGEN INMERSIVO (fondodefondo.jpg) Y TARJETAS AGRANDADAS */
+/* CARRUSEL 3D CON ESPACIADO PROPORCIONAL */
 .carousel-container {
   position: relative; 
   width: 100%; 
@@ -193,30 +193,25 @@ header {
   perspective: 1800px; 
   user-select: none;
   overflow: hidden; 
-  padding: 40px 0;
-  background: linear-gradient(180deg, rgba(13, 17, 16, 0.82) 0%, rgba(13, 17, 16, 0.92) 100%), url('fondodefondo.jpg') center/cover no-repeat;
-  border-top: 1px solid var(--line-border);
-  border-bottom: 1px solid var(--line-border);
-  box-shadow: inset 0 0 80px rgba(0,0,0,0.9);
+  padding: 30px 0;
 }
 
-.stage-3d { position: relative; width: 100%; max-width: 1400px; height: 540px; display: flex; align-items: center; justify-content: center; transform-style: preserve-3d; }
+.stage-3d { position: relative; width: 100%; max-width: 1400px; height: 530px; display: flex; align-items: center; justify-content: center; transform-style: preserve-3d; }
 
 .card-3d {
-  position: absolute; width: 380px; height: 500px; background: var(--card-bg);
-  border: 1px solid rgba(229, 231, 230, 0.22); border-radius: 26px; padding: 26px;
+  position: absolute; width: 380px; height: 490px; background: var(--card-bg);
+  border: 1px solid rgba(229, 231, 230, 0.2); border-radius: 26px; padding: 26px;
   display: flex; flex-direction: column; justify-content: space-between;
-  box-shadow: 0 35px 80px rgba(0,0,0,.98), 0 0 30px rgba(207, 35, 35, 0.18);
+  box-shadow: 0 35px 80px rgba(0,0,0,.95);
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease, filter 0.6s ease, border-color 0.4s ease, box-shadow 0.4s ease;
-  cursor: pointer; backdrop-filter: blur(25px); overflow: hidden;
+  cursor: pointer; backdrop-filter: blur(20px); overflow: hidden;
 }
 
-/* Espaciado optimizado 3D para evitar apiñamiento */
 .card-3d.center {
-  transform: translateX(0) scale(1.06) translateZ(160px);
+  transform: translateX(0) scale(1.05) translateZ(160px);
   opacity: 1; z-index: 10; filter: blur(0);
   border-color: rgba(207, 35, 35, 0.95);
-  box-shadow: 0 40px 90px rgba(207, 35, 35, 0.5), 0 0 40px rgba(0,0,0,0.9);
+  box-shadow: 0 40px 90px rgba(207, 35, 35, 0.5), 0 0 30px rgba(0,0,0,0.9);
 }
 .card-3d.left-1 { transform: translateX(-440px) scale(0.82) translateZ(-130px) rotateY(16deg); opacity: 0.55; z-index: 5; filter: blur(1.5px); }
 .card-3d.right-1 { transform: translateX(440px) scale(0.82) translateZ(-130px) rotateY(-16deg); opacity: 0.55; z-index: 5; filter: blur(1.5px); }
@@ -230,8 +225,8 @@ header {
 }
 
 @media(max-width: 768px) {
-  .card-3d { width: 310px; height: 450px; padding: 20px; }
-  .stage-3d { height: 470px; }
+  .card-3d { width: 310px; height: 440px; padding: 20px; }
+  .stage-3d { height: 460px; }
   .card-3d.center { transform: translateX(0) scale(1) translateZ(0); }
   .card-3d.left-1 { transform: translateX(-230px) scale(0.75) translateZ(-150px); opacity: 0.2; }
   .card-3d.right-1 { transform: translateX(230px) scale(0.75) translateZ(-150px); opacity: 0.2; }
@@ -247,7 +242,7 @@ header {
 }
 
 .c-media-container {
-  width: 100%; height: 200px; border-radius: 16px; overflow: hidden; margin-bottom: 14px;
+  width: 100%; height: 195px; border-radius: 16px; overflow: hidden; margin-bottom: 14px;
   position: relative; border: 1px solid rgba(255,255,255,0.12); background: #000;
   box-shadow: 0 8px 25px rgba(0,0,0,0.6);
 }
@@ -387,7 +382,7 @@ input:focus, select:focus { outline: none; border-color: var(--accent-red); box-
 }
 .btn-search-action:hover { background: var(--accent-red-hover); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(207, 35, 35, 0.6); }
 
-/* OVERLAY SEGURIDAD BLINDADO (SERIO Y AMENAZANTE) */
+/* OVERLAY SEGURIDAD BLINDADO */
 .sec-alert-overlay {
   position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #050706;
   z-index: 999999; display: none; flex-direction: column; align-items: center; justify-content: center;
@@ -556,7 +551,7 @@ footer { text-align: center; color: var(--text-muted); font-size: 10px; letter-s
   <footer>© 2026 NOCTHRAX | PERÚ · DESIGNED BY R1</footer>
 </main>
 
-<!-- MODAL CON FONDO DE IMAGEN AMBIENTADO -->
+<!-- MODAL -->
 <div class="modal-overlay" id="calcModal">
   <div class="calc-box" id="calcBox">
     <div class="calc-box-overlay"></div>
@@ -566,7 +561,7 @@ footer { text-align: center; color: var(--text-muted); font-size: 10px; letter-s
   </div>
 </div>
 
-<!-- OVERLAY SEGURIDAD BLINDADO (SERIO Y AMENAZANTE) -->
+<!-- OVERLAY SEGURIDAD BLINDADO -->
 <div class="sec-alert-overlay" id="secAlert">
   <svg class="sec-demon-icon" viewBox="0 0 100 100">
     <path fill="#cf2323" d="M50 5 L85 20 L80 55 C78 75 50 95 50 95 C50 95 22 75 20 55 L15 20 Z"/>
@@ -590,15 +585,6 @@ footer { text-align: center; color: var(--text-muted); font-size: 10px; letter-s
 
 <script>
 const CFG = { whatsapp: "573135022169", telegram: "ABRRLADOR" };
-
-/* DISTRIBUCIÓN DE IMÁGENES DESCARGADAS */
-const IMG_LIST = [
-  "gatitaaaa.jpg",
-  "ojitos.jpg",
-  "callamird.jpg",
-  "pingita1.jpg",
-  "potito.jpg"
-];
 
 /* PRECIOS ACTUALIZADOS POR CATEGORÍA */
 const TIKTOK_PRICES = {
@@ -672,7 +658,7 @@ const BOT_TIERS = [
   ["Bot Full Business con Pagos", "Integración completa de pagos, catálogo y soporte multiusuario.", "S/ 65.00"]
 ];
 
-/* TARJETAS DEL CARRUSEL */
+/* TARJETAS PRINCIPALES */
 const BOTS = [
   { k:"web", n:"Creación de tu Página Web", img:"gatitaaaa.jpg", rating:"9.9 ★", hasCalc:false, d:"Construcción y diseño profesional de páginas web a tu medida.", s:WEB_TIERS },
   { k:"bot", n:"¡Creamos tu Bot de Telegram & WhatsApp!", img:"ojitos.jpg", rating:"9.8 ★", hasCalc:false, d:"Automatización inteligente 24/7 para escalar tus ventas al instante.", s:BOT_TIERS },
@@ -736,7 +722,7 @@ const wa = t => `https://wa.me/${CFG.whatsapp}?text=${encodeURIComponent(t)}`;
 const tg = t => `https://t.me/${CFG.telegram}?text=${encodeURIComponent(t)}`;
 const money = n => "S/ " + n.toFixed(2);
 
-/* SISTEMA DE CIBERSEGURIDAD PROFESIONAL Y AMENAZANTE */
+/* SISTEMA DE CIBERSEGURIDAD PROFESIONAL */
 let securityTriggered = false;
 
 function triggerSecurity() {
@@ -830,15 +816,16 @@ function renderCarousel(){
 }
 
 function openModal(index){
+  stopAutoRotate(); // Pausa estricta del carrusel para no cambiar de red social mientras está abierto
   pi = index; si = 0; q = 500;
+  renderCarousel();
   buildCalc();
   $("calcModal").classList.add("active");
-  stopAutoRotate();
 }
 
 function closeModalFn(){
   $("calcModal").classList.remove("active");
-  startAutoRotate();
+  startAutoRotate(); // Reanuda la rotación del carrusel solo al cerrar
 }
 
 function updatePriceDisplay() {
@@ -854,7 +841,6 @@ function updatePriceDisplay() {
 
 function buildCalc(){
   const p = BOTS[pi], s = p.s[si];
-  renderCarousel();
 
   const calcBox = $("calcBox");
   if(calcBox) {
@@ -960,7 +946,7 @@ function switchVehicularTab(tab) {
 
 function openQueryModal(type, bgImg = 'gatitaaaa.jpg') {
   $("sidebar").classList.remove("open");
-  stopAutoRotate();
+  stopAutoRotate(); // Pausa estricta del carrusel
   
   const calcBox = $("calcBox");
   if(calcBox) {
