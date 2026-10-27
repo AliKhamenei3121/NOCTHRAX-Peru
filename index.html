@@ -20,10 +20,10 @@
   --bg-dark: #0d1110;
   --card-bg: rgba(13, 17, 16, 0.72);
   --text-main: #e5e7e6;
-  --text-muted: #8a9490;
+  --text-muted: #d0d7d4;
   --accent-red: #cf2323;
   --accent-red-hover: #e62b2b;
-  --line-border: rgba(229, 231, 230, 0.18);
+  --line-border: rgba(229, 231, 230, 0.25);
   --font-h: "Cinzel", serif;
   --font-b: "Montserrat", sans-serif;
   --font-m: "Share Tech Mono", monospace;
@@ -177,7 +177,7 @@ header {
 
 .hero-description p { margin: 0 0 6px; }
 
-/* CARRUSEL 3D CON FONDO SEKIJJJ.JPG Y TARJETAS LIMPIAS (SIN TAGS ANTES DE SOLICITAR) */
+/* CARRUSEL 3D CON FONDO GENERAL fondodefondo.jpg */
 .carousel-container {
   position: relative; 
   width: 100%; 
@@ -198,7 +198,7 @@ header {
   position: absolute; 
   width: 370px; 
   height: 450px; 
-  background: linear-gradient(180deg, rgba(13, 17, 16, 0.78) 0%, rgba(13, 17, 16, 0.90) 100%), url('sexijjj.jpg') center/cover no-repeat;
+  background: linear-gradient(180deg, rgba(13, 17, 16, 0.78) 0%, rgba(13, 17, 16, 0.90) 100%), url('fondodefondo.jpg') center/cover no-repeat;
   border: 1px solid rgba(229, 231, 230, 0.22); 
   border-radius: 24px; 
   padding: 24px;
@@ -281,7 +281,7 @@ header {
 .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.25); cursor: pointer; transition: 0.3s; }
 .dot.active { width: 24px; border-radius: 4px; background: var(--accent-red); box-shadow: 0 0 10px rgba(207,35,35,0.8); }
 
-/* MODALES Y CUADROS SIN FONDO OSCURO (LIMPIOS Y NÍTIDOS)[cite: 15, 16] */
+/* MODALES CON FONDO fondodefondo.jpg Y MÁXIMA NITIDEZ */
 .modal-overlay {
   position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(8,10,9,0.93);
   backdrop-filter: blur(25px); z-index: 2000; display: grid; place-items: center; padding: 15px;
@@ -291,8 +291,7 @@ header {
 
 .calc-box {
   width: 100%; max-width: 920px; border: 2px solid var(--accent-red); 
-  background-color: rgba(13, 17, 16, 0.98); /* Fondo completamente opaco sin capa oscura encima */
-  background-size: cover; background-position: center; background-repeat: no-repeat;
+  background: linear-gradient(180deg, rgba(13, 17, 16, 0.95) 0%, rgba(13, 17, 16, 0.98) 100%), url('fondodefondo.jpg') center/cover no-repeat;
   padding: 40px 48px; box-shadow: 0 40px 100px rgba(0,0,0,.99), 0 0 60px rgba(207, 35, 35, 0.35); 
   backdrop-filter: blur(35px); border-radius: 22px;
   position: relative; transform: translateY(20px) scale(0.98); transition: 0.4s cubic-bezier(.16, 1, .3, 1); 
@@ -340,7 +339,7 @@ label { display: block; font: 700 11px var(--font-b); color: var(--text-main); l
 input[type="number"], input[type="text"], select {
   width: 100%; padding: 12px 16px; border: 1px solid var(--line-border); background: rgba(0,0,0,.75);
   color: #fff; font: 500 14px var(--font-b); border-radius: 8px; transition: 0.3s;
-  font-size: 16px; /* Impide zoom automático en iOS/Android */
+  font-size: 16px; /* Evita zoom automático en celulares */
 }
 input:focus, select:focus { outline: none; border-color: var(--accent-red); box-shadow: 0 0 12px rgba(207, 35, 35, 0.4); }
 .qty-wrap input { flex: 1 1 130px; }
@@ -407,7 +406,7 @@ footer { text-align: center; color: var(--text-muted); font-size: 10px; letter-s
 <header>
   <div class="brand-tlou">
     <span class="title">NOCTHRAX</span>
-    <span class="sub">PERÚ · DIGITAL SERVICES</span>
+    <span class="sub">PERÚ · DIGITAL SERVICES (+57 313 5022169)</span>
   </div>
 
   <div class="header-right">
@@ -420,7 +419,7 @@ footer { text-align: center; color: var(--text-muted); font-size: 10px; letter-s
 
 <div class="search-overlay" id="searchOverlay">
   <div class="search-input-wrap">
-    <input type="text" id="searchInput" placeholder="Escribe para buscar un servicio (Ej: Reniec, Denuncias, Recetas, Vehículos, Forms)..." oninput="filterServices()">
+    <input type="text" id="searchInput" placeholder="Escribe para buscar un servicio (Ej: Métodos, Reniec, Denuncias, Recetas, Vehículos)..." oninput="filterServices()">
   </div>
   <div class="search-results" id="searchResults"></div>
 </div>
@@ -434,11 +433,13 @@ footer { text-align: center; color: var(--text-muted); font-size: 10px; letter-s
   <div class="social-section">
     <div class="social-section-title">Canales & Redes Oficiales</div>
     <a href="https://t.me/ABRRLADOR" target="_blank" rel="noopener" class="social-link"><span>✈ Telegram Directo</span> <span>➔</span></a>
-    <a href="https://wa.me/573135022169" target="_blank" rel="noopener" class="social-link"><span>💬 WhatsApp Directo</span> <span>➔</span></a>
-    <a href="https://whatsapp.com/channel/" target="_blank" rel="noopener" class="social-link"><span>📢 Canal Oficial WhatsApp</span> <span>➔</span></a>
+    <a href="https://wa.me/573135022169" target="_blank" rel="noopener" class="social-link"><span>💬 WhatsApp: +57 313 5022169</span> <span>➔</span></a>
+    <a href="https://whatsapp.com/channel/0029Vb8U7H18PgsFezIoJu1m" target="_blank" rel="noopener" class="social-link"><span>📢 Canal Oficial WhatsApp</span> <span>➔</span></a>
     <a href="https://instagram.com/" target="_blank" rel="noopener" class="social-link"><span>📸 Instagram Oficial</span> <span>➔</span></a>
     <a href="https://tiktok.com/" target="_blank" rel="noopener" class="social-link"><span>🎵 TikTok Oficial</span> <span>➔</span></a>
   </div>
+
+  <div class="side-item" onclick="openQueryModal('metodos_menu')">💡 MÉTODOS Y GUÍAS EXCLUSIVAS</div>
 
   <div>
     <div class="side-item" onclick="toggleSub('subReniec')">🆔 RENIEC <span>▼</span></div>
@@ -527,6 +528,9 @@ footer { text-align: center; color: var(--text-muted); font-size: 10px; letter-s
     <div class="hero-description">
       <p>Servicios digitales avanzados, aceleración de redes sociales e inteligencia de datos. Máxima precisión y confidencialidad en cada proceso.</p>
       <small style="color:var(--accent-red); letter-spacing: 2px; text-transform:uppercase; font-weight:700;">“SILENCIO. PRECISIÓN. RESULTADOS.”</small>
+      <div style="margin-top: 8px;">
+        <a href="https://whatsapp.com/channel/0029Vb8U7H18PgsFezIoJu1m" target="_blank" rel="noopener" style="color: #25d366; font-weight: 700; text-decoration: underline; font-size: 12px;">📢 Únete a nuestro Canal Oficial de WhatsApp</a>
+      </div>
     </div>
   </div>
 
@@ -539,7 +543,7 @@ footer { text-align: center; color: var(--text-muted); font-size: 10px; letter-s
     <div class="dots-bar" id="dotsContainer"></div>
   </div>
 
-  <footer>© 2026 NOCTHRAX | PERÚ · DESIGNED BY R1</footer>
+  <footer>© 2026 NOCTHRAX | PERÚ · SOPORTE: +57 313 5022169</footer>
 </main>
 
 <!-- MODAL -->
@@ -574,7 +578,7 @@ footer { text-align: center; color: var(--text-muted); font-size: 10px; letter-s
 </div>
 
 <script>
-const CFG = { whatsapp: "573135022169", telegram: "ABRRLADOR" };
+const CFG = { whatsapp: "573135022169", telegram: "ABRRLADOR", channel: "https://whatsapp.com/channel/0029Vb8U7H18PgsFezIoJu1m" };
 
 const TIKTOK_PRICES = {
   "Seguidores": [3.00, 5.50, 8.00, 10.50, 12.00, 14.50, 17.00, 19.50, 22.00, 24.00],
@@ -623,6 +627,12 @@ const GENERAL_DEFAULT_PRICES = {
   "Vistas / Reproducciones": [3.00, 4.00, 5.00, 6.00, 7.00, 8.50, 10.00, 11.50, 13.00, 14.00]
 };
 
+const METODOS_TIERS = [
+  ["Método Básico Guías", "Acceso a manuales y métodos informativos esenciales.", "S/ 15.00"],
+  ["Método Pro Verificación", "Guías avanzadas de procesos y flujos digitales.", "S/ 30.00"],
+  ["Método Élite Full Access", "Acceso completo a todos los métodos y actualizaciones directas.", "S/ 50.00"]
+];
+
 const FORMS_TIERS = [
   ["Paquete 15 Respuestas", "Respuestas reales progresivas y confiables para tu formulario.", "S/ 4.00"],
   ["Paquete 30 Respuestas", "Llenado continuo adaptado a tus opciones y preguntas.", "S/ 8.00"],
@@ -648,28 +658,30 @@ const BOT_TIERS = [
 ];
 
 const BOTS = [
-  { k:"web", n:"Creación de tu Página Web", img:"gatitaaaa.jpg", rating:"9.9 ★", hasCalc:false, d:"Construcción y diseño profesional de páginas web a tu medida.", s:WEB_TIERS },
-  { k:"bot", n:"¡Creamos tu Bot de Telegram & WhatsApp!", img:"ojitos.jpg", rating:"9.8 ★", hasCalc:false, d:"Automatización inteligente 24/7 para escalar tus ventas al instante.", s:BOT_TIERS },
-  { k:"forms", n:"Google Forms & Encuestas", img:"callamird.jpg", rating:"9.9 ★", hasCalc:false, d:"Llenado masivo de respuestas reales para Google Forms.", s:FORMS_TIERS },
-  { k:"tiktok", n:"TikTok", img:"pingita1.jpg", rating:"9.8 ★", hasCalc:true, priceTable: TIKTOK_PRICES, d:"Impulso algorítmico inmediato para tus videos.", s: Object.keys(TIKTOK_PRICES).map(k=>[k]) },
-  { k:"instagram", n:"Instagram", img:"potito.jpg", rating:"9.9 ★", hasCalc:true, priceTable: INSTAGRAM_PRICES, d:"Posicionamiento orgánico y aceleración de perfil.", s: Object.keys(INSTAGRAM_PRICES).map(k=>[k]) },
-  { k:"facebook", n:"Facebook", img:"gatitaaaa.jpg", rating:"9.7 ★", hasCalc:true, priceTable: FACEBOOK_PRICES, d:"Aumento de seguidores, reacciones y reproducciones.", s: Object.keys(FACEBOOK_PRICES).map(k=>[k]) },
-  { k:"youtube", n:"YouTube", img:"ojitos.jpg", rating:"9.8 ★", hasCalc:true, priceTable: YOUTUBE_PRICES, d:"Visibilidad, suscriptores y visualizaciones.", s: Object.keys(YOUTUBE_PRICES).map(k=>[k]) },
-  { k:"kick", n:"Kick", img:"callamird.jpg", rating:"9.6 ★", hasCalc:true, priceTable: KICK_PRICES, d:"Impulsa tus directos y seguidores en Kick.", s: Object.keys(KICK_PRICES).map(k=>[k]) },
-  { k:"telegram", n:"Telegram", img:"pingita1.jpg", rating:"9.7 ★", hasCalc:true, priceTable: GENERAL_DEFAULT_PRICES, d:"Miembros e interacciones para canales y grupos.", s: Object.keys(GENERAL_DEFAULT_PRICES).map(k=>[k]) },
-  { k:"twitter", n:"X (Twitter)", img:"potito.jpg", rating:"9.6 ★", hasCalc:true, priceTable: GENERAL_DEFAULT_PRICES, d:"Aumento de seguidores y alcance en publicaciones.", s: Object.keys(GENERAL_DEFAULT_PRICES).map(k=>[k]) },
-  { k:"spotify", n:"Spotify", img:"gatitaaaa.jpg", rating:"9.7 ★", hasCalc:true, priceTable: GENERAL_DEFAULT_PRICES, d:"Reproducciones y oyentes mensuales para música.", s: Object.keys(GENERAL_DEFAULT_PRICES).map(k=>[k]) }
+  { k:"metodos", n:"Métodos", img:"gatitaaaa.jpg", rating:"9.9 ★", hasCalc:false, d:"Guías y métodos exclusivos paso a paso.", s:METODOS_TIERS },
+  { k:"web", n:"Creación de tu Página Web", img:"ojitos.jpg", rating:"9.9 ★", hasCalc:false, d:"Construcción y diseño profesional de páginas web a tu medida.", s:WEB_TIERS },
+  { k:"bot", n:"¡Creamos tu Bot de Telegram & WhatsApp!", img:"callamird.jpg", rating:"9.8 ★", hasCalc:false, d:"Automatización inteligente 24/7 para escalar tus ventas al instante.", s:BOT_TIERS },
+  { k:"forms", n:"Google Forms & Encuestas", img:"pingita1.jpg", rating:"9.9 ★", hasCalc:false, d:"Llenado masivo de respuestas reales para Google Forms.", s:FORMS_TIERS },
+  { k:"tiktok", n:"TikTok", img:"potito.jpg", rating:"9.8 ★", hasCalc:true, priceTable: TIKTOK_PRICES, d:"Impulso algorítmico inmediato para tus videos.", s: Object.keys(TIKTOK_PRICES).map(k=>[k]) },
+  { k:"instagram", n:"Instagram", img:"gatitaaaa.jpg", rating:"9.9 ★", hasCalc:true, priceTable: INSTAGRAM_PRICES, d:"Posicionamiento orgánico y aceleración de perfil.", s: Object.keys(INSTAGRAM_PRICES).map(k=>[k]) },
+  { k:"facebook", n:"Facebook", img:"ojitos.jpg", rating:"9.7 ★", hasCalc:true, priceTable: FACEBOOK_PRICES, d:"Aumento de seguidores, reacciones y reproducciones.", s: Object.keys(FACEBOOK_PRICES).map(k=>[k]) },
+  { k:"youtube", n:"YouTube", img:"callamird.jpg", rating:"9.8 ★", hasCalc:true, priceTable: YOUTUBE_PRICES, d:"Visibilidad, suscriptores y visualizaciones.", s: Object.keys(YOUTUBE_PRICES).map(k=>[k]) },
+  { k:"kick", n:"Kick", img:"pingita1.jpg", rating:"9.6 ★", hasCalc:true, priceTable: KICK_PRICES, d:"Impulsa tus directos y seguidores en Kick.", s: Object.keys(KICK_PRICES).map(k=>[k]) },
+  { k:"telegram", n:"Telegram", img:"potito.jpg", rating:"9.7 ★", hasCalc:true, priceTable: GENERAL_DEFAULT_PRICES, d:"Miembros e interacciones para canales y grupos.", s: Object.keys(GENERAL_DEFAULT_PRICES).map(k=>[k]) },
+  { k:"twitter", n:"X (Twitter)", img:"gatitaaaa.jpg", rating:"9.6 ★", hasCalc:true, priceTable: GENERAL_DEFAULT_PRICES, d:"Aumento de seguidores y alcance en publicaciones.", s: Object.keys(GENERAL_DEFAULT_PRICES).map(k=>[k]) },
+  { k:"spotify", n:"Spotify", img:"ojitos.jpg", rating:"9.7 ★", hasCalc:true, priceTable: GENERAL_DEFAULT_PRICES, d:"Reproducciones y oyentes mensuales para música.", s: Object.keys(GENERAL_DEFAULT_PRICES).map(k=>[k]) }
 ];
 
 const ALL_SERVICES_MAP = [
-  { text: "Creación de tu Página Web", action: () => openModal(0) },
-  { text: "¡Creamos tu Bot de Telegram & WhatsApp!", action: () => openModal(1) },
-  { text: "Google Forms - Respuestas Masivas", action: () => openModal(2) },
-  { text: "TikTok (Seguidores, Me Gusta, Live, Vistas)", action: () => openModal(3) },
-  { text: "Instagram (Followers, Me gusta, Comentarios)", action: () => openModal(4) },
-  { text: "Facebook (Reacciones, Historias, Vistas)", action: () => openModal(5) },
-  { text: "YouTube (Suscriptores, WatchTime, Vistas)", action: () => openModal(6) },
-  { text: "Kick (Seguidores, Live)", action: () => openModal(7) },
+  { text: "Métodos y Guías Exclusivas", action: () => openModal(0) },
+  { text: "Creación de tu Página Web", action: () => openModal(1) },
+  { text: "¡Creamos tu Bot de Telegram & WhatsApp!", action: () => openModal(2) },
+  { text: "Google Forms - Respuestas Masivas", action: () => openModal(3) },
+  { text: "TikTok (Seguidores, Me Gusta, Live, Vistas)", action: () => openModal(4) },
+  { text: "Instagram (Followers, Me gusta, Comentarios)", action: () => openModal(5) },
+  { text: "Facebook (Reacciones, Historias, Vistas)", action: () => openModal(6) },
+  { text: "YouTube (Suscriptores, WatchTime, Vistas)", action: () => openModal(7) },
+  { text: "Kick (Seguidores, Live)", action: () => openModal(8) },
   { text: "Reniec - Ficha / Nombres / DNI / Facial", action: () => openQueryModal('reniec_ficha', 'gatitaaaa.jpg') },
   { text: "Persona Avanzada (Consulta Integral)", action: () => openQueryModal('persona_avanzada', 'ojitos.jpg') },
   { text: "Denuncias Policiales (SIDPOL)", action: () => openQueryModal('legal_denuncias', 'callamird.jpg') },
@@ -706,8 +718,8 @@ const ALL_SERVICES_MAP = [
 ];
 
 const $ = id => document.getElementById(id);
-const wa = t => `https://wa.me/${CFG.whatsapp}?text=${encodeURIComponent(t)}`;
-const tg = t => `https://t.me/${CFG.telegram}?text=${encodeURIComponent(t)}`;
+const wa = t => `https://wa.me/${CFG.whatsapp}?text=${encodeURIComponent(t + "\n\nSoporte WhatsApp: +57 313 5022169\nCanal Oficial: " + CFG.channel)}`;
+const tg = t => `https://t.me/${CFG.telegram}?text=${encodeURIComponent(t + "\n\nSoporte WhatsApp: +57 313 5022169\nCanal Oficial: " + CFG.channel)}`;
 const money = n => "S/ " + n.toFixed(2);
 
 let securityTriggered = false;
@@ -825,12 +837,6 @@ function updatePriceDisplay() {
 
 function buildCalc(){
   const p = BOTS[pi], s = p.s[si];
-
-  const calcBox = $("calcBox");
-  if(calcBox) {
-    calcBox.style.backgroundImage = `url('${p.img}')`;
-  }
-
   const calcContent = $("calcContent");
 
   if(p.hasCalc){
@@ -928,19 +934,30 @@ function switchVehicularTab(tab) {
   }
 }
 
-function openQueryModal(type, bgImg = 'gatitaaaa.jpg') {
+function openQueryModal(type, bgImg = 'fondodefondo.jpg') {
   $("sidebar").classList.remove("open");
   stopAutoRotate();
-  
-  const calcBox = $("calcBox");
-  if(calcBox) {
-    calcBox.style.backgroundImage = `url('${bgImg}')`;
-  }
 
   const calcContent = $("calcContent");
   let html = `<button class="close-modal" id="closeModal">✕</button><div class="query-card">`;
 
-  if(type === 'reniec_ficha') {
+  if(type === 'metodos_menu') {
+    html += `
+      <div class="header-title">💡 MÉTODOS Y GUÍAS EXCLUSIVAS</div>
+      <div class="header-sub">Selecciona el paquete o nivel deseado</div>
+      <div class="modern-plan-grid">
+        ${METODOS_TIERS.map((x,j)=>`
+          <div class="plan-card-option" onclick="window.open(wa('NOCTHRAX | SOLICITUD DE MÉTODO\\nPlan: ${x[0]}\\nPrecio: ${x[2]}'), '_blank')">
+            <div class="plan-card-header">
+              <span class="plan-card-title">${x[0]}</span>
+              <span class="plan-card-price">${x[2]}</span>
+            </div>
+            <div class="plan-card-desc">${x[1]}</div>
+          </div>
+        `).join("")}
+      </div>
+    `;
+  } else if(type === 'reniec_ficha') {
     html += `
       <div class="header-title">🆔 CONSULTA RENIEC (TXT / PDF / C4 / FICHA)</div>
       <div class="header-sub">Selecciona el tipo de documento o formato oficial requerido</div>
