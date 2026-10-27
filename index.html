@@ -18,7 +18,7 @@
 <style>
 :root {
   --bg-dark: #0d1110;
-  --card-bg: rgba(13, 17, 16, 0.72);
+  --card-bg: rgba(13, 17, 16, 0.85);
   --text-main: #e5e7e6;
   --text-muted: #d0d7d4;
   --accent-red: #cf2323;
@@ -103,7 +103,7 @@ header {
 }
 .search-item:hover { background: rgba(207, 35, 35, 0.2); color: #fff; }
 
-/* BARRA DE MENÚ (SIDEBAR) ESTILIZADA */
+/* BARRA DE MENÚ LATERAL (SIDEBAR) */
 .sidebar {
   position: fixed; 
   top: 0; 
@@ -346,7 +346,7 @@ header {
 .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.25); cursor: pointer; transition: 0.3s; }
 .dot.active { width: 24px; border-radius: 4px; background: var(--accent-red); box-shadow: 0 0 10px rgba(207,35,35,0.8); }
 
-/* ESTILO ESTILIZADO TIPO LAUNCHER / TIENDA (ESTILO IMAGEN DE REFERENCIA) */
+/* DISEÑO TIPO LAUNCHER / TIENDA A PANTALLA COMPLETA */
 .store-layout {
   display: flex;
   flex-direction: column;
@@ -358,7 +358,7 @@ header {
 .store-hero {
   position: relative;
   width: 100%;
-  height: 340px;
+  height: 380px;
   border-radius: 20px;
   background-size: cover;
   background-position: center;
@@ -366,7 +366,7 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 30px;
+  padding: 35px;
   box-shadow: 0 25px 60px rgba(0,0,0,0.8);
   overflow: hidden;
 }
@@ -401,7 +401,7 @@ header {
 
 .store-hero-title {
   font-family: var(--font-h);
-  font-size: 28px;
+  font-size: 30px;
   font-weight: 900;
   color: #fff;
   margin: 0;
@@ -411,7 +411,7 @@ header {
 .store-hero-desc {
   font-size: 12px;
   color: var(--text-muted);
-  max-width: 600px;
+  max-width: 650px;
   margin: 0;
 }
 
@@ -424,20 +424,20 @@ header {
 
 .store-hero-price {
   font-family: var(--font-h);
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 800;
   color: #fff;
   text-shadow: 0 0 10px rgba(207,35,35,0.7);
 }
 
 .btn-hero-action {
-  padding: 10px 22px;
+  padding: 12px 26px;
   background: var(--accent-red);
   color: #fff;
   border: 0;
   border-radius: 10px;
   font-weight: 800;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   cursor: pointer;
@@ -460,9 +460,9 @@ header {
 
 .store-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 12px;
-  max-height: 260px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  max-height: 280px;
   overflow-y: auto;
   padding-right: 4px;
 }
@@ -471,7 +471,7 @@ header {
   background: rgba(255,255,255,0.03);
   border: 1px solid var(--line-border);
   border-radius: 14px;
-  padding: 14px;
+  padding: 16px;
   cursor: pointer;
   transition: 0.3s ease;
   display: flex;
@@ -498,46 +498,46 @@ header {
 .store-card-price {
   font-family: var(--font-h);
   font-weight: 800;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--accent-red);
 }
 
-/* MODALES Y CAMPOS DE REGISTRO DE NUEVOS PRODUCTORES / USUARIOS */
+/* MODAL A PANTALLA COMPLETA INMERSIVA */
 .modal-overlay {
-  position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(8,10,9,0.93);
-  backdrop-filter: blur(25px); z-index: 2000; display: grid; place-items: center; padding: 15px;
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(8,10,9,0.95);
+  backdrop-filter: blur(25px); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 20px;
   opacity: 0; pointer-events: none; transition: 0.3s ease;
 }
 .modal-overlay.active { opacity: 1; pointer-events: auto; }
 
 .calc-box {
-  width: 100%; max-width: 920px; border: 2px solid var(--accent-red); 
-  background: linear-gradient(180deg, rgba(13, 17, 16, 0.95) 0%, rgba(13, 17, 16, 0.98) 100%), url('fondodefondo.jpg') center/cover no-repeat;
-  padding: 40px 48px; box-shadow: 0 40px 100px rgba(0,0,0,.99), 0 0 60px rgba(207, 35, 35, 0.35); 
-  backdrop-filter: blur(35px); border-radius: 22px;
+  width: 96vw; max-width: 1300px; height: 92vh; border: 2px solid var(--accent-red); 
+  background: linear-gradient(180deg, rgba(13, 17, 16, 0.96) 0%, rgba(13, 17, 16, 0.99) 100%), url('fondodefondo.jpg') center/cover no-repeat;
+  padding: 35px 45px; box-shadow: 0 40px 100px rgba(0,0,0,.99), 0 0 60px rgba(207, 35, 35, 0.35); 
+  backdrop-filter: blur(35px); border-radius: 24px;
   position: relative; transform: translateY(20px) scale(0.98); transition: 0.4s cubic-bezier(.16, 1, .3, 1); 
-  max-height: 90vh; overflow-y: auto;
+  display: flex; flex-direction: column; overflow-hidden;
 }
-.calc-content { position: relative; z-index: 2; }
+.calc-content { position: relative; z-index: 2; height: 100%; overflow-y: auto; display: flex; flex-direction: column; }
 
 @media(max-width:768px) {
-  .calc-box { padding: 24px 18px; max-height: 94vh; }
-  .store-hero { height: 260px; padding: 20px; }
+  .calc-box { width: 100vw; height: 100vh; border-radius: 0; padding: 20px 15px; border: none; }
+  .store-hero { height: 280px; padding: 20px; }
   .store-hero-title { font-size: 22px; }
 }
 
 .close-modal { 
   position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.08); 
-  border: 1px solid var(--line-border); border-radius: 50%; width: 38px; height: 38px; 
-  color: #fff; font-size: 16px; cursor: pointer; transition: 0.3s; display: grid; place-items: center; z-index: 10;
+  border: 1px solid var(--line-border); border-radius: 50%; width: 42px; height: 42px; 
+  color: #fff; font-size: 18px; cursor: pointer; transition: 0.3s; display: grid; place-items: center; z-index: 10;
 }
 .close-modal:hover { background: var(--accent-red); border-color: var(--accent-red); transform: rotate(90deg); }
 
 label { display: block; font: 700 11px var(--font-b); color: var(--text-main); letter-spacing: 2px; text-transform: uppercase; margin: 16px 0 6px; }
 
 input[type="number"], input[type="text"], select {
-  width: 100%; padding: 12px 16px; border: 1px solid var(--line-border); background: rgba(0,0,0,.75);
-  color: #fff; font: 500 14px var(--font-b); border-radius: 8px; transition: 0.3s;
+  width: 100%; padding: 14px 18px; border: 1px solid var(--line-border); background: rgba(0,0,0,.75);
+  color: #fff; font: 500 14px var(--font-b); border-radius: 10px; transition: 0.3s;
   font-size: 16px;
 }
 input:focus, select:focus { outline: none; border-color: var(--accent-red); box-shadow: 0 0 12px rgba(207, 35, 35, 0.4); }
@@ -551,17 +551,17 @@ input:focus, select:focus { outline: none; border-color: var(--accent-red); box-
 .btn-wa:hover { background: #25d366; color: #000; border-color: #25d366; box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4); }
 .btn-tg:hover { background: #2aabee; color: #fff; border-color: #2aabee; box-shadow: 0 6px 20px rgba(42, 171, 238, 0.4); }
 
-.query-card { text-align: left; }
-.query-card .header-title { font-size: 22px; font-weight: 800; margin: 4px 0 6px; color: #fff; letter-spacing: 0.5px; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
-.query-card .header-sub { color: var(--text-muted); font-size: 12px; margin-bottom: 20px; line-height: 1.4; }
-.query-grid { display: flex; gap: 14px; flex-wrap: wrap; align-items: flex-end; text-align: left; }
-.query-field { flex: 1 1 200px; }
+.query-card { text-align: left; width: 100%; max-width: 900px; margin: auto; }
+.query-card .header-title { font-size: 26px; font-weight: 800; margin: 4px 0 6px; color: #fff; letter-spacing: 0.5px; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
+.query-card .header-sub { color: var(--text-muted); font-size: 13px; margin-bottom: 25px; line-height: 1.4; }
+.query-grid { display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-end; text-align: left; }
+.query-field { flex: 1 1 250px; }
 
 .btn-search-action {
-  padding: 12px 24px; background: var(--accent-red); color: #fff; border: 0; border-radius: 8px;
-  font-weight: 800; font-size: 12px; letter-spacing: 1.5px; cursor: pointer; transition: 0.3s;
-  display: flex; align-items: center; justify-content: center; gap: 8px; height: 48px; text-transform: uppercase;
-  box-shadow: 0 6px 20px rgba(207, 35, 35, 0.4); min-width: 150px;
+  padding: 14px 28px; background: var(--accent-red); color: #fff; border: 0; border-radius: 10px;
+  font-weight: 800; font-size: 13px; letter-spacing: 1.5px; cursor: pointer; transition: 0.3s;
+  display: flex; align-items: center; justify-content: center; gap: 8px; height: 50px; text-transform: uppercase;
+  box-shadow: 0 6px 20px rgba(207, 35, 35, 0.4); min-width: 160px;
 }
 .btn-search-action:hover { background: var(--accent-red-hover); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(207, 35, 35, 0.6); }
 
@@ -1062,25 +1062,25 @@ function buildCalc(){
     calcContent.innerHTML = `
       <button class="close-modal" id="closeModal">✕</button>
       <div style="margin-bottom:14px;">
-        <h3 style="font-size:26px;margin:0 0 4px;font-family:var(--font-h);color:#fff;">${p.n}</h3>
-        <p style="color:var(--text-muted);font-size:12px;margin:0;">${p.d}</p>
+        <h3 style="font-size:28px;margin:0 0 4px;font-family:var(--font-h);color:#fff;">${p.n}</h3>
+        <p style="color:var(--text-muted);font-size:13px;margin:0;">${p.d}</p>
       </div>
       <div>
         <label>TIPO DE SERVICIO</label>
-        <div class="chips">${p.s.map((x,j)=>`<button data-j="${j}" class="${j==si?"on":""}">${x[0]}</button>`).join("")}</div>
+        <div class="chips" style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px;">${p.s.map((x,j)=>`<button data-j="${j}" class="${j==si?"on":""}" style="padding:10px 14px; background:${j==si?'var(--accent-red)':'rgba(255,255,255,0.03)'}; border:1px solid var(--line-border); color:#fff; border-radius:8px; cursor:pointer; font-weight:700; font-size:11px;">${x[0]}</button>`).join("")}</div>
         
         <label>CANTIDAD</label>
-        <div class="qty-wrap">
+        <div class="qty-wrap" style="display:flex; gap:8px; flex-wrap:wrap;">
           <input id="qInput" type="number" min="100" step="100" value="${q}" inputmode="numeric" placeholder="Ej: 500" oninput="updatePriceDisplay()">
-          <button data-q="100">100</button>
-          <button data-q="500">500</button>
-          <button data-q="1000">1K</button>
+          <button data-q="100" style="padding:0 14px; background:transparent; border:1px solid var(--line-border); color:#fff; border-radius:8px; cursor:pointer;">100</button>
+          <button data-q="500" style="padding:0 14px; background:transparent; border:1px solid var(--line-border); color:#fff; border-radius:8px; cursor:pointer;">500</button>
+          <button data-q="1000" style="padding:0 14px; background:transparent; border:1px solid var(--line-border); color:#fff; border-radius:8px; cursor:pointer;">1K</button>
         </div>
 
         <label>ENLACE / DETALLES DEL PEDIDO</label>
         <input id="uInput" type="text" placeholder="https://… o @usuario">
 
-        <div class="price-display"><span id="tpSpan">${money(calculated)}</span></div>
+        <div class="price-display" style="display:flex; align-items:baseline; gap:12px; margin:18px 0 10px;"><span id="tpSpan" style="font:800 36px var(--font-h); color:#fff;">${money(calculated)}</span></div>
 
         <div class="btn-group">
           <button class="btn-wa" data-act="wa">Pedir por WhatsApp</button>
@@ -1092,36 +1092,32 @@ function buildCalc(){
     calcContent.innerHTML = `
       <button class="close-modal" id="closeModal">✕</button>
       <div style="margin-bottom:14px;">
-        <h3 style="font-size:26px;margin:0 0 4px;font-family:var(--font-h);color:#fff;">${p.n}</h3>
-        <p style="color:var(--text-muted);font-size:12px;margin:0;">${p.d}</p>
+        <h3 style="font-size:28px;margin:0 0 4px;font-family:var(--font-h);color:#fff;">${p.n}</h3>
+        <p style="color:var(--text-muted);font-size:13px;margin:0;">${p.d}</p>
       </div>
       <div>
         <label>SELECCIONA TU PLAN / NIVEL DE INVERSIÓN</label>
-        <div class="modern-plan-grid">
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:14px; margin-top:10px;">
           ${p.s.map((x,j)=>{
             const planName = x[0];
             const planDesc = x[1];
             const priceTag = x[2] || "";
             return `
-              <div class="plan-card-option ${j==si?"on":""}" data-j="${j}">
-                <div class="plan-card-header">
-                  <span class="plan-card-title">${planName}</span>
-                  <span class="plan-card-price">${priceTag}</span>
+              <div class="plan-card-option ${j==si?"on":""}" data-j="${j}" style="background:${j==si?'rgba(207,35,35,0.22)':'rgba(255,255,255,0.03)'}; border:1px solid ${j==si?'var(--accent-red)':'var(--line-border)'}; border-radius:12px; padding:18px; cursor:pointer; transition:0.3s;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <span style="font-weight:800; font-size:14px; color:#fff;">${planName}</span>
+                  <span style="font-family:var(--font-h); font-weight:800; font-size:16px; color:var(--accent-red);">${priceTag}</span>
                 </div>
-                <div class="plan-card-desc">${planDesc}</div>
+                <div style="font-size:12px; color:var(--text-muted); margin-top:6px; line-height:1.4;">${planDesc}</div>
               </div>
             `;
           }).join("")}
         </div>
         
-        <label style="margin-top:16px;">ESPECIFICACIONES / REQUERIMIENTOS ESPECÍFICOS</label>
+        <label style="margin-top:20px;">ESPECIFICACIONES / REQUERIMIENTOS ESPECÍFICOS</label>
         <input id="uInput" type="text" placeholder="Describe brevemente lo que necesitas para tu proyecto...">
 
-        <div class="price-display" style="margin-top:14px; margin-bottom:6px;">
-          <span style="font-size:24px;color:var(--accent-red);">${s[2] || s[0]}</span>
-        </div>
-
-        <div class="btn-group">
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:25px;">
           <button class="btn-wa" data-act="wa">Solicitar por WhatsApp</button>
           <button class="btn-tg" data-act="tg">Solicitar por Telegram</button>
         </div>
@@ -1131,7 +1127,7 @@ function buildCalc(){
   $("closeModal").onclick = closeModalFn;
 }
 
-// RENDERIZADOR ESTILO STORE / LAUNCHER PARA APK, NUMEROS VIRTUALES Y METODOS
+// RENDERIZADOR TIPO LAUNCHER A PANTALLA COMPLETA
 function renderStoreModal(title, subtitle, itemsList, isCollaborative = false) {
   $("sidebar").classList.remove("open");
   stopAutoRotate();
@@ -1158,13 +1154,13 @@ function renderStoreModal(title, subtitle, itemsList, isCollaborative = false) {
         </div>
 
         ${isCollaborative ? `
-        <div style="background:rgba(207,35,35,0.1); border:1px solid var(--accent-red); padding:16px; border-radius:12px; margin-top:10px;">
+        <div style="background:rgba(207,35,35,0.1); border:1px solid var(--accent-red); padding:18px; border-radius:14px; margin-top:10px;">
           <label style="margin-top:0;">📝 ¿QUIERES UNIRTE COMO COLABORADOR?</label>
-          <p style="font-size:11px; color:var(--text-muted); margin:4px 0 10px;">Ingresa tu nombre y tu propio producto/método para publicarlo en la red:</p>
-          <div style="display:flex; gap:10px; flex-wrap:wrap;">
-            <input type="text" id="collabName" placeholder="Tu Nombre / Alias" style="flex:1 1 140px;">
-            <input type="text" id="collabProd" placeholder="Nombre de tu Producto o Método" style="flex:1 1 180px;">
-            <button class="btn-search-action" onclick="sendCollabRequest('${title}')" style="height:auto; padding:10px 20px;">Unirme</button>
+          <p style="font-size:12px; color:var(--text-muted); margin:4px 0 12px;">Ingresa tu nombre y tu propio producto/método para publicarlo en la red:</p>
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <input type="text" id="collabName" placeholder="Tu Nombre / Alias" style="flex:1 1 180px;">
+            <input type="text" id="collabProd" placeholder="Nombre de tu Producto o Método" style="flex:1 1 220px;">
+            <button class="btn-search-action" onclick="sendCollabRequest('${title}')" style="height:auto; padding:12px 24px;">Unirme</button>
           </div>
         </div>
         ` : ''}
@@ -1172,7 +1168,7 @@ function renderStoreModal(title, subtitle, itemsList, isCollaborative = false) {
         <div class="store-section-title">${subtitle}</div>
         <div class="store-grid">
           ${itemsList.map((it, i) => `
-            <div class="store-card" onclick="updateStoreActive(${i})">
+            <div class="store-card" onclick="updateStoreActive(${i})" style="border-color:${i===activeIndex?'var(--accent-red)':'var(--line-border)'}; background:${i===activeIndex?'rgba(207,35,35,0.15)':'rgba(255,255,255,0.03)'}">
               <div>
                 <span style="font-size:9px; color:var(--accent-red); font-weight:800; text-transform:uppercase;">${it.badge || 'Item'}</span>
                 <h4 class="store-card-title">${it.n}</h4>
@@ -1225,7 +1221,23 @@ function openQueryModal(type, bgImg = 'fondodefondo.jpg') {
   const calcContent = $("calcContent");
   let html = `<button class="close-modal" id="closeModal">✕</button><div class="query-card">`;
 
-  if(type === 'reniec_ficha') {
+  if(type === 'busqueda_total') {
+    html += `
+      <div style="margin-bottom:10px;">
+        <span style="font-size:28px;">🕵️‍♂️</span>
+      </div>
+      <div class="header-title">BÚSQUEDA TOTAL</div>
+      <div class="header-sub">RENIEC · MTC · ARBOL · PNP · ANTECEDENTES — <strong style="color:var(--accent-red);">Precio: S/ 30.00</strong></div>
+      <div class="query-grid" style="margin-top:20px;">
+        <div class="query-field">
+          <label>DNI A CONSULTAR</label>
+          <input type="text" id="qDni" placeholder="Ej: 12345678" maxlength="8" oninput="validateDniInput(this)">
+          <small id="dniError" style="display:none;" class="error-msg">Solo números, 8 dígitos.</small>
+        </div>
+        <button class="btn-search-action" onclick="sendQueryRequest('Búsqueda Total - S/ 30')">⌕ Consultar</button>
+      </div>
+    `;
+  } else if(type === 'reniec_ficha') {
     html += `
       <div class="header-title">🆔 CONSULTA RENIEC (TXT / PDF / C4 / FICHA)</div>
       <div class="header-sub">Selecciona el tipo de documento o formato oficial requerido</div>
@@ -1256,7 +1268,6 @@ function openQueryModal(type, bgImg = 'fondodefondo.jpg') {
         <div class="query-field">
           <label>Valor a consultar (DNI)</label>
           <input type="text" id="qDni" placeholder="Ej: 12345678" maxlength="8" oninput="validateDniInput(this)">
-          <small style="color:var(--text-muted);display:block;margin-top:4px;">Ingresa 8 dígitos del DNI.</small>
         </div>
         <div class="query-field">
           <label>Tipo de consulta</label>
@@ -1594,18 +1605,6 @@ function openQueryModal(type, bgImg = 'fondodefondo.jpg') {
           <input type="text" id="qDni" placeholder="Ej: 70364031">
         </div>
         <button class="btn-search-action" onclick="sendQueryRequest('Recibos Luz/Agua/Gas')">⌕ Consultar</button>
-      </div>
-    `;
-  } else if(type === 'busqueda_total') {
-    html += `
-      <div class="header-title">🕵️‍♂️ BÚSQUEDA TOTAL</div>
-      <div class="header-sub">RENIEC · MTC · ARBOL · PNP · ANTECEDENTES — <strong style="color:var(--accent-red);">Precio: S/ 30.00</strong></div>
-      <div class="query-grid">
-        <div class="query-field">
-          <label>DNI a consultar</label>
-          <input type="text" id="qDni" placeholder="Ej: 12345678" maxlength="8" oninput="validateDniInput(this)">
-        </div>
-        <button class="btn-search-action" onclick="sendQueryRequest('Búsqueda Total - S/ 30')">⌕ Consultar</button>
       </div>
     `;
   } else {
