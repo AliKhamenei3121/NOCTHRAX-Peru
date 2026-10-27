@@ -103,7 +103,7 @@ header {
 }
 .search-item:hover { background: rgba(207, 35, 35, 0.2); color: #fff; }
 
-/* BARRA DE MENÚ (SIDEBAR) OPTIMIZADA: FONDO VISIBLE Y DISEÑO ELEGANTE */
+/* BARRA DE MENÚ (SIDEBAR) ESTILIZADA */
 .sidebar {
   position: fixed; 
   top: 0; 
@@ -111,7 +111,6 @@ header {
   width: 380px; 
   max-width: 90vw; 
   height: 100vh;
-  /* Degradado sutil para que la imagen fondovertical.jpg sea protagonista y totalmente visible */
   background: linear-gradient(180deg, rgba(13, 17, 16, 0.55) 0%, rgba(13, 17, 16, 0.78) 100%), 
               url('fondovertical.jpg') center/cover no-repeat #0d1110;
   border-left: 1px solid rgba(207, 35, 35, 0.5); 
@@ -228,7 +227,7 @@ header {
 
 .hero-description p { margin: 0 0 6px; }
 
-/* CARRUSEL 3D CON IMAGEN DE FONDO COMPLETA EN CADA CARTILLA */
+/* CARRUSEL 3D */
 .carousel-container {
   position: relative; 
   width: 100%; 
@@ -347,7 +346,163 @@ header {
 .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.25); cursor: pointer; transition: 0.3s; }
 .dot.active { width: 24px; border-radius: 4px; background: var(--accent-red); box-shadow: 0 0 10px rgba(207,35,35,0.8); }
 
-/* MODALES CON FONDO fondodefondo.jpg Y MÁXIMA NITIDEZ */
+/* ESTILO ESTILIZADO TIPO LAUNCHER / TIENDA (ESTILO IMAGEN DE REFERENCIA) */
+.store-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  text-align: left;
+}
+
+.store-hero {
+  position: relative;
+  width: 100%;
+  height: 340px;
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid rgba(229, 231, 230, 0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 30px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+  overflow: hidden;
+}
+
+.store-hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(180deg, rgba(13,17,16,0.1) 0%, rgba(13,17,16,0.85) 60%, rgba(13,17,16,0.98) 100%);
+  z-index: 1;
+}
+
+.store-hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.store-hero-badge {
+  align-self: flex-start;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--accent-red);
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.store-hero-title {
+  font-family: var(--font-h);
+  font-size: 28px;
+  font-weight: 900;
+  color: #fff;
+  margin: 0;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.9);
+}
+
+.store-hero-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0;
+}
+
+.store-hero-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.store-hero-price {
+  font-family: var(--font-h);
+  font-size: 22px;
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(207,35,35,0.7);
+}
+
+.btn-hero-action {
+  padding: 10px 22px;
+  background: var(--accent-red);
+  color: #fff;
+  border: 0;
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 4px 15px rgba(207,35,35,0.4);
+}
+.btn-hero-action:hover {
+  background: var(--accent-red-hover);
+  transform: translateY(-2px);
+}
+
+.store-section-title {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 10px 0 4px;
+}
+
+.store-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  max-height: 260px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.store-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--line-border);
+  border-radius: 14px;
+  padding: 14px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  text-align: left;
+}
+
+.store-card:hover {
+  border-color: var(--accent-red);
+  background: rgba(207,35,35,0.12);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(207,35,35,0.25);
+}
+
+.store-card-title {
+  font-weight: 800;
+  font-size: 12px;
+  color: #fff;
+  margin: 0;
+}
+
+.store-card-price {
+  font-family: var(--font-h);
+  font-weight: 800;
+  font-size: 13px;
+  color: var(--accent-red);
+}
+
+/* MODALES Y CAMPOS DE REGISTRO DE NUEVOS PRODUCTORES / USUARIOS */
 .modal-overlay {
   position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(8,10,9,0.93);
   backdrop-filter: blur(25px); z-index: 2000; display: grid; place-items: center; padding: 15px;
@@ -367,6 +522,8 @@ header {
 
 @media(max-width:768px) {
   .calc-box { padding: 24px 18px; max-height: 94vh; }
+  .store-hero { height: 260px; padding: 20px; }
+  .store-hero-title { font-size: 22px; }
 }
 
 .close-modal { 
@@ -378,41 +535,12 @@ header {
 
 label { display: block; font: 700 11px var(--font-b); color: var(--text-main); letter-spacing: 2px; text-transform: uppercase; margin: 16px 0 6px; }
 
-.tab-btn-group { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
-.tab-btn { flex: 1; min-width: 160px; padding: 10px; background: rgba(255,255,255,0.03); border: 1px solid var(--line-border); border-radius: 8px; color: #fff; font-size: 11px; font-weight: 700; cursor: pointer; transition: 0.3s; }
-.tab-btn.active { background: rgba(207, 35, 35, 0.25); border-color: var(--accent-red); box-shadow: 0 0 15px rgba(207, 35, 35, 0.3); }
-
-.modern-plan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; margin-top: 10px; }
-.plan-card-option {
-  background: rgba(255,255,255,0.03); border: 1px solid var(--line-border); border-radius: 12px;
-  padding: 16px; cursor: pointer; transition: all 0.3s ease; display: flex; flex-direction: column; gap: 4px; text-align: left;
-}
-.plan-card-option:hover { border-color: rgba(207, 35, 35, 0.75); background: rgba(207, 35, 35, 0.12); transform: translateY(-2px); }
-.plan-card-option.on { background: rgba(207, 35, 35, 0.22); border-color: var(--accent-red); box-shadow: 0 6px 25px rgba(207, 35, 35, 0.35); }
-.plan-card-header { display: flex; justify-content: space-between; align-items: center; }
-.plan-card-title { font-weight: 800; font-size: 13px; color: #fff; }
-.plan-card-price { font-family: var(--font-h); font-weight: 800; font-size: 15px; color: var(--accent-red); }
-.plan-card-desc { font-size: 11px; color: var(--text-muted); line-height: 1.4; }
-
-.chips { display: flex; flex-wrap: wrap; gap: 6px; }
-.chips button {
-  padding: 8px 14px; border: 1px solid var(--line-border); background: rgba(255,255,255,0.02); color: #fff;
-  font: 600 11px var(--font-b); cursor: pointer; transition: .2s; border-radius: 7px;
-}
-.chips button.on { background: var(--accent-red); color: #fff; border-color: var(--accent-red); box-shadow: 0 4px 15px rgba(207, 35, 35, 0.4); }
-
-.qty-wrap { display: flex; gap: 8px; flex-wrap: wrap; }
 input[type="number"], input[type="text"], select {
   width: 100%; padding: 12px 16px; border: 1px solid var(--line-border); background: rgba(0,0,0,.75);
   color: #fff; font: 500 14px var(--font-b); border-radius: 8px; transition: 0.3s;
   font-size: 16px;
 }
 input:focus, select:focus { outline: none; border-color: var(--accent-red); box-shadow: 0 0 12px rgba(207, 35, 35, 0.4); }
-.qty-wrap input { flex: 1 1 130px; }
-.qty-wrap button { padding: 0 14px; border: 1px solid var(--line-border); background: transparent; color: #fff; font: 600 11px var(--font-b); cursor: pointer; border-radius: 8px; }
-
-.price-display { display: flex; align-items: baseline; gap: 12px; margin: 18px 0 10px; }
-.price-display span { font: 800 34px var(--font-h); color: #fff; text-shadow: 0 0 18px rgba(207, 35, 35, 0.6); }
 
 .btn-group { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
 .btn-wa, .btn-tg {
@@ -428,10 +556,6 @@ input:focus, select:focus { outline: none; border-color: var(--accent-red); box-
 .query-card .header-sub { color: var(--text-muted); font-size: 12px; margin-bottom: 20px; line-height: 1.4; }
 .query-grid { display: flex; gap: 14px; flex-wrap: wrap; align-items: flex-end; text-align: left; }
 .query-field { flex: 1 1 200px; }
-.query-field label { font-size: 11px; color: #fff; font-weight: 700; margin-bottom: 6px; }
-.query-field small { display: block; font-size: 11px; color: var(--text-muted); margin-top: 4px; }
-.input-error { border-color: var(--accent-red) !important; box-shadow: 0 0 12px rgba(207, 35, 35, 0.5); }
-.error-msg { color: var(--accent-red); font-size: 11px; margin-top: 4px; display: block; }
 
 .btn-search-action {
   padding: 12px 24px; background: var(--accent-red); color: #fff; border: 0; border-radius: 8px;
@@ -706,7 +830,8 @@ const GENERAL_DEFAULT_PRICES = {
 const METODOS_TIERS = [
   ["Método Básico Guías", "Acceso a manuales y métodos informativos esenciales.", "S/ 15.00"],
   ["Método Pro Verificación", "Guías avanzadas de procesos y flujos digitales.", "S/ 30.00"],
-  ["Método Élite Full Access", "Acceso completo a todos los métodos y actualizaciones directas.", "S/ 50.00"]
+  ["Método Élite Full Access", "Acceso completo a todos los métodos y actualizaciones directas.", "S/ 50.00"],
+  ["Método Masterclass Colaborador", "Plantilla editable para nuevos colaboradores (Ingresa tu nombre y método).", "S/ 70.00"]
 ];
 
 const FORMS_TIERS = [
@@ -733,6 +858,20 @@ const BOT_TIERS = [
   ["Bot Full Business con Pagos", "Integración completa de pagos, catálogo y soporte multiusuario.", "S/ 65.00"]
 ];
 
+const APK_ITEMS = [
+  { n: "Streaming VIP App", p: "S/ 15.00", d: "Aplicación premium de películas y series en alta definición sin anuncios.", img: "potito.jpg", badge: "Más Vendido" },
+  { n: "Herramientas Pro APK", p: "S/ 25.00", d: "Suite completa de herramientas de productividad y utilidades modificadas.", img: "ojitos.jpg", badge: "Popular" },
+  { n: "Edición & Diseño Mod", p: "S/ 20.00", d: "Apps de edición fotográfica y de video con funciones desbloqueadas.", img: "gatitaaaa.jpg", badge: "Nuevo" },
+  { n: "Panel Colaborador APK", p: "S/ 30.00", d: "Plantilla para ingresar tu nombre y añadir tus propias APKs a la red.", img: "callamird.jpg", badge: "Colabora" }
+];
+
+const NUMEROS_VIRTUALES_ITEMS = [
+  { n: "🇵🇪 Perú (WhatsApp / Telegram)", p: "S/ 10.00", d: "Número verificado al instante con código operativo para cuentas en Perú.", badge: "Destacado" },
+  { n: "🇺🇸 Estados Unidos (+1)", p: "S/ 10.00", d: "Línea virtual estadounidense de alta estabilidad para validaciones globales.", badge: "Estándar" },
+  { n: "🇨🇴 Colombia (+57)", p: "S/ 10.00", d: "Número activo de Colombia para registros en redes sociales y apps de mensajería.", badge: "Estándar" },
+  { n: "🌐 Panel de Números (Acceso Total)", p: "S/ 15.00", d: "Acceso multi-país ilimitado con plantilla para colaboradores y revendedores.", badge: "Élite" }
+];
+
 const BOTS = [
   { k:"metodos", n:"Métodos", img:"gatitaaaa.jpg", rating:"9.9 ★", hasCalc:false, d:"Guías y métodos exclusivos paso a paso.", s:METODOS_TIERS },
   { k:"web", n:"Creación de tu Página Web", img:"ojitos.jpg", rating:"9.9 ★", hasCalc:false, d:"Construcción y diseño profesional de páginas web a tu medida.", s:WEB_TIERS },
@@ -749,7 +888,7 @@ const BOTS = [
 ];
 
 const ALL_SERVICES_MAP = [
-  { text: "Métodos y Guías Exclusivas", action: () => openModal(0) },
+  { text: "Métodos y Guías Exclusivas", action: () => openQueryModal('metodos_menu') },
   { text: "Creación de tu Página Web", action: () => openModal(1) },
   { text: "¡Creamos tu Bot de Telegram & WhatsApp!", action: () => openModal(2) },
   { text: "Google Forms - Respuestas Masivas", action: () => openModal(3) },
@@ -758,39 +897,39 @@ const ALL_SERVICES_MAP = [
   { text: "Facebook (Reacciones, Historias, Vistas)", action: () => openModal(6) },
   { text: "YouTube (Suscriptores, WatchTime, Vistas)", action: () => openModal(7) },
   { text: "Kick (Seguidores, Live)", action: () => openModal(8) },
-  { text: "Reniec - Ficha / Nombres / DNI / Facial", action: () => openQueryModal('reniec_ficha', 'gatitaaaa.jpg') },
-  { text: "Persona Avanzada (Consulta Integral)", action: () => openQueryModal('persona_avanzada', 'ojitos.jpg') },
-  { text: "Denuncias Policiales (SIDPOL)", action: () => openQueryModal('legal_denuncias', 'callamird.jpg') },
-  { text: "Carpeta Fiscal (Ministerio Público)", action: () => openQueryModal('legal_fiscal', 'pingita1.jpg') },
-  { text: "Antecedentes Penales/Judiciales/Policiales", action: () => openQueryModal('legal_antecedentes', 'potito.jpg') },
-  { text: "Requisitorias e-SINPOL (Persona/Vehículos)", action: () => openQueryModal('legal_requisitorias', 'gatitaaaa.jpg') },
-  { text: "Consulta PNP / CIP (Policía Nacional)", action: () => openQueryModal('pnp', 'ojitos.jpg') },
-  { text: "RENADESPPLE", action: () => openQueryModal('renadespple', 'callamird.jpg') },
-  { text: "Deudores Alimentarios (REDAM)", action: () => openQueryModal('redam', 'pingita1.jpg') },
-  { text: "Deudores Judiciales Morosos (REDJUM)", action: () => openQueryModal('redjum', 'potito.jpg') },
-  { text: "Multas Electorales (JNE)", action: () => openQueryModal('multas_electorales', 'gatitaaaa.jpg') },
-  { text: "Consulta Vehicular (TIVE / SUNARP)", action: () => openQueryModal('vehicular', 'ojitos.jpg') },
-  { text: "Síguelo Plus (Vehicular Avanzado)", action: () => openQueryModal('vehicular_siguelo', 'callamird.jpg') },
-  { text: "SUNARP - Propiedades / Asientos", action: () => openQueryModal('sunarp', 'pingita1.jpg') },
-  { text: "Sentinel V2 / V3 / SBS", action: () => openQueryModal('finanzas', 'potito.jpg') },
-  { text: "Infocorp Reporte", action: () => openQueryModal('infocorp', 'gatitaaaa.jpg') },
-  { text: "Equifax Reporte", action: () => openQueryModal('equifax', 'ojitos.jpg') },
-  { text: "RUC / SUNAT", action: () => openQueryModal('ruc_sunat', 'callamird.jpg') },
-  { text: "Recetas Médicas Especializadas", action: () => openQueryModal('receta_medica', 'pingita1.jpg') },
-  { text: "Descansos Médicos Justificados", action: () => openQueryModal('descanso_medico', 'potito.jpg') },
-  { text: "Covid-19 / Carnet de Vacunación / Seguro", action: () => openQueryModal('covid_vacuna', 'gatitaaaa.jpg') },
-  { text: "Actas y Certificados (Brevete/Nacimiento/Defunción)", action: () => openQueryModal('actas_certificados', 'ojitos.jpg') },
-  { text: "Grados Académicos (SUNEDU)", action: () => openQueryModal('grados_sunedu', 'callamird.jpg') },
-  { text: "Carnet Universitario", action: () => openQueryModal('carnet_universitario', 'pingita1.jpg') },
-  { text: "Certificados de Estudios (Notas)", action: () => openQueryModal('certificados_estudios', 'potito.jpg') },
-  { text: "Certificado Único Laboral (CUL)", action: () => openQueryModal('cul_certificado', 'gatitaaaa.jpg') },
-  { text: "Osiptel (Líneas a tu nombre)", action: () => openQueryModal('osiptel', 'ojitos.jpg') },
-  { text: "Intg Hogar (Líneas / Servicios Fijos)", action: () => openQueryModal('intg_hogar', 'callamird.jpg') },
-  { text: "Correo Temporal", action: () => openQueryModal('correo_temporal', 'pingita1.jpg') },
-  { text: "Números Virtuales (WhatsApp / Telegram)", action: () => openQueryModal('numeros_virtuales', 'potito.jpg') },
-  { text: "Recibos Luz, Agua, Gas", action: () => openQueryModal('recibos_luz', 'gatitaaaa.jpg') },
-  { text: "Aplicaciones APK - Mercado VIP", action: () => openQueryModal('aplicaciones_apk', 'ojitos.jpg') },
-  { text: "Búsqueda Total Avanzada", action: () => openQueryModal('busqueda_total', 'callamird.jpg') }
+  { text: "Reniec - Ficha / Nombres / DNI / Facial", action: () => openQueryModal('reniec_ficha') },
+  { text: "Persona Avanzada (Consulta Integral)", action: () => openQueryModal('persona_avanzada') },
+  { text: "Denuncias Policiales (SIDPOL)", action: () => openQueryModal('legal_denuncias') },
+  { text: "Carpeta Fiscal (Ministerio Público)", action: () => openQueryModal('legal_fiscal') },
+  { text: "Antecedentes Penales/Judiciales/Policiales", action: () => openQueryModal('legal_antecedentes') },
+  { text: "Requisitorias e-SINPOL (Persona/Vehículos)", action: () => openQueryModal('legal_requisitorias') },
+  { text: "Consulta PNP / CIP (Policía Nacional)", action: () => openQueryModal('pnp') },
+  { text: "RENADESPPLE", action: () => openQueryModal('renadespple') },
+  { text: "Deudores Alimentarios (REDAM)", action: () => openQueryModal('redam') },
+  { text: "Deudores Judiciales Morosos (REDJUM)", action: () => openQueryModal('redjum') },
+  { text: "Multas Electorales (JNE)", action: () => openQueryModal('multas_electorales') },
+  { text: "Consulta Vehicular (TIVE / SUNARP)", action: () => openQueryModal('vehicular') },
+  { text: "Síguelo Plus (Vehicular Avanzado)", action: () => openQueryModal('vehicular_siguelo') },
+  { text: "SUNARP - Propiedades / Asientos", action: () => openQueryModal('sunarp') },
+  { text: "Sentinel V2 / V3 / SBS", action: () => openQueryModal('finanzas') },
+  { text: "Infocorp Reporte", action: () => openQueryModal('infocorp') },
+  { text: "Equifax Reporte", action: () => openQueryModal('equifax') },
+  { text: "RUC / SUNAT", action: () => openQueryModal('ruc_sunat') },
+  { text: "Recetas Médicas Especializadas", action: () => openQueryModal('receta_medica') },
+  { text: "Descansos Médicos Justificados", action: () => openQueryModal('descanso_medico') },
+  { text: "Covid-19 / Carnet de Vacunación / Seguro", action: () => openQueryModal('covid_vacuna') },
+  { text: "Actas y Certificados (Brevete/Nacimiento/Defunción)", action: () => openQueryModal('actas_certificados') },
+  { text: "Grados Académicos (SUNEDU)", action: () => openQueryModal('grados_sunedu') },
+  { text: "Carnet Universitario", action: () => openQueryModal('carnet_universitario') },
+  { text: "Certificados de Estudios (Notas)", action: () => openQueryModal('certificados_estudios') },
+  { text: "Certificado Único Laboral (CUL)", action: () => openQueryModal('cul_certificado') },
+  { text: "Osiptel (Líneas a tu nombre)", action: () => openQueryModal('osiptel') },
+  { text: "Intg Hogar (Líneas / Servicios Fijos)", action: () => openQueryModal('intg_hogar') },
+  { text: "Correo Temporal", action: () => openQueryModal('correo_temporal') },
+  { text: "Números Virtuales (WhatsApp / Telegram)", action: () => openQueryModal('numeros_virtuales') },
+  { text: "Recibos Luz, Agua, Gas", action: () => openQueryModal('recibos_luz') },
+  { text: "Aplicaciones APK - Mercado VIP", action: () => openQueryModal('aplicaciones_apk') },
+  { text: "Búsqueda Total Avanzada", action: () => openQueryModal('busqueda_total') }
 ];
 
 const $ = id => document.getElementById(id);
@@ -992,50 +1131,101 @@ function buildCalc(){
   $("closeModal").onclick = closeModalFn;
 }
 
-function switchVehicularTab(tab) {
-  currentVehicularTab = tab;
-  const btnPlaca = $("btnTabPlaca");
-  const btnVin = $("btnTabVin");
-  const labelText = $("labelVehicularInput");
-  const input = $("qPlacaInput");
+// RENDERIZADOR ESTILO STORE / LAUNCHER PARA APK, NUMEROS VIRTUALES Y METODOS
+function renderStoreModal(title, subtitle, itemsList, isCollaborative = false) {
+  $("sidebar").classList.remove("open");
+  stopAutoRotate();
 
-  if(tab === 'placa') {
-    if(btnPlaca) btnPlaca.classList.add("active");
-    if(btnVin) btnVin.classList.remove("active");
-    if(labelText) labelText.textContent = "PLACA VEHICULAR";
-    if(input) input.placeholder = "Ej: Z1270Q o ABC123";
-  } else {
-    if(btnVin) btnVin.classList.add("active");
-    if(btnPlaca) btnPlaca.classList.remove("active");
-    if(labelText) labelText.textContent = "NÚMERO DE CHASIS / VIN / SERIE";
-    if(input) input.placeholder = "Ej: 9BWCA05W1YP000000";
+  const calcContent = $("calcContent");
+  let activeIndex = 0;
+
+  function updateStoreView(idx) {
+    activeIndex = idx;
+    const item = itemsList[idx];
+    calcContent.innerHTML = `
+      <button class="close-modal" id="closeModal">✕</button>
+      <div class="store-layout">
+        <div class="store-hero" style="background-image: url('${item.img || 'gatitaaaa.jpg'}');">
+          <div class="store-hero-content">
+            <span class="store-hero-badge">${item.badge || 'Destacado'}</span>
+            <h2 class="store-hero-title">${item.n}</h2>
+            <p class="store-hero-desc">${item.d}</p>
+            <div class="store-hero-footer">
+              <span class="store-hero-price">${item.p}</span>
+              <button class="btn-hero-action" onclick="window.open(wa('NOCTHRAX | SOLICITUD DE ${title}\\nProducto: ${item.n}\\nPrecio: ${item.p}'), '_blank')">Adquirir Ahora</button>
+            </div>
+          </div>
+        </div>
+
+        ${isCollaborative ? `
+        <div style="background:rgba(207,35,35,0.1); border:1px solid var(--accent-red); padding:16px; border-radius:12px; margin-top:10px;">
+          <label style="margin-top:0;">📝 ¿QUIERES UNIRTE COMO COLABORADOR?</label>
+          <p style="font-size:11px; color:var(--text-muted); margin:4px 0 10px;">Ingresa tu nombre y tu propio producto/método para publicarlo en la red:</p>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <input type="text" id="collabName" placeholder="Tu Nombre / Alias" style="flex:1 1 140px;">
+            <input type="text" id="collabProd" placeholder="Nombre de tu Producto o Método" style="flex:1 1 180px;">
+            <button class="btn-search-action" onclick="sendCollabRequest('${title}')" style="height:auto; padding:10px 20px;">Unirme</button>
+          </div>
+        </div>
+        ` : ''}
+
+        <div class="store-section-title">${subtitle}</div>
+        <div class="store-grid">
+          ${itemsList.map((it, i) => `
+            <div class="store-card" onclick="updateStoreActive(${i})">
+              <div>
+                <span style="font-size:9px; color:var(--accent-red); font-weight:800; text-transform:uppercase;">${it.badge || 'Item'}</span>
+                <h4 class="store-card-title">${it.n}</h4>
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-top:6px;">
+                <span class="store-card-price">${it.p}</span>
+                <span style="font-size:11px; color:var(--text-muted);">Ver ➔</span>
+              </div>
+            </div>
+          `).join("")}
+        </div>
+      </div>
+    `;
+    $("closeModal").onclick = closeModalFn;
   }
+
+  window.updateStoreActive = updateStoreView;
+  updateStoreView(0);
+  $("calcModal").classList.add("active");
+}
+
+function sendCollabRequest(category) {
+  const name = $("collabName") ? $("collabName").value : "";
+  const prod = $("collabProd") ? $("collabProd").value : "";
+  if(!name || !prod) {
+    alert("Por favor ingresa tu nombre y el producto/método.");
+    return;
+  }
+  const msg = `NOCTHRAX | NUEVA SOLICITUD DE COLABORADOR 🚀\nCategoría: ${category}\nColaborador: ${name}\nProducto/Método: ${prod}`;
+  window.open(wa(msg), "_blank");
 }
 
 function openQueryModal(type, bgImg = 'fondodefondo.jpg') {
   $("sidebar").classList.remove("open");
   stopAutoRotate();
 
+  if(type === 'aplicaciones_apk') {
+    renderStoreModal("APLICACIONES APK", "Otras Aplicaciones y Mods Disponibles", APK_ITEMS, true);
+    return;
+  }
+  if(type === 'numeros_virtuales') {
+    renderStoreModal("NÚMEROS VIRTUALES", "Selecciona País o Panel Completo", NUMEROS_VIRTUALES_ITEMS, true);
+    return;
+  }
+  if(type === 'metodos_menu') {
+    renderStoreModal("MÉTODOS Y GUÍAS EXCLUSIVAS", "Niveles y Plantillas de Acceso", METODOS_TIERS.map(t=>({n: t[0], p: t[2], d: t[1], badge: "Guía Pro"})), true);
+    return;
+  }
+
   const calcContent = $("calcContent");
   let html = `<button class="close-modal" id="closeModal">✕</button><div class="query-card">`;
 
-  if(type === 'metodos_menu') {
-    html += `
-      <div class="header-title">💡 MÉTODOS Y GUÍAS EXCLUSIVAS</div>
-      <div class="header-sub">Selecciona el paquete o nivel deseado</div>
-      <div class="modern-plan-grid">
-        ${METODOS_TIERS.map((x,j)=>`
-          <div class="plan-card-option" onclick="window.open(wa('NOCTHRAX | SOLICITUD DE MÉTODO\\nPlan: ${x[0]}\\nPrecio: ${x[2]}'), '_blank')">
-            <div class="plan-card-header">
-              <span class="plan-card-title">${x[0]}</span>
-              <span class="plan-card-price">${x[2]}</span>
-            </div>
-            <div class="plan-card-desc">${x[1]}</div>
-          </div>
-        `).join("")}
-      </div>
-    `;
-  } else if(type === 'reniec_ficha') {
+  if(type === 'reniec_ficha') {
     html += `
       <div class="header-title">🆔 CONSULTA RENIEC (TXT / PDF / C4 / FICHA)</div>
       <div class="header-sub">Selecciona el tipo de documento o formato oficial requerido</div>
@@ -1077,111 +1267,6 @@ function openQueryModal(type, bgImg = 'fondodefondo.jpg') {
         <button class="btn-search-action" onclick="sendQueryRequest('Persona Avanzada Integral')">⌕ Consultar</button>
       </div>
     `;
-  } else if(type === 'reniec_nombres') {
-    html += `
-      <div class="header-title">🆔 BÚSQUEDA RENIEC POR NOMBRES</div>
-      <div class="header-sub">Consulta por nombres y apellidos (Completa al menos 2 campos)</div>
-      <div class="query-grid">
-        <div class="query-field">
-          <label>Nombres</label>
-          <input type="text" id="qNombres" placeholder="Ej: PEDRO">
-        </div>
-        <div class="query-field">
-          <label>Apellido Paterno</label>
-          <input type="text" id="qPaterno" placeholder="Ej: CASTILLO">
-        </div>
-        <div class="query-field">
-          <label>Apellido Materno</label>
-          <input type="text" id="qMaterno" placeholder="Ej: TERRONES">
-        </div>
-        <button class="btn-search-action" onclick="sendQueryRequest('Búsqueda RENIEC por Nombres')">⌕ Consultar</button>
-      </div>
-    `;
-  } else if(type === 'reniec_dni') {
-    html += `
-      <div class="header-title">🆔 DNI VIRTUAL (IMÁGENES)</div>
-      <div class="header-sub">Obtén la copia digital en alta resolución del documento</div>
-      <div class="query-grid">
-        <div class="query-field">
-          <label>DNI</label>
-          <input type="text" id="qDni" placeholder="Ej: 70364031" maxlength="8" oninput="validateDniInput(this)">
-          <small id="dniError" style="display:none;" class="error-msg">Solo números, 8 dígitos.</small>
-        </div>
-        <div class="query-field">
-          <label>Tipo de Documento</label>
-          <select id="qType">
-            <option value="DNI VIRTUAL ELECTRÓNICO">DNI VIRTUAL ELECTRÓNICO</option>
-            <option value="DNI AZUL">DNI AZUL</option>
-            <option value="DNI AMARILLO">DNI AMARILLO</option>
-          </select>
-        </div>
-        <button class="btn-search-action" onclick="sendQueryRequest('DNI Virtual')">⌕ Consultar</button>
-      </div>
-    `;
-  } else if(type === 'reniec_arbol') {
-    html += `
-      <div class="header-title">🆔 ÁRBOL GENEALÓGICO (TXT / VISUAL)</div>
-      <div class="header-sub">Reporte estructurado de vínculos familiares y parentesco</div>
-      <div class="query-grid">
-        <div class="query-field">
-          <label>DNI</label>
-          <input type="text" id="qDni" placeholder="Ej: 70364031" maxlength="8" oninput="validateDniInput(this)">
-          <small id="dniError" style="display:none;" class="error-msg">Solo números, 8 dígitos.</small>
-        </div>
-        <div class="query-field">
-          <label>Tipo de Árbol</label>
-          <select id="qType">
-            <option value="ÁRBOL TXT">ÁRBOL TXT</option>
-            <option value="ÁRBOL VISUAL">ÁRBOL VISUAL</option>
-          </select>
-        </div>
-        <button class="btn-search-action" onclick="sendQueryRequest('Árbol Genealógico')">⌕ Consultar</button>
-      </div>
-    `;
-  } else if(type === 'reniec_facial') {
-    html += `
-      <div class="header-title">🆔 FACIAL SERVER (RECONOCIMIENTO FACIAL)</div>
-      <div class="header-sub">Identificación biométrica avanzada mediante fotografía facial</div>
-      <div class="query-grid" style="flex-direction:column;align-items:stretch;">
-        <div class="query-field">
-          <label>Foto del Rostro</label>
-          <div class="dropzone-box" onclick="$('facialFileInput').click()">
-            <span style="font-size:28px;">📷</span>
-            <div id="dropzoneText" style="font-size:12px;color:#fff;margin-top:4px;font-weight:700;">Arrastra tu foto aquí o <span style="color:var(--accent-red);">selecciona</span></div>
-            <small style="color:var(--text-muted);display:block;margin-top:2px;">JPG · PNG · WEBP — hasta 15 MB</small>
-          </div>
-          <input type="file" id="facialFileInput" accept="image/*" style="display:none;" onchange="handleFileSelected(event)">
-        </div>
-        <div style="display:flex;gap:10px;margin-top:8px;">
-          <button style="flex:1;padding:10px;background:rgba(255,255,255,0.05);border:1px solid var(--line-border);color:#fff;border-radius:8px;cursor:pointer;font-weight:700;" onclick="$('facialFileInput').click()">📷 Usar cámara</button>
-          <button style="flex:1;padding:10px;background:rgba(255,255,255,0.05);border:1px solid var(--line-border);color:#fff;border-radius:8px;cursor:pointer;font-weight:700;" onclick="clearFacialFile()">🗑️ Limpiar</button>
-        </div>
-        <small style="color:var(--text-muted);margin-top:8px;display:block;">La consulta puede tardar hasta 60 segundos. No hagas doble clic.</small>
-        <div class="btn-group" style="margin-top:12px;">
-          <button class="btn-wa" onclick="sendQueryRequest('Reconocimiento Facial RENIEC')">🔍 Identificar Persona (WA)</button>
-          <button class="btn-tg" onclick="sendQueryRequest('Reconocimiento Facial RENIEC')">🔍 Identificar Persona (TG)</button>
-        </div>
-      </div>
-    `;
-  } else if(type === 'reniec_extranjeria') {
-    html += `
-      <div class="header-title">🆔 CARNÉ DE EXTRANJERÍA (CE)</div>
-      <div class="header-sub">Búsqueda de datos oficial en base de Migraciones Perú</div>
-      <div class="query-grid">
-        <div class="query-field">
-          <label>Número de Carné</label>
-          <input type="text" id="qCarne" placeholder="Ej: 001759530">
-          <small style="color:var(--text-muted);display:block;margin-top:4px;">Letras y números, de 6 a 12 caracteres.</small>
-        </div>
-        <div class="query-field">
-          <label>Fuente</label>
-          <select id="qType" disabled>
-            <option value="MIGRACIONES">MIGRACIONES 🔒</option>
-          </select>
-        </div>
-        <button class="btn-search-action" onclick="sendQueryRequest('Carné de Extranjería (CE)')">⌕ Consultar</button>
-      </div>
-    `;
   } else if(type === 'legal_denuncias') {
     html += `
       <div class="header-title">⚖️ DENUNCIAS POLICIALES (SIDPOL)</div>
@@ -1190,14 +1275,12 @@ function openQueryModal(type, bgImg = 'fondodefondo.jpg') {
         <div class="query-field">
           <label>DNI del consultado</label>
           <input type="text" id="qDni" placeholder="Ej: 78657674" maxlength="8" oninput="validateDniInput(this)">
-          <small id="dniError" style="display:none;" class="error-msg">Solo números, 8 dígitos.</small>
         </div>
         <div class="query-field">
           <label>Tipo</label>
           <select id="qType">
             <option value="Denuncias policiales">Denuncias policiales</option>
           </select>
-          <small style="color:var(--text-muted);display:block;margin-top:4px;">Por ahora solo está habilitado: Denuncias policiales.</small>
         </div>
         <button class="btn-search-action" onclick="sendQueryRequest('Denuncias Policiales SIDPOL')">⌕ Consultar</button>
       </div>
@@ -1210,14 +1293,12 @@ function openQueryModal(type, bgImg = 'fondodefondo.jpg') {
         <div class="query-field">
           <label>DNI</label>
           <input type="text" id="qDni" placeholder="Ej: 78657674" maxlength="8" oninput="validateDniInput(this)">
-          <small id="dniError" style="display:none;" class="error-msg">Solo números, 8 dígitos.</small>
         </div>
         <div class="query-field">
           <label>Tipo</label>
           <select id="qType">
             <option value="Carpetas fiscales">Carpetas fiscales</option>
           </select>
-          <small style="color:var(--text-muted);display:block;margin-top:4px;">Registros en el Ministerio Público por DNI.</small>
         </div>
         <button class="btn-search-action" onclick="sendQueryRequest('Carpeta Fiscal MP')">⌕ Consultar</button>
       </div>
@@ -1230,7 +1311,6 @@ function openQueryModal(type, bgImg = 'fondodefondo.jpg') {
         <div class="query-field">
           <label>DNI</label>
           <input type="text" id="qDni" placeholder="Ej: 70364031" maxlength="8" oninput="validateDniInput(this)">
-          <small id="dniError" style="display:none;" class="error-msg">Solo números, 8 dígitos.</small>
         </div>
         <div class="query-field">
           <label>Tipo</label>
@@ -1270,14 +1350,12 @@ function openQueryModal(type, bgImg = 'fondodefondo.jpg') {
         <div class="query-field">
           <label>Valor (DNI o CIP)</label>
           <input type="text" id="qDni" placeholder="Ej: 78678760">
-          <small style="color:var(--text-muted);display:block;margin-top:4px;">DNI = 8 dígitos · CIP = numérico</small>
         </div>
         <div class="query-field">
           <label>Tipo</label>
           <select id="qType">
             <option value="Consulta por DNI">Consulta por DNI</option>
             <option value="Consulta por CIP">Consulta por CIP</option>
-            <option value="DNI 2026 - Datos ampliados PNP/ESSALUD">DNI 2026 - Datos ampliados PNP/ESSALUD</option>
           </select>
         </div>
         <button class="btn-search-action" onclick="sendQueryRequest('Consulta PNP / CIP')">⌕ Buscar</button>
@@ -1309,7 +1387,6 @@ function openQueryModal(type, bgImg = 'fondodefondo.jpg') {
         <div class="query-field">
           <label>PLACA VEHICULAR</label>
           <input type="text" id="qPlacaInput" placeholder="Ej: Z1270Q o ABC123">
-          <small style="color:var(--text-muted);display:block;margin-top:4px;">Solo letras y números, sin espacios.</small>
         </div>
         <div class="query-field">
           <label>TIPO DE CONSULTA</label>
@@ -1317,10 +1394,7 @@ function openQueryModal(type, bgImg = 'fondodefondo.jpg') {
             <option value="Datos vehiculares SUNARP">Datos vehiculares SUNARP</option>
             <option value="TIVE PLANTILLA IMG">TIVE PLANTILLA IMG</option>
             <option value="TIVE PDF">TIVE PDF</option>
-            <option value="Boletín Informativo">Boletín Informativo</option>
             <option value="SOAT">SOAT</option>
-            <option value="Asientos placa">Asientos placa</option>
-            <option value="Revisión Técnica PDF">Revisión Técnica PDF</option>
           </select>
         </div>
         <button class="btn-search-action" onclick="sendQueryRequest('Consulta Vehicular TIVE')">⌕ Buscar</button>
@@ -1330,13 +1404,9 @@ function openQueryModal(type, bgImg = 'fondodefondo.jpg') {
     html += `
       <div class="header-title">🚗 SÍGUELO PLUS — VEHICULAR AVANZADO</div>
       <div class="header-sub">OCR · Propietarios · TIVE · SOAT · Rev. Técnica · Asientos PDF</div>
-      <div class="tab-btn-group">
-        <button class="tab-btn active" id="btnTabPlaca" onclick="switchVehicularTab('placa')">Por Placa (OCR + SUNARP + TIVE)</button>
-        <button class="tab-btn" id="btnTabVin" onclick="switchVehicularTab('vin')">Por VIN / Serie (Número de chasis)</button>
-      </div>
       <div class="query-grid">
         <div class="query-field">
-          <label id="labelVehicularInput">PLACA VEHICULAR</label>
+          <label>PLACA VEHICULAR</label>
           <input type="text" id="qPlacaInput" placeholder="Ej: Z1270Q o ABC123">
         </div>
         <button class="btn-search-action" onclick="sendQueryRequest('Síguelo Plus Vehicular')">⌕ Consultar</button>
@@ -1372,8 +1442,6 @@ function openQueryModal(type, bgImg = 'fondodefondo.jpg') {
           <label>Proveedor / Tipo</label>
           <select id="qType">
             <option value="Sentinel V3 — Experian + PDF">Sentinel V3 — Experian + PDF</option>
-            <option value="Sentinel V2">Sentinel V2</option>
-            <option value="SBS — Reporte de Deudas">SBS — Reporte de Deudas</option>
             <option value="Infocorp Reporte Full">Infocorp Reporte Full</option>
             <option value="Equifax Consulta">Equifax Consulta</option>
           </select>
@@ -1413,10 +1481,6 @@ function openQueryModal(type, bgImg = 'fondodefondo.jpg') {
           <label>Días de Descanso Requeridos</label>
           <input type="text" id="qType" placeholder="Ej: 3 Días / Desde 10 de Octubre">
         </div>
-        <div class="query-field">
-          <label>Motivo / Sintomatología</label>
-          <input type="text" id="qGeneral" placeholder="Ej: Cuadro gripal agudo, reposo...">
-        </div>
         <div class="btn-group" style="margin-top:12px;">
           <button class="btn-wa" onclick="sendQueryRequest('Descanso Médico')">Pedir por WhatsApp</button>
           <button class="btn-tg" onclick="sendQueryRequest('Descanso Médico')">Pedir por Telegram</button>
@@ -1450,7 +1514,6 @@ function openQueryModal(type, bgImg = 'fondodefondo.jpg') {
         <div class="query-field">
           <label>Número de DNI</label>
           <input type="text" id="qDni" placeholder="Ej: 27835459" maxlength="8" oninput="validateDniInput(this)">
-          <small style="color:var(--text-muted);display:block;margin-top:4px;">Solo 8 dígitos.</small>
         </div>
         <div class="query-field">
           <label>Tipo de consulta</label>
@@ -1458,10 +1521,6 @@ function openQueryModal(type, bgImg = 'fondodefondo.jpg') {
             <option value="Brevete">Brevete</option>
             <option value="Acta de nacimiento">Acta de nacimiento</option>
             <option value="Movimientos migratorios">Movimientos migratorios</option>
-            <option value="Certificado de estudios">Certificado de estudios</option>
-            <option value="Acta de matrimonio">Acta de matrimonio</option>
-            <option value="Acta de defunción">Acta de defunción</option>
-            <option value="Certificado laboral">Certificado laboral</option>
           </select>
         </div>
         <button class="btn-search-action" onclick="sendQueryRequest('Actas y Certificados')">⌕ Consultar</button>
@@ -1485,30 +1544,6 @@ function openQueryModal(type, bgImg = 'fondodefondo.jpg') {
           <input type="text" id="qDni" placeholder="Ej: 75178640" maxlength="8" oninput="validateDniInput(this)">
         </div>
         <button class="btn-search-action" onclick="sendQueryRequest('${title}')">⌕ Consultar</button>
-      </div>
-    `;
-  } else if(type === 'numeros_virtuales') {
-    html += `
-      <div class="header-title">📱 NÚMEROS VIRTUALES</div>
-      <div class="header-sub">Soporte para WhatsApp y Telegram — S/ 10.00 c/u</div>
-      <div class="query-grid" style="flex-direction:column;align-items:stretch;">
-        <div class="query-field">
-          <label>Seleccionar País / Panel</label>
-          <select id="qType">
-            <option>🇵🇪 Perú — S/ 10.00</option>
-            <option>🇺🇸 Estados Unidos — S/ 10.00</option>
-            <option>🇨🇴 Colombia — S/ 10.00</option>
-            <option>🌐 Panel de Números (Acceso Total) — S/ 15.00</option>
-          </select>
-        </div>
-        <div class="query-field">
-          <label>Detalles / Requerimiento</label>
-          <input type="text" id="qGeneral" placeholder="Ej: 2 números para WhatsApp...">
-        </div>
-        <div class="btn-group" style="margin-top:12px;">
-          <button class="btn-wa" onclick="sendQueryRequest('Números Virtuales')">Pedir por WhatsApp</button>
-          <button class="btn-tg" onclick="sendQueryRequest('Números Virtuales')">Pedir por Telegram</button>
-        </div>
       </div>
     `;
   } else if(type === 'correo_temporal') {
@@ -1537,8 +1572,6 @@ function openQueryModal(type, bgImg = 'fondodefondo.jpg') {
             <option value="15 Respuestas (S/ 4.00)">15 Respuestas — S/ 4.00</option>
             <option value="30 Respuestas (S/ 8.00)">30 Respuestas — S/ 8.00</option>
             <option value="60 Respuestas (S/ 15.00)">60 Respuestas — S/ 15.00</option>
-            <option value="130 Respuestas (S/ 30.00)">130 Respuestas — S/ 30.00</option>
-            <option value="250 Respuestas (S/ 50.00)">250 Respuestas — S/ 50.00</option>
           </select>
         </div>
         <div class="query-field">
@@ -1560,37 +1593,7 @@ function openQueryModal(type, bgImg = 'fondodefondo.jpg') {
           <label>DNI / Nro. Suministro</label>
           <input type="text" id="qDni" placeholder="Ej: 70364031">
         </div>
-        <div class="query-field">
-          <label>Servicio</label>
-          <select id="qType">
-            <option>Luz (Luz del Sur / Enel)</option>
-            <option>Agua (Sedapal)</option>
-            <option>Gas (Calidda)</option>
-          </select>
-        </div>
         <button class="btn-search-action" onclick="sendQueryRequest('Recibos Luz/Agua/Gas')">⌕ Consultar</button>
-      </div>
-    `;
-  } else if(type === 'aplicaciones_apk') {
-    html += `
-      <div class="header-title">📲 MERCADO DE APLICACIONES APK</div>
-      <div class="header-sub">Selecciona la aplicación deseada</div>
-      <div class="apk-grid">
-        <div class="apk-card" onclick="selectApk('Streaming VIP App', 'S/ 15.00')">
-          <div class="apk-img">🎬</div>
-          <div class="apk-title">Streaming VIP</div>
-          <div class="apk-price">S/ 15.00</div>
-        </div>
-        <div class="apk-card" onclick="selectApk('Herramientas Pro APK', 'S/ 25.00')">
-          <div class="apk-img">🛠️</div>
-          <div class="apk-title">Herramientas Pro</div>
-          <div class="apk-price">S/ 25.00</div>
-        </div>
-        <div class="apk-card" onclick="selectApk('Edición & Diseño Mod', 'S/ 20.00')">
-          <div class="apk-img">🎨</div>
-          <div class="apk-title">Edición Mod</div>
-          <div class="apk-price">S/ 20.00</div>
-        </div>
       </div>
     `;
   } else if(type === 'busqueda_total') {
@@ -1628,28 +1631,6 @@ function openQueryModal(type, bgImg = 'fondodefondo.jpg') {
   $("closeModal").onclick = closeModalFn;
 }
 
-function handleFileSelected(event) {
-  const file = event.target.files[0];
-  if(file) {
-    loadedFacialFileName = file.name;
-    const txt = $("dropzoneText");
-    if(txt) txt.innerHTML = `📷 Foto cargada: <strong style="color:var(--accent-red);">${file.name}</strong>`;
-  }
-}
-
-function clearFacialFile() {
-  loadedFacialFileName = "";
-  const input = $("facialFileInput");
-  if(input) input.value = "";
-  const txt = $("dropzoneText");
-  if(txt) txt.innerHTML = `Arrastra tu foto aquí o <span style="color:var(--accent-red);">selecciona</span>`;
-}
-
-function selectApk(apkName, apkPrice) {
-  const msg = `NOCTHRAX | SOLICITUD DE APK 📲\nAplicación: ${apkName}\nPrecio: ${apkPrice}`;
-  window.open(wa(msg), "_blank");
-}
-
 function validateDniInput(input) {
   input.value = input.value.replace(/\D/g, '');
   const errElement = $("dniError");
@@ -1672,13 +1653,8 @@ function sendQueryRequest(serviceName) {
 
   let msg = `NOCTHRAX | CONSULTA ESPECIALIZADA 👋\nServicio: ${serviceName}`;
   if(dniInput && dniInput.value) msg += `\nDNI / Valor: ${dniInput.value}`;
-  if($("qPlacaInput") && $("qPlacaInput").value) msg += `\nPlaca/VIN: ${$("qPlacaInput").value} (Modo: ${currentVehicularTab})`;
-  if($("qNombres") && $("qNombres").value) msg += `\nNombres: ${$("qNombres").value}`;
-  if($("qPaterno") && $("qPaterno").value) msg += `\nAp. Paterno: ${$("qPaterno").value}`;
-  if($("qMaterno") && $("qMaterno").value) msg += `\nAp. Materno: ${$("qMaterno").value}`;
-  if($("qCarne") && $("qCarne").value) msg += `\nCarné de Extranjería: ${$("qCarne").value}`;
+  if($("qPlacaInput") && $("qPlacaInput").value) msg += `\nPlaca/VIN: ${$("qPlacaInput").value}`;
   if($("qType") && $("qType").value) msg += `\nTipo / Formato: ${$("qType").value}`;
-  if(loadedFacialFileName) msg += `\nArchivo Adjunto: ${loadedFacialFileName}`;
   if($("qGeneral") && $("qGeneral").value) msg += `\nDetalles: ${$("qGeneral").value}`;
 
   window.open(wa(msg), "_blank");
