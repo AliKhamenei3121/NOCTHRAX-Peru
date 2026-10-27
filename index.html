@@ -6,6 +6,9 @@
 <meta name="description" content="NOCTHRAX | Perú — Servicios Digitales, Social Growth & Inteligencia de Datos.">
 <meta name="theme-color" content="#0d1110">
 
+<!-- LOGO FAVORITO (FAVICON) SVG RED NOCTHRAX -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path fill='%23cf2323' d='M50 5 L85 20 L80 55 C78 75 50 95 50 95 C50 95 22 75 20 55 L15 20 Z'/><path fill='%23ffffff' d='M30 40 L45 45 L35 55 Z M70 40 L55 45 L65 55 Z'/></svg>">
+
 <meta property="og:type" content="website">
 <meta property="og:title" content="NOCTHRAX | PERÚ — Silencio. Precisión. Resultados.">
 <meta property="og:description" content="Servicios digitales avanzados, aceleración de redes sociales e inteligencia de datos.">
@@ -39,7 +42,7 @@ body, html {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  background: linear-gradient(180deg, rgba(13, 17, 16, 0.65) 0%, rgba(13, 17, 16, 0.85) 100%), url('fondodefondo.jpg') center/cover no-repeat fixed #0d1110;
+  background: linear-gradient(180deg, rgba(13, 17, 16, 0.5) 0%, rgba(13, 17, 16, 0.78) 100%), url('fondodefondo.jpg') center top/cover no-repeat fixed #0d1110;
   color: var(--text-main);
   font: 400 14px/1.6 var(--font-b);
   touch-action: pan-x pan-y;
@@ -66,7 +69,9 @@ header {
   border-bottom: 1px solid rgba(229, 231, 230, 0.1);
 }
 
-.brand-tlou { display: flex; flex-direction: column; }
+.brand-tlou { display: flex; align-items: center; gap: 10px; }
+.brand-logo-icon { width: 32px; height: 32px; filter: drop-shadow(0 0 6px rgba(207,35,35,0.8)); }
+.brand-text { display: flex; flex-direction: column; }
 .brand-tlou .title { font-family: var(--font-h); font-weight: 900; font-size: 20px; letter-spacing: 2px; color: #fff; line-height: 1; }
 .brand-tlou .sub { font-size: 9px; font-weight: 600; letter-spacing: 3px; color: var(--text-muted); margin-top: 3px; }
 
@@ -105,7 +110,7 @@ header {
 }
 .search-item:hover { background: rgba(207, 35, 35, 0.2); color: #fff; }
 
-/* MENÚ LATERAL (SIDEBAR) MEJORADO */
+/* MENÚ LATERAL (SIDEBAR) MEJORADO Y ENCUADRADO */
 .sidebar {
   position: fixed; 
   top: 0; 
@@ -113,8 +118,8 @@ header {
   width: 380px; 
   max-width: 90vw; 
   height: 100vh;
-  background: linear-gradient(180deg, rgba(13, 17, 16, 0.75) 0%, rgba(13, 17, 16, 0.92) 100%), 
-              url('3.jpg') center/cover no-repeat #0d1110;
+  background: linear-gradient(180deg, rgba(13, 17, 16, 0.65) 0%, rgba(13, 17, 16, 0.88) 100%), 
+              url('3.jpg') center top/cover no-repeat #0d1110;
   border-left: 1px solid rgba(207, 35, 35, 0.5); 
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -166,20 +171,20 @@ header {
 .social-section-title { font-size: 10px; letter-spacing: 2px; color: var(--accent-red); font-weight: 800; text-transform: uppercase; margin-bottom: 8px; }
 .social-link {
   display: flex; align-items: center; justify-content: space-between; padding: 10px 12px;
-  margin-bottom: 6px; background: rgba(13, 17, 16, 0.75); border: 1px solid rgba(229, 231, 230, 0.18);
+  margin-bottom: 6px; background: rgba(13, 17, 16, 0.7); border: 1px solid rgba(229, 231, 230, 0.18);
   border-radius: 8px; font-weight: 600; font-size: 11px; transition: 0.3s;
 }
 .social-link:hover { background: rgba(207, 35, 35, 0.3); border-color: var(--accent-red); color: #fff; transform: translateX(-4px); }
 
 .side-item {
-  padding: 11px 12px; border-radius: 8px; margin-bottom: 6px; background: rgba(13, 17, 16, 0.75);
+  padding: 11px 12px; border-radius: 8px; margin-bottom: 6px; background: rgba(13, 17, 16, 0.7);
   border: 1px solid rgba(229, 231, 230, 0.18); font-weight: 600; font-size: 11px; letter-spacing: 1px;
   text-transform: uppercase; cursor: pointer; transition: .3s; display: flex; align-items: center; justify-content: space-between;
 }
 .side-item:hover { background: rgba(207, 35, 35, 0.28); border-color: var(--accent-red); color: #fff; transform: translateX(-4px); }
 .sub-menu { display: none; padding-left: 10px; margin-top: 4px; margin-bottom: 6px; border-left: 2px solid var(--accent-red); }
 .sub-menu.open { display: block; }
-.sub-item { padding: 7px 10px; font-size: 11px; color: var(--text-muted); cursor: pointer; transition: .2s; border-radius: 6px; margin-bottom: 2px; background: rgba(13, 17, 16, 0.7); }
+.sub-item { padding: 7px 10px; font-size: 11px; color: var(--text-muted); cursor: pointer; transition: .2s; border-radius: 6px; margin-bottom: 2px; background: rgba(13, 17, 16, 0.65); }
 .sub-item:hover { color: #fff; background: rgba(207, 35, 35, 0.25); }
 
 .main-fullscreen {
@@ -247,7 +252,7 @@ header {
   width: 370px; 
   height: 470px; 
   background-size: cover;
-  background-position: center;
+  background-position: center top;
   background-repeat: no-repeat;
   border: 1px solid rgba(229, 231, 230, 0.25); 
   border-radius: 24px; 
@@ -262,13 +267,13 @@ header {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(180deg, rgba(13, 17, 16, 0.15) 0%, rgba(13, 17, 16, 0.55) 55%, rgba(13, 17, 16, 0.88) 100%);
+  background: linear-gradient(180deg, rgba(13, 17, 16, 0.05) 0%, rgba(13, 17, 16, 0.45) 55%, rgba(13, 17, 16, 0.85) 100%);
   z-index: 1;
   transition: opacity 0.4s ease;
 }
 
 .card-3d:hover::before {
-  background: linear-gradient(180deg, rgba(13, 17, 16, 0.1) 0%, rgba(13, 17, 16, 0.45) 45%, rgba(13, 17, 16, 0.8) 100%);
+  background: linear-gradient(180deg, rgba(13, 17, 16, 0.02) 0%, rgba(13, 17, 16, 0.35) 45%, rgba(13, 17, 16, 0.75) 100%);
 }
 
 .card-3d.center {
@@ -360,7 +365,7 @@ header {
 .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.25); cursor: pointer; transition: 0.3s; }
 .dot.active { width: 24px; border-radius: 4px; background: var(--accent-red); box-shadow: 0 0 10px rgba(207,35,35,0.8); }
 
-/* LAYOUT STORE / LAUNCHER AJUSTADO Y RESPONSIVO */
+/* LAYOUT STORE / LAUNCHER AJUSTADO Y RESPONSIVO CON ROSTRO VISIBLE */
 .store-layout {
   display: flex;
   flex-direction: column;
@@ -378,7 +383,7 @@ header {
   min-height: 280px;
   border-radius: 20px;
   background-size: cover;
-  background-position: center;
+  background-position: center top;
   border: 1px solid rgba(229, 231, 230, 0.25);
   display: flex;
   flex-direction: column;
@@ -393,7 +398,7 @@ header {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(180deg, rgba(13,17,16,0.1) 0%, rgba(13,17,16,0.65) 60%, rgba(13,17,16,0.92) 100%);
+  background: linear-gradient(180deg, rgba(13,17,16,0.05) 0%, rgba(13,17,16,0.5) 60%, rgba(13,17,16,0.88) 100%);
   z-index: 1;
 }
 
@@ -428,7 +433,7 @@ header {
   margin: 0;
   text-shadow: 0 4px 12px rgba(0,0,0,0.9);
   line-height: 1.1;
-  padding-right: 40px; /* evita choque con botón de cierre X */
+  padding-right: 40px;
 }
 
 .store-hero-desc {
@@ -500,7 +505,7 @@ header {
   height: 130px;
   border-radius: 16px;
   background-size: cover;
-  background-position: center;
+  background-position: center top;
   border: 1px solid var(--line-border);
   cursor: pointer;
   transition: 0.3s ease;
@@ -516,13 +521,13 @@ header {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(180deg, rgba(13,17,16,0.1) 0%, rgba(13,17,16,0.6) 60%, rgba(13,17,16,0.9) 100%);
+  background: linear-gradient(180deg, rgba(13,17,16,0.05) 0%, rgba(13,17,16,0.5) 60%, rgba(13,17,16,0.85) 100%);
   z-index: 1;
   transition: 0.3s;
 }
 
 .store-card:hover::before {
-  background: linear-gradient(180deg, rgba(13,17,16,0.05) 0%, rgba(13,17,16,0.45) 50%, rgba(13,17,16,0.8) 100%);
+  background: linear-gradient(180deg, rgba(13,17,16,0.02) 0%, rgba(13,17,16,0.35) 50%, rgba(13,17,16,0.75) 100%);
 }
 
 .store-card.active-card {
@@ -570,17 +575,17 @@ header {
   color: #fff;
 }
 
-/* MODALES CON FONDO MÁS VISIBLE */
+/* MODALES CON ILUMINACIÓN DE FONDO MEJORADA */
 .modal-overlay {
-  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(8,10,9,0.92);
-  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 0;
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(8,10,9,0.85);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 0;
   opacity: 0; pointer-events: none; transition: 0.3s ease;
 }
 .modal-overlay.active { opacity: 1; pointer-events: auto; }
 
 .calc-box {
   width: 100vw; height: 100vh; border: none; 
-  background: linear-gradient(180deg, rgba(13, 17, 16, 0.65) 0%, rgba(13, 17, 16, 0.9) 100%), url('7.jpg') center/cover no-repeat;
+  background: linear-gradient(180deg, rgba(13, 17, 16, 0.45) 0%, rgba(13, 17, 16, 0.85) 100%), url('7.jpg') center top/cover no-repeat;
   padding: 24px 4vw; box-shadow: none; border-radius: 0;
   position: relative; display: flex; flex-direction: column; overflow: hidden;
 }
@@ -597,7 +602,7 @@ header {
 label { display: block; font: 700 11px var(--font-b); color: var(--text-main); letter-spacing: 1.5px; text-transform: uppercase; margin: 12px 0 5px; text-align: left; }
 
 input[type="number"], input[type="text"], select, input[type="file"] {
-  width: 100%; padding: 12px 16px; border: 1px solid var(--line-border); background: rgba(0,0,0,.75);
+  width: 100%; padding: 12px 16px; border: 1px solid var(--line-border); background: rgba(0,0,0,.7);
   color: #fff; font: 500 14px var(--font-b); border-radius: 10px; transition: 0.3s;
   font-size: 15px; text-align: left;
 }
@@ -657,8 +662,14 @@ footer { text-align: center; color: var(--text-muted); font-size: 10px; letter-s
 
 <header>
   <div class="brand-tlou">
-    <span class="title">NOCTHRAX</span>
-    <span class="sub">PERÚ · DIGITAL SERVICES</span>
+    <svg class="brand-logo-icon" viewBox="0 0 100 100">
+      <path fill="#cf2323" d="M50 5 L85 20 L80 55 C78 75 50 95 50 95 C50 95 22 75 20 55 L15 20 Z"/>
+      <path fill="#ffffff" d="M30 40 L45 45 L35 55 Z M70 40 L55 45 L65 55 Z"/>
+    </svg>
+    <div class="brand-text">
+      <span class="title">NOCTHRAX</span>
+      <span class="sub">PERÚ · DIGITAL SERVICES</span>
+    </div>
   </div>
 
   <div class="header-right">
@@ -684,10 +695,10 @@ footer { text-align: center; color: var(--text-muted); font-size: 10px; letter-s
 
   <div class="social-section">
     <div class="social-section-title">Canales & Redes Oficiales</div>
-    <a href="https://t.me/ABRRLADOR" target="_blank" rel="noopener" class="social-link"><span>✈ Telegram Directo</span> <span>➔</span></a>
+    <a href="https://t.me/abrrlador" target="_blank" rel="noopener" class="social-link"><span>✈ Telegram Directo</span> <span>➔</span></a>
     <a href="https://whatsapp.com/channel/0029Vb8U7H18PgsFezIoJu1m" target="_blank" rel="noopener" class="social-link"><span>📢 Únete a nuestro canal</span> <span>➔</span></a>
-    <a href="https://instagram.com/" target="_blank" rel="noopener" class="social-link"><span>📸 Instagram Oficial</span> <span>➔</span></a>
-    <a href="https://tiktok.com/" target="_blank" rel="noopener" class="social-link"><span>🎵 TikTok Oficial</span> <span>➔</span></a>
+    <a href="https://www.instagram.com/nocthrax1?xtok=MXIybGJtNXpoN2wxbA%3D%3D&utm_source=qr" target="_blank" rel="noopener" class="social-link"><span>📸 Instagram Oficial</span> <span>➔</span></a>
+    <a href="https://www.tiktok.com/@alvaro.rry?_r=1&_t=ZS-9AuSPmVomRU" target="_blank" rel="noopener" class="social-link"><span>🎵 TikTok Oficial</span> <span>➔</span></a>
   </div>
 
   <div class="side-item" onclick="openQueryModal('metodos_menu')">💡 MÉTODOS Y GUÍAS EXCLUSIVAS</div>
@@ -840,7 +851,11 @@ footer { text-align: center; color: var(--text-muted); font-size: 10px; letter-s
 </div>
 
 <script>
-const CFG = { whatsapp: "573135022169", telegram: "ABRRLADOR", channel: "https://whatsapp.com/channel/0029Vb8U7H18PgsFezIoJu1m" };
+const CFG = { 
+  whatsapp: "573135022169", 
+  telegram: "abrrlador", 
+  channel: "https://whatsapp.com/channel/0029Vb8U7H18PgsFezIoJu1m" 
+};
 
 const TIKTOK_PRICES = {
   "Seguidores": [3.00, 5.50, 8.00, 10.50, 12.00, 14.50, 17.00, 19.50, 22.00, 24.00],
@@ -1001,8 +1016,9 @@ const ALL_SERVICES_MAP = [
 ];
 
 const $ = id => document.getElementById(id);
-const wa = t => `https://wa.me/${CFG.whatsapp}?text=${encodeURIComponent(t + "\n\nSoporte WhatsApp: +57 313 5022169\nÚnete a nuestro canal: " + CFG.channel)}`;
-const tg = t => `https://t.me/${CFG.telegram}?text=${encodeURIComponent(t + "\n\nSoporte WhatsApp: +57 313 5022169\nÚnete a nuestro canal: " + CFG.channel)}`;
+const formatMsg = (lines) => lines.filter(Boolean).join("\n");
+const wa = t => `https://wa.me/${CFG.whatsapp}?text=${encodeURIComponent(t)}`;
+const tg = t => `https://t.me/${CFG.telegram}?text=${encodeURIComponent(t)}`;
 const money = n => "S/ " + n.toFixed(2);
 
 let securityTriggered = false;
@@ -1188,14 +1204,14 @@ function renderStoreModal(title, subtitle, itemsList, isCollaborative = false) {
             <p class="store-hero-desc">${item.d}</p>
             <div class="store-hero-footer">
               <span class="store-hero-price">${item.p}</span>
-              <button class="btn-hero-action" onclick="window.open(wa('NOCTHRAX | SOLICITUD DE ${title}\\nOpción: ${item.n}\\nPrecio: ${item.p}'), '_blank')">Adquirir Ahora</button>
+              <button class="btn-hero-action" onclick="sendStoreOrder('${title}', '${item.n}', '${item.p}')">Adquirir Ahora</button>
             </div>
           </div>
         </div>
 
         ${isCollaborative ? `
-        <div style="background:rgba(207,35,35,0.15); border:1px solid var(--accent-red); padding:16px; border-radius:14px; background-image:url('3.jpg'); background-size:cover; background-position:center; position:relative; overflow:hidden;">
-          <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(13,17,16,0.82);z-index:1;"></div>
+        <div style="background:rgba(207,35,35,0.15); border:1px solid var(--accent-red); padding:16px; border-radius:14px; background-image:url('3.jpg'); background-size:cover; background-position:center top; position:relative; overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(13,17,16,0.78);z-index:1;"></div>
           <div style="position:relative;z-index:2;">
             <label style="margin-top:0;">📝 ¿QUIERES UNIRTE COMO COLABORADOR?</label>
             <p style="font-size:11px; color:var(--text-muted); margin:4px 0 10px;">Ingresa tu nombre y tu propio producto/método para publicarlo en la red:</p>
@@ -1233,6 +1249,20 @@ function renderStoreModal(title, subtitle, itemsList, isCollaborative = false) {
   $("calcModal").classList.add("active");
 }
 
+function sendStoreOrder(title, option, price) {
+  const msg = formatMsg([
+    "🔴 *NOCTHRAX | PERÚ*",
+    "────────────────────",
+    `📌 *Categoría:* ${title}`,
+    `💎 *Opción / Plan:* ${option}`,
+    `💰 *Precio Oficial:* ${price}`,
+    "────────────────────",
+    `📞 *Soporte WhatsApp:* +57 313 5022169`,
+    `📢 *Canal Oficial:* ${CFG.channel}`
+  ]);
+  window.open(wa(msg), "_blank");
+}
+
 function sendCollabRequest(category) {
   const name = $("collabName") ? $("collabName").value : "";
   const prod = $("collabProd") ? $("collabProd").value : "";
@@ -1240,7 +1270,16 @@ function sendCollabRequest(category) {
     alert("Por favor ingresa tu nombre y el producto/método.");
     return;
   }
-  const msg = `NOCTHRAX | NUEVA SOLICITUD DE COLABORADOR 🚀\nCategoría: ${category}\nColaborador: ${name}\nProducto/Método: ${prod}`;
+  const msg = formatMsg([
+    "🚀 *NOCTHRAX | NUEVA SOLICITUD DE COLABORADOR*",
+    "────────────────────",
+    `📌 *Categoría:* ${category}`,
+    `👤 *Colaborador:* ${name}`,
+    `💡 *Producto / Método:* ${prod}`,
+    "────────────────────",
+    `📞 *Soporte WhatsApp:* +57 313 5022169`,
+    `📢 *Canal Oficial:* ${CFG.channel}`
+  ]);
   window.open(wa(msg), "_blank");
 }
 
@@ -1276,10 +1315,10 @@ function openQueryModal(type) {
       <div class="header-sub">Incluye todos los servicios oficiales a un precio único de <strong style="color:var(--accent-red);">S/ 35.00</strong></div>
       
       <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap:10px; margin:15px 0;">
-        <div style="background:rgba(255,255,255,0.05); border:1px solid var(--line-border); padding:12px; border-radius:12px; background-image:url('1.jpg'); background-size:cover; background-position:center; position:relative; overflow:hidden;"><div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(13,17,16,0.78);z-index:1;"></div><div style="position:relative;z-index:2;"><div style="font-size:12px; font-weight:800; color:#fff;">🆔 RENIEC</div><div style="font-size:10px; color:var(--text-muted); margin-top:2px;">Fichas y datos completos</div></div></div>
-        <div style="background:rgba(255,255,255,0.05); border:1px solid var(--line-border); padding:12px; border-radius:12px; background-image:url('2.jpg'); background-size:cover; background-position:center; position:relative; overflow:hidden;"><div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(13,17,16,0.78);z-index:1;"></div><div style="position:relative;z-index:2;"><div style="font-size:12px; font-weight:800; color:#fff;">🚗 MTC</div><div style="font-size:10px; color:var(--text-muted); margin-top:2px;">Licencias y papeletas</div></div></div>
-        <div style="background:rgba(255,255,255,0.05); border:1px solid var(--line-border); padding:12px; border-radius:12px; background-image:url('3.jpg'); background-size:cover; background-position:center; position:relative; overflow:hidden;"><div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(13,17,16,0.78);z-index:1;"></div><div style="position:relative;z-index:2;"><div style="font-size:12px; font-weight:800; color:#fff;">🌳 ÁRBOL</div><div style="font-size:10px; color:var(--text-muted); margin-top:2px;">Vínculos familiares</div></div></div>
-        <div style="background:rgba(255,255,255,0.05); border:1px solid var(--line-border); padding:12px; border-radius:12px; background-image:url('4.jpg'); background-size:cover; background-position:center; position:relative; overflow:hidden;"><div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(13,17,16,0.78);z-index:1;"></div><div style="position:relative;z-index:2;"><div style="font-size:12px; font-weight:800; color:#fff;">🛡️ PNP</div><div style="font-size:10px; color:var(--text-muted); margin-top:2px;">Requisitorias e historial</div></div></div>
+        <div style="background:rgba(255,255,255,0.05); border:1px solid var(--line-border); padding:12px; border-radius:12px; background-image:url('1.jpg'); background-size:cover; background-position:center top; position:relative; overflow:hidden;"><div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(13,17,16,0.72);z-index:1;"></div><div style="position:relative;z-index:2;"><div style="font-size:12px; font-weight:800; color:#fff;">🆔 RENIEC</div><div style="font-size:10px; color:var(--text-muted); margin-top:2px;">Fichas y datos completos</div></div></div>
+        <div style="background:rgba(255,255,255,0.05); border:1px solid var(--line-border); padding:12px; border-radius:12px; background-image:url('2.jpg'); background-size:cover; background-position:center top; position:relative; overflow:hidden;"><div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(13,17,16,0.72);z-index:1;"></div><div style="position:relative;z-index:2;"><div style="font-size:12px; font-weight:800; color:#fff;">🚗 MTC</div><div style="font-size:10px; color:var(--text-muted); margin-top:2px;">Licencias y papeletas</div></div></div>
+        <div style="background:rgba(255,255,255,0.05); border:1px solid var(--line-border); padding:12px; border-radius:12px; background-image:url('3.jpg'); background-size:cover; background-position:center top; position:relative; overflow:hidden;"><div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(13,17,16,0.72);z-index:1;"></div><div style="position:relative;z-index:2;"><div style="font-size:12px; font-weight:800; color:#fff;">🌳 ÁRBOL</div><div style="font-size:10px; color:var(--text-muted); margin-top:2px;">Vínculos familiares</div></div></div>
+        <div style="background:rgba(255,255,255,0.05); border:1px solid var(--line-border); padding:12px; border-radius:12px; background-image:url('4.jpg'); background-size:cover; background-position:center top; position:relative; overflow:hidden;"><div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(13,17,16,0.72);z-index:1;"></div><div style="position:relative;z-index:2;"><div style="font-size:12px; font-weight:800; color:#fff;">🛡️ PNP</div><div style="font-size:10px; color:var(--text-muted); margin-top:2px;">Requisitorias e historial</div></div></div>
       </div>
 
       <div class="query-grid" style="margin-top:12px;">
@@ -1704,25 +1743,48 @@ function sendQueryRequest(serviceName) {
     return;
   }
 
-  let msg = `NOCTHRAX | CONSULTA ESPECIALIZADA 👋\nServicio: ${serviceName}`;
-  if(dniInput && dniInput.value) msg += `\nDNI / Valor: ${dniInput.value}`;
-  if($("qPlacaInput") && $("qPlacaInput").value) msg += `\nPlaca/VIN: ${$("qPlacaInput").value}`;
-  if($("qType") && $("qType").value) msg += `\nTipo / Formato: ${$("qType").value}`;
-  if($("qGeneral") && $("qGeneral").value) msg += `\nDetalles: ${$("qGeneral").value}`;
+  const lines = [
+    "🔴 *NOCTHRAX | CONSULTA ESPECIALIZADA*",
+    "────────────────────",
+    `📌 *Servicio:* ${serviceName}`
+  ];
 
-  window.open(wa(msg), "_blank");
+  if(dniInput && dniInput.value) lines.push(`📊 *DNI / Valor:* ${dniInput.value}`);
+  if($("qPlacaInput") && $("qPlacaInput").value) lines.push(`🚘 *Placa / VIN:* ${$("qPlacaInput").value}`);
+  if($("qType") && $("qType").value) lines.push(`💎 *Tipo / Formato:* ${$("qType").value}`);
+  if($("qGeneral") && $("qGeneral").value) lines.push(`📝 *Detalles:* ${$("qGeneral").value}`);
+
+  lines.push("────────────────────");
+  lines.push(`📞 *Soporte WhatsApp:* +57 313 5022169`);
+  lines.push(`📢 *Canal Oficial:* ${CFG.channel}`);
+
+  window.open(wa(formatMsg(lines)), "_blank");
 }
 
 function botMsg(){
   const p=BOTS[pi], s=p.s[si];
-  let t=`NOCTHRAX | PERÚ 👋\nServicio: ${p.n}\nOpción / Plan: ${s[0]}`;
+  const u=$("uInput")&&$("uInput").value.trim();
+
+  const lines = [
+    "🔴 *NOCTHRAX | PERÚ*",
+    "────────────────────",
+    `📌 *Servicio:* ${p.n}`,
+    `💎 *Opción / Plan:* ${s[0]}`
+  ];
+
   if(p.hasCalc) {
     const arrayPrices = p.priceTable[s[0]];
-    t += `\nCantidad: ${q}\nTotal ESTIMADO: ${money(calcPriceFromTable(arrayPrices, q))}`;
+    lines.push(`📊 *Cantidad:* ${q}`);
+    lines.push(`💰 *Total ESTIMADO:* ${money(calcPriceFromTable(arrayPrices, q))}`);
   }
-  const u=$("uInput")&&$("uInput").value.trim();
-  if(u) t+=`\nDetalles / Enlace: ${u}`;
-  return t;
+
+  if(u) lines.push(`🔗 *Detalles / Enlace:* ${u}`);
+
+  lines.push("────────────────────");
+  lines.push(`📞 *Soporte WhatsApp:* +57 313 5022169`);
+  lines.push(`📢 *Canal Oficial:* ${CFG.channel}`);
+
+  return formatMsg(lines);
 }
 
 function startAutoRotate(){
