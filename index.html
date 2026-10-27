@@ -277,6 +277,10 @@ header {
 
 label { display: block; font: 600 10px var(--font-b); color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; margin: 14px 0 6px; }
 
+.tab-btn-group { display: flex; gap: 8px; margin-bottom: 12px; }
+.tab-btn { flex: 1; padding: 10px; background: rgba(255,255,255,0.03); border: 1px solid var(--line-border); border-radius: 8px; color: #fff; font-size: 11px; font-weight: 700; cursor: pointer; transition: 0.3s; }
+.tab-btn.active { background: rgba(207, 35, 35, 0.2); border-color: var(--accent-red); }
+
 .modern-plan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; margin-top: 10px; }
 .plan-card-option {
   background: rgba(255,255,255,0.02); border: 1px solid var(--line-border); border-radius: 10px;
@@ -392,7 +396,7 @@ footer { text-align: center; color: var(--text-muted); font-size: 10px; letter-s
 <!-- BARRA DE BÚSQUEDA INTERACTIVA -->
 <div class="search-overlay" id="searchOverlay">
   <div class="search-input-wrap">
-    <input type="text" id="searchInput" placeholder="Escribe para buscar un servicio (Ej: Reniec, Denuncias, Web, Bots, Facebook, Forms)..." oninput="filterServices()">
+    <input type="text" id="searchInput" placeholder="Escribe para buscar un servicio (Ej: Reniec, Denuncias, Recetas, Vehículos, Forms)..." oninput="filterServices()">
   </div>
   <div class="search-results" id="searchResults"></div>
 </div>
@@ -422,6 +426,7 @@ footer { text-align: center; color: var(--text-muted); font-size: 10px; letter-s
       <div class="sub-item" onclick="openQueryModal('reniec_arbol')">Árbol genealógico</div>
       <div class="sub-item" onclick="openQueryModal('reniec_facial')">Reconocimiento facial</div>
       <div class="sub-item" onclick="openQueryModal('reniec_extranjeria')">Carné de extranjería</div>
+      <div class="sub-item" onclick="openQueryModal('persona_avanzada')">Persona Avanzada</div>
     </div>
   </div>
 
@@ -433,16 +438,51 @@ footer { text-align: center; color: var(--text-muted); font-size: 10px; letter-s
       <div class="sub-item" onclick="openQueryModal('legal_antecedentes')">Antecedentes Penales/Judiciales</div>
       <div class="sub-item" onclick="openQueryModal('legal_requisitorias')">Requisitorias e-SINPOL</div>
       <div class="sub-item" onclick="openQueryModal('pnp')">Consulta PNP / CIP</div>
+      <div class="sub-item" onclick="openQueryModal('renadespple')">RENADESPPLE</div>
+      <div class="sub-item" onclick="openQueryModal('redam')">Deudores Alimentarios (REDAM)</div>
+      <div class="sub-item" onclick="openQueryModal('redjum')">Deudores Judiciales (REDJUM)</div>
+      <div class="sub-item" onclick="openQueryModal('multas_electorales')">Multas Electorales (JNE)</div>
     </div>
   </div>
 
   <div>
-    <div class="side-item" onclick="toggleSub('subVehiculos')">🚗 VEHÍCULOS & FINANZAS <span>▼</span></div>
+    <div class="side-item" onclick="toggleSub('subVehiculos')">🚗 VEHÍCULOS <span>▼</span></div>
     <div class="sub-menu" id="subVehiculos">
-      <div class="sub-item" onclick="openQueryModal('vehicular')">Consulta Vehicular</div>
-      <div class="sub-item" onclick="openQueryModal('vehicular_tiv')">Placas y Tive</div>
-      <div class="sub-item" onclick="openQueryModal('finanzas')">Sistema Financiero / Infocorp</div>
-      <div class="sub-item" onclick="openQueryModal('sentinel')">Sentinel V2 / V3 / SBS</div>
+      <div class="sub-item" onclick="openQueryModal('vehicular')">Consulta Vehicular (TIVE)</div>
+      <div class="sub-item" onclick="openQueryModal('vehicular_siguelo')">Síguelo Plus (Avanzado)</div>
+      <div class="sub-item" onclick="openQueryModal('sunarp')">SUNARP - Propiedades</div>
+    </div>
+  </div>
+
+  <div>
+    <div class="side-item" onclick="toggleSub('subFinanzas')">💳 SISTEMA FINANCIERO <span>▼</span></div>
+    <div class="sub-menu" id="subFinanzas">
+      <div class="sub-item" onclick="openQueryModal('finanzas')">Sentinel V2 / V3 / SBS</div>
+      <div class="sub-item" onclick="openQueryModal('infocorp')">Infocorp Reporte</div>
+      <div class="sub-item" onclick="openQueryModal('equifax')">Equifax Reporte</div>
+      <div class="sub-item" onclick="openQueryModal('ruc_sunat')">RUC / SUNAT</div>
+    </div>
+  </div>
+
+  <div>
+    <div class="side-item" onclick="toggleSub('subSalud')">🏥 SALUD & MÉDICO <span>▼</span></div>
+    <div class="sub-menu" id="subSalud">
+      <div class="sub-item" onclick="openQueryModal('receta_medica')">Recetas Médicas</div>
+      <div class="sub-item" onclick="openQueryModal('descanso_medico')">Descansos Médicos</div>
+      <div class="sub-item" onclick="openQueryModal('covid_vacuna')">Covid-19 / Carnet / Seguro</div>
+    </div>
+  </div>
+
+  <div>
+    <div class="side-item" onclick="toggleSub('subEducacion')">🎓 EDUCACIÓN Y DOCUMENTOS <span>▼</span></div>
+    <div class="sub-menu" id="subEducacion">
+      <div class="sub-item" onclick="openQueryModal('actas_certificados')">Actas y Certificados</div>
+      <div class="sub-item" onclick="openQueryModal('grados_sunedu')">Grados Académicos (SUNEDU)</div>
+      <div class="sub-item" onclick="openQueryModal('carnet_universitario')">Carnét Universitario</div>
+      <div class="sub-item" onclick="openQueryModal('certificados_estudios')">Certificados de Estudios (Notas)</div>
+      <div class="sub-item" onclick="openQueryModal('cul_certificado')">Certificado Único Laboral (CUL)</div>
+      <div class="sub-item" onclick="openQueryModal('osiptel')">Osiptel (Líneas a tu nombre)</div>
+      <div class="sub-item" onclick="openQueryModal('intg_hogar')">Intg Hogar</div>
     </div>
   </div>
 
@@ -607,12 +647,33 @@ const ALL_SERVICES_MAP = [
   { text: "YouTube (Suscriptores, WatchTime, Vistas)", action: () => openModal(6) },
   { text: "Kick (Seguidores, Live)", action: () => openModal(7) },
   { text: "Reniec - Ficha / Nombres / DNI / Facial", action: () => openQueryModal('reniec_ficha') },
+  { text: "Persona Avanzada (Consulta Integral)", action: () => openQueryModal('persona_avanzada') },
   { text: "Denuncias Policiales (SIDPOL)", action: () => openQueryModal('legal_denuncias') },
   { text: "Carpeta Fiscal (Ministerio Público)", action: () => openQueryModal('legal_fiscal') },
   { text: "Antecedentes Penales/Judiciales/Policiales", action: () => openQueryModal('legal_antecedentes') },
   { text: "Requisitorias e-SINPOL (Persona/Vehículos)", action: () => openQueryModal('legal_requisitorias') },
   { text: "Consulta PNP / CIP (Policía Nacional)", action: () => openQueryModal('pnp') },
-  { text: "Vehículos & Finanzas (Infocorp, Placas)", action: () => openQueryModal('finanzas') },
+  { text: "RENADESPPLE", action: () => openQueryModal('renadespple') },
+  { text: "Deudores Alimentarios (REDAM)", action: () => openQueryModal('redam') },
+  { text: "Deudores Judiciales Morosos (REDJUM)", action: () => openQueryModal('redjum') },
+  { text: "Multas Electorales (JNE)", action: () => openQueryModal('multas_electorales') },
+  { text: "Consulta Vehicular (TIVE / SUNARP)", action: () => openQueryModal('vehicular') },
+  { text: "Síguelo Plus (Vehicular Avanzado)", action: () => openQueryModal('vehicular_siguelo') },
+  { text: "SUNARP - Propiedades / Asientos", action: () => openQueryModal('sunarp') },
+  { text: "Sentinel V2 / V3 / SBS", action: () => openQueryModal('finanzas') },
+  { text: "Infocorp Reporte", action: () => openQueryModal('infocorp') },
+  { text: "Equifax Reporte", action: () => openQueryModal('equifax') },
+  { text: "RUC / SUNAT", action: () => openQueryModal('ruc_sunat') },
+  { text: "Recetas Médicas Especializadas", action: () => openQueryModal('receta_medica') },
+  { text: "Descansos Médicos Justificados", action: () => openQueryModal('descanso_medico') },
+  { text: "Covid-19 / Carnet de Vacunación / Seguro", action: () => openQueryModal('covid_vacuna') },
+  { text: "Actas y Certificados (Brevete/Nacimiento/Defunción)", action: () => openQueryModal('actas_certificados') },
+  { text: "Grados Académicos (SUNEDU)", action: () => openQueryModal('grados_sunedu') },
+  { text: "Carnet Universitario", action: () => openQueryModal('carnet_universitario') },
+  { text: "Certificados de Estudios (Notas)", action: () => openQueryModal('certificados_estudios') },
+  { text: "Certificado Único Laboral (CUL)", action: () => openQueryModal('cul_certificado') },
+  { text: "Osiptel (Líneas a tu nombre)", action: () => openQueryModal('osiptel') },
+  { text: "Intg Hogar (Líneas / Servicios Fijos)", action: () => openQueryModal('intg_hogar') },
   { text: "Correo Temporal", action: () => openQueryModal('correo_temporal') },
   { text: "Números Virtuales (WhatsApp / Telegram)", action: () => openQueryModal('numeros_virtuales') },
   { text: "Recibos Luz, Agua, Gas", action: () => openQueryModal('recibos_luz') },
@@ -680,6 +741,7 @@ function calcPriceFromTable(arr, qty){
 let pi=0, si=0, q=500;
 let autoRotateTimer = null;
 let loadedFacialFileName = "";
+let currentVehicularTab = "placa";
 
 function renderCarousel(){
   const stage = $("cardsStage");
@@ -816,6 +878,26 @@ function buildCalc(){
   $("closeModal").onclick = closeModalFn;
 }
 
+function switchVehicularTab(tab) {
+  currentVehicularTab = tab;
+  const btnPlaca = $("btnTabPlaca");
+  const btnVin = $("btnTabVin");
+  const labelText = $("labelVehicularInput");
+  const input = $("qPlacaInput");
+
+  if(tab === 'placa') {
+    if(btnPlaca) btnPlaca.classList.add("active");
+    if(btnVin) btnVin.classList.remove("active");
+    if(labelText) labelText.textContent = "PLACA VEHICULAR";
+    if(input) input.placeholder = "Ej: Z1270Q o ABC123";
+  } else {
+    if(btnVin) btnVin.classList.add("active");
+    if(btnPlaca) btnPlaca.classList.remove("active");
+    if(labelText) labelText.textContent = "NÚMERO DE CHASIS / VIN / SERIE";
+    if(input) input.placeholder = "Ej: 9BWCA05W1YP000000";
+  }
+}
+
 function openQueryModal(type) {
   $("sidebar").classList.remove("open");
   stopAutoRotate();
@@ -844,6 +926,25 @@ function openQueryModal(type) {
           </select>
         </div>
         <button class="btn-search-action" onclick="sendQueryRequest('Ficha / Consulta RENIEC')">⌕ Consultar</button>
+      </div>
+    `;
+  } else if(type === 'persona_avanzada') {
+    html += `
+      <div class="header-title">👤 PERSONA AVANZADA</div>
+      <div class="header-sub">RENIEC · MTC · ARBOL · PNP · SUNEDU · DENUNCIAS · FISCALIA · REQUISITORIAS · SUNAT · SUNARP · OSIPTEL</div>
+      <div class="query-grid">
+        <div class="query-field">
+          <label>Valor a consultar (DNI)</label>
+          <input type="text" id="qDni" placeholder="Ej: 12345678" maxlength="8" oninput="validateDniInput(this)">
+          <small style="color:var(--text-muted);display:block;margin-top:4px;">Ingresa 8 dígitos del DNI.</small>
+        </div>
+        <div class="query-field">
+          <label>Tipo de consulta</label>
+          <select id="qType" disabled>
+            <option value="Persona Avanzada">Persona Avanzada 🔍</option>
+          </select>
+        </div>
+        <button class="btn-search-action" onclick="sendQueryRequest('Persona Avanzada Integral')">⌕ Consultar</button>
       </div>
     `;
   } else if(type === 'reniec_nombres') {
@@ -1052,6 +1153,210 @@ function openQueryModal(type) {
         <button class="btn-search-action" onclick="sendQueryRequest('Consulta PNP / CIP')">⌕ Buscar</button>
       </div>
     `;
+  } else if(type === 'renadespple' || type === 'redam' || type === 'redjum' || type === 'multas_electorales') {
+    let title = "CONSULTA LEGAL";
+    if(type === 'renadespple') title = "RENADESPPLE";
+    if(type === 'redam') title = "REDAM - DEUDORES ALIMENTARIOS";
+    if(type === 'redjum') title = "REDJUM - DEUDORES JUDICIALES MOROSOS";
+    if(type === 'multas_electorales') title = "MULTAS ELECTORALES (JNE)";
+
+    html += `
+      <div class="header-title">⚖️ ${title}</div>
+      <div class="header-sub">Consulta de registros legales y administrativas oficiales</div>
+      <div class="query-grid">
+        <div class="query-field">
+          <label>DNI a consultar</label>
+          <input type="text" id="qDni" placeholder="Ej: 75178640" maxlength="8" oninput="validateDniInput(this)">
+        </div>
+        <button class="btn-search-action" onclick="sendQueryRequest('${title}')">⌕ Consultar</button>
+      </div>
+    `;
+  } else if(type === 'vehicular') {
+    html += `
+      <div class="header-title">🚗 CONSULTA VEHICULAR (TIVE / SUNARP)</div>
+      <div class="header-sub">Boletín Informativo, SOAT, Asientos y Revisa Técnica en SUNARP</div>
+      <div class="query-grid">
+        <div class="query-field">
+          <label>Placa Vehicular</label>
+          <input type="text" id="qPlacaInput" placeholder="Ej: Z1270Q o ABC123">
+          <small style="color:var(--text-muted);display:block;margin-top:4px;">Solo letras y números, sin espacios.</small>
+        </div>
+        <div class="query-field">
+          <label>Tipo de consulta</label>
+          <select id="qType">
+            <option value="Datos vehiculares SUNARP">Datos vehiculares SUNARP</option>
+            <option value="TIVE PLANTILLA IMG">TIVE PLANTILLA IMG</option>
+            <option value="TIVE PDF">TIVE PDF</option>
+            <option value="Boletín Informativo">Boletín Informativo</option>
+            <option value="SOAT">SOAT</option>
+            <option value="Asientos placa">Asientos placa</option>
+            <option value="Revisión Técnica PDF">Revisión Técnica PDF</option>
+          </select>
+        </div>
+        <button class="btn-search-action" onclick="sendQueryRequest('Consulta Vehicular TIVE')">⌕ Buscar</button>
+      </div>
+    `;
+  } else if(type === 'vehicular_siguelo') {
+    html += `
+      <div class="header-title">🚗 SÍGUELO PLUS — VEHICULAR AVANZADO</div>
+      <div class="header-sub">OCR · Propietarios · TIVE · SOAT · Rev. Técnica · Asientos PDF</div>
+      <div class="tab-btn-group">
+        <button class="tab-btn active" id="btnTabPlaca" onclick="switchVehicularTab('placa')">Por Placa (OCR + SUNARP + TIVE)</button>
+        <button class="tab-btn" id="btnTabVin" onclick="switchVehicularTab('vin')">Por VIN / Serie (Número de chasis)</button>
+      </div>
+      <div class="query-grid">
+        <div class="query-field">
+          <label id="labelVehicularInput">PLACA VEHICULAR</label>
+          <input type="text" id="qPlacaInput" placeholder="Ej: Z1270Q o ABC123">
+        </div>
+        <button class="btn-search-action" onclick="sendQueryRequest('Síguelo Plus Vehicular')">⌕ Consultar</button>
+      </div>
+    `;
+  } else if(type === 'sunarp') {
+    html += `
+      <div class="header-title">🏠 SUNARP - PROPIEDADES & ASIENTOS</div>
+      <div class="header-sub">Búsqueda de bienes inmuebles y partidas registrales</div>
+      <div class="query-grid">
+        <div class="query-field">
+          <label>DNI o RUC del Titular</label>
+          <input type="text" id="qDni" placeholder="Ej: 75178640">
+        </div>
+        <button class="btn-search-action" onclick="sendQueryRequest('SUNARP Propiedades')">⌕ Consultar</button>
+      </div>
+    `;
+  } else if(type === 'finanzas' || type === 'infocorp' || type === 'equifax' || type === 'ruc_sunat') {
+    let title = "REPORTE FINANCIERO & DEUDAS";
+    if(type === 'infocorp') title = "INFOCORP REPORTE CREDITICIO";
+    if(type === 'equifax') title = "EQUIFAX REPORTE";
+    if(type === 'ruc_sunat') title = "RUC / SUNAT FICHA";
+
+    html += `
+      <div class="header-title">💳 ${title}</div>
+      <div class="header-sub">Consulta de deudas, historial crediticio y perfil SBS / Experian</div>
+      <div class="query-grid">
+        <div class="query-field">
+          <label>DNI / RUC</label>
+          <input type="text" id="qDni" placeholder="Ej: 70318551 o RUC 20...">
+        </div>
+        <div class="query-field">
+          <label>Proveedor / Tipo</label>
+          <select id="qType">
+            <option value="Sentinel V3 — Experian + PDF">Sentinel V3 — Experian + PDF</option>
+            <option value="Sentinel V2">Sentinel V2</option>
+            <option value="SBS — Reporte de Deudas">SBS — Reporte de Deudas</option>
+            <option value="Infocorp Reporte Full">Infocorp Reporte Full</option>
+            <option value="Equifax Consulta">Equifax Consulta</option>
+          </select>
+        </div>
+        <button class="btn-search-action" onclick="sendQueryRequest('${title}')">⌕ Buscar</button>
+      </div>
+    `;
+  } else if(type === 'receta_medica') {
+    html += `
+      <div class="header-title">🏥 RECETAS MÉDICAS ESPECIALIZADAS</div>
+      <div class="header-sub">Emisión y gestión de recetas médicas autorizadas y digitalizadas</div>
+      <div class="query-grid" style="flex-direction:column;align-items:stretch;">
+        <div class="query-field">
+          <label>DNI / Nombre del Paciente</label>
+          <input type="text" id="qDni" placeholder="Ej: 75178640 o Juan Pérez">
+        </div>
+        <div class="query-field">
+          <label>Medicamento o Diagnóstico Requerido</label>
+          <input type="text" id="qGeneral" placeholder="Ej: Antibióticos, Tratamiento específico...">
+        </div>
+        <div class="btn-group" style="margin-top:10px;">
+          <button class="btn-wa" onclick="sendQueryRequest('Receta Médica')">Solicitar por WhatsApp</button>
+          <button class="btn-tg" onclick="sendQueryRequest('Receta Médica')">Solicitar por Telegram</button>
+        </div>
+      </div>
+    `;
+  } else if(type === 'descanso_medico') {
+    html += `
+      <div class="header-title">🏥 DESCANSOS MÉDICOS JUSTIFICADOS</div>
+      <div class="header-sub">Constancias y certificados de descanso médico validados</div>
+      <div class="query-grid" style="flex-direction:column;align-items:stretch;">
+        <div class="query-field">
+          <label>DNI / Nombre del Paciente</label>
+          <input type="text" id="qDni" placeholder="Ej: 75178640 o Carlos Ramos">
+        </div>
+        <div class="query-field">
+          <label>Días de Descanso Requeridos</label>
+          <input type="text" id="qType" placeholder="Ej: 3 Días / Desde 10 de Octubre">
+        </div>
+        <div class="query-field">
+          <label>Motivo / Sintomatología</label>
+          <input type="text" id="qGeneral" placeholder="Ej: Cuadro gripal agudo, reposo...">
+        </div>
+        <div class="btn-group" style="margin-top:10px;">
+          <button class="btn-wa" onclick="sendQueryRequest('Descanso Médico')">Pedir por WhatsApp</button>
+          <button class="btn-tg" onclick="sendQueryRequest('Descanso Médico')">Pedir por Telegram</button>
+        </div>
+      </div>
+    `;
+  } else if(type === 'covid_vacuna') {
+    html += `
+      <div class="header-title">💉 COVID-19 / SEGURO / CARNET DE VACUNACIÓN</div>
+      <div class="header-sub">Verificación de dosis, carnet de vacunación y acreditación de seguro</div>
+      <div class="query-grid">
+        <div class="query-field">
+          <label>DNI del Titular</label>
+          <input type="text" id="qDni" placeholder="Ej: 75178640" maxlength="8" oninput="validateDniInput(this)">
+        </div>
+        <div class="query-field">
+          <label>Tipo de Documento</label>
+          <select id="qType">
+            <option value="Carnet de Vacunación Covid-19">Carnet de Vacunación Covid-19</option>
+            <option value="Acreditación de Seguro ESSALUD/SIS">Acreditación de Seguro ESSALUD/SIS</option>
+          </select>
+        </div>
+        <button class="btn-search-action" onclick="sendQueryRequest('Covid-19 / Carnet / Seguro')">⌕ Consultar</button>
+      </div>
+    `;
+  } else if(type === 'actas_certificados') {
+    html += `
+      <div class="header-title">📜 ACTAS Y CERTIFICADOS</div>
+      <div class="header-sub">Brevete · Nacimiento · Migraciones · Estudios · Matrimonio · Defunción</div>
+      <div class="query-grid">
+        <div class="query-field">
+          <label>Número de DNI</label>
+          <input type="text" id="qDni" placeholder="Ej: 27835459" maxlength="8" oninput="validateDniInput(this)">
+          <small style="color:var(--text-muted);display:block;margin-top:4px;">Solo 8 dígitos.</small>
+        </div>
+        <div class="query-field">
+          <label>Tipo de consulta</label>
+          <select id="qType">
+            <option value="Brevete">Brevete</option>
+            <option value="Acta de nacimiento">Acta de nacimiento</option>
+            <option value="Movimientos migratorios">Movimientos migratorios</option>
+            <option value="Certificado de estudios">Certificado de estudios</option>
+            <option value="Acta de matrimonio">Acta de matrimonio</option>
+            <option value="Acta de defunción">Acta de defunción</option>
+            <option value="Certificado laboral">Certificado laboral</option>
+          </select>
+        </div>
+        <button class="btn-search-action" onclick="sendQueryRequest('Actas y Certificados')">⌕ Consultar</button>
+      </div>
+    `;
+  } else if(type === 'grados_sunedu' || type === 'carnet_universitario' || type === 'certificados_estudios' || type === 'cul_certificado' || type === 'osiptel' || type === 'intg_hogar') {
+    let title = "DOCUMENTOS ACADÉMICOS Y REGISTROS";
+    if(type === 'grados_sunedu') title = "GRADOS ACADÉMICOS (SUNEDU)";
+    if(type === 'carnet_universitario') title = "CARNÉT UNIVERSITARIO";
+    if(type === 'certificados_estudios') title = "CERTIFICADOS DE ESTUDIOS (NOTAS)";
+    if(type === 'cul_certificado') title = "CERTIFICADO ÚNICO LABORAL (CUL / ADULTO)";
+    if(type === 'osiptel') title = "OSIPTEL (LÍNEAS A TU NOMBRE)";
+    if(type === 'intg_hogar') title = "INTG HOGAR (LÍNEAS Y SERVICIOS FIJOS)";
+
+    html += `
+      <div class="header-title">🎓 ${title}</div>
+      <div class="header-sub">Búsqueda rápida en bases de datos nacionales</div>
+      <div class="query-grid">
+        <div class="query-field">
+          <label>DNI del Titular</label>
+          <input type="text" id="qDni" placeholder="Ej: 75178640" maxlength="8" oninput="validateDniInput(this)">
+        </div>
+        <button class="btn-search-action" onclick="sendQueryRequest('${title}')">⌕ Consultar</button>
+      </div>
+    `;
   } else if(type === 'numeros_virtuales') {
     html += `
       <div class="header-title">📱 NÚMEROS VIRTUALES</div>
@@ -1158,26 +1463,6 @@ function openQueryModal(type) {
         </div>
       </div>
     `;
-  } else if(type === 'finanzas' || type === 'sentinel' || type === 'vehicular' || type === 'vehicular_tiv') {
-    html += `
-      <div class="header-title">🚗 VEHÍCULOS & FINANZAS</div>
-      <div class="header-sub">Consultas financieras (Infocorp, Sentinel) y vehiculares (Placas, TIV)</div>
-      <div class="query-grid">
-        <div class="query-field">
-          <label>DNI / Placa a consultar</label>
-          <input type="text" id="qDni" placeholder="Ej: 75178640 o ABC-123">
-        </div>
-        <div class="query-field">
-          <label>Tipo de Reporte</label>
-          <select id="qType">
-            <option>Reporte Infocorp Completo</option>
-            <option>Sentinel V3 PDF</option>
-            <option>Consulta Vehicular SUNARP / TIV</option>
-          </select>
-        </div>
-        <button class="btn-search-action" onclick="sendQueryRequest('Vehículos y Finanzas')">⌕ Consultar</button>
-      </div>
-    `;
   } else if(type === 'busqueda_total') {
     html += `
       <div class="header-title">🕵️‍♂️ BÚSQUEDA TOTAL</div>
@@ -1256,7 +1541,8 @@ function sendQueryRequest(serviceName) {
   }
 
   let msg = `NOCTHRAX | CONSULTA ESPECIALIZADA 👋\nServicio: ${serviceName}`;
-  if(dniInput && dniInput.value) msg += `\nDNI: ${dniInput.value}`;
+  if(dniInput && dniInput.value) msg += `\nDNI / Valor: ${dniInput.value}`;
+  if($("qPlacaInput") && $("qPlacaInput").value) msg += `\nPlaca/VIN: ${$("qPlacaInput").value} (Modo: ${currentVehicularTab})`;
   if($("qNombres") && $("qNombres").value) msg += `\nNombres: ${$("qNombres").value}`;
   if($("qPaterno") && $("qPaterno").value) msg += `\nAp. Paterno: ${$("qPaterno").value}`;
   if($("qMaterno") && $("qMaterno").value) msg += `\nAp. Materno: ${$("qMaterno").value}`;
