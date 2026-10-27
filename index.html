@@ -819,53 +819,132 @@ function openQueryModal(type) {
 
   let html = `<button class="close-modal" id="closeModal">✕</button><div class="query-card">`;
 
-  if(type === 'reniec_facial') {
+  if(type === 'reniec_ficha') {
     html += `
-      <div class="header-title">🆔 RECONOCIMIENTO FACIAL RENIEC</div>
-      <div class="header-sub">Sube una foto clara del rostro para procesar la búsqueda biométrica</div>
+      <div class="header-title">🆔 CONSULTA RENIEC (TXT / PDF / C4 / FICHA)</div>
+      <div class="header-sub">Selecciona el tipo de documento o formato oficial requerido</div>
+      <div class="query-grid">
+        <div class="query-field">
+          <label>DNI</label>
+          <input type="text" id="qDni" placeholder="Ej: 75178640" maxlength="8" oninput="validateDniInput(this)">
+          <small id="dniError" style="display:none;" class="error-msg">Solo números, 8 dígitos.</small>
+        </div>
+        <div class="query-field">
+          <label>Tipo de Formato</label>
+          <select id="qType">
+            <option value="RENIEC TXT (JSON)">RENIEC TXT (JSON)</option>
+            <option value="RENIEC BLANCO (PDF)">RENIEC BLANCO (PDF)</option>
+            <option value="C4 CERTIFICADO (PDF)">C4 CERTIFICADO (PDF)</option>
+            <option value="FICHA RENIEC (PNG)">FICHA RENIEC (PNG)</option>
+            <option value="FICHA RENIEC AZUL (PDF)">FICHA RENIEC AZUL (PDF)</option>
+          </select>
+        </div>
+        <button class="btn-search-action" onclick="sendQueryRequest('Ficha / Consulta RENIEC')">⌕ Consultar</button>
+      </div>
+    `;
+  } else if(type === 'reniec_nombres') {
+    html += `
+      <div class="header-title">🆔 BÚSQUEDA RENIEC POR NOMBRES</div>
+      <div class="header-sub">Consulta por nombres y apellidos (Completa al menos 2 campos)</div>
+      <div class="query-grid">
+        <div class="query-field">
+          <label>Nombres</label>
+          <input type="text" id="qNombres" placeholder="Ej: PEDRO">
+        </div>
+        <div class="query-field">
+          <label>Apellido Paterno</label>
+          <input type="text" id="qPaterno" placeholder="Ej: CASTILLO">
+        </div>
+        <div class="query-field">
+          <label>Apellido Materno</label>
+          <input type="text" id="qMaterno" placeholder="Ej: TERRONES">
+        </div>
+        <button class="btn-search-action" onclick="sendQueryRequest('Búsqueda RENIEC por Nombres')">⌕ Consultar</button>
+      </div>
+    `;
+  } else if(type === 'reniec_dni') {
+    html += `
+      <div class="header-title">🆔 DNI VIRTUAL (IMÁGENES)</div>
+      <div class="header-sub">Obtén la copia digital en alta resolución del documento</div>
+      <div class="query-grid">
+        <div class="query-field">
+          <label>DNI</label>
+          <input type="text" id="qDni" placeholder="Ej: 70364031" maxlength="8" oninput="validateDniInput(this)">
+          <small id="dniError" style="display:none;" class="error-msg">Solo números, 8 dígitos.</small>
+        </div>
+        <div class="query-field">
+          <label>Tipo de Documento</label>
+          <select id="qType">
+            <option value="DNI VIRTUAL ELECTRÓNICO">DNI VIRTUAL ELECTRÓNICO</option>
+            <option value="DNI AZUL">DNI AZUL</option>
+            <option value="DNI AMARILLO">DNI AMARILLO</option>
+          </select>
+        </div>
+        <button class="btn-search-action" onclick="sendQueryRequest('DNI Virtual')">⌕ Consultar</button>
+      </div>
+    `;
+  } else if(type === 'reniec_arbol') {
+    html += `
+      <div class="header-title">🆔 ÁRBOL GENEALÓGICO (TXT / VISUAL)</div>
+      <div class="header-sub">Reporte estructurado de vínculos familiares y parentesco</div>
+      <div class="query-grid">
+        <div class="query-field">
+          <label>DNI</label>
+          <input type="text" id="qDni" placeholder="Ej: 70364031" maxlength="8" oninput="validateDniInput(this)">
+          <small id="dniError" style="display:none;" class="error-msg">Solo números, 8 dígitos.</small>
+        </div>
+        <div class="query-field">
+          <label>Tipo de Árbol</label>
+          <select id="qType">
+            <option value="ÁRBOL TXT">ÁRBOL TXT</option>
+            <option value="ÁRBOL VISUAL">ÁRBOL VISUAL</option>
+          </select>
+        </div>
+        <button class="btn-search-action" onclick="sendQueryRequest('Árbol Genealógico')">⌕ Consultar</button>
+      </div>
+    `;
+  } else if(type === 'reniec_facial') {
+    html += `
+      <div class="header-title">🆔 FACIAL SERVER (RECONOCIMIENTO FACIAL)</div>
+      <div class="header-sub">Identificación biométrica avanzada mediante fotografía facial</div>
       <div class="query-grid" style="flex-direction:column;align-items:stretch;">
         <div class="query-field">
-          <label>Adjuntar Fotografía</label>
+          <label>Foto del Rostro</label>
           <div class="dropzone-box" onclick="$('facialFileInput').click()">
             <span style="font-size:28px;">📷</span>
-            <div id="dropzoneText" style="font-size:11px;color:var(--text-muted);margin-top:5px;">Haz clic aquí para seleccionar o arrastra tu foto</div>
+            <div id="dropzoneText" style="font-size:12px;color:#fff;margin-top:5px;font-weight:600;">Arrastra tu foto aquí o <span style="color:var(--accent-red);">selecciona</span></div>
+            <small style="color:var(--text-muted);display:block;margin-top:2px;">JPG · PNG · WEBP — hasta 15 MB</small>
           </div>
           <input type="file" id="facialFileInput" accept="image/*" style="display:none;" onchange="handleFileSelected(event)">
         </div>
-        <div class="query-field">
-          <label>Notas Adicionales / DNI (Opcional)</label>
-          <input type="text" id="qGeneral" placeholder="Datos de referencia...">
+        <div style="display:flex;gap:10px;margin-top:8px;">
+          <button style="flex:1;padding:8px;background:rgba(255,255,255,0.05);border:1px solid var(--line-border);color:#fff;border-radius:6px;cursor:pointer;" onclick="$('facialFileInput').click()">📷 Usar cámara</button>
+          <button style="flex:1;padding:8px;background:rgba(255,255,255,0.05);border:1px solid var(--line-border);color:#fff;border-radius:6px;cursor:pointer;" onclick="clearFacialFile()">🗑️ Limpiar</button>
         </div>
+        <small style="color:var(--text-muted);margin-top:8px;display:block;">La consulta puede tardar hasta 60 segundos. No hagas doble clic.</small>
         <div class="btn-group" style="margin-top:10px;">
-          <button class="btn-wa" onclick="sendQueryRequest('Reconocimiento Facial Reniec')">Consultar por WhatsApp</button>
-          <button class="btn-tg" onclick="sendQueryRequest('Reconocimiento Facial Reniec')">Consultar por Telegram</button>
+          <button class="btn-wa" onclick="sendQueryRequest('Reconocimiento Facial RENIEC')">🔍 Identificar Persona (WA)</button>
+          <button class="btn-tg" onclick="sendQueryRequest('Reconocimiento Facial RENIEC')">🔍 Identificar Persona (TG)</button>
         </div>
       </div>
     `;
-  } else if(type === 'reniec_ficha' || type === 'reniec_nombres' || type === 'reniec_dni' || type === 'reniec_arbol' || type === 'reniec_extranjeria') {
-    let title = "CONSULTA RENIEC & IDENTIDAD";
-    if(type === 'reniec_nombres') title = "BÚSQUEDA POR NOMBRES";
-    if(type === 'reniec_dni') title = "DNI VIRTUAL";
-    if(type === 'reniec_arbol') title = "ÁRBOL GENEALÓGICO";
-    if(type === 'reniec_extranjeria') title = "CARNÉ DE EXTRANJERÍA";
-
+  } else if(type === 'reniec_extranjeria') {
     html += `
-      <div class="header-title">🆔 ${title}</div>
-      <div class="header-sub">Introduce los datos requeridos para la consulta oficial</div>
+      <div class="header-title">🆔 CARNÉ DE EXTRANJERÍA (CE)</div>
+      <div class="header-sub">Búsqueda de datos oficial en base de Migraciones Perú</div>
       <div class="query-grid">
         <div class="query-field">
-          <label>DNI / Nombres / Datos</label>
-          <input type="text" id="qDni" placeholder="Ej: 75178640 o Apellidos y Nombres">
+          <label>Número de Carné</label>
+          <input type="text" id="qCarne" placeholder="Ej: 001759530">
+          <small style="color:var(--text-muted);display:block;margin-top:4px;">Letras y números, de 6 a 12 caracteres.</small>
         </div>
         <div class="query-field">
-          <label>Formato / Opción</label>
-          <select id="qType">
-            <option>Ficha RENIEC Completa</option>
-            <option>C4 Certificado Oficial</option>
-            <option>Formato PDF / JSON</option>
+          <label>Fuente</label>
+          <select id="qType" disabled>
+            <option value="MIGRACIONES">MIGRACIONES 🔒</option>
           </select>
         </div>
-        <button class="btn-search-action" onclick="sendQueryRequest('${title}')">⌕ Consultar</button>
+        <button class="btn-search-action" onclick="sendQueryRequest('Carné de Extranjería (CE)')">⌕ Consultar</button>
       </div>
     `;
   } else if(type.startsWith('legal_') || type === 'pnp') {
@@ -1060,6 +1139,14 @@ function handleFileSelected(event) {
   }
 }
 
+function clearFacialFile() {
+  loadedFacialFileName = "";
+  const input = $("facialFileInput");
+  if(input) input.value = "";
+  const txt = $("dropzoneText");
+  if(txt) txt.innerHTML = `Arrastra tu foto aquí o <span style="color:var(--accent-red);">selecciona</span>`;
+}
+
 function selectApk(apkName, apkPrice) {
   const msg = `NOCTHRAX | SOLICITUD DE APK 📲\nAplicación: ${apkName}\nPrecio: ${apkPrice}`;
   window.open(wa(msg), "_blank");
@@ -1086,8 +1173,12 @@ function sendQueryRequest(serviceName) {
   }
 
   let msg = `NOCTHRAX | CONSULTA ESPECIALIZADA 👋\nServicio: ${serviceName}`;
-  if(dniInput && dniInput.value) msg += `\nDNI / Datos: ${dniInput.value}`;
-  if($("qType") && $("qType").value) msg += `\nTipo / Paquete: ${$("qType").value}`;
+  if(dniInput && dniInput.value) msg += `\nDNI: ${dniInput.value}`;
+  if($("qNombres") && $("qNombres").value) msg += `\nNombres: ${$("qNombres").value}`;
+  if($("qPaterno") && $("qPaterno").value) msg += `\nAp. Paterno: ${$("qPaterno").value}`;
+  if($("qMaterno") && $("qMaterno").value) msg += `\nAp. Materno: ${$("qMaterno").value}`;
+  if($("qCarne") && $("qCarne").value) msg += `\nCarné de Extranjería: ${$("qCarne").value}`;
+  if($("qType") && $("qType").value) msg += `\nTipo / Formato: ${$("qType").value}`;
   if(loadedFacialFileName) msg += `\nArchivo Adjunto: ${loadedFacialFileName}`;
   if($("qGeneral") && $("qGeneral").value) msg += `\nDetalles: ${$("qGeneral").value}`;
 
