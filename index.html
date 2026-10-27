@@ -60,7 +60,7 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 0 4vw;
-  background: rgba(13, 17, 16, 0.35);
+  background: rgba(13, 17, 16, 0.45);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(229, 231, 230, 0.1);
@@ -94,7 +94,7 @@ header {
 .search-overlay.open { display: flex; }
 .search-input-wrap { position: relative; width: 100%; max-width: 900px; margin: 0 auto; }
 .search-input-wrap input {
-  width: 100%; padding: 14px 20px; background: rgba(0,0,0,0.6); border: 1px solid var(--line-border);
+  width: 100%; padding: 14px 20px; background: rgba(0,0,0,0.7); border: 1px solid var(--line-border);
   border-radius: 8px; color: #fff; font-size: 16px;
 }
 .search-input-wrap input:focus { outline: none; border-color: var(--accent-red); }
@@ -105,7 +105,7 @@ header {
 }
 .search-item:hover { background: rgba(207, 35, 35, 0.2); color: #fff; }
 
-/* MENÚ LATERAL (SIDEBAR) CON NUEVO FONDO COMBINADO */
+/* MENÚ LATERAL (SIDEBAR) CON FONDO COMBINADO ELEGANTE */
 .sidebar {
   position: fixed; 
   top: 0; 
@@ -113,8 +113,8 @@ header {
   width: 380px; 
   max-width: 90vw; 
   height: 100vh;
-  background: linear-gradient(180deg, rgba(13, 17, 16, 0.85) 0%, rgba(13, 17, 16, 0.95) 100%), 
-              url('pechito.jpg') center/cover no-repeat #0d1110;
+  background: linear-gradient(180deg, rgba(13, 17, 16, 0.82) 0%, rgba(13, 17, 16, 0.95) 100%), 
+              url('3.jpg') center/cover no-repeat #0d1110;
   border-left: 1px solid rgba(207, 35, 35, 0.5); 
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -145,7 +145,7 @@ header {
   font-weight: 800; 
 }
 .close-btn { 
-  background: rgba(0,0,0,0.4); 
+  background: rgba(0,0,0,0.5); 
   border: 1px solid rgba(229, 231, 230, 0.25); 
   border-radius: 50%;
   width: 34px; height: 34px;
@@ -228,7 +228,7 @@ header {
 
 .hero-description p { margin: 0 0 6px; }
 
-/* CARRUSEL 3D CON LAS FOTOS ORIGINALES RESTAURADAS */
+/* CARRUSEL 3D CON LAS NUEVAS IMÁGENES COMBINADAS EN CADA CARTILLA */
 .carousel-container {
   position: relative; 
   width: 100%; 
@@ -265,13 +265,13 @@ header {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(180deg, rgba(13, 17, 16, 0.2) 0%, rgba(13, 17, 16, 0.75) 50%, rgba(13, 17, 16, 0.98) 100%);
+  background: linear-gradient(180deg, rgba(13, 17, 16, 0.25) 0%, rgba(13, 17, 16, 0.75) 55%, rgba(13, 17, 16, 0.96) 100%);
   z-index: 1;
   transition: opacity 0.4s ease;
 }
 
 .card-3d:hover::before {
-  background: linear-gradient(180deg, rgba(13, 17, 16, 0.1) 0%, rgba(13, 17, 16, 0.65) 45%, rgba(13, 17, 16, 0.95) 100%);
+  background: linear-gradient(180deg, rgba(13, 17, 16, 0.15) 0%, rgba(13, 17, 16, 0.6) 45%, rgba(13, 17, 16, 0.9) 100%);
 }
 
 .card-3d.center {
@@ -347,7 +347,7 @@ header {
 .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.25); cursor: pointer; transition: 0.3s; }
 .dot.active { width: 24px; border-radius: 4px; background: var(--accent-red); box-shadow: 0 0 10px rgba(207,35,35,0.8); }
 
-/* DISEÑO TIPO LAUNCHER / STREAMING MODERNO (CON FONDOS COMBINADOS DE LAS NUEVAS IMÁGENES) */
+/* DISEÑO TIPO LAUNCHER / STREAMING MODERNO */
 .store-layout {
   display: flex;
   flex-direction: column;
@@ -552,7 +552,7 @@ header {
   color: #fff;
 }
 
-/* MODALES CON FONDO DE LAS NUEVAS IMÁGENES */
+/* MODALES CON FONDO COMBINADO DE LAS NUEVAS IMÁGENES (7.jpg) */
 .modal-overlay {
   position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(8,10,9,0.98);
   backdrop-filter: blur(30px); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 0;
@@ -562,7 +562,7 @@ header {
 
 .calc-box {
   width: 100vw; height: 100vh; border: none; 
-  background: linear-gradient(180deg, rgba(13, 17, 16, 0.90) 0%, rgba(13, 17, 16, 0.96) 100%), url('pto.jpg') center/cover no-repeat;
+  background: linear-gradient(180deg, rgba(13, 17, 16, 0.85) 0%, rgba(13, 17, 16, 0.96) 100%), url('7.jpg') center/cover no-repeat;
   padding: 40px 4vw; box-shadow: none; border-radius: 0;
   position: relative; display: flex; flex-direction: column; overflow: hidden;
 }
@@ -587,7 +587,7 @@ input:focus, select:focus { outline: none; border-color: var(--accent-red); box-
 
 .btn-group { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
 .btn-wa, .btn-tg {
-  flex: 1; padding: 14px 18px; border: 1px solid var(--line-border); background: rgba(0,0,0,0.7);
+  flex: 1; padding: 14px 18px; border: 1px solid var(--line-border); background: rgba(0,0,0,0.75);
   color: #fff; font: 700 11px var(--font-b); letter-spacing: 1.5px; text-transform: uppercase;
   cursor: pointer; transition: .3s; border-radius: 9px; text-align: center;
 }
@@ -871,68 +871,68 @@ const GENERAL_DEFAULT_PRICES = {
 };
 
 const METODOS_TIERS = [
-  ["Método Básico Guías", "Acceso a manuales y métodos informativos esenciales.", "S/ 15.00", "pechito.jpg"],
-  ["Método Pro Verificación", "Guías avanzadas de procesos y flujos digitales.", "S/ 30.00", "pto.jpg"],
-  ["Método Élite Full Access", "Acceso completo a todos los métodos y actualizaciones directas.", "S/ 50.00", "oñoo.jpg"],
-  ["Método Masterclass Colaborador", "Plantilla editable para nuevos colaboradores (Ingresa tu nombre y método).", "S/ 70.00", "11111.jpg"]
+  ["Método Básico Guías", "Acceso a manuales y métodos informativos esenciales.", "S/ 15.00", "1.jpg"],
+  ["Método Pro Verificación", "Guías avanzadas de procesos y flujos digitales.", "S/ 30.00", "2.jpg"],
+  ["Método Élite Full Access", "Acceso completo a todos los métodos y actualizaciones directas.", "S/ 50.00", "3.jpg"],
+  ["Método Masterclass Colaborador", "Plantilla editable para nuevos colaboradores (Ingresa tu nombre y método).", "S/ 70.00", "4.jpg"]
 ];
 
 const FORMS_TIERS = [
-  { n: "15 Respuestas", p: "S/ 4.00", d: "Respuestas reales progresivas y confiables para tu formulario.", img: "pechito.jpg", badge: "Básico" },
-  { n: "30 Respuestas", p: "S/ 8.00", d: "Llenado continuo adaptado a tus opciones y preguntas.", img: "pto.jpg", badge: "Popular" },
-  { n: "60 Respuestas", p: "S/ 15.00", d: "Ideal para proyectos medianos o encuestas de estudio.", img: "oñoo.jpg", badge: "Estándar" },
-  { n: "100 Respuestas", p: "S/ 24.00", d: "Paquete óptimo para investigación académica inicial.", img: "11111.jpg", badge: "Recomendado" },
-  { n: "150 Respuestas", p: "S/ 35.00", d: "Alto volumen con distribución uniforme garantizada.", img: "pechito.jpg", badge: "Pro" },
-  { n: "200 Respuestas", p: "S/ 45.00", d: "Ideal para tesis y trabajos universitarios completos.", img: "pto.jpg", badge: "Élite" },
-  { n: "250 Respuestas", p: "S/ 55.00", d: "Cobertura masiva para proyectos y análisis estadísticos.", img: "oñoo.jpg", badge: "Master" },
-  { n: "300 Respuestas", p: "S/ 65.00", d: "Gran flujo de respuestas reales segmentadas.", img: "11111.jpg", badge: "Business" },
-  { n: "500 Respuestas", p: "S/ 100.00", d: "Soporte corporativo y masivo para investigaciones extensas.", img: "pechito.jpg", badge: "Full Access" }
+  { n: "15 Respuestas", p: "S/ 4.00", d: "Respuestas reales progresivas y confiables para tu formulario.", img: "1.jpg", badge: "Básico" },
+  { n: "30 Respuestas", p: "S/ 8.00", d: "Llenado continuo adaptado a tus opciones y preguntas.", img: "2.jpg", badge: "Popular" },
+  { n: "60 Respuestas", p: "S/ 15.00", d: "Ideal para proyectos medianos o encuestas de estudio.", img: "3.jpg", badge: "Estándar" },
+  { n: "100 Respuestas", p: "S/ 24.00", d: "Paquete óptimo para investigación académica inicial.", img: "4.jpg", badge: "Recomendado" },
+  { n: "150 Respuestas", p: "S/ 35.00", d: "Alto volumen con distribución uniforme garantizada.", img: "5.jpg", badge: "Pro" },
+  { n: "200 Respuestas", p: "S/ 45.00", d: "Ideal para tesis y trabajos universitarios completos.", img: "7.jpg", badge: "Élite" },
+  { n: "250 Respuestas", p: "S/ 55.00", d: "Cobertura masiva para proyectos y análisis estadísticos.", img: "1.jpg", badge: "Master" },
+  { n: "300 Respuestas", p: "S/ 65.00", d: "Gran flujo de respuestas reales segmentadas.", img: "2.jpg", badge: "Business" },
+  { n: "500 Respuestas", p: "S/ 100.00", d: "Soporte corporativo y masivo para investigaciones extensas.", img: "3.jpg", badge: "Full Access" }
 ];
 
 const WEB_TIERS = [
-  ["Landing Page Básica", "1 Sección optimizada, diseño adaptable móvil, enlace directo a WhatsApp.", "S/ 20.00", "pechito.jpg"],
-  ["Landing Page Pro", "Hasta 2 Secciones con animaciones fluidas, formulario y dominio temporal.", "S/ 45.00", "pto.jpg"],
-  ["Web Profesional", "Hasta 3 Secciones, formulario de contacto interactivo, velocidad optimizada.", "S/ 60.00", "oñoo.jpg"],
-  ["Web Avanzada Plus", "Hasta 4 Secciones interactivas, integración con redes sociales y SEO inicial.", "S/ 85.00", "11111.jpg"],
-  ["Web Corporativa", "Hasta 5 Secciones, diseño exclusivo, panel autoadministrable, SEO avanzado.", "S/ 100.00", "pechito.jpg"],
-  ["E-commerce / Full System", "Catálogo completo de productos, pasarela de pagos integrada, asesoría y dominio.", "S/ 150.00", "pto.jpg"]
+  ["Landing Page Básica", "1 Sección optimizada, diseño adaptable móvil, enlace directo a WhatsApp.", "S/ 20.00", "1.jpg"],
+  ["Landing Page Pro", "Hasta 2 Secciones con animaciones fluidas, formulario y dominio temporal.", "S/ 45.00", "2.jpg"],
+  ["Web Profesional", "Hasta 3 Secciones, formulario de contacto interactivo, velocidad optimizada.", "S/ 60.00", "3.jpg"],
+  ["Web Avanzada Plus", "Hasta 4 Secciones interactivas, integración con redes sociales y SEO inicial.", "S/ 85.00", "4.jpg"],
+  ["Web Corporativa", "Hasta 5 Secciones, diseño exclusivo, panel autoadministrable, SEO avanzado.", "S/ 100.00", "5.jpg"],
+  ["E-commerce / Full System", "Catálogo completo de productos, pasarela de pagos integrada, asesoría y dominio.", "S/ 150.00", "7.jpg"]
 ];
 
 const BOT_TIERS = [
-  ["Bot Informativo Básico", "Respuestas automáticas simples 24/7 con menú principal.", "S/ 25.00", "oñoo.jpg"],
-  ["Bot Automatizado Estándar", "Menú interactivo de opciones avanzadas para Telegram o WhatsApp.", "S/ 35.00", "11111.jpg"],
-  ["Bot Avanzado con APIs", "Conexión con APIs, respuestas inteligentes y base de datos.", "S/ 45.00", "pechito.jpg"],
-  ["Bot Full Business con Pagos", "Integración completa de pagos, catálogo y soporte multiusuario.", "S/ 65.00", "pto.jpg"]
+  ["Bot Informativo Básico", "Respuestas automáticas simples 24/7 con menú principal.", "S/ 25.00", "3.jpg"],
+  ["Bot Automatizado Estándar", "Menú interactivo de opciones avanzadas para Telegram o WhatsApp.", "S/ 35.00", "4.jpg"],
+  ["Bot Avanzado con APIs", "Conexión con APIs, respuestas inteligentes y base de datos.", "S/ 45.00", "5.jpg"],
+  ["Bot Full Business con Pagos", "Integración completa de pagos, catálogo y soporte multiusuario.", "S/ 65.00", "7.jpg"]
 ];
 
 const APK_ITEMS = [
-  { n: "Streaming VIP App", p: "S/ 15.00", d: "Aplicación premium de películas y series en alta definición sin anuncios.", img: "pechito.jpg", badge: "Más Vendido" },
-  { n: "Herramientas Pro APK", p: "S/ 25.00", d: "Suite completa de herramientas de productividad y utilidades modificadas.", img: "pto.jpg", badge: "Popular" },
-  { n: "Edición & Diseño Mod", p: "S/ 20.00", d: "Apps de edición fotográfica y de video con funciones desbloqueadas.", img: "oñoo.jpg", badge: "Nuevo" },
-  { n: "Panel Colaborador APK", p: "S/ 30.00", d: "Plantilla para ingresar tu nombre y añadir tu propia APK a la red.", img: "11111.jpg", badge: "Colabora" }
+  { n: "Streaming VIP App", p: "S/ 15.00", d: "Aplicación premium de películas y series en alta definición sin anuncios.", img: "1.jpg", badge: "Más Vendido" },
+  { n: "Herramientas Pro APK", p: "S/ 25.00", d: "Suite completa de herramientas de productividad y utilidades modificadas.", img: "2.jpg", badge: "Popular" },
+  { n: "Edición & Diseño Mod", p: "S/ 20.00", d: "Apps de edición fotográfica y de video con funciones desbloqueadas.", img: "3.jpg", badge: "Nuevo" },
+  { n: "Panel Colaborador APK", p: "S/ 30.00", d: "Plantilla para ingresar tu nombre y añadir tu propia APK a la red.", img: "4.jpg", badge: "Colabora" }
 ];
 
 const NUMEROS_VIRTUALES_ITEMS = [
-  { n: "🇵🇪 Perú (WhatsApp / Telegram)", p: "S/ 10.00", d: "Número verificado al instante con código operativo para cuentas en Perú.", badge: "Destacado", img: "pechito.jpg" },
-  { n: "🇺🇸 Estados Unidos (+1)", p: "S/ 10.00", d: "Línea virtual estadounidense de alta estabilidad para validaciones globales.", badge: "Estándar", img: "pto.jpg" },
-  { n: "🇨🇴 Colombia (+57)", p: "S/ 10.00", d: "Número activo de Colombia para registros en redes sociales y apps de mensajería.", badge: "Estándar", img: "oñoo.jpg" },
-  { n: "🌐 Panel de Números (Acceso Total)", p: "S/ 15.00", d: "Acceso multi-país ilimitado con plantilla para colaboradores y revendedores.", badge: "Élite", img: "11111.jpg" }
+  { n: "🇵🇪 Perú (WhatsApp / Telegram)", p: "S/ 10.00", d: "Número verificado al instante con código operativo para cuentas en Perú.", badge: "Destacado", img: "5.jpg" },
+  { n: "🇺🇸 Estados Unidos (+1)", p: "S/ 10.00", d: "Línea virtual estadounidense de alta estabilidad para validaciones globales.", badge: "Estándar", img: "7.jpg" },
+  { n: "🇨🇴 Colombia (+57)", p: "S/ 10.00", d: "Número activo de Colombia para registros en redes sociales y apps de mensajería.", badge: "Estándar", img: "1.jpg" },
+  { n: "🌐 Panel de Números (Acceso Total)", p: "S/ 15.00", d: "Acceso multi-país ilimitado con plantilla para colaboradores y revendedores.", badge: "Élite", img: "2.jpg" }
 ];
 
-/* CARRUSEL 3D RESTAURADO CON LAS FOTOS ORIGINALES DE CHICAS */
+/* CARRUSEL 3D CON LAS NUEVAS IMÁGENES (1.jpg, 2.jpg, 3.jpg, 4.jpg, 5.jpg, 7.jpg) DISTRIBUIDAS Y COMBINADAS */
 const BOTS = [
-  { k:"metodos", n:"Métodos", img:"https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=800", rating:"9.9 ★", hasCalc:false, d:"Guías y métodos exclusivos paso a paso.", s:METODOS_TIERS },
-  { k:"web", n:"Creación de tu Página Web", img:"https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=800", rating:"9.9 ★", hasCalc:false, d:"Construcción y diseño profesional de páginas web a tu medida.", s:WEB_TIERS },
-  { k:"bot", n:"¡Creamos tu Bot de Telegram & WhatsApp!", img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=800", rating:"9.8 ★", hasCalc:false, d:"Automatización inteligente 24/7 para escalar tus ventas al instante.", s:BOT_TIERS },
-  { k:"forms", n:"Google Forms & Encuestas", img:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=800", rating:"9.9 ★", hasCalc:false, d:"Llenado masivo de respuestas reales para Google Forms.", isFormsCustom:true },
-  { k:"tiktok", n:"TikTok", img:"https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&q=80&w=800", rating:"9.8 ★", hasCalc:true, priceTable: TIKTOK_PRICES, d:"Impulso algorítmico inmediato para tus videos.", s: Object.keys(TIKTOK_PRICES).map(k=>[k]) },
-  { k:"instagram", n:"Instagram", img:"https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=800", rating:"9.9 ★", hasCalc:true, priceTable: INSTAGRAM_PRICES, d:"Posicionamiento orgánico y aceleración de perfil.", s: Object.keys(INSTAGRAM_PRICES).map(k=>[k]) },
-  { k:"facebook", n:"Facebook", img:"https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=800", rating:"9.7 ★", hasCalc:true, priceTable: FACEBOOK_PRICES, d:"Aumento de seguidores, reacciones y reproducciones.", s: Object.keys(FACEBOOK_PRICES).map(k=>[k]) },
-  { k:"youtube", n:"YouTube", img:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=800", rating:"9.8 ★", hasCalc:true, priceTable: YOUTUBE_PRICES, d:"Visibilidad, suscriptores y visualizaciones.", s: Object.keys(YOUTUBE_PRICES).map(k=>[k]) },
-  { k:"kick", n:"Kick", img:"https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=800", rating:"9.6 ★", hasCalc:true, priceTable: KICK_PRICES, d:"Impulsa tus directos y seguidores en Kick.", s: Object.keys(KICK_PRICES).map(k=>[k]) },
-  { k:"telegram", n:"Telegram", img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=800", rating:"9.7 ★", hasCalc:true, priceTable: GENERAL_DEFAULT_PRICES, d:"Miembros e interacciones para canales y grupos.", s: Object.keys(GENERAL_DEFAULT_PRICES).map(k=>[k]) },
-  { k:"twitter", n:"X (Twitter)", img:"https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&q=80&w=800", rating:"9.6 ★", hasCalc:true, priceTable: GENERAL_DEFAULT_PRICES, d:"Aumento de seguidores y alcance en publicaciones.", s: Object.keys(GENERAL_DEFAULT_PRICES).map(k=>[k]) },
-  { k:"spotify", n:"Spotify", img:"https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=800", rating:"9.7 ★", hasCalc:true, priceTable: GENERAL_DEFAULT_PRICES, d:"Reproducciones y oyentes mensuales para música.", s: Object.keys(GENERAL_DEFAULT_PRICES).map(k=>[k]) }
+  { k:"metodos", n:"Métodos", img:"1.jpg", rating:"9.9 ★", hasCalc:false, d:"Guías y métodos exclusivos paso a paso.", s:METODOS_TIERS },
+  { k:"web", n:"Creación de tu Página Web", img:"2.jpg", rating:"9.9 ★", hasCalc:false, d:"Construcción y diseño profesional de páginas web a tu medida.", s:WEB_TIERS },
+  { k:"bot", n:"¡Creamos tu Bot de Telegram & WhatsApp!", img:"3.jpg", rating:"9.8 ★", hasCalc:false, d:"Automatización inteligente 24/7 para escalar tus ventas al instante.", s:BOT_TIERS },
+  { k:"forms", n:"Google Forms & Encuestas", img:"4.jpg", rating:"9.9 ★", hasCalc:false, d:"Llenado masivo de respuestas reales para Google Forms.", isFormsCustom:true },
+  { k:"tiktok", n:"TikTok", img:"5.jpg", rating:"9.8 ★", hasCalc:true, priceTable: TIKTOK_PRICES, d:"Impulso algorítmico inmediato para tus videos.", s: Object.keys(TIKTOK_PRICES).map(k=>[k]) },
+  { k:"instagram", n:"Instagram", img:"7.jpg", rating:"9.9 ★", hasCalc:true, priceTable: INSTAGRAM_PRICES, d:"Posicionamiento orgánico y aceleración de perfil.", s: Object.keys(INSTAGRAM_PRICES).map(k=>[k]) },
+  { k:"facebook", n:"Facebook", img:"1.jpg", rating:"9.7 ★", hasCalc:true, priceTable: FACEBOOK_PRICES, d:"Aumento de seguidores, reacciones y reproducciones.", s: Object.keys(FACEBOOK_PRICES).map(k=>[k]) },
+  { k:"youtube", n:"YouTube", img:"2.jpg", rating:"9.8 ★", hasCalc:true, priceTable: YOUTUBE_PRICES, d:"Visibilidad, suscriptores y visualizaciones.", s: Object.keys(YOUTUBE_PRICES).map(k=>[k]) },
+  { k:"kick", n:"Kick", img:"3.jpg", rating:"9.6 ★", hasCalc:true, priceTable: KICK_PRICES, d:"Impulsa tus directos y seguidores en Kick.", s: Object.keys(KICK_PRICES).map(k=>[k]) },
+  { k:"telegram", n:"Telegram", img:"4.jpg", rating:"9.7 ★", hasCalc:true, priceTable: GENERAL_DEFAULT_PRICES, d:"Miembros e interacciones para canales y grupos.", s: Object.keys(GENERAL_DEFAULT_PRICES).map(k=>[k]) },
+  { k:"twitter", n:"X (Twitter)", img:"5.jpg", rating:"9.6 ★", hasCalc:true, priceTable: GENERAL_DEFAULT_PRICES, d:"Aumento de seguidores y alcance en publicaciones.", s: Object.keys(GENERAL_DEFAULT_PRICES).map(k=>[k]) },
+  { k:"spotify", n:"Spotify", img:"7.jpg", rating:"9.7 ★", hasCalc:true, priceTable: GENERAL_DEFAULT_PRICES, d:"Reproducciones y oyentes mensuales para música.", s: Object.keys(GENERAL_DEFAULT_PRICES).map(k=>[k]) }
 ];
 
 const ALL_SERVICES_MAP = [
@@ -1141,14 +1141,14 @@ function buildCalc(){
       </div>
     `;
   } else {
-    const formattedTiers = p.s.map(x => ({ n: x[0], p: x[2], d: x[1], img: x[3] || 'pto.jpg', badge: 'Plan' }));
+    const formattedTiers = p.s.map(x => ({ n: x[0], p: x[2], d: x[1], img: x[3] || '2.jpg', badge: 'Plan' }));
     renderStoreModal(p.n, "Selecciona tu nivel o plan preferido", formattedTiers, false);
     return;
   }
   $("closeModal").onclick = closeModalFn;
 }
 
-// RENDERIZADOR TIPO LAUNCHER / STREAMING MODERNO (CON FONDOS COMBINADOS DE LAS NUEVAS IMÁGENES)
+// RENDERIZADOR TIPO LAUNCHER / STREAMING MODERNO (CON FONDOS COMBINADOS DE 1.jpg, 2.jpg, 3.jpg, 4.jpg, 5.jpg, 7.jpg)
 function renderStoreModal(title, subtitle, itemsList, isCollaborative = false) {
   $("sidebar").classList.remove("open");
   stopAutoRotate();
@@ -1162,7 +1162,7 @@ function renderStoreModal(title, subtitle, itemsList, isCollaborative = false) {
     calcContent.innerHTML = `
       <button class="close-modal" id="closeModal">✕</button>
       <div class="store-layout">
-        <div class="store-hero" style="background-image: url('${item.img || 'pechito.jpg'}');">
+        <div class="store-hero" style="background-image: url('${item.img || '1.jpg'}');">
           <div class="store-hero-content">
             <span class="store-hero-badge">${item.badge || 'Destacado'}</span>
             <h2 class="store-hero-title">${item.n}</h2>
@@ -1175,7 +1175,7 @@ function renderStoreModal(title, subtitle, itemsList, isCollaborative = false) {
         </div>
 
         ${isCollaborative ? `
-        <div style="background:rgba(207,35,35,0.1); border:1px solid var(--accent-red); padding:18px; border-radius:14px; background-image:url('oñoo.jpg'); background-size:cover; background-position:center; position:relative; overflow:hidden;">
+        <div style="background:rgba(207,35,35,0.1); border:1px solid var(--accent-red); padding:18px; border-radius:14px; background-image:url('3.jpg'); background-size:cover; background-position:center; position:relative; overflow:hidden;">
           <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(13,17,16,0.88);z-index:1;"></div>
           <div style="position:relative;z-index:2;">
             <label style="margin-top:0;">📝 ¿QUIERES UNIRTE COMO COLABORADOR?</label>
@@ -1192,7 +1192,7 @@ function renderStoreModal(title, subtitle, itemsList, isCollaborative = false) {
         <div class="store-section-title">${subtitle}</div>
         <div class="store-grid">
           ${itemsList.map((it, i) => `
-            <div class="store-card ${i===activeIndex?'active-card':''}" onclick="updateStoreActive(${i})" style="background-image: url('${it.img || '11111.jpg'}');">
+            <div class="store-card ${i===activeIndex?'active-card':''}" onclick="updateStoreActive(${i})" style="background-image: url('${it.img || '5.jpg'}');">
               <div class="store-card-content">
                 <span class="store-card-badge">${it.badge || 'Item'}</span>
                 <h4 class="store-card-title">${it.n}</h4>
@@ -1259,35 +1259,35 @@ function openQueryModal(type) {
       <div class="header-sub">Incluye todos los servicios oficiales a un precio único de <strong style="color:var(--accent-red);">S/ 35.00</strong></div>
       
       <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:12px; margin:20px 0;">
-        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--line-border); padding:14px; border-radius:12px; background-image:url('pechito.jpg'); background-size:cover; background-position:center; position:relative; overflow:hidden;">
+        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--line-border); padding:14px; border-radius:12px; background-image:url('1.jpg'); background-size:cover; background-position:center; position:relative; overflow:hidden;">
           <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(13,17,16,0.85);z-index:1;"></div>
           <div style="position:relative;z-index:2;">
             <div style="font-size:12px; font-weight:800; color:#fff;">🆔 RENIEC</div>
             <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Fichas y datos completos</div>
           </div>
         </div>
-        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--line-border); padding:14px; border-radius:12px; background-image:url('pto.jpg'); background-size:cover; background-position:center; position:relative; overflow:hidden;">
+        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--line-border); padding:14px; border-radius:12px; background-image:url('2.jpg'); background-size:cover; background-position:center; position:relative; overflow:hidden;">
           <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(13,17,16,0.85);z-index:1;"></div>
           <div style="position:relative;z-index:2;">
             <div style="font-size:12px; font-weight:800; color:#fff;">🚗 MTC</div>
             <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Licencias y papeletas</div>
           </div>
         </div>
-        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--line-border); padding:14px; border-radius:12px; background-image:url('oñoo.jpg'); background-size:cover; background-position:center; position:relative; overflow:hidden;">
+        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--line-border); padding:14px; border-radius:12px; background-image:url('3.jpg'); background-size:cover; background-position:center; position:relative; overflow:hidden;">
           <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(13,17,16,0.85);z-index:1;"></div>
           <div style="position:relative;z-index:2;">
             <div style="font-size:12px; font-weight:800; color:#fff;">🌳 ÁRBOL</div>
             <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Vínculos familiares</div>
           </div>
         </div>
-        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--line-border); padding:14px; border-radius:12px; background-image:url('11111.jpg'); background-size:cover; background-position:center; position:relative; overflow:hidden;">
+        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--line-border); padding:14px; border-radius:12px; background-image:url('4.jpg'); background-size:cover; background-position:center; position:relative; overflow:hidden;">
           <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(13,17,16,0.85);z-index:1;"></div>
           <div style="position:relative;z-index:2;">
             <div style="font-size:12px; font-weight:800; color:#fff;">🛡️ PNP</div>
             <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Requisitorias e historial</div>
           </div>
         </div>
-        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--line-border); padding:14px; border-radius:12px; background-image:url('pechito.jpg'); background-size:cover; background-position:center; position:relative; overflow:hidden;">
+        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--line-border); padding:14px; border-radius:12px; background-image:url('5.jpg'); background-size:cover; background-position:center; position:relative; overflow:hidden;">
           <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(13,17,16,0.85);z-index:1;"></div>
           <div style="position:relative;z-index:2;">
             <div style="font-size:12px; font-weight:800; color:#fff;">⚖️ ANTECEDENTES</div>
